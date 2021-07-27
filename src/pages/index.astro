@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<style lang="scss">
+ .hero {
+   position: relative;
+   width: 100vw;
+   min-height: 100vh;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: flex-end;
+ }
+
+ img.memage {
+   padding-top: 3rem;
+   max-height: calc(100vh - 3rem);
+   max-width: 100vw;
+ }
+
+ img.curves {
+   position: absolute;
+   bottom: 0;
+   max-width: 100vw;
+ }
+
+ .info {
+   flex: 1;
+   margin-top: 25vh;
+   margin-left: 10vw;
+
+   p {
+     font-size: 2rem;
+     color: #444;
+   }
+   h1 {
+     font-size: 4rem;
+     color: #C60065;
+     font-weight: 700;
+   }
+ }
+
+</style>
+<Base title="Home">
+<div class="hero">
+  <section class="info">
+    <p>Welcome, I'm</p>
+    <h1>Pablo Berganza</h1>
+  </section>
+  <img class="memage" src="/assets/mesilsil.svg" alt="" />
+  <img class="curves" src="/assets/curves.svg" alt="" />
+</div>
+</Base>
