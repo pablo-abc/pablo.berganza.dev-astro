@@ -1,7 +1,3 @@
----
-import Base from '../layouts/Base.astro';
-import Hero from '../components/Hero.astro';
----
 <style lang="scss">
  .hero {
    position: relative;
@@ -18,7 +14,7 @@ import Hero from '../components/Hero.astro';
    max-width: 100vw;
    margin: 0 5vw;
    animation-duration: 1s;
-   animation-name: slidein;
+   animation-name: slideinright;
  }
 
  img.curves {
@@ -43,7 +39,16 @@ import Hero from '../components/Hero.astro';
    }
  }
 
- @keyframes slidein {
+ ul {
+   color: #333;
+   font-size: 1.2rem;
+ }
+
+ li::before {
+   content: "✓";
+ }
+
+ @keyframes slideinright {
    from {
      opacity: 0;
      transform: translateX(5vw);
@@ -55,6 +60,16 @@ import Hero from '../components/Hero.astro';
    }
  }
 </style>
-<Base title="Home">
-  <Hero />
-</Base>
+
+<div class="hero">
+  <section class="info">
+    <p>Welcome, I'm</p>
+    <h1>Pablo Berganza</h1>
+    <ul>
+      <li>Software developer</li>
+      <li>Open sourcerer</li>
+    </ul>
+  </section>
+  <img class="memage" src="/assets/mesilsil.svg" alt="" />
+  <img class="curves" src="/assets/curves.svg" alt="" />
+</div>
