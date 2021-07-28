@@ -45,9 +45,27 @@ body {
   font-family: 'Overpass', 'Helvetica Neue', Verdana, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--base-font-color);
+  color: var(--base-font-color-on-alt);
+  font-size: 1.125rem;
+}
+
+p {
+  line-height: 1.5rem;
 }
 
 a {
   color: var(--color-link);
+}
+
+h1 {
+  color: var(--color-primary-on-alt);
+  font-weight: 700;
+  font-size: var(--h1);
+}
+
+h2 {
+  color: var(--color-secondary-2-4);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 2rem;
 }

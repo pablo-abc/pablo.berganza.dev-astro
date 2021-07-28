@@ -1,0 +1,44 @@
+---
+import LangLink from '../../components/LangLink.astro';
+const { lang = 'en', posts = [] } = Astro.props;
+---
+<h1 class="home-link"><a href={lang === 'es' ? '/es' : '/'}>Pablo Berganza</a></h1>
+<LangLink {lang} section="/blog" />
+<section class="blog">
+  <h1 class="title">Blog</h1>
+  <ul>
+    {posts.map(post => (
+    <a href={`${lang === 'en' ? '/' : '/es/'}blog/${post.slug}`}>
+      <article>
+        <h2>{post.title}</h2>
+      </article>
+    </a>
+    ))}
+  </ul>
+</section>
+
+<style lang="scss">
+ .home-link {
+   font-size: 2rem;
+   font-weight: 700;
+   padding: 1rem;
+
+   a {
+     color: var(--color-heading);
+     text-decoration: none;
+   }
+ }
+
+ h1.title {
+   margin-top: 4rem;
+   font-size: var(--h1);
+   color: var(--color-heading);
+   font-weight: 700;
+   text-align: center;
+ }
+
+ .blog {
+   width: 70%;
+   margin: 0 auto;
+ }
+</style>

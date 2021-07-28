@@ -1,0 +1,8 @@
+---
+import Base from '../../layouts/Base.astro';
+import Blogs from '../../components/Blog/Blogs.astro';
+const posts = Astro.fetchContent('./*.md');
+---
+<Base title="Blog" lang="en">
+  <Blogs lang="en" {posts} />
+</Base>

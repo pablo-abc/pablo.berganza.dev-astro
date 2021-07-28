@@ -17,10 +17,10 @@ const { lang } = Astro.props;
     <h1>{i18n.projects.title[lang]}</h1>
     <dl>
       {i18n.projects.list.map(project => (
-      <>
+      <div>
         <dt>{project.title}</dt>
         <dd>{project.description[lang]}</dd>
-      </>
+      </div>
       ))}
     </dl>
   </div>
@@ -58,10 +58,12 @@ const { lang } = Astro.props;
    }
 
    .abilities {
+     background: var(--color-secondary-2-1);
+     border-radius: 20px;
      padding: 1rem;
      width: 100%;
-     min-width: 250px;
-     min-height: 250px;
+     height: 16rem;
+     width: 16rem;
      margin-bottom: 2rem;
    }
 
@@ -76,12 +78,6 @@ const { lang } = Astro.props;
    }
 
    @media only screen and (min-width: 768px) {
-     .abilities {
-       width: 20vw;
-       min-width: 150px;
-       min-height: 150px;
-     }
-
      .about-text {
        max-width: 50vw;
      }

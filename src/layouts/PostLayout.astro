@@ -1,11 +1,12 @@
 ---
-const { title, lang } = Astro.props;
+const { content } = Astro.props;
+import LangLink from '../components/LangLink.astro';
 ---
-<html lang="{lang || 'en'}">
+<html lang="{content.lang || 'en'}">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{title} | Pablo Berganza</title>
+    <title>{content.title} | Pablo Berganza</title>
     <link href="/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
     <link href="/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
     <link href="/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
@@ -30,7 +31,90 @@ const { title, lang } = Astro.props;
   </head>
   <body>
     <main>
-      <slot />
+      <h1 class="home-link"><a href={content.lang === 'es' ? '/es' : '/'}>Pablo Berganza</a></h1>
+      <LangLink lang={content.lang || 'en'} section={`/blog/${content.slug}`} />
+      <article>
+        <header>
+          <h1 class="title">{content.title}</h1>
+          <h2>{content.description}</h2>
+        </header>
+        <div class="tags">
+          Tags:
+          <ul>
+            {content.tags.map(tag => (
+            <li>
+              <a href={`${content.lang === 'en' ? '/blog/' : '/blog/es/'}tags/${tag}`}>
+                {tag}
+              </a>
+            </li>
+            ))}
+          </ul>
+        </div>
+        <section class="content">
+          <slot />
+        </section>
+      </article>
     </main>
   </body>
 </html>
+
+<style lang="scss">
+ article {
+   max-width: 50rem;
+   width: 90%;
+   margin: 0 auto;
+ }
+
+ .home-link {
+   font-size: 2rem;
+   font-weight: 700;
+   padding: 1rem;
+
+   a {
+     color: var(--color-heading);
+     text-decoration: none;
+   }
+ }
+
+ header {
+   margin-top: 4rem;
+
+   h1.title {
+     font-size: 3rem;
+     margin-bottom: 1rem;
+     color: var(--color-heading);
+   }
+
+   h2 {
+     font-size: 1.5rem;
+     color: var(--color-heading);
+     margin-top: 0;
+     margin-bottom: 2rem;
+   }
+ }
+
+ .tags {
+   display: flex;
+
+   ul {
+     display: flex;
+     padding-left: 1rem;
+   }
+
+   li {
+     padding-right: 0.5rem;
+   }
+ }
+
+ .content {
+   :global(ul) {
+     list-style-type: disc;
+     margin-left: 2rem;
+     line-height: 1.5rem;
+   }
+
+   :global(p) {
+     margin: 1rem 0;
+   }
+ }
+</style>
