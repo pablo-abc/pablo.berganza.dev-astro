@@ -1,60 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
-import Hero from '../components/Hero.astro';
+import Hero from '../components/Home/Hero.astro';
+import About from '../components/Home/About.astro';
 ---
-<style lang="scss">
- .hero {
-   position: relative;
-   width: 100vw;
-   min-height: 100vh;
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
- }
-
- img.memage {
-   padding-top: 3rem;
-   max-height: calc(90vh - 3rem);
-   max-width: 100vw;
-   margin: 0 5vw;
-   animation-duration: 1s;
-   animation-name: slidein;
- }
-
- img.curves {
-   position: absolute;
-   bottom: 0;
-   max-width: 100vw;
- }
-
- .info {
-   flex: 1;
-   margin-top: 25vh;
-   margin-left: 10vw;
-
-   p {
-     font-size: 2rem;
-     color: #444;
-   }
-   h1 {
-     font-size: 4rem;
-     color: #C60065;
-     font-weight: 700;
-   }
- }
-
- @keyframes slidein {
-   from {
-     opacity: 0;
-     transform: translateX(5vw);
-   }
-
-   to {
-     opacity: 1;
-     transform: translateX(0);
-   }
- }
-</style>
-<Base title="Home">
-  <Hero />
+<Base title="Home" lang="en">
+  <Hero lang="en" />
+  <About lang="en" />
 </Base>

@@ -1,0 +1,61 @@
+{
+  "welcome": {
+    "en": "Welcome, I'm",
+    "es": "Hola, soy"
+  },
+  "description": {
+    "en": [
+      "Software developer",
+      "Ocassional open sourcerer",
+      "Accessibility enthusiast"
+    ],
+    "es": [
+      "Desarrollador de software",
+      "Contribuyente open source",
+      "Entusiasta de accesibilidad"
+    ]
+  },
+  "blog": {
+    "en": "Looking for my <a href=\"/blog\">blog</a>?",
+    "es": "¿Buscas mi <a href=\"/es/blog\">blog</a>?"
+  },
+  "aboutMe": {
+    "title": {
+      "en": "About me",
+      "es": "Sobre mi"
+    },
+    "description": {
+      "en": "I am a software developer at [Ravn](https://ravn.co) from El Salvador, currently based in Poland. Mostly focusing on the web with JavaScript. I have experience with both front-end and back-end development. Most of my work is with [React](https://reactjs.org) and [NestJS](https://nestjs.com) but I have experience using [Svelte](https://svelte.dev), [Vue](https://vuejs.org) and [Solid](https://solidjs.com). I also have experience with other languages such as [Clojure(Script)](https://clojure.org) and [Rust](https://www.rust-lang.org).",
+      "es": "Soy un desarrollador de software salvadoreño trabajando en [Ravn](https://ravn.co), actualmente viviendo en Polonia. Me enfoco en la web con JavaScript. Tengo experiencia tanto desarrollando en el front-end como en el back-end. Casi todo mi trabajo es con [React](https://reactjs.org) y [NestJS](https://nestjs.com) pero tengo experiencia con [Svelte](https://svelte.dev), [Vue](https://vuejs.org) y [Solid](https://solidjs.com). También tengo experiencia con otros lenguages como [Clojure(Script)](https://clojure.org) y [Rust](https://www.rust-lang.org)."
+    }
+  },
+  "projects": {
+    "title": {
+      "en": "My projects",
+      "es": "Mis proyectos"
+    },
+    "list": [
+      {
+        "title": "Felte",
+        "description": {
+          "en": "<p>A form management library for Svelte and Solid.</p><p><span aria-hidden=\"true\">→</span> Check the <a href=\"https://felte.dev\">website</a>.</p><p><span aria-hidden=\"true\">→</span> Check the <a href=\"https://github.com/pablo-abc/felte\">code on GitHub</a>.</p>",
+          "es": "<p>Librería para el manejo de formularios en Svelte y Solid.</p><p><span aria-hidden=\"true\">→</span> Ve al <a href=\"https://felte.dev\">sitio web</a>.</p><p><span aria-hidden=\"true\">→</span> Ve al <a href=\"https://github.com/pablo-abc/felte\">código en GitHub</a>.</p>"
+        }
+      },
+      {
+        "title": "Solid Reach",
+        "description": {
+          "en": "<p>A port of <a href=\"https://reach.tech\">ReachUI</a> for SolidJS aiming to be the accessible foundation for you SolidJS based design systems.</p><p><span aria-hidden=\"true\">→</span> Check the <a href=\"https://github.com/pablo-abc/solid-reach\">code on GitHub</a>.</p>",
+          "es": "<p>Una versión de <a href=\"https://reach.tech\">ReachUI</a> reescrita para SolidJS. Busca ser una base accesible para tu sistema de diseño con SolidJS.</p><p><span aria-hidden=\"true\">→</span> Ve al <a href=\"https://github.com/pablo-abc/solid-reach\">código en GitHub</a>.</p>"
+        }
+      },
+      {
+        "title": "Svelte Markdown",
+        "description": {
+          "en": "<p>A markdown renderer that renders your markdown as Svelte components.</p><p><span aria-hidden=\"true\">→</span> Check the <a href=\"https://github.com/pablo-abc/svelte-markdown\">code on GitHub</a>.</p>",
+          "es": "<p>Una librería para renderizar tu markdown en componentes de Svelte.</p><p><span aria-hidden=\"true\">→</span> Ve al <a href=\"https://github.com/pablo-abc/svelte-markdown\">código en GitHub</a>.</p>"
+        }
+      }
+    ]
+  }
+}

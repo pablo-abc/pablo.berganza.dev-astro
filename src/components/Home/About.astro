@@ -1,0 +1,90 @@
+---
+import { Markdown } from 'astro/components';
+import Abilities from './Abilities.svelte';
+import i18n from '../../i18n/home.json';
+const { lang } = Astro.props;
+---
+<img aria-hidden="true" class="curves" src="/assets/curves.svg" alt="" />
+<section class="about">
+  <div class="about-text">
+    <h1>{i18n.aboutMe.title[lang]}</h1>
+    <Markdown content={i18n.aboutMe.description[lang]} />
+  </div>
+  <div class="abilities">
+    <Abilities client:visible />
+  </div>
+  <div>
+    <h1>{i18n.projects.title[lang]}</h1>
+    <dl>
+      {i18n.projects.list.map(project => (
+      <>
+        <dt>{project.title}</dt>
+        <dd>{project.description[lang]}</dd>
+      </>
+      ))}
+    </dl>
+  </div>
+</section>
+
+<style lang="scss">
+ img.curves {
+   display: block;
+   width: 100%;
+ }
+
+ .about {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   padding: 3rem 10vw;
+   background: var(--color-primary-1);
+   color: var(--base-font-color-on-alt);
+   font-size: 1.125rem;
+
+   .about-text {
+     max-width: 100%;
+     margin-bottom: 2rem;
+   }
+
+   :global(p) {
+     line-height: 1.5rem;
+   }
+
+   :global(h1) {
+     color: var(--color-primary-on-alt);
+     font-size: var(--h1);
+     font-weight: 700;
+     margin-bottom: 1rem;
+   }
+
+   .abilities {
+     padding: 1rem;
+     width: 100%;
+     min-width: 250px;
+     min-height: 250px;
+     margin-bottom: 2rem;
+   }
+
+   dt {
+     font-size: 1.5rem;
+     font-weight: 700;
+     margin-top: 1rem;
+   }
+
+   dd {
+     padding-left: 1rem;
+   }
+
+   @media only screen and (min-width: 768px) {
+     .abilities {
+       width: 20vw;
+       min-width: 150px;
+       min-height: 150px;
+     }
+
+     .about-text {
+       max-width: 50vw;
+     }
+   }
+ }
+</style>

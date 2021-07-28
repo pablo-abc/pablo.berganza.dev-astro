@@ -1,0 +1,160 @@
+---
+import LangLink from '../LangLink.astro';
+import i18n from '../../i18n/home.json';
+const { lang } = Astro.props;
+---
+
+<div class="hero">
+  <LangLink {lang} />
+  <section class="info">
+    <h1>
+      <span>
+        {i18n.welcome[lang]}
+        <img aria-hidden="true" class="memage-mobile" src="/assets/mesilsil.svg" alt="" />
+      </span>
+      Pablo Berganza
+    </h1>
+    <ul>
+      {i18n.description[lang].map(desc => (
+        <li>{desc}</li>
+      ))}
+    </ul>
+    <p>{i18n.blog[lang]}</p>
+  </section>
+  <img aria-hidden="true" class="memage" src="/assets/mesilsil.svg" alt="" />
+</div>
+
+<style lang="scss">
+ @use "sass:math";
+
+ $ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
+
+ .hero {
+   position: relative;
+   width: 100%;
+   min-height: 100vh;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   overflow-x: hidden;
+
+   img.memage-mobile {
+     position: absolute;
+     opacity: 0;
+     top: -4rem;
+     height: 6rem;
+     margin-left: 1rem;
+     animation-delay: math.div(4s, 3);
+     animation-timing-function: $ease-out-cubic;
+     animation-duration: 1s;
+     animation-name: slideinright;
+     animation-fill-mode: forwards;
+     @media only screen and (min-width: 956px) {
+       display: none;
+     }
+   }
+
+   img.memage {
+     display: none;
+     @media only screen and (min-width: 956px) {
+       display: inline;
+       opacity: 0;
+       max-height: 100vh;
+       max-width: 100%;
+       width: auto;
+       padding: max(10vh, 3rem) 5vw;
+       height: 100vh;
+       animation-delay: math.div(4s, 3);
+       animation-timing-function: $ease-out-cubic;
+       animation-duration: 1s;
+       animation-name: slideinright;
+       animation-fill-mode: forwards;
+     }
+   }
+
+   .info {
+     flex: 1;
+     margin: 0 10vw;
+     padding-top: 35vh;
+     min-height: 100vh;
+
+     h1 {
+       font-size: var(--h1);
+       color: var(--color-heading);
+       font-weight: 700;
+       span {
+         position: relative;
+         font-size: 1.5rem;
+         line-height: 2rem;
+         color: var(--base-font-color);
+         font-weight: 400;
+         display: block;
+       }
+
+       @media only screen and (min-width: 483px) {
+         span {
+           line-height: 2.5rem;
+           font-size: 2rem;
+         }
+       }
+     }
+
+   }
+
+   ul {
+     margin-top: 0.75rem;
+     color: var(--base-font-color);
+     font-size: 1.125rem;
+     line-height: 1.5rem;
+   }
+
+   p {
+     font-size: 1.125rem;
+     padding-top: 1rem;
+   }
+
+   li {
+     opacity: 0;
+   }
+
+   @for $i from 1 through 3 {
+     li:nth-child(#{$i}) {
+       animation-delay: math.div($i - 1s, 3);
+       animation-duration: 1s;
+       animation-timing-function: $ease-out-cubic;
+       animation-name: slideinleft;
+       animation-fill-mode: forwards;
+     }
+   }
+
+   li::before {
+     content: "✓";
+     content: "✓" / "";
+   }
+
+ }
+
+ @keyframes slideinright {
+   from {
+     opacity: 0;
+     transform: translateX(5vw);
+   }
+
+   to {
+     opacity: 1;
+     transform: translateX(0);
+   }
+ }
+
+ @keyframes slideinleft {
+   from {
+     opacity: 0;
+     transform: translateX(-2rem);
+   }
+
+   to {
+     opacity: 1;
+     transform: translateX(0);
+   }
+ }
+</style>
