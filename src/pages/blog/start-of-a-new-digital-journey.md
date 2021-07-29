@@ -3,6 +3,9 @@ title: Start of a New Digital Journey
 slug: start-of-a-new-digital-journey
 description: How I made my life difficult by trying to create my website from scratch
 created: '2019-03-18'
+image:
+  width: 800
+  height: 600
 tags:
     - clojure
     - programming

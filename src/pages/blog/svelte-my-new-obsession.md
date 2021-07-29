@@ -4,6 +4,9 @@ slug: svelte-my-new-obsession
 layout: ../../layouts/PostLayout.astro
 description: I gave Svelte a try and ended up rewriting my whole site
 created: '2020-04-20'
+image:
+  width: 800
+  height: 450
 tags:
     - svelte
     - javascript

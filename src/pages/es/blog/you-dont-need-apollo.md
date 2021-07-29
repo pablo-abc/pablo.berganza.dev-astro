@@ -4,6 +4,9 @@ description: ¿Proyecto hobby? ¿Aprendiendo GraphQL? Tal vez te estás complica
 slug: you-dont-need-apollo
 layout: ../../../layouts/PostLayout.astro
 created: '2020-06-08'
+image:
+  width: 800
+  height: 600
 lang: es
 tags:
   - javascript

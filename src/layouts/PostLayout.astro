@@ -98,7 +98,13 @@ const jsonLd = `
           <h1 class="title">{content.title}</h1>
           <p>{content.description}</p>
         </header>
-        <img alt="" class="banner" src={imgSrc} />
+        <img
+          alt=""
+          class="banner"
+          src={imgSrc}
+          width={content.image.width}
+          height={content.image.height}
+        />
         <div class="stats">
           <div class="ttr">
             <span>

@@ -4,6 +4,9 @@ description: Small project? Learning GraphQL? Apollo might be an overkill
 slug: you-dont-need-apollo
 layout: ../../layouts/PostLayout.astro
 created: '2020-06-08'
+image:
+  width: 800
+  height: 600
 tags:
   - javascript
   - graphql
