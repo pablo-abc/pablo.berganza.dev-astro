@@ -1,8 +1,16 @@
 ---
-const { content } = Astro.props;
+import readingTime from 'reading-time';
 import LangLink from '../components/LangLink.astro';
+import HomeLink from '../components/HomeLink.astro';
+import Clock from '../components/icons/Clock.astro';
+import Calendar from '../components/icons/Calendar.astro';
+
+const { content } = Astro.props;
+const ttr = Math.round(readingTime(content.astro.source).minutes);
+const lang = content.lang || 'en';
 ---
-<html lang="{content.lang || 'en'}">
+
+<html {lang}>
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,22 +36,43 @@ import LangLink from '../components/LangLink.astro';
     <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700&family=Roboto+Slab:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/style/reset.css">
     <link rel="stylesheet" type="text/css" href="/style/global.css">
+    <link rel="stylesheet" type="text/css" href="/style/dracula.css">
+    <script type="module" src="https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.js"></script>
   </head>
   <body>
     <main>
-      <h1 class="home-link"><a href={content.lang === 'es' ? '/es' : '/'}>Pablo Berganza</a></h1>
-      <LangLink lang={content.lang || 'en'} section={`/blog/${content.slug}`} />
+      <HomeLink {lang} />
+      <LangLink {lang} section={`blog/${content.slug}`} />
       <article>
         <header>
           <h1 class="title">{content.title}</h1>
-          <h2>{content.description}</h2>
+          <p>{content.description}</p>
         </header>
+        <img alt="" class="banner" src={`/assets/blog-pics/${content.created}.jpg`} />
+        <div class="stats">
+          <div class="ttr">
+            <span>
+              <Clock {lang} />
+            </span>
+            <span>{ttr}</span>
+            <span>{lang === 'en' ? 'minutes' : 'minutos'}</span>
+          </div>
+          <div class="created">
+            <span>
+              <Calendar {lang} />
+            </span>
+            <span>
+              {content.created}
+            </span>
+          </div>
+        </div>
         <div class="tags">
           Tags:
           <ul>
             {content.tags.map(tag => (
             <li>
-              <a href={`${content.lang === 'en' ? '/blog/' : '/blog/es/'}tags/${tag}`}>
+              <a href={`${lang === 'en' ? '/blog/' : '/es/blog/'}tags/${tag}`}>
                 {tag}
               </a>
             </li>
@@ -59,62 +88,128 @@ import LangLink from '../components/LangLink.astro';
 </html>
 
 <style lang="scss">
- article {
-   max-width: 50rem;
-   width: 90%;
-   margin: 0 auto;
- }
+  article {
+    max-width: 50rem;
+    width: 90%;
+    margin: 0 auto;
+  }
 
- .home-link {
-   font-size: 2rem;
-   font-weight: 700;
-   padding: 1rem;
+  header {
+    margin-top: 4rem;
 
-   a {
-     color: var(--color-heading);
-     text-decoration: none;
-   }
- }
+    h1.title {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--color-heading);
+    }
 
- header {
-   margin-top: 4rem;
+    p {
+      font-family: 'Overpass', 'Helvetica Neue', Verdana, Helvetica, Arial, sans-serif;
+      font-size: 1.2rem;
+      color: var(--color-heading);
+      margin-top: 0;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+  }
 
-   h1.title {
-     font-size: 3rem;
-     margin-bottom: 1rem;
-     color: var(--color-heading);
-   }
+  .banner {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+  }
 
-   h2 {
-     font-size: 1.5rem;
-     color: var(--color-heading);
-     margin-top: 0;
-     margin-bottom: 2rem;
-   }
- }
+  .tags {
+    display: flex;
+    color: var(--color-heading);
 
- .tags {
-   display: flex;
+    ul {
+      display: flex;
+      padding-left: 1rem;
+    }
 
-   ul {
-     display: flex;
-     padding-left: 1rem;
-   }
+    li {
+      padding-right: 0.5rem;
+    }
+  }
 
-   li {
-     padding-right: 0.5rem;
-   }
- }
+  .content {
+    :global(ul) {
+      list-style-type: disc;
+      margin-left: 2rem;
+      line-height: 1.5rem;
+    }
 
- .content {
-   :global(ul) {
-     list-style-type: disc;
-     margin-left: 2rem;
-     line-height: 1.5rem;
-   }
+    :global(p) {
+      margin: 1rem 0;
+    }
 
-   :global(p) {
-     margin: 1rem 0;
-   }
- }
+    :global(iframe), :global(table) {
+      border-collapse: separate;
+      border-spacing: 0.2rem;
+      align-self: center;
+      border: 4px solid var(--color-primary-2);
+      border-radius: 10px;
+      width: 95%;
+
+      :global(thead) {
+        font-weight: 700;
+      }
+    }
+  }
+
+  .content :global(.yt-vid) {
+      align-self: center;
+      width: 95%;
+  }
+
+  .content :global(yt-vid) {
+      --width: 100%;
+      --height: 315px;
+      --border: 4px solid var(--color-primary-2);
+      --border-radius: 10px;
+  }
+
+  .content :global(blockquote) {
+      padding: 8px 10px;
+      margin: 8px inherit;
+      background-color: #FFF7FB;
+      border-left: 5px solid var(--color-primary-2);
+      border-radius: 10px;
+      color: #694D5D;
+
+  }
+
+  .content :global(blockquote) :global(p) {
+      margin: 0;
+  }
+
+  .content :global(pre) {
+      margin: 8px 10px;
+      overflow: auto;
+      display: flex;
+      padding: 10px;
+      border-left: 5px solid var(--color-primary-2);
+      border-radius: 10px;
+      white-space: pre;       /* css-3 */
+      white-space: -moz-pre;  /* Mozilla, since 1999 */
+      white-space: -pre;      /* Opera 4-6 */
+      white-space: -o-pre;    /* Opera 7 */
+      align-self: center;
+      width: 95%;
+  }
+
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+  }
+
+  .ttr, .created {
+    color: var(--color-heading);
+    span {
+      margin-right: 0.2rem;
+    }
+  }
 </style>

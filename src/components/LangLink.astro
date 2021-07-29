@@ -2,7 +2,7 @@
 const { section = '', lang = 'en' } = Astro.props;
 ---
 
-<a class="lang-link" href={`${lang === 'en' ? '/es' : '/'}${section}`}>
+<a class="lang-link" href={`${lang === 'en' ? '/es/' : '/'}${section}`}>
   {lang === 'en' ? '¿Hablas español?' : 'Speak English?'}
 </a>
 
@@ -10,7 +10,7 @@ const { section = '', lang = 'en' } = Astro.props;
  .lang-link {
    position: absolute;
    top: 1rem;
-   right: 1rem;
+   right: 10vw;
    z-index: 1;
  }
 </style>

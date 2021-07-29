@@ -1,0 +1,45 @@
+---
+import Base from '../../../layouts/Base.astro';
+import LangLink from '../../../components/LangLink.astro';
+import HomeLink from '../../../components/HomeLink.astro';
+import Blogs from '../../../components/Blog/Blogs.astro';
+
+export async function createCollection() {
+  const posts = Astro.fetchContent('./*.md');
+  const possibleTags = new Set();
+  for (const post of posts) {
+    for (const tag of post.tags) {
+      possibleTags.add(tag);
+    }
+  }
+  return {
+    route: '/es/blog/tags/:tag',
+    paths() {
+      return Array.from(possibleTags).map(tag => {
+        return {
+          params: { tag },
+        }
+      });
+    },
+    props({ params }) {
+      return {
+        tag: params.tag,
+        posts: posts
+          .filter(post => post.tags.includes(params.tag))
+          .sort((a, b) => {
+            return (
+              new Date(b.created).getTime() -
+                new Date(a.created).getTime()
+            )
+          }),
+      };
+    },
+  }
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<Base lang="es">
+  <Blogs {posts} {tag} lang="es" title={`Tag: ${tag}`} />
+</Base>

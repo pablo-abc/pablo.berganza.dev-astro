@@ -1,0 +1,21 @@
+---
+const { lang = 'en' } = Astro.props;
+---
+
+<h1 class="home-link" aria-label="Home page">
+  <a href={lang === 'es' ? '/es' : '/'}>PB</a>
+</h1>
+
+<style lang="scss">
+ .home-link {
+   font-size: 2rem;
+   font-weight: 700;
+   padding: 1rem;
+   margin-left: 10vw;
+
+   a {
+     color: var(--color-heading);
+     text-decoration: none;
+   }
+ }
+</style>
