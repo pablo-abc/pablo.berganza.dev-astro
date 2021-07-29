@@ -84,5 +84,9 @@ em {
 }
 
 code {
-  font: 1rem monaco;
+  font-size: 1.125rem;
+}
+
+pre code {
+  font-size: 1rem;
 }
