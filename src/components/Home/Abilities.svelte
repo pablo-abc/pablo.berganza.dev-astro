@@ -5,12 +5,12 @@
     ['https://cdn.svgporn.com/logos/javascript.svg', 'JavaScript'],
     ['https://cdn.svgporn.com/logos/typescript-icon.svg', 'TypeScript'],
     ['https://cdn.svgporn.com/logos/clojure.svg', 'Clojure'],
-    ['assets/abilities/cljs-white.svg', 'ClojureScript'],
+    ['/assets/abilities/cljs-white.svg', 'ClojureScript'],
     ['https://cdn.svgporn.com/logos/python.svg', 'Python'],
     ['https://cdn.svgporn.com/logos/docker.svg', 'Docker'],
-    ['assets/abilities/nestjs.svg', 'NestJS'],
-    ['assets/abilities/react.svg', 'React'],
-    ['assets/abilities/svelte.svg', 'Svelte'],
+    ['/assets/abilities/nestjs.svg', 'NestJS'],
+    ['/assets/abilities/react.svg', 'React'],
+    ['/assets/abilities/svelte.svg', 'Svelte'],
   ];
   let index = 0;
   let interval;
