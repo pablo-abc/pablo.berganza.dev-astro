@@ -5,6 +5,8 @@ import HomeLink from '../components/HomeLink.astro';
 import Clock from '../components/icons/Clock.astro';
 import Calendar from '../components/icons/Calendar.astro';
 import MetaHead from '../components/MetaHead.svelte';
+import ShareButtons from '../components/ShareButtons.svelte';
+import Commento from '../components/Commento.svelte';
 
 const { content } = Astro.props;
 const ttr = Math.round(readingTime(content.astro.source).minutes);
@@ -118,15 +120,29 @@ const jsonLd = `
           <slot />
         </section>
       </article>
+      <footer>
+        <ShareButtons client:visible blog={content} {lang} />
+        <Commento
+          client:visible
+          {lang}
+          src={__SNOWPACK_ENV__.NODE_ENV === 'production'
+          ? 'https://cdn.commento.io/js/commento.js'
+          : 'http://localhost:8080/js/commento.js'}
+          />
+      </footer>
     </main>
   </body>
 </html>
 
 <style lang="scss">
-  article {
+  article, footer {
     max-width: 50rem;
     width: 90%;
     margin: 0 auto;
+  }
+
+  footer {
+    margin-bottom: 4rem;
   }
 
   header {
@@ -190,6 +206,10 @@ const jsonLd = `
       :global(thead) {
         font-weight: 700;
       }
+    }
+
+    > :global(*) {
+      margin-top: 2rem;
     }
   }
 
