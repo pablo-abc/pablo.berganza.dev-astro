@@ -2,7 +2,7 @@
 const { title, lang, section = '' } = Astro.props;
 import MetaHead from '../components/MetaHead.svelte';
 const imgSrc = `/assets/metaimage.png`
-const description = lang === 'en' ? 'Software develeper and ocassional open sourcerer.' : 'Desarrollador de software y contribuyente open source.';
+const description = lang === 'en' ? 'Software developer and ocassional open sourcerer.' : 'Desarrollador de software y contribuyente open source.';
 ---
 <html lang="{lang || 'en'}">
   <head>
