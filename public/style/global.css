@@ -84,9 +84,13 @@ em {
 }
 
 code {
-  font-size: 1.125rem;
+  font: 1rem monospace;
 }
 
 pre code {
-  font-size: 1rem;
+  font: 1rem monospace;
+}
+
+ul {
+  list-style-type: none;
 }
