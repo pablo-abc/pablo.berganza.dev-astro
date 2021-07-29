@@ -19,7 +19,6 @@ const jsonLd = `
       "@type": "BlogPosting",
       "headline": "${content.title.split('|')[0].trim()}",
       "alternativeHeadline": "${content.description}",
-      "articleBody": "${content.astro.html}",
       "image": "https://pablo.berganza.dev/${imgSrc}",
       "dateCreated": "${content.created}",
       "datePublished": "${content.created}",
@@ -121,7 +120,7 @@ const jsonLd = `
         </section>
       </article>
       <footer>
-        <ShareButtons client:visible blog={content} {lang} />
+        <ShareButtons blog={content} {lang} />
         <Commento
           client:visible
           {lang}
