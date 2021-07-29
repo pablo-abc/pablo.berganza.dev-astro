@@ -5,8 +5,7 @@
   "scripts": {
     "start": "astro dev",
     "build": "astro build",
-    "predeploy": "pnpm build",
-    "deploy": "gh-pages -d dist/"
+    "deploy": "pnpm build && gh-pages -d dist/"
   },
   "devDependencies": {
     "@astrojs/renderer-svelte": "^0.1.1",
