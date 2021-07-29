@@ -65,12 +65,12 @@ const { lang } = Astro.props;
      margin: 0 10vw;
      padding-top: 35vh;
      min-height: 100vh;
+     line-height: 3rem;
 
      h1 {
        font-size: var(--h1);
        color: var(--color-heading);
        font-weight: 700;
-       line-height: 4rem;
 
        span {
          position: relative;
@@ -82,6 +82,8 @@ const { lang } = Astro.props;
        }
 
        @media only screen and (min-width: 483px) {
+         line-height: 4rem;
+
          span {
            line-height: 2.5rem;
            font-size: 2rem;
