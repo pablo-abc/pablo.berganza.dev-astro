@@ -12,6 +12,7 @@ const { content } = Astro.props;
 const ttr = Math.round(readingTime(content.astro.source).minutes);
 const lang = content.lang || 'en';
 const imgSrc = `/assets/blog-pics/${content.created}.jpg`;
+const section = `blog/${content.slug}`;
 const jsonLd = `
     <script type="application/ld+json">
      {
@@ -23,6 +24,13 @@ const jsonLd = `
       "dateCreated": "${content.created}",
       "datePublished": "${content.created}",
       "isFamilyFriendly": "true",
+      "publisher": {
+        "@type": "Person",
+        "name": "Pablo Berganza",
+        "url": "https://pablo.berganza.dev",
+        "email": "pablo@berganza.dev",
+        "jobTitle": "Software Engineer"
+      },
       "author": {
         "@type": "Person",
         "name": "Pablo Berganza",
@@ -40,6 +48,11 @@ const jsonLd = `
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{content.title} | Pablo Berganza</title>
+    <link
+      rel="alternate"
+      hreflang={lang === 'en' ? 'es' : 'en'}
+      href={`https://pablo.berganza.dev${lang === 'en' ? '/es/' : '/'}${section}`}
+    >
     <link href="/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
     <link href="/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
     <link href="/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
@@ -73,13 +86,13 @@ const jsonLd = `
       {lang}
       img={imgSrc}
       {ttr}
-      section={`blog/${content.slug}`}
+      {section}
     />
   </head>
   <body>
     <main>
       <HomeLink {lang} />
-      <LangLink {lang} section={`blog/${content.slug}`} />
+      <LangLink {lang} {section}} />
       <article>
         <header>
           <h1 class="title">{content.title}</h1>
@@ -104,7 +117,7 @@ const jsonLd = `
           </div>
         </div>
         <div class="tags">
-          Tags:
+          {lang === 'en' ? 'Tags:' : 'Etiquetas:'}
           <ul>
             {content.tags.map(tag => (
             <li>

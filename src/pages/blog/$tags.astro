@@ -38,8 +38,9 @@ export async function createCollection() {
 }
 
 const { tag, posts } = Astro.props;
+const section = `blog/tags/${tag}`;
 ---
 
-<Base lang="en">
+<Base lang="en" {section}>
   <Blogs {posts} lang="en" {tag} title={`Tag: ${tag}`} />
 </Base>
