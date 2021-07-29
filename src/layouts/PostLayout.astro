@@ -4,10 +4,34 @@ import LangLink from '../components/LangLink.astro';
 import HomeLink from '../components/HomeLink.astro';
 import Clock from '../components/icons/Clock.astro';
 import Calendar from '../components/icons/Calendar.astro';
+import MetaHead from '../components/MetaHead.svelte';
 
 const { content } = Astro.props;
 const ttr = Math.round(readingTime(content.astro.source).minutes);
 const lang = content.lang || 'en';
+const imgSrc = `/assets/blog-pics/${content.created}.jpg`;
+const jsonLd = `
+    <script type="application/ld+json">
+     {
+      "@context": "https://schema.org/",
+      "@type": "BlogPosting",
+      "headline": "${content.title.split('|')[0].trim()}",
+      "alternativeHeadline": "${content.description}",
+      "articleBody": "${content.astro.html}",
+      "image": "https://pablo.berganza.dev/${imgSrc}",
+      "dateCreated": "${content.created}",
+      "datePublished": "${content.created}",
+      "isFamilyFriendly": "true",
+      "author": {
+        "@type": "Person",
+        "name": "Pablo Berganza",
+        "url": "https://pablo.berganza.dev",
+        "email": "pablo@berganza.dev",
+        "jobTitle": "Software Engineer"
+      }
+     }
+    </script>
+`;
 ---
 
 <html {lang}>
@@ -39,6 +63,17 @@ const lang = content.lang || 'en';
     <link rel="stylesheet" type="text/css" href="/style/dracula.css">
     <script type="module" src="https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.js"></script>
+    {jsonLd}
+    <MetaHead
+      title={content.title}
+      description={content.description}
+      created={content.created}
+      isArticle
+      {lang}
+      img={imgSrc}
+      {ttr}
+      section={`blog/${content.slug}`}
+    />
   </head>
   <body>
     <main>
@@ -49,7 +84,7 @@ const lang = content.lang || 'en';
           <h1 class="title">{content.title}</h1>
           <p>{content.description}</p>
         </header>
-        <img alt="" class="banner" src={`/assets/blog-pics/${content.created}.jpg`} />
+        <img alt="" class="banner" src={imgSrc} />
         <div class="stats">
           <div class="ttr">
             <span>
