@@ -16,9 +16,9 @@
 <meta itemprop="name" content="{title}" />
 <meta itemprop="description" content="{description}" />
 {#if img}
-  <meta name="twitter:image" content="{img}" />
-  <meta property="og:image" content="{img}" />
-  <meta itemprop="image" content="{img}" />
+  <meta name="twitter:image" content="{host}{img}" />
+  <meta property="og:image" content="{host}{img}" />
+  <meta itemprop="image" content="{host}{img}" />
   <meta name="twitter:card" content="summary_large_image" />
 {:else}
   <meta name="twitter:card" content="summary" />

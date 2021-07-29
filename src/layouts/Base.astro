@@ -1,5 +1,8 @@
 ---
 const { title, lang } = Astro.props;
+import MetaHead from '../components/MetaHead.svelte';
+const imgSrc = `/assets/metaimage.png`
+const description = lang === 'en' ? 'Software develeper and ocassional open sourcerer.' : 'Desarrollador de software y contribuyente open source.';
 ---
 <html lang="{lang || 'en'}">
   <head>
@@ -27,6 +30,12 @@ const { title, lang } = Astro.props;
     <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700&family=Roboto+Slab:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/style/reset.css">
     <link rel="stylesheet" type="text/css" href="/style/global.css">
+    <MetaHead
+      title="Pablo Berganza"
+      description={description}
+      {lang}
+      img={imgSrc}
+    />
   </head>
   <body>
     <main>
