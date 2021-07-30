@@ -2,7 +2,11 @@
 const { section = '', lang = 'en' } = Astro.props;
 ---
 
-<a class="lang-link" href={`${lang === 'en' ? '/es/' : '/'}${section}`}>
+<a
+  class="lang-link"
+  href={`${lang === 'en' ? '/es/' : '/'}${section}`}
+  lang={lang === 'en' ? 'es' : 'en'}
+>
   {lang === 'en' ? '¿Hablas español?' : 'Speak English?'}
 </a>
 

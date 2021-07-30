@@ -1,6 +1,7 @@
 /* overpass-regular - latin */
 @font-face {
   font-family: 'Overpass';
+  font-display: swap;
   font-style: normal;
   font-weight: 400;
   src: url('/assets/fonts/overpass/overpass-v5-latin-regular.eot'); /* IE9 Compat Modes */
@@ -15,6 +16,7 @@
 /* overpass-600 - latin */
 @font-face {
   font-family: 'Overpass';
+  font-display: swap;
   font-style: normal;
   font-weight: 600;
   src: url('/assets/fonts/overpass/overpass-v5-latin-600.eot'); /* IE9 Compat Modes */
@@ -29,6 +31,7 @@
 /* overpass-700 - latin */
 @font-face {
   font-family: 'Overpass';
+  font-display: swap;
   font-style: normal;
   font-weight: 700;
   src: url('/assets/fonts/overpass/overpass-v5-latin-700.eot'); /* IE9 Compat Modes */
