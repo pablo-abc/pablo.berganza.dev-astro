@@ -4,8 +4,8 @@
   import { faRedditSquare, faLinkedin, faTwitterSquare, faFacebookSquare, faGetPocket } from '@fortawesome/free-brands-svg-icons'
   export let blog = {}
   export let lang = 'en'
-  const host = 'https://pablo.berganza.dev';
-  const encoded = encodeURI(`${host}${lang === 'en' ? '/' : '/es/'}${blog.slug}`);
+  export let host;
+  const encoded = encodeURI(`${host}${lang === 'en' ? '' : 'es/'}${blog.slug}`);
 </script>
 
 <ul class=share-buttons>

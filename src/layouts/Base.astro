@@ -1,8 +1,9 @@
 ---
 const { title, lang, section = '' } = Astro.props;
 import MetaHead from '../components/MetaHead.svelte';
-const imgSrc = `/assets/metaimage.png`
+const imgSrc = `assets/metaimage.png`
 const description = lang === 'en' ? 'Software developer and occasional open sourcerer.' : 'Desarrollador de software y contribuyente open source.';
+const host = Astro.site;
 ---
 <html lang="{lang || 'en'}">
   <head>
@@ -13,7 +14,7 @@ const description = lang === 'en' ? 'Software developer and occasional open sour
     <link
       rel="alternate"
       hreflang={lang === 'en' ? 'es' : 'en'}
-      href={`https://pablo.berganza.dev${lang === 'en' ? '/es/' : '/'}${section}`}
+      href={`${host}${lang === 'en' ? 'es/' : ''}${section}`}
     >
     <link href="/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
     <link href="/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
@@ -41,6 +42,7 @@ const description = lang === 'en' ? 'Software developer and occasional open sour
       title="Pablo Berganza"
       description={description}
       {lang}
+      {host}
       img={imgSrc}
     />
   </head>

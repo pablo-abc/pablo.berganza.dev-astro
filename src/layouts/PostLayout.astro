@@ -9,9 +9,10 @@ import ShareButtons from '../components/ShareButtons.svelte';
 import Commento from '../components/Commento.svelte';
 
 const { content } = Astro.props;
+const host = Astro.site;
 const ttr = Math.round(readingTime(content.astro.source).minutes);
 const lang = content.lang || 'en';
-const imgSrc = `/assets/blog-pics/${content.created}.jpg`;
+const imgSrc = `assets/blog-pics/${content.created}.jpg`;
 const section = `blog/${content.slug}`;
 const jsonLd = `
     <script type="application/ld+json">
@@ -20,21 +21,21 @@ const jsonLd = `
       "@type": "BlogPosting",
       "headline": "${content.title.split('|')[0].trim()}",
       "alternativeHeadline": "${content.description}",
-      "image": "https://pablo.berganza.dev/${imgSrc}",
+      "image": "${host}${imgSrc}",
       "dateCreated": "${content.created}",
       "datePublished": "${content.created}",
       "isFamilyFriendly": "true",
       "publisher": {
         "@type": "Person",
         "name": "Pablo Berganza",
-        "url": "https://pablo.berganza.dev",
+        "url": "${host}",
         "email": "pablo@berganza.dev",
         "jobTitle": "Software Engineer"
       },
       "author": {
         "@type": "Person",
         "name": "Pablo Berganza",
-        "url": "https://pablo.berganza.dev",
+        "url": "${host}",
         "email": "pablo@berganza.dev",
         "jobTitle": "Software Engineer"
       }
@@ -51,7 +52,7 @@ const jsonLd = `
     <link
       rel="alternate"
       hreflang={lang === 'en' ? 'es' : 'en'}
-      href={`https://pablo.berganza.dev${lang === 'en' ? '/es/' : '/'}${section}`}
+      href={`${host}${lang === 'en' ? 'es/' : ''}${section}`}
     >
     <link href="/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
     <link href="/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
@@ -84,6 +85,7 @@ const jsonLd = `
       description={content.description}
       created={content.created}
       isArticle
+      {host}
       {lang}
       img={imgSrc}
       {ttr}
@@ -102,7 +104,7 @@ const jsonLd = `
         <img
           alt=""
           class="banner"
-          src={imgSrc}
+          src={`/${imgSrc}`}
           width={content.image.width}
           height={content.image.height}
         />
@@ -140,7 +142,7 @@ const jsonLd = `
         </section>
       </article>
       <footer>
-        <ShareButtons blog={content} {lang} />
+        <ShareButtons {host} blog={content} {lang} />
         <Commento
           client:visible
           {lang}

@@ -7,8 +7,8 @@
   export let isArticle = false;
   export let created = '';
   export let ttr = undefined;
-  const host = 'https://pablo.berganza.dev';
-  const url = lang === 'en' ? `/${section}` : `/es/${section}`;
+  export let host;
+  const url = lang === 'en' ? section : `es/${section}`;
 </script>
 
 <meta name="author" content="Pablo Berganza" />
