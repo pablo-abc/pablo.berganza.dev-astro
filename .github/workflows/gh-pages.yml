@@ -20,6 +20,10 @@ jobs:
           npm i -g pnpm
           pnpm i
           pnpm build
+      - name: Move 404 page
+        run: |
+          mv './404/index.html' './404.html'
+          rm -r './404'
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
