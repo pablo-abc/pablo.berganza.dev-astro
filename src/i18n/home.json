@@ -57,5 +57,33 @@
         }
       }
     ]
+  },
+  "networks": {
+    "title": {
+      "en": "Where to find me",
+      "es": "Dónde encontrarme"
+    },
+    "description": {
+      "en": "If you'd like to contact me, you can find me on the following platforms:",
+      "es": "Si quieres contactarme, puedes encontrarme en las siguientes plataformas:"
+    },
+    "links": [
+      {
+        "en": "On GitHub as <a href=\"https://github.com/pablo-abc\">pablo-abc</a>",
+        "es": "En GitHub como <a href=\"https://github.com/pablo-abc\">pablo-abc</a>"
+      },
+      {
+        "en": "On Polywork as <a href=\"https://poly.work/pabloabc\">@pabloabc</a>",
+        "es": "En Polywork como <a href=\"https://poly.work/pabloabc\">@pabloabc</a>"
+      },
+      {
+        "en": "On LinkedIn as <a href=\"https://www.linkedin.com/in/pabloabc/\">pabloabc</a>",
+        "es": "En LinkedIn como <a href=\"https://www.linkedin.com/in/pabloabc/\">pabloabc</a>"
+      },
+      {
+        "en": "On Twitter as <a href=\"https://twitter.com/Pablo_ABC\">@Pablo_ABC</a>",
+        "es": "En Twitter como <a href=\"https://twitter.com/Pablo_ABC\">@Pablo_ABC</a>"
+      }
+    ]
   }
 }

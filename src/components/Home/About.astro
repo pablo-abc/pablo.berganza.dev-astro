@@ -24,6 +24,16 @@ const { lang } = Astro.props;
       ))}
     </dl>
   </div>
+  <div class="contact">
+    <h1>{i18n.networks.title[lang]}</h1>
+    <p>{i18n.networks.description[lang]}</p>
+    <ul>
+      {i18n
+      .networks
+      .links
+      .map(link => <li>{link[lang]}</li>)}
+    </ul>
+  </div>
 </section>
 
 <style lang="scss">
@@ -67,6 +77,18 @@ const { lang } = Astro.props;
      margin-bottom: 2rem;
    }
 
+   ul {
+
+     li::before {
+       content: "→";
+       margin-right: 0.5rem;
+     }
+   }
+
+   dl {
+     margin-bottom: 2rem;
+   }
+
    dt {
      font-size: 1.5rem;
      font-weight: 700;
@@ -81,6 +103,12 @@ const { lang } = Astro.props;
      .about-text {
        max-width: 50vw;
      }
+   }
+ }
+
+ .contact {
+   p {
+     margin-bottom: 0.5rem;
    }
  }
 </style>
