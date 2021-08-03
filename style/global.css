@@ -94,3 +94,13 @@ pre code {
 ul {
   list-style-type: none;
 }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--color-secondary-2-4);
+  outline-offset: 2px;
+}
