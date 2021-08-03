@@ -1,6 +1,7 @@
 ---
-const { title, lang, section = '' } = Astro.props;
 import MetaHead from '../components/MetaHead.svelte';
+
+const { title, lang, section = '' } = Astro.props;
 const imgSrc = `assets/metaimage.png`
 const description = lang === 'en' ? 'Software developer and occasional open sourcerer.' : 'Desarrollador de software y contribuyente open source.';
 const host = Astro.site;
@@ -38,6 +39,7 @@ const host = Astro.site;
     <link rel="stylesheet" type="text/css" href="/style/overpass.css">
     <link rel="stylesheet" type="text/css" href="/style/reset.css">
     <link rel="stylesheet" type="text/css" href="/style/global.css">
+    <script src="/scripts/focus-visible.js"></script>
     <MetaHead
       title="Pablo Berganza"
       description={description}
