@@ -75,7 +75,7 @@
   ul.share-buttons {
       width: 100%;
       margin: 0 auto;
-      color: #444;
+      color: var(--base-font-color);
       font-weight: 550;
       list-style: none;
       padding: 0;

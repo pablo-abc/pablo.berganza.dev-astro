@@ -4,7 +4,10 @@ import Abilities from './Abilities.svelte';
 import i18n from '../../i18n/home.json';
 const { lang } = Astro.props;
 ---
-<img aria-hidden="true" class="curves" src="/assets/curves.svg" alt="" />
+<picture aria-hidden="true">
+  <source srcset="/assets/curves-dark.svg" media="(prefers-color-scheme: dark)" />
+  <img class="curves" src="/assets/curves.svg" alt="" />
+</picture>
 <section class="about">
   <div class="about-text">
     <h1>{i18n.aboutMe.title[lang]}</h1>
@@ -37,7 +40,7 @@ const { lang } = Astro.props;
 </section>
 
 <style lang="scss">
- img.curves {
+.curves {
    display: block;
    width: 100%;
  }

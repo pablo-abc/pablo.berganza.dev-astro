@@ -81,7 +81,7 @@ const { lang = 'en', posts = [], title = 'Blog', tag } = Astro.props;
   }
 
   .ttr, .created {
-    color: #77606c;
+    color: var(--color-stats);
     span {
       margin-right: 0.2rem;
     }
@@ -100,14 +100,14 @@ const { lang = 'en', posts = [], title = 'Blog', tag } = Astro.props;
 
   @media (pointer: fine) {
     article:hover {
-      background-color: #d3c6e6;
+      background-color: var(--color-card-hover);
       text-decoration: none;
     }
   }
 
   @media (pointer: coarse) {
     article:active {
-      background-color: #d3c6e6;
+      background-color: var(--color-card-hover);
       text-decoration: none;
     }
   }
