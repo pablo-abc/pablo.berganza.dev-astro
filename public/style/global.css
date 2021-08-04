@@ -34,6 +34,7 @@
   --color-card-hover: #d3c6e6;
   --color-stats: #77606c;
   --background-color-quote: #FFF7FB;
+  --color-memage: var(--color-secondary-2-2);
 
   --h1: 3rem;
 }

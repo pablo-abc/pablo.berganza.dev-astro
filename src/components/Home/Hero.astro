@@ -1,5 +1,6 @@
 ---
 import LangLink from '../LangLink.astro';
+import Sil from './Sil.astro';
 import i18n from '../../i18n/home.json';
 const { lang } = Astro.props;
 ---
@@ -10,7 +11,7 @@ const { lang } = Astro.props;
     <h1>
       <span>
         {i18n.welcome[lang]}
-        <img aria-hidden="true" class="memage-mobile" src="/assets/mesilsil.svg" alt="" />
+        <Sil className="memage-mobile" />
       </span>
       Pablo Berganza
     </h1>
@@ -21,7 +22,7 @@ const { lang } = Astro.props;
     </ul>
     <p>{i18n.blog[lang]}</p>
   </section>
-  <img aria-hidden="true" class="memage" src="/assets/mesilsil.svg" alt="" />
+  <Sil className="memage" />
 </div>
 
 <style lang="scss">
@@ -38,7 +39,12 @@ const { lang } = Astro.props;
    justify-content: center;
    overflow-x: hidden;
 
-   img.memage-mobile {
+   :global(svg) {
+     color: var(--color-memage);
+   }
+
+   :global(svg.memage-mobile) {
+     width: auto;
      position: absolute;
      top: -4rem;
      height: 6rem;
@@ -48,7 +54,7 @@ const { lang } = Astro.props;
      }
    }
 
-   img.memage {
+   :global(svg.memage) {
      display: none;
      @media only screen and (min-width: 956px) {
        display: inline;
