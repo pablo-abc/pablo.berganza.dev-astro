@@ -1,8 +1,4 @@
 :root {
-  --background-color: #eee0ee;
-  --background-color-alt: #ffbfed;
-  --color-heading: #c60065;
-
   --color-primary-0: #E34495;
   --color-primary-1: #F499C7;
   --color-primary-2: #EC69AB;
@@ -28,11 +24,36 @@
   --color-complement-3: #A5F026;
   --color-complement-4: #8DE000;
 
+  --background-color: #eee0ee;
+  --background-color-alt: #ffbfed;
+  --color-heading: #c60065;
+  --color-subheading: var(--color-secondary-2-4);
   --base-font-color: #523E49;
   --base-font-color-on-alt: #361E2A;
   --color-link: #33007E;
+  --color-card-hover: #d3c6e6;
+  --color-stats: #77606c;
+  --background-color-quote: #FFF7FB;
+  --color-memage: var(--color-secondary-2-2);
 
   --h1: 3rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: hsl(332, 50%, 5%);
+    --background-color-alt: var(--background-color);
+    --background-color-quote: hsl(332, 20%, 10%);
+    --base-font-color: #eee0ee;
+    --base-font-color-on-alt: var(--base-font-color);
+    --color-link: var(--color-secondary-2-1);
+    --color-card-hover: hsl(278, 50%, 10%);
+    --color-stats: hsl(329, 10%, 75%);
+
+    --color-heading: #E22485;
+    --color-subheading: var(--color-secondary-2-1);
+    --color-primary-on-alt: var(--color-heading);
+  }
 }
 
 @media only screen and (min-width: 483px) {
@@ -69,7 +90,7 @@ h1, h2, h3 {
 }
 
 h2 {
-  color: var(--color-secondary-2-4);
+  color: var(--color-subheading);
   font-size: 2rem;
   font-weight: 700;
   margin-top: 2rem;
@@ -101,6 +122,6 @@ input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
 [tabindex]:focus-visible {
-  outline: 3px solid var(--color-secondary-2-4);
+  outline: 3px solid var(--color-subheading);
   outline-offset: 2px;
 }
