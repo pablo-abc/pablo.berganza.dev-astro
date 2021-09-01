@@ -4,43 +4,37 @@ import LangLink from '../../../components/LangLink.astro';
 import HomeLink from '../../../components/HomeLink.astro';
 import Blogs from '../../../components/Blog/Blogs.astro';
 
-export async function createCollection() {
-  const posts = Astro.fetchContent('./*.md');
+export async function getStaticPaths() {
+  const posts = Astro.fetchContent('../*.md');
   const possibleTags = new Set();
   for (const post of posts) {
     for (const tag of post.tags) {
       possibleTags.add(tag);
     }
   }
-  return {
-    route: '/es/blog/tags/:tag',
-    paths() {
-      return Array.from(possibleTags).map(tag => {
-        return {
-          params: { tag },
-        }
-      });
-    },
-    props({ params }) {
-      return {
-        tag: params.tag,
+
+  return Array.from(possibleTags).map(tag => {
+    return {
+      params: { tag },
+      props: {
         posts: posts
-          .filter(post => post.tags.includes(params.tag))
+          .filter(post => post.tags.includes(tag))
           .sort((a, b) => {
             return (
               new Date(b.created).getTime() -
                 new Date(a.created).getTime()
             )
           }),
-      };
-    },
-  }
+      },
+    }
+  });
 }
 
-const { tag, posts } = Astro.props;
+const { tag } = Astro.request.params;
+const { posts } = Astro.props;
 const section = `blog/tags/${tag}`;
 ---
 
-<Base lang="es" {section}>
-  <Blogs {posts} {tag} lang="es" title={`Etiqueta: ${tag}`} />
+<Base lang="en" {section}>
+  <Blogs {posts} lang="en" {tag} title={`Tag: ${tag}`} />
 </Base>
