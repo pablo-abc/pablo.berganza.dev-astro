@@ -1,51 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
+import NotFound from '../components/NotFound.astro';
 ---
 
 <Base title="404" lang="">
-  <div>
-    <h1>
-      <span lang="en">Lost?</span>
-      <span>|</span>
-      <span lang="es">¿Te perdiste?</span>
-    </h1>
-    <section lang="en">
-      <p lang="en">This page does not exist.</p>
-      <p lang="en">Try going back to the <a href="/">home page.</a></p>
-    </section>
-    <section lang="es">
-      <p lang="es">Ésta página no existe. </p>
-      <p lang="es">Intenta regresar al <a href="/es">inicio.</a></p>
-    </section>
-  </div>
+  <NotFound />
 </Base>
-
-<style>
-  div {
-    max-width: 50rem;
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 35vh;
-  }
-
-  h1 {
-    font-size: 2.2rem;
-    margin-bottom: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  @media only screen and (min-width: 483px) {
-    h1 {
-      font-size: 3rem;
-    }
-  }
-
-  section {
-    margin-bottom: 0.5rem;
-  }
-
-  h1 > * + * {
-    margin-left: 1rem;
-  }
-</style>
