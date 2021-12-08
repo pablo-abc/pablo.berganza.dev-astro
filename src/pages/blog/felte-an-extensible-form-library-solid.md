@@ -1,6 +1,7 @@
 ---
 title: "Felte: An extensible form library for Solid"
 description: A flexible way to handle your forms in Solid
+slug: felte-an-extensible-form-library-solid
 layout: ../../layouts/PostLayout.astro
 created: '2021-12-08'
 imgext: png
@@ -57,7 +58,7 @@ export function Form() {
 
 We set up the form by calling `createForm` with our `submit` handler. This function returns, among other utilities, an action that can be used on your form element. Now Felte will track all inputs with a `name` attribute. When submitting your form, the latest values in your inputs will be passed to your `onSubmit` function as an object. For our previous example, the shape of `values` will be:
 
-```json
+```javascript
 {
   email: '',
   password: '',
@@ -98,12 +99,12 @@ createEffect(() => {
 More complex validation requirements might require third party validation libraries. Felte offers first party integrations  with some popular validation libraries through its extensibility features. These integrations are offered as separate packages. I will write write more about this in the next section regarding extensibility, but you can read more about these packages in our [official documentation](https://felte.dev/docs/solid/validators).
 
 ## Handling complex scenarios via extensibility
-With Felte, I don’t want to assume I know the perfect solution on how to handle all scenarios regarding form management. This is why Felte offers an API to extend its functionality as your requirements grow more complex. You may have a preferred library you like to use, such as the really popular [yup](https://github.com/jquense/yup), or [Vest](https://vestjs.dev/) (which was recently talked about during [Svelte Summit](https://www.youtube.com/watch?v=X2PuiawaGV4)). Modifying Felte’s behaviour to handle these scenarios can be done via the `extend` option on `createForm`’s configuration object. More about this can be read in the [official documentation](https://felte.dev/docs/solid/extending-felte). To keep things simple for the purposes of this blog post, I am only going to write about some of the existing packages we maintain to handle some common use cases:
+Felte does not attempt to have the perfect solution on how to handle all scenarios regarding form management. This is why Felte offers an API to extend its functionality as your requirements grow more complex. You may have a preferred library you like to use, such as the really popular [yup](https://github.com/jquense/yup), or [Vest](https://vestjs.dev/) (which was recently talked about during [Svelte Summit](https://www.youtube.com/watch?v=X2PuiawaGV4)). Modifying Felte’s behaviour to handle these scenarios can be done via the `extend` option on `createForm`’s configuration object. More about this can be read in the [official documentation](https://felte.dev/docs/solid/extending-felte). To keep things simple for the purposes of this blog post, I am only going to write about some of the existing packages we maintain to handle some common use cases:
 
 ### Validators: Integrations with popular validation libraries
 We are currently maintaining four packages to integrate Felte with some popular validation libraries: `yup`, `zod`, `superstruct` and most recently `vest`. Here we will use yup as an example, but you can read more about the rest [here](https://felte.dev/docs/solid/validators).
 
-Our package to use `yup` is on npm under the name `@felte/validator-yup`. You will need to install it alongside `yup`:
+The package to use `yup` is on npm under the name `@felte/validator-yup`. You will need to install it alongside `yup`:
 
 ```sh
 npm install --save @felte/validator-yup yup
@@ -162,7 +163,7 @@ But displaying the messages is not the end of the story in most cases. For examp
 * Using Tippy.js to display your messages  in a tooltip.
 * Using the browser’s built-in constraint validation API, which can be less friendly to mobile users.
 
-For brevity, I am only going to write about the first package. But you can read more about the rest [in the documentation](https://felte.dev/docs/solid/reporters).
+For brevity, I am only going to cover the first package. But you can read more about the rest [in the documentation](https://felte.dev/docs/solid/reporters).
 
 Using a Solid component to get your validation messages can be done with the package `@felte/reporter-solid`.  You’ll need to add it to your project using your favourite package manager:
 
@@ -188,8 +189,8 @@ function Form() {
     },
   })
 
-  // We assume a single string will be passed as a validation message
-  // This can be an array of strings depending on your validation strategy
+ // We assume a single string will be passed as a validation message
+ // This can be an array of strings depending on your validation strategy
   return (
     <form use:form>
       <input id="email" type="text" name="email" />
@@ -205,6 +206,9 @@ function Form() {
   );
 }
 ```
+
+## Next steps
+You can check more about Felte in its [official website](https://felte.dev) with some functional examples. There’s also a more complex example showcasing its usage with Tippy.js and Yup available on [CodeSandbox](https://codesandbox.io/s/felte-demo-solidjs-w92uj?file=/src/main.tsx).
 
 ## Finishing thoughts
 I hope this served as a good introduction to Felte, and that it is interesting enough for you to give it a try. Felte is currently in quite a useable state and I feel it’s flexible enough for most use cases.  I am also open to help and suggestions so feel free to open an issue or make a pull request on [GitHub](https://github.com/pablo-abc/felte).

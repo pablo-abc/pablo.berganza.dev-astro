@@ -12,7 +12,7 @@ tags:
   - javascript
   - graphql
   - react
-  - programacion
+  - programación
 ---
 
 La primera vez que probé [GraphQL](https://graphql.org) fue cuando todavía me hubiera considerado solamente un desarrollador back-end. Hace aproximadamente dos años me di la oportunidad de aprenderlo gracias al soporte de [NestJS](https://nestjs.com) y me enamoré completamente de él. El hecho de que la documentación se genere automáticamente, y que puedes pedir exactamente la información que necesites con una sola petición, me hizo sentir que trabajar con un API GraphQL como un desarrollador front-end sería muy placentero.
