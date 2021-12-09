@@ -18,7 +18,7 @@ tags:
 
 Posiblemente uno de los problemas más comunes que desarrolladores front-end deben resolver es manejo de formularios. Especialmente en aplicaciones web modernas que requieren validaciones instantáneas y otras interacciones en tiempo real con el usuario. Para proveer la mejor experiencia de usuario posible, probablemente uses una librería de terceros para manejo de formularios que te ayude a resolver esto.
 
-En esta publicación escribiré sobre Felte, una librería de manejo de formularios para Svelte en la que he estado trabajando durante este año que busca hacer las bases del manejo de formularios en el cliente lo más simple posible, pero que permite extenderse a medida que la complejidad de tus requisitos crezca.
+En esta publicación escribiré sobre [Felte](https://felte.dev), una librería de manejo de formularios para Svelte en la que he estado trabajando durante este año que busca hacer las bases del manejo de formularios en el cliente lo más simple posible, pero que permite extenderse a medida que la complejidad de tus requisitos crezca.
 
 Esta es una de dos publicaciones que estoy escribiendo. Esta está orientada a la integración de Felte con [Svelte](https://svelte.dev). La otra está orientada a la integración con [Solid](https://solidjs.com).
 

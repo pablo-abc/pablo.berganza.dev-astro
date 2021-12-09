@@ -17,7 +17,7 @@ tags:
 
 Arguably one of the most common problems front-end developers need to solve is form handling. Specially in modern web applications that require instant validation and other real-time interactions with the user.  To provide the best user experience as possible, you’ll probably grab a third party form management library to help you.
 
-In this post I am going to write about Felte, a form management library for Solid I have been working on for the past year that aims to make the basics of form handling on the front-end as simple as possible, while still allowing for it to grow more complex as your requirements grow.
+In this post I am going to write about [Felte](https://felte.dev), a form management library for Solid I have been working on for the past year that aims to make the basics of form handling on the front-end as simple as possible, while still allowing for it to grow more complex as your requirements grow.
 
 This is one of two blog posts I’m writing. This one is oriented towards Felte’s integration with [Solid](https://solidjs.com). The other one is oriented towards Felte’s integration with [Svelte](https://svelte.dev).
 
