@@ -15,11 +15,13 @@ tags:
   - programming
 ---
 
+> This article has been updated to showcase Felte 1.0
+
 Arguably one of the most common problems front-end developers need to solve is form handling. Specially in modern web applications that require instant validation and other real-time interactions with the user.  To provide the best user experience as possible, you’ll probably grab a third party form management library to help you.
 
 In this post I am going to write about [Felte](https://felte.dev), a form management library for Svelte I have been working on for the past year that aims to make the basics of form handling on the front-end as simple as possible, while still allowing for it to grow more complex as your requirements grow.
 
-This is one of two blog posts I’m writing. This one is oriented towards Felte’s integration with [Svelte](https://svelte.dev). The other one is oriented towards Felte’s integration with [Solid](https://solidjs.com).
+This is one of three blog posts related to Felte. This one is oriented towards Felte’s integration with [Svelte](https://svelte.dev). The other two are oriented towards Felte’s integration with [Solid](https://solidjs.com) and [React](https://reactjs.org).
 
 ## Features
 As mentioned above, Felte aims to make the basics of form reactivity as easy to handle as possible, while still allowing for more complex behaviours via configuration and extensibility. Its main features are:
@@ -147,9 +149,11 @@ Displaying your validation messages can be done by directly accessing the `error
 </form>
 ```
 
-But displaying the messages is not the end of the story in most cases. For example, you might want to add an `aria-invalid` attribute to the related input. Or you simply might not like that specific syntax to handle your validation messages. Felte currently has four accompanying packages that offer different alternatives on how to display your validation messages:
+> If a specific field has an error, Felte assigns an `aria-invalid=true` attribute to the appropriate input.
 
-* Using a Svelte component, which gives the most flexibility.
+But you might not like that specific syntax to handle your validation messages. Felte currently also has four accompanying packages that offer different alternatives on how to display your validation messages:
+
+* Using a Svelte component, which gives the most flexibility and would allow you to have access to your validation messages deep within the component tree without needing to pass the `errors` store around.
 * Modifying the DOM directly by adding and removing DOM elements.
 * Using Tippy.js to display your messages  in a tooltip.
 * Using the browser’s built-in constraint validation API, which can be less friendly to mobile users.
@@ -200,7 +204,7 @@ Then you’ll need to import both the `svelteReporter` function to add to the `e
 ```
 
 ## Next steps
-You can check more about Felte in its [official website](https://felte.dev) with some functional examples. There’s also a more complex example showcasing its usage with Tippy.js and Yup available on [CodeSandbox](https://codesandbox.io/s/felte-demo-wce2h?file=/App.svelte).
+You can check more about Felte in its [official website](https://felte.dev) with some functional examples. There’s also a more complex example showcasing its usage with Tippy.js and Yup available on [CodeSandbox](https://codesandbox.io/s/felte-v1-demo-svelte-0egr6?file=/App.svelte).
 
 ## Finishing thoughts
 I hope this served as a good introduction to Felte, and that it is interesting enough for you to give it a try. Felte is currently in quite a useable state and I feel it’s flexible enough for most use cases.  I am also open to help and suggestions so feel free to open an issue or make a pull request on [GitHub](https://github.com/pablo-abc/felte).

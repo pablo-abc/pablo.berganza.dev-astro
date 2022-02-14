@@ -15,11 +15,13 @@ tags:
   - programming
 ---
 
+> This article has been updated to showcase Felte 1.0
+
 Arguably one of the most common problems front-end developers need to solve is form handling. Specially in modern web applications that require instant validation and other real-time interactions with the user.  To provide the best user experience as possible, you’ll probably grab a third party form management library to help you.
 
 In this post I am going to write about [Felte](https://felte.dev), a form management library for Solid I have been working on for the past year that aims to make the basics of form handling on the front-end as simple as possible, while still allowing for it to grow more complex as your requirements grow.
 
-This is one of two blog posts I’m writing. This one is oriented towards Felte’s integration with [Solid](https://solidjs.com). The other one is oriented towards Felte’s integration with [Svelte](https://svelte.dev).
+This is one of three blog posts related to Felte. This one is oriented towards Felte’s integration with [Solid](https://solidjs.com). The other two are oriented towards Felte’s integration with [Svelte](https://svelte.dev) and [React](https://reactjs.org).
 
 ## Features
 As mentioned above, Felte aims to make the basics of form reactivity as easy to handle as possible, while still allowing for more complex behaviours via configuration and extensibility. Its main features are:
@@ -66,20 +68,25 @@ We set up the form by calling `createForm` with our `submit` handler. This funct
 ```
 
 ## Where can I see my data?
-As you type, Felte will keep track of your user’s input in a regular Solid store. This store is returned by `createForm` as `data`, following the same shape as the values you’d receive on your `onSubmit` function.
+As you type, Felte will keep track of your user’s input in a signal that contains your form data in the same shape as the values you'd receive on your `onSubmit`. This signal is wrapped, allowing some extra functionality, and is returned by `createForm` as function called `data`. We'll refer to these functions as `accessors` from now on. When this accessor is called without any arguments (`data()`), it behaves like a regular signal that returns all of the form's data as an object. An argument can be passed as first argument to select a specific field, either a selector function or a string path.
 
 For example, this would log your user’s email to the console as they type it:
 
 ```javascript
+// Within a component
 const { form, data } = createForm({ /* ... */ });
 
 createEffect(() => {
-  console.log(data.email);
+  // Passing a function as first argument
+  console.log(data(($data) => $data.email));
+
+  // Passing a string as first argument
+  console.log(data('email'));
 });
 ```
 
 ## I might need some validation here
-Of course, another common requirement of forms is validation. If we want our app to feel snappy to the user, we will want some client side validation. `createForm`’s configuration object accepts a `validate` function (which can be asynchronous). It will receive the current value of your `data` store as it changes, and it expects you to return an object with the same shape as your `data` store containing your validation messages if the form is not valid, or nothing if your form is valid. Felte will keep track of these validation messages on a store that is returned from `createForm` as `errors`:
+Of course, another common requirement of forms is validation. If we want our app to feel snappy to the user, we will want some client side validation. `createForm`’s configuration object accepts a `validate` function (which can be asynchronous). It will receive the current value of your `data` as it changes, and it expects you to return an object with the same shape, containing your validation messages if the form is not valid, or nothing if your form is valid. Felte will keep track of these validation messages on an accessor that is returned from `createForm` as `errors`:
 
 ```javascript
 const { form, errors } = createForm({
@@ -92,7 +99,7 @@ const { form, errors } = createForm({
 });
 
 createEffect(() => {
-  console.log(errors.email);
+  console.log(errors(($errors) => $errors.email));
 });
 ```
 
@@ -134,7 +141,7 @@ const { form } = createForm({
 ```
 
 ### Reporters: Displaying validation messages
-Displaying your validation messages can be done by directly accessing the `errors` store returned by `createForm`. Messages won’t be available on this store until the related field is interacted with.
+Displaying your validation messages can be done by directly using the `errors` accessor returned by `createForm`. Messages won’t be available on this accessor until the related field is interacted with.
 
 ```jsx
 import { Show } from 'solid-js';
@@ -147,8 +154,8 @@ function Form() {
     <form use:form>
       <label for="email">Email:</label>
       <input name="email" type="email" id="email" />
-      <Show when={errors.email}>
-        <span>{errors.email}</span>
+      <Show when={errors('email')}>
+        <span>{errors('email')}</span>
       </Show>
       <button>Submit</button>
     </form>
@@ -156,9 +163,11 @@ function Form() {
 }
 ```
 
-But displaying the messages is not the end of the story in most cases. For example, you might want to add an `aria-invalid` attribute to the related input. Or you simply might not like that specific syntax to handle your validation messages. Felte currently has four accompanying packages that offer different alternatives on how to display your validation messages:
+> If a specific field has an error, Felte assigns an `aria-invalid=true` attribute to the appropriate input.
 
-* Using a Solid component, which gives the most flexibility.
+But you might not like that specific syntax to handle your validation messages. Felte currently also has four accompanying packages that offer different alternatives on how to display your validation messages:
+
+* Using a Solid component, which gives the most flexibility and would allow you to have access to your validation messages deep within the component tree without needing to pass the `errors` accessor around.
 * Modifying the DOM directly by adding and removing DOM elements.
 * Using Tippy.js to display your messages  in a tooltip.
 * Using the browser’s built-in constraint validation API, which can be less friendly to mobile users.
@@ -208,7 +217,7 @@ function Form() {
 ```
 
 ## Next steps
-You can check more about Felte in its [official website](https://felte.dev) with some functional examples. There’s also a more complex example showcasing its usage with Tippy.js and Yup available on [CodeSandbox](https://codesandbox.io/s/felte-demo-solidjs-w92uj?file=/src/main.tsx).
+You can check more about Felte in its [official website](https://felte.dev) with some functional examples. There’s also a more complex example showcasing its usage with Tippy.js and Yup available on [CodeSandbox](https://codesandbox.io/s/felte-v1-demo-solidjs-rt0cm?file=/src/main.tsx).
 
 ## Finishing thoughts
 I hope this served as a good introduction to Felte, and that it is interesting enough for you to give it a try. Felte is currently in quite a useable state and I feel it’s flexible enough for most use cases.  I am also open to help and suggestions so feel free to open an issue or make a pull request on [GitHub](https://github.com/pablo-abc/felte).

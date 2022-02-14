@@ -16,11 +16,13 @@ tags:
   - programación
 ---
 
+> Este artículo ha sido actualizado para mostrar el uso de Felte 1.0
+
 Posiblemente uno de los problemas más comunes que desarrolladores front-end deben resolver es manejo de formularios. Especialmente en aplicaciones web modernas que requieren validaciones instantáneas y otras interacciones en tiempo real con el usuario. Para proveer la mejor experiencia de usuario posible, probablemente uses una librería de terceros para manejo de formularios que te ayude a resolver esto.
 
 En esta publicación escribiré sobre [Felte](https://felte.dev), una librería de manejo de formularios para Svelte en la que he estado trabajando durante este año que busca hacer las bases del manejo de formularios en el cliente lo más simple posible, pero que permite extenderse a medida que la complejidad de tus requisitos crezca.
 
-Esta es una de dos publicaciones que estoy escribiendo. Esta está orientada a la integración de Felte con [Svelte](https://svelte.dev). La otra está orientada a la integración con [Solid](https://solidjs.com).
+Esta es una de tres publicaciones relacionadas a Felte. Esta está orientada a la integración de Felte con [Svelte](https://svelte.dev). Las otras dos están orientadas a la integración con [Solid](https://solidjs.com) y con [React](https://reactjs.org).
 
 ## Características
 Como mencioné anteriormente, Felte busca hacer que las bases de la reactivada de formularios tan fácil de manejar como sea posible, a su vez permitiendo complejidad extra a través de configuración y extensibilidad. Sus principales características son:
@@ -148,9 +150,11 @@ Mostrar tus mensajes de validación puede ser hecho directamente accediendo al s
 </form>
 ```
 
-Pero mostrar mensajes de validación no es todo en la mayor parte de los casos. Por ejemplo, puedes querer agregar el atributo `aria-invalid` al campo relacionado. O tal vez solo no te guste la sintaxis anterior para manejar los mensajes de validación. Actualmente Felte tiene cuatro librerías que ofrecen diferentes alternativas para mostrar tus mensajes de validación:
+> Si un input específico tiene un error, Felte asignará el atributo `aria-invalid=true` al input apropiado.
 
-* Utilizando un componente de Svelte, la opción más flexible.
+Pero tal vez no te guste la sintaxis anterior para manejar los mensajes de validación. Actualmente Felte tiene cuatro librerías que ofrecen diferentes alternativas para mostrar tus mensajes de validación:
+
+* Utilizando un componente de Svelte, la opción más flexible, que permite además acceder a tus mensajes de validación sin necesidad de pasar `errors` a tus componentes hijos.
 * Modificando el DOM directamente añadiendo o removiendo elementos.
 * Utilizando Tippy.js para mostrar tus mensajes en un tooltip.
 * Utilizando el “constraint validation API” del navegador, que puede ser menos amigable a usuarios en dispositivos móviles.
@@ -201,7 +205,7 @@ Luego necesitarás importar la función  `svelteReporter` para pasarla a la prop
 ```
 
 ## Siguientes pasos
-Puedes leer más sobre Felte en su [sitio oficial](https://felte.dev) (inglés), incluye un par de ejemplos de su uso. Además puedes ver un ejemplo más complejo de su uso, utilizando Tippy.js y Yup, en [CodeSandbox](https://codesandbox.io/s/felte-demo-wce2h?file=/App.svelte).
+Puedes leer más sobre Felte en su [sitio oficial](https://felte.dev) (inglés), incluye un par de ejemplos de su uso. Además puedes ver un ejemplo más complejo de su uso, utilizando Tippy.js y Yup, en [CodeSandbox](https://codesandbox.io/s/felte-v1-demo-svelte-0egr6?file=/App.svelte).
 
 ## Palabras finales
 Espero que esto haya servido como una buena introducción a Felte, y que haya sido lo suficientemente interesante como para que quieras probarlo. Felte ya es lo suficientemente funcional para ser usado y siento que es lo suficientemente flexible para manejar la mayor parte de casos de uso. También estoy abierto a recibir ayuda o sugerencias. Siéntete libre de abrir un issue o un pull request en  [GitHub](https://github.com/pablo-abc/felte).

@@ -16,11 +16,13 @@ tags:
   - programación
 ---
 
+> Este artículo ha sido actualizado para mostrar el uso de Felte 1.0
+
 Posiblemente uno de los problemas más comunes que desarrolladores front-end deben resolver es manejo de formularios. Especialmente en aplicaciones web modernas que requieren validaciones instantáneas y otras interacciones en tiempo real con el usuario. Para proveer la mejor experiencia de usuario posible, probablemente uses una librería de terceros para manejo de formularios que te ayude a resolver esto.
 
 En esta publicación escribiré sobre [Felte](https://felte.dev), una librería de manejo de formularios para Solid en la que he estado trabajando durante este año que busca hacer las bases del manejo de formularios en el cliente lo más simple posible, pero que permite extenderse a medida que la complejidad de tus requisitos crezca.
 
-Esta es una de dos publicaciones que estoy escribiendo. Esta está orientada a la integración de Felte con [Solid](https://solidjs.com). La otra está orientada a la integración con [Svelte](https://svelte.dev).
+Esta es una de tres publicaciones relacionadas con Felte. Esta está orientada a la integración de Felte con [Solid](https://solidjs.com). Las otras están orientadas a la integración con [Svelte](https://svelte.dev) y con [React](https://reactjs.org).
 
 ## Características
 Como mencioné anteriormente, Felte busca hacer que las bases de la reactivada de formularios tan fácil de manejar como sea posible, a su vez permitiendo complejidad extra a través de configuración y extensibilidad. Sus principales características son:
@@ -31,7 +33,7 @@ Como mencioné anteriormente, Felte busca hacer que las bases de la reactivada d
 * No asume nada sobre tu estrategia de validación. Puedes usar tu librería de validación preferida o escribe tu propia estrategia.
 * Maneja mutaciones del DOM en tiempo de ejecución.
 * Soluciones oficiales para manejar reporte de errores en validación.
-* Validación con [yup](https://felte.dev/docs/svelte/validators#using-yup), [zod](https://felte.dev/docs/svelte/validators#using-zod), [superstruct](https://felte.dev/docs/svelte/validators#using-superstruct) y [vest](https://felte.dev/docs/svelte/validators#using-vest).
+* Validación con [yup](https://felte.dev/docs/solid/validators#using-yup), [zod](https://felte.dev/docs/solid/validators#using-zod), [superstruct](https://felte.dev/docs/solid/validators#using-superstruct) y [vest](https://felte.dev/docs/solid/validators#using-vest).
 * Puedes [extender su funcionalidad](https://felte.dev/docs/solid/extending-felte) fácilmente.
 
 ## ¿Cómo se ve?
@@ -66,21 +68,26 @@ En el ejemplo anterior configuramos el formulario llamando a `createForm` con nu
 }
 ```
 
-## ¿Dónde puedo ver los valores de mis input?
-Mientras escribe, Felte llevará un registro de tus `input` en un store de Svelte. Este store es devuelto por `createForm` como `data`, con la misma estructura con la que recibirías estos valores en tu función `onSubmit`.
+## ¿Dónde puedo ver los valores de mis inputs?
+Mientras escribe, Felte llevará un registro de tus `input` en un [signal](https://www.solidjs.com/docs/latest/api#createsignal). Este signal es manipulado por Felte para darle más funcionalidad y retornado por `createForm` como una función `data`, con la misma estructura con la que recibirías estos valores en tu función `onSubmit`. Nos referiremos a estas funciones como `accessors` de ahora en adelante. Cuando este accessor es llamado sin ningún argumento (`data()`), se comportará como un signal común que retornará todos los valores de tu formulario en un objeto. Estos `accessors` pueden recibir un argumento, ya sea una funcíon para seleccionar un valor, o una string refiriendose a la ubicación del valor en el objeto.
 
 Por ejemplo, esto imprimiría el email de tu usuario en la consola a medida que escriban:
 
 ```javascript
+// Dentro de un componente
 const { form, data } = createForm({ /* ... */ });
 
 createEffect(() => {
-  console.log(data.email);
+  // Utilizando una función
+  console.log(data(($data) => $data.email));
+
+  // Utilizando un string
+  console.log(data('email'));
 });
 ```
 
 ## Tal vez necesite algo de validación
-Claro, otro requisite común en formularios es validación. Si queremos que nuestra aplicación se sienta rápida, querremos algo de validación del lado del cliente. La configuración de `createForm` acepta una función en su propiedad `validate` (que puede ser asíncrona). Esta función recibirá el valor más reciente de `data` a medida que cambie y espera que devuelvas un objeto con la misma estructura conteniendo tus mensajes de validación si tu formulario no es válido, o nada si tu formulario es válido. Felte llevará un registro de todos estos mensajes de validación en un store devuelto por `createForm` llamado `errors`:
+Claro, otro requisite común en formularios es validación. Si queremos que nuestra aplicación se sienta rápida, querremos algo de validación del lado del cliente. La configuración de `createForm` acepta una función en su propiedad `validate` (que puede ser asíncrona). Esta función recibirá el valor más reciente de `data` a medida que cambie y espera que devuelvas un objeto con la misma estructura conteniendo tus mensajes de validación si tu formulario no es válido, o nada si tu formulario es válido. Felte llevará un registro de todos estos mensajes de validación en un accessor devuelto por `createForm` llamado `errors`:
 
 ```javascript
 const { form, errors } = createForm({
@@ -92,7 +99,9 @@ const { form, errors } = createForm({
   },
 });
 
-$: console.log($errors);
+createEffect(() => {
+  console.log(errors(($errors) => $errors.email));
+});
 ```
 
 Requisitos más complejos pueden necesitar librerías de terceros para validación. Felte provee integraciones de primera parte con algunas librerías de validación populares gracias a su extensibilidad. Estas integraciones se ofrecen como librerías separadas. Escribiré más sobre esto en la siguiente sección relacionada con extensibilidad, pero puedes leer más de esto en la [documentación oficial](https://felte.dev/docs/solid/validators) (inglés).
@@ -146,8 +155,8 @@ function Form() {
     <form use:form>
       <label for="email">Email:</label>
       <input name="email" type="email" id="email" />
-      <Show when={errors.email}>
-        <span>{errors.email}</span>
+      <Show when={errors('email')}>
+        <span>{errors('email')}</span>
       </Show>
       <button>Submit</button>
     </form>
@@ -155,16 +164,18 @@ function Form() {
 }
 ```
 
-Pero mostrar mensajes de validación no es todo en la mayor parte de los casos. Por ejemplo, puedes querer agregar el atributo `aria-invalid` al campo relacionado. O tal vez solo no te guste la sintaxis anterior para manejar los mensajes de validación. Actualmente Felte tiene cuatro librerías que ofrecen diferentes alternativas para mostrar tus mensajes de validación:
+> Si un input específico tiene un error, Felte asignará el atributo `aria-invalid=true` al input apropiado.
 
-* Utilizando un componente de Solid, la opción más flexible.
+Pero tal vez no te guste la sintaxis anterior para manejar los mensajes de validación. Actualmente Felte también tiene cuatro librerías que ofrecen diferentes alternativas para mostrar tus mensajes de validación:
+
+* Utilizando un componente de Solid, la opción más flexible, que permite además acceder a tus mensajes de validación sin necesidad de pasar `errors` a tus componentes hijos.
 * Modificando el DOM directamente añadiendo o removiendo elementos.
 * Utilizando Tippy.js para mostrar tus mensajes en un tooltip.
 * Utilizando el “constraint validation API” del navegador, que puede ser menos amigable a usuarios en dispositivos móviles.
 
 Para mantener todo breve, solo escribiré sobre la primera librería mencionada. Pero puedes leer más sobre el resto [en la documentación](https://felte.dev/docs/solid/reporters) (inglés).
 
-Utilizar un componente de Svelte para obtener tus mensajes de validación puede hacerse con la librería `@felte/reporter-solid`. Necesitarás añadir esta librería a tu proyecto con tu administrador de paquetes preferido:
+Utilizar un componente de Solid para obtener tus mensajes de validación puede hacerse con la librería `@felte/reporter-solid`. Necesitarás añadir esta librería a tu proyecto con tu administrador de paquetes preferido:
 
 ```sh
 # npm
@@ -207,7 +218,7 @@ function Form() {
 ```
 
 ## Siguientes pasos
-Puedes leer más sobre Felte en su [sitio oficial](https://felte.dev) (inglés), incluye un par de ejemplos de su uso. Además puedes ver un ejemplo más complejo de su uso, utilizando Tippy.js y Yup, en [CodeSandbox](https://codesandbox.io/s/felte-demo-solidjs-w92uj?file=/src/main.tsx).
+Puedes leer más sobre Felte en su [sitio oficial](https://felte.dev) (inglés), incluye un par de ejemplos de su uso. Además puedes ver un ejemplo más complejo de su uso, utilizando Tippy.js y Yup, en [CodeSandbox](https://codesandbox.io/s/felte-react-demo-q2xxw?file=/src/App.js).
 
 ## Palabras finales
 Espero que esto haya servido como una buena introducción a Felte, y que haya sido lo suficientemente interesante como para que quieras probarlo. Felte ya es lo suficientemente funcional para ser usado y siento que es lo suficientemente flexible para manejar la mayor parte de casos de uso. También estoy abierto a recibir ayuda o sugerencias. Siéntete libre de abrir un issue o un pull request en  [GitHub](https://github.com/pablo-abc/felte).
