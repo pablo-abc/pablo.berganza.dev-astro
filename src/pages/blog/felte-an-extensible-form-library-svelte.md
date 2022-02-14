@@ -112,7 +112,7 @@ npm install --save @felte/validator-yup yup
 yarn add @felte/validator-yup yup
 ```
 
-This validator package exports a function called `validator` which can be passed as-is to the `extend` option of `createForm`. Your validation schema can then be passed to the `validateSchema` option:
+This validator package exports a function called `validator` which you can call with your validation schema and pass its result to the `extend` option of `createForm`:
 
 ```javascript
 import { validator } from '@felte/validator-yup';
@@ -125,8 +125,7 @@ const schema = yup.object({
 
 const { form } = createForm({
   // ...
-  extend: validator, // OR `extend: [validator],`
-  validateSchema: schema,
+  extend: validator({ schema }), // OR `extend: [validator({ schema })],`
   // ...
 });
 ```
