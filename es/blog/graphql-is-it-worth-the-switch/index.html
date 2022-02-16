@@ -1,4 +1,35 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>GraphQL: ¿Vale la pena el cambio? | Pablo Berganza</title><link rel="alternate" hreflang="en" href="https://pablo.berganza.dev/blog/graphql-is-it-worth-the-switch"><link href="/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57"><link href="/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60"><link href="/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72"><link href="/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76"><link href="/apple-icon-114x114.png" rel="apple-touch-icon" sizes="114x114"><link href="/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120"><link href="/apple-icon-144x144.png" rel="apple-touch-icon" sizes="144x144"><link href="/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152"><link href="/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180"><link href="/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png"><link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"><link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"><link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"><link rel="icon" type="image/png" href="/favicon.ico"><link href="/manifest.json" rel="manifest"><meta content="#E34495" name="msapplication-TileColor"><meta content="ms-icon-144x144.png" name="msapplication-TileImage"><meta content="#E34495" name="theme-color"><link rel="stylesheet" type="text/css" href="/style/roboto.css"><link rel="stylesheet" type="text/css" href="/style/overpass.css"><link rel="stylesheet" type="text/css" href="/style/reset.css"><link rel="stylesheet" type="text/css" href="/style/global.css"><link rel="stylesheet" type="text/css" href="/style/dracula.css"><script type="module" src="https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.esm.js"></script><script nomodule="" src="https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.js"></script><script src="/scripts/focus-visible.js"></script>
+<!DOCTYPE html><html lang="es" class="astro-I2D4UV2X"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GraphQL: ¿Vale la pena el cambio? | Pablo Berganza</title>
+    <link rel="alternate" hreflang="en" href="https://pablo.berganza.dev/blog/graphql-is-it-worth-the-switch">
+    <link href="/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
+    <link href="/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
+    <link href="/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+    <link href="/apple-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+    <link href="/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+    <link href="/apple-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+    <link href="/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+    <link href="/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180">
+    <link href="/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png">
+    <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+    <link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
+    <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <link href="/manifest.json" rel="manifest">
+    <meta content="#E34495" name="msapplication-TileColor">
+    <meta content="ms-icon-144x144.png" name="msapplication-TileImage">
+    <meta content="#E34495" name="theme-color">
+    <link rel="stylesheet" type="text/css" href="/style/roboto.css">
+    <link rel="stylesheet" type="text/css" href="/style/overpass.css">
+    <link rel="stylesheet" type="text/css" href="/style/reset.css">
+    <link rel="stylesheet" type="text/css" href="/style/global.css">
+    <link rel="stylesheet" type="text/css" href="/style/dracula.css">
+    <script type="module" src="https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.esm.js"></script>
+    
+    <script src="/scripts/focus-visible.js"></script>
+    
     <script type="application/ld+json">
      {
       "@context": "https://schema.org/",
@@ -25,7 +56,8 @@
       }
      }
     </script>
-<meta name="author" content="Pablo Berganza">
+
+    <meta name="author" content="Pablo Berganza">
 <meta name="description" content="Una agradable alternativa a APIs REST con una increíble experiencia de desarrollo">
 <meta itemprop="name" content="GraphQL: ¿Vale la pena el cambio?">
 <meta itemprop="description" content="Una agradable alternativa a APIs REST con una increíble experiencia de desarrollo">
@@ -50,14 +82,165 @@
   <meta name="twitter:label1" value="Tiempo de lectura">
     <meta name="twitter:label2" value="Autor">
   <meta name="twitter:data1" value="10 min">
-  <meta name="twitter:data2" value="Pablo Berganza"><meta name="color-scheme" content="light dark"><link rel="stylesheet" href="/_astro/common-ZsHqQq.css" type="text/css"><style type="text/css">astro-root, astro-fragment { display: contents; }</style></head><body><main class="astro-3SEy6fKl"><h1 class="home-link astro-fsvVrr0K" aria-label="Home page"><a href="/es" class="astro-fsvVrr0K">PB</a></h1><a class="lang-link astro-slqtNevl" href="/blog/graphql-is-it-worth-the-switch" lang="en">Speak English?</a><article class="astro-3SEy6fKl"><header class="astro-3SEy6fKl"><h1 class="title astro-3SEy6fKl">GraphQL: ¿Vale la pena el cambio?</h1><p class="astro-3SEy6fKl">Una agradable alternativa a APIs REST con una increíble experiencia de desarrollo</p></header><img alt="" class="banner astro-3SEy6fKl" src="/assets/blog-pics/2019-06-11.jpg" width="800" height="600"><div class="stats astro-3SEy6fKl"><div class="ttr astro-3SEy6fKl"><span class="astro-3SEy6fKl"><svg role="img" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="astro-MnatfamI"><title>Tiempo de lectura:</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" class="astro-MnatfamI"></path></svg></span><span class="astro-3SEy6fKl">10</span><span class="astro-3SEy6fKl">minutos</span></div><div class="created astro-3SEy6fKl"><span class="astro-3SEy6fKl"><svg role="img" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="astro-peQFhH51"><title>Fecha de creación:</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" class="astro-peQFhH51"></path></svg></span><span class="astro-3SEy6fKl">2019-06-11</span></div></div><div class="tags astro-3SEy6fKl">Etiquetas:<ul class="astro-3SEy6fKl"><li class="astro-3SEy6fKl"><a href="/es/blog/tags/graphql" class="astro-3SEy6fKl">graphql</a></li><li class="astro-3SEy6fKl"><a href="/es/blog/tags/rest" class="astro-3SEy6fKl">rest</a></li><li class="astro-3SEy6fKl"><a href="/es/blog/tags/api" class="astro-3SEy6fKl">api</a></li></ul></div><section class="content astro-3SEy6fKl"><p>Este último año trabajando como desarrollador web he estado, básicamente, respirando <a href="https://es.wikipedia.org/wiki/Transferencia_de_Estado_Representacional">REST</a> todos los días. Aunque no es tanto tiempo, ha sido más que suficiente para apreciar la simplicidad sobre SOAP, y para odiar los momentos en que los requerimientos del cliente o otras situaciones te fuerzan a escribir endpoints que no son <a href="https://restfulapi.net/rest-architectural-constraints/">RESTful</a>. Aunque REST es ya un estándar para crear APIs web modernas, hace un par de años ha habido un competidor del cual no me había forzado a investigar todavía: <a href="https://graphql.org">GraphQL</a>. Pero eso ha cambiado y ya he experimentado un poco implementándolo en el cliente y en el servidor.</p><p>Según <a href="https://graphql.org">graphql.org</a>, “GraphQL es un lenguage de consulta para APIs y un sistema en tiempo de ejecución para cumplir esas consultas con tu información existente”. Un servidor que esté implementando la especificación de GraphQL debería poder recibir una consulta enviada por el cliente, conteniendo una descripción de la infromación específica que el cliente necesita, y debería poder proveer ésta información así como el cliente la pidió.</p><p>Pero antes de hablar más sobre GraphQL, veamos qué es tan bueno sobre REST.</p><h2 id="rest">REST</h2><p>REST es un estilo de arquitectura que define una serie de reglas para construir servicios web. Cuando alguien habla de un API que sigue la arquitectura propuesta por REST, suelen referirse a un servidor que se comunica con el cliente por medio del protocolo HTTP. El cliente se aprovecha de los distintos métodos HTTP (GET, POST, PUT, PATCH, DELETE) para hacer consultas a direcciones en el API que representan recursos.</p><p>Algunos ejemplos de endpoints REST son:</p><pre class=" language-http"><code class="language-http">GET http://api.example.com/accounts
+  <meta name="twitter:data2" value="Pablo Berganza">
+    <meta name="color-scheme" content="light dark">
+  
+
+
+
+
+
+<script type="module" src="../../../assets/graphql-is-it-worth-the-switch.a129c612.js"></script><link rel="stylesheet" href="../../../assets/ShareButtons.svelte_svelte_type_style_lang.bfa87c2b.css"><link rel="stylesheet" href="../../../assets/Commento.svelte_svelte_type_style_lang.58ae8e4f.css"><link rel="stylesheet" href="../../../assets/felte-an-extensible-form-library-svelte.8a6d8cb5.css">
+
+
+
+</head>
+  <body>
+    <main class="astro-I2D4UV2X">
+      
+<h1 class="home-link astro-NO2MBCO4" aria-label="Home page">
+  <a href="/es" class="astro-NO2MBCO4">PB</a>
+</h1>
+
+
+
+      
+<a class="lang-link astro-7KGT6B7G" href="/blog/graphql-is-it-worth-the-switch" lang="en">
+  Speak English?
+</a>
+
+
+
+      <article class="astro-I2D4UV2X">
+        <header class="astro-I2D4UV2X">
+          <h1 class="title astro-I2D4UV2X">GraphQL: ¿Vale la pena el cambio?</h1>
+          <p class="astro-I2D4UV2X">Una agradable alternativa a APIs REST con una increíble experiencia de desarrollo</p>
+        </header>
+        <img alt="" class="banner astro-I2D4UV2X" src="/assets/blog-pics/2019-06-11.jpg" width="800" height="600">
+        <div class="stats astro-I2D4UV2X">
+          <div class="ttr astro-I2D4UV2X">
+            <span class="astro-I2D4UV2X">
+              
+<svg role="img" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="astro-NHECQHBJ">
+  <title>Tiempo de lectura:</title>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" class="astro-NHECQHBJ"></path>
+</svg>
+
+
+
+            </span>
+            <span class="astro-I2D4UV2X">10</span>
+            <span class="astro-I2D4UV2X">minutos</span>
+          </div>
+          <div class="created astro-I2D4UV2X">
+            <span class="astro-I2D4UV2X">
+              
+<svg role="img" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="astro-ZGM2KRLC">
+  <title>Fecha de creación:</title>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" class="astro-ZGM2KRLC"></path>
+</svg>
+
+
+
+            </span>
+            <span class="astro-I2D4UV2X">
+              2019-06-11
+            </span>
+          </div>
+        </div>
+        <div class="tags astro-I2D4UV2X">
+          Etiquetas:
+          <ul class="astro-I2D4UV2X">
+            <li class="astro-I2D4UV2X">
+              <a href="/es/blog/tags/graphql" class="astro-I2D4UV2X">
+                graphql
+              </a>
+            </li><li class="astro-I2D4UV2X">
+              <a href="/es/blog/tags/rest" class="astro-I2D4UV2X">
+                rest
+              </a>
+            </li><li class="astro-I2D4UV2X">
+              <a href="/es/blog/tags/api" class="astro-I2D4UV2X">
+                api
+              </a>
+            </li>
+          </ul>
+        </div>
+        <section class="content astro-I2D4UV2X">
+          <p>Este último año trabajando como desarrollador web he estado, básicamente, respirando <a href="https://es.wikipedia.org/wiki/Transferencia_de_Estado_Representacional">REST</a> todos los días. Aunque no es tanto tiempo, ha sido más que suficiente para apreciar la simplicidad sobre SOAP, y para odiar los momentos en que los requerimientos del cliente o otras situaciones te fuerzan a escribir endpoints que no son <a href="https://restfulapi.net/rest-architectural-constraints/">RESTful</a>. Aunque REST es ya un estándar para crear APIs web modernas, hace un par de años ha habido un competidor del cual no me había forzado a investigar todavía: <a href="https://graphql.org">GraphQL</a>. Pero eso ha cambiado y ya he experimentado un poco implementándolo en el cliente y en el servidor.</p><p>Según <a href="https://graphql.org">graphql.org</a>, “GraphQL es un lenguage de consulta para APIs y un sistema en tiempo de ejecución para cumplir esas consultas con tu información existente”. Un servidor que esté implementando la especificación de GraphQL debería poder recibir una consulta enviada por el cliente, conteniendo una descripción de la infromación específica que el cliente necesita, y debería poder proveer ésta información así como el cliente la pidió.</p><p>Pero antes de hablar más sobre GraphQL, veamos qué es tan bueno sobre REST.</p><h2 id="rest">REST</h2><p>REST es un estilo de arquitectura que define una serie de reglas para construir servicios web. Cuando alguien habla de un API que sigue la arquitectura propuesta por REST, suelen referirse a un servidor que se comunica con el cliente por medio del protocolo HTTP. El cliente se aprovecha de los distintos métodos HTTP (GET, POST, PUT, PATCH, DELETE) para hacer consultas a direcciones en el API que representan recursos.</p><p>Algunos ejemplos de endpoints REST son:</p><pre class="language-http"><code data-astro-raw="" class="language-http">GET http://api.example.com/accounts
 
 GET http://api.example.com/accounts/8326
 
 GET http://api.example.com/accounts/8326/posts
 
-GET http://api.example.com/posts/4123/comments
-</code></pre><p>Dependiendo de qué método se utilice para llamar al endpoint, se aplicará una distinta operación al recursos.</p><table><thead><tr><th>MÉTODO</th><th>ENDPOINT</th><th>DESCRIPCIÓN</th><th>ESTADO DE RESPUESTA</th></tr></thead><tbody><tr><td>GET</td><td>/resources</td><td>Obtener una lista de elementos</td><td>200</td></tr><tr><td>GET</td><td>/resources/:id</td><td>Obtener un solo elemento</td><td>200, 404</td></tr><tr><td>POST</td><td>/resources</td><td>Crear un elemento</td><td>201, 400</td></tr><tr><td>PUT</td><td>/resources/:id</td><td>Modificar un elemento completo</td><td>200, 400</td></tr><tr><td>PATCH</td><td>/resources/:id</td><td>Modificar campos específicos del elemento</td><td>200, 400</td></tr><tr><td>DELETE</td><td>/resources/:id</td><td>Eliminar un elemento</td><td>204, 200, 404</td></tr></tbody></table><p>Esto nos da una limpia y predecible interfaz para operar sobre los recursos en el servidor.</p><p>Como se ve en los endpoints del ejemplo anterior, los endpoints en una arquitectura REST pueden seguir una estructura jerárquica. Por ejemplo, si se hiciera una consulta con el método POST al endpoint <code>/accounts/8326/posts</code>, ésto debería significar que se está creando una publicación (post) que pertenece a la cuenta (account) con id 8326.</p><p>He hablado sobre como un API REST debe verse para el cliente, pero éstas características no son suficientes para que una API pueda ser considerada una API REST. Para poder ser clasificada como tal, debe seguir las siguientes seis reglas:</p><ul><li><strong>Interfaz uniforme</strong>: Una API REST debe tener una interfaz bien definida y consistente. Esta interfaz debe seguirse casi religiosamente en todos los recursos expuestos por el API. Debe tener consistentes convenciones de nombramiento, formato de datos, etc.</li><li><strong>Cliente-servidor</strong>: Debe haber una separación clara entre cliente y servidor.</li><li><strong>Sin estado</strong>: Todas las interacciones del cliente con el servidor no deben contener estado. Esto significa que el servidor debe asumir que toda consulta hecha a éste es completamente nueva, sin conocimiento alguno de estados anteriores del cliente.</li><li><strong>Cacheable</strong>: Si un endpoint REST es suficientemente estable, este podría ser puesto en cache, ya sea en el cliente o servidor. Los endpoints que puedan ser puestos en el cache deben explícitamente indicar esto.</li><li><strong>Sistema en capas</strong>: La arquitectura del sistema puede estar en capaz, es decir, el cliente puede estar interactuando con distintos servidores comportándose como que si estuviera interactuando diréctamente con el API REST.</li><li><strong>Código a pedido</strong>: Esta es la única regla opcional de la arquitectura REST. Indica que, cuando sea necesario, un endpoint REST puede retornar código ejecutable como respuesta a una consulta del cliente.</li></ul><p>Éstas reglas nos traen varios beneficios:</p><ul><li>Una interfaz uniforme permite que el cliente pueda navegar intuitivamente tu API cuando empiecen a acostumbrarse a este.</li><li>Una interfaz bien definida hace más fácil la organización del código del sevidor en base a recursos.</li><li>Una arquitectura cliente-servidor permite a ambos, el cliente y el servidor, poder evolucionar independientemente.</li><li>Al no mantener estado del cliente un servidor tiene, teóricamente, una escalabilidad ilimitada. Puede replicarse indefinidamente cuando se requieran altos recursos sin afectar la interacción con el cliente.</li><li>Mantener un cache de algunos endpoints ayuda a reducir la carga del servidor.</li><li>Un sistema en capas permite al cliente pasar por intermediarios (ej. por motivos de autenticación) mientras sigue interactuando de la misma forma con el servidor.</li></ul><p>Aunque el formato de dato más usado en APIs REST es JSON, si es necesario se puede utilizar otros formatos (ej. XML). Además, aunque la mayoría de APIs REST disponibles públicamente son servidas a través del protocolo HTTP, un API REST podría ser servida por un protocolo distinto.</p><p>Como se puede ver, una API REST desarrollada propiamente viene con muchos beneficios, pero también hay unas cuantas desventajas:</p><ul><li>Cómo no hay un estándar único definido sobre como se debe comportar un API REST (además de las seis reglas mencionadas), muchas decisiones del diseño quedan a responsabilidad del desarrollador. Esto significa que no se podrá interactuar necesariamente de la misma forma con dos distintas APIs REST.</li><li>A menos que filtros hayan sido implementados en el servidor, un endpoint REST puede returnar mucha más información de la que el cliente necesita.</li><li>Debido a que los endpoints REST son divididos por recursos, para poder popular completamente una vista del cliente es probable que se necesite hacer varias consultas al servidor.</li><li>La consistencia es difícil. El equipo de desarrollo debe tratar activamente de mantener la consistencia, esto significa más esfuerzo a la hora de desarrollar. Es fácil agregar inconsistencias al servidor.</li><li>Fechas límite, requerimientos del cliente, etc. pueden llevar a romper algunas de las reglas de REST. Esto podría llevar a una mezcla de distintas arquitecturas (ej. RPC).</li></ul><p>Esto muestra que construir una verdadera API REST no es tarea fácil. Hay varios agujeros en los que el equipo de desarrollo puede caer, haciendo que el resultado final no sea una API REST, y que se pierdan algunos de los beneficios proporcionados por el cumplimiento de las reglas de REST.</p><p>Entonces, ¿qué nos ofrece GraphQL?</p><h2 id="graphql">GraphQL</h2><p>Como se ha dicho antes, GraphQL es descrito como un lenguaje de consultas para APIs. A diferencia de REST, GraphQL define un solo endpoint que acepta toda las operaciones hacia el servidor en un parámetro llamado “query”. Las consultas son generalmente echas utilizando el método POST en el endpoint de GraphQL, pero la especificación permite utilizar el método GET para operaciones de solo lectura.</p><p>Hay dos tipos de llamadas que puedes hacer a un API GraphQL: consultas y mutaciones. Una consulta se ve de la siguiente forma:</p><pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">{</span>
+GET http://api.example.com/posts/4123/comments</code></pre><p>Dependiendo de qué método se utilice para llamar al endpoint, se aplicará una distinta operación al recursos.</p><table>
+<thead>
+<tr>
+<th>MÉTODO</th>
+<th>ENDPOINT</th>
+<th>DESCRIPCIÓN</th>
+<th>ESTADO DE RESPUESTA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>/resources</td>
+<td>Obtener una lista de elementos</td>
+<td>200</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/resources/:id</td>
+<td>Obtener un solo elemento</td>
+<td>200, 404</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/resources</td>
+<td>Crear un elemento</td>
+<td>201, 400</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>/resources/:id</td>
+<td>Modificar un elemento completo</td>
+<td>200, 400</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>/resources/:id</td>
+<td>Modificar campos específicos del elemento</td>
+<td>200, 400</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>/resources/:id</td>
+<td>Eliminar un elemento</td>
+<td>204, 200, 404</td>
+</tr>
+</tbody>
+</table><p>Esto nos da una limpia y predecible interfaz para operar sobre los recursos en el servidor.</p><p>Como se ve en los endpoints del ejemplo anterior, los endpoints en una arquitectura REST pueden seguir una estructura jerárquica. Por ejemplo, si se hiciera una consulta con el método POST al endpoint <code data-astro-raw="">/accounts/8326/posts</code>, ésto debería significar que se está creando una publicación (post) que pertenece a la cuenta (account) con id 8326.</p><p>He hablado sobre como un API REST debe verse para el cliente, pero éstas características no son suficientes para que una API pueda ser considerada una API REST. Para poder ser clasificada como tal, debe seguir las siguientes seis reglas:</p><ul>
+<li><strong>Interfaz uniforme</strong>: Una API REST debe tener una interfaz bien definida y consistente. Esta interfaz debe seguirse casi religiosamente en todos los recursos expuestos por el API. Debe tener consistentes convenciones de nombramiento, formato de datos, etc.</li>
+<li><strong>Cliente-servidor</strong>: Debe haber una separación clara entre cliente y servidor.</li>
+<li><strong>Sin estado</strong>: Todas las interacciones del cliente con el servidor no deben contener estado. Esto significa que el servidor debe asumir que toda consulta hecha a éste es completamente nueva, sin conocimiento alguno de estados anteriores del cliente.</li>
+<li><strong>Cacheable</strong>: Si un endpoint REST es suficientemente estable, este podría ser puesto en cache, ya sea en el cliente o servidor. Los endpoints que puedan ser puestos en el cache deben explícitamente indicar esto.</li>
+<li><strong>Sistema en capas</strong>: La arquitectura del sistema puede estar en capaz, es decir, el cliente puede estar interactuando con distintos servidores comportándose como que si estuviera interactuando diréctamente con el API REST.</li>
+<li><strong>Código a pedido</strong>: Esta es la única regla opcional de la arquitectura REST. Indica que, cuando sea necesario, un endpoint REST puede retornar código ejecutable como respuesta a una consulta del cliente.</li>
+</ul><p>Éstas reglas nos traen varios beneficios:</p><ul>
+<li>Una interfaz uniforme permite que el cliente pueda navegar intuitivamente tu API cuando empiecen a acostumbrarse a este.</li>
+<li>Una interfaz bien definida hace más fácil la organización del código del sevidor en base a recursos.</li>
+<li>Una arquitectura cliente-servidor permite a ambos, el cliente y el servidor, poder evolucionar independientemente.</li>
+<li>Al no mantener estado del cliente un servidor tiene, teóricamente, una escalabilidad ilimitada. Puede replicarse indefinidamente cuando se requieran altos recursos sin afectar la interacción con el cliente.</li>
+<li>Mantener un cache de algunos endpoints ayuda a reducir la carga del servidor.</li>
+<li>Un sistema en capas permite al cliente pasar por intermediarios (ej. por motivos de autenticación) mientras sigue interactuando de la misma forma con el servidor.</li>
+</ul><p>Aunque el formato de dato más usado en APIs REST es JSON, si es necesario se puede utilizar otros formatos (ej. XML). Además, aunque la mayoría de APIs REST disponibles públicamente son servidas a través del protocolo HTTP, un API REST podría ser servida por un protocolo distinto.</p><p>Como se puede ver, una API REST desarrollada propiamente viene con muchos beneficios, pero también hay unas cuantas desventajas:</p><ul>
+<li>Cómo no hay un estándar único definido sobre como se debe comportar un API REST (además de las seis reglas mencionadas), muchas decisiones del diseño quedan a responsabilidad del desarrollador. Esto significa que no se podrá interactuar necesariamente de la misma forma con dos distintas APIs REST.</li>
+<li>A menos que filtros hayan sido implementados en el servidor, un endpoint REST puede returnar mucha más información de la que el cliente necesita.</li>
+<li>Debido a que los endpoints REST son divididos por recursos, para poder popular completamente una vista del cliente es probable que se necesite hacer varias consultas al servidor.</li>
+<li>La consistencia es difícil. El equipo de desarrollo debe tratar activamente de mantener la consistencia, esto significa más esfuerzo a la hora de desarrollar. Es fácil agregar inconsistencias al servidor.</li>
+<li>Fechas límite, requerimientos del cliente, etc. pueden llevar a romper algunas de las reglas de REST. Esto podría llevar a una mezcla de distintas arquitecturas (ej. RPC).</li>
+</ul><p>Esto muestra que construir una verdadera API REST no es tarea fácil. Hay varios agujeros en los que el equipo de desarrollo puede caer, haciendo que el resultado final no sea una API REST, y que se pierdan algunos de los beneficios proporcionados por el cumplimiento de las reglas de REST.</p><p>Entonces, ¿qué nos ofrece GraphQL?</p><h2 id="graphql">GraphQL</h2><p>Como se ha dicho antes, GraphQL es descrito como un lenguaje de consultas para APIs. A diferencia de REST, GraphQL define un solo endpoint que acepta toda las operaciones hacia el servidor en un parámetro llamado “query”. Las consultas son generalmente echas utilizando el método POST en el endpoint de GraphQL, pero la especificación permite utilizar el método GET para operaciones de solo lectura.</p><p>Hay dos tipos de llamadas que puedes hacer a un API GraphQL: consultas y mutaciones. Una consulta se ve de la siguiente forma:</p><pre class="language-javascript"><code data-astro-raw="" class="language-javascript"><span class="token punctuation">{</span>
   <span class="token function">post</span><span class="token punctuation">(</span>id<span class="token operator">:</span><span class="token string">"1"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     id
     title
@@ -66,45 +249,59 @@ GET http://api.example.com/posts/4123/comments
       id
       email
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre><p>Esto significa que debe haber un esquema de tipo consulta con el nombre “post” definido en el servidor. Esta consulta está pidiendo el id, título, contenido, el id del autor y el correo del autor de la publicación con id “1”. Si es encontrada, la respuesta seguirá la misma estructura descrita en la consulta. Una consulta de GraphQL es análoga a realizar una llamada con GET a un endpoint REST.</p><p>Una mutación en GraphQL se ve de la siguiente forma:</p><pre class=" language-javascript"><code class="language-javascript">mutation <span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><p>Esto significa que debe haber un esquema de tipo consulta con el nombre “post” definido en el servidor. Esta consulta está pidiendo el id, título, contenido, el id del autor y el correo del autor de la publicación con id “1”. Si es encontrada, la respuesta seguirá la misma estructura descrita en la consulta. Una consulta de GraphQL es análoga a realizar una llamada con GET a un endpoint REST.</p><p>Una mutación en GraphQL se ve de la siguiente forma:</p><pre class="language-javascript"><code data-astro-raw="" class="language-javascript">mutation <span class="token punctuation">{</span>
   <span class="token function">createAccount</span><span class="token punctuation">(</span>
-    email<span class="token operator">:</span><span class="token string">"pablo@berganza.dev"</span>
-    password<span class="token operator">:</span><span class="token string">"super secure password"</span>
+    <span class="token literal-property property">email</span><span class="token operator">:</span><span class="token string">"pablo@berganza.dev"</span>
+    <span class="token literal-property property">password</span><span class="token operator">:</span><span class="token string">"super secure password"</span>
   <span class="token punctuation">)</span> <span class="token punctuation">{</span>
     id
     email
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre><p>Esto asume que hay un esquema de tipo mutación llamado “createAccount” definido en el servidor. Esta mutación está pidiéndole al servidor que cree una cuenta con el email y la contraseña especificadas, y al terminar la creación que retorne su id y su email.</p><p>GraphQL no debería considerarse un estilo de arquitectura. Es, más bien, una serie de herramientas que facilitan el desarrollo de APIs tipo RPC (ya que estás llamando funciones en el servidor). Aún así, una API GraphQL comparte varias características con un API REST:</p><ul><li>Hay una clara separación entre cliente y servidor.</li><li>El servidor no mantiene un estado.</li><li>Aunque la mayoría de APIs GraphQL son servidas sobre HTTP, podría ser servida sobre un protocolo distinto.</li></ul><p>A parte de esto, un API GraphQL tiene otras ventajas sobre un API REST:</p><ul><li>Una interfaz consistente con el cliente, ya que la comunicación cliente-servidor se hace utilizando un lenguage de consulta ya definido.</li><li>La documentación es auto-generada. Cuando los esquemas son definidos, estos está disponibles para que el cliente las vea. También es posible agregar “docstrings” a los esquemas para poder explicarlos más a fondo.</li><li>Las herramientas disponibles proveen una muy agradable experiencia de desarrollo. Herramientas como Graphiql y GraphQL Playground pueden hacer explorar los esquemas de un API GraphQL muy fácil, y muchas librerías para el cliente, como Apollo, pueden proveer otras herramientas para agregar funcionalidad al cliente.</li><li>Desde el momento en que los esquemas son definidos hay un contrato entre el cliente y el servidor. Los esquemas incluyen las propiedades y los tipos de datos esperados en entrada y salida. Más propiedades pueden ser agregadas después al esquema, pero no se recomienda remover propiedades que ya están definidas.</li><li>La barrera de entrada para diseñar un API GraphQL comparada a un API REST es mucho más baja.</li><li>Ya hay una vasta cantidad de implementaciones de la exacta especificación de GraphQL en la mayoría de lenguages de programación grandes, esto permite una interacción consistente entre distintas APIs GraphQL.</li><li>Reduce considerablemente la cantidad de llamadas al servidor, ya que toda la información puede ser pedida, potencialmente, con una sola llamada.</li></ul><p>Pero obviamente no hay solo ventajas en el mundo de GraphQL. Estamos perdiendo algunas de las ventajas proveídas por la arquitectura REST cuando implementamos un API GraphQL, y además hay otras desventajas:</p><ul><li>Aunque es generalmente servida sobre HTTP, se pierde muchos beneficios proporcionados por dicho protocolo como caching, limitación de peticiones, etc. Esto reduce su escalabilidad potencialmente.</li><li>Un API GraphQL es potencialmente menos eficiente que un API REST. Debido a la impredecible complejidad de las llamadas hechas al servidor, es probable que un solo llamado al servidor implique operaciones N+1.</li><li>Al ser publicada en el 2015 (y al iniciar desarrollo en el 2012) se puede argumentar que el cosistema todavía no es maduro y hay posibilidad para considerables cambios en el futuro.</li><li>Para aplicaciones sencillas las llamadas pueden hacerse utilizando fetch API o librerías como Axios. Pero si la aplicación crece, una librería de GraphQL (como Apollo Client) puede ser necesitada. Esto aumentaría el tamaño del bundle de JavaScript.</li><li>Puede aumentar considerablemente la complejidad del código del servidor cuando optimizaciones son requeridas.</li><li>GraphQL suele retornar siempre un estado de 200. Como se pueden enviar varias consultas/mutaciones en un solo llamado, y algunas de estas pueden tener éxito y otras fallar de distinta forma, el manejo de errores puede volverse complicado del lado del cliente.</li></ul><p>Hay varias otras características en la especificación de GraphQL sobre las que no escribí, como fragments, consultas y mutaciones nombradas, variables, etc. Así que puedes revisar <a href="https://graphql.org">graphql.org</a> para aprender más sobre esto si te ha interesado.</p><h2 id="conclusión">Conclusión</h2><p>Entonces, ¿vale la pena el cambio? Cómo todo debate entre tecnologías, la respuesta es si y no. Hay casos de uso para ambos, GraphQL y REST. Por ejemplo, una API GraphQL puede ser útil cuando el desarrollo necesita iniciar antes que los requerimientos del cliente estén propiamente definidos, y puede ayudar a mantener un API consistente sin mucho esfuerzo. Al final, siempre se debe evaluar las ventajas y desventajas, y elegir la herramienta adecuada para el trabajo.</p></section></article><footer class="astro-3SEy6fKl"><ul class="share-buttons svelte-1311d53"><li class="svelte-1311d53">Compártelo:</li>
-  <li class="svelte-1311d53"><a href="https://www.facebook.com/sharer/sharer.php?u=https://pablo.berganza.dev/es/graphql-is-it-worth-the-switch&amp;quote=Una agradable alternativa a APIs REST con una increíble experiencia de desarrollo" target="_blank" title="Share on Facebook" rel="noopener noreferrer"><svg aria-hidden="true" class="fa-svelte  svelte-1d15yci" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"></path></svg>
-  <span class="sr-only svelte-12xlsax">Share on Facebook</span>
+<span class="token punctuation">}</span></code></pre><p>Esto asume que hay un esquema de tipo mutación llamado “createAccount” definido en el servidor. Esta mutación está pidiéndole al servidor que cree una cuenta con el email y la contraseña especificadas, y al terminar la creación que retorne su id y su email.</p><p>GraphQL no debería considerarse un estilo de arquitectura. Es, más bien, una serie de herramientas que facilitan el desarrollo de APIs tipo RPC (ya que estás llamando funciones en el servidor). Aún así, una API GraphQL comparte varias características con un API REST:</p><ul>
+<li>Hay una clara separación entre cliente y servidor.</li>
+<li>El servidor no mantiene un estado.</li>
+<li>Aunque la mayoría de APIs GraphQL son servidas sobre HTTP, podría ser servida sobre un protocolo distinto.</li>
+</ul><p>A parte de esto, un API GraphQL tiene otras ventajas sobre un API REST:</p><ul>
+<li>Una interfaz consistente con el cliente, ya que la comunicación cliente-servidor se hace utilizando un lenguage de consulta ya definido.</li>
+<li>La documentación es auto-generada. Cuando los esquemas son definidos, estos está disponibles para que el cliente las vea. También es posible agregar “docstrings” a los esquemas para poder explicarlos más a fondo.</li>
+<li>Las herramientas disponibles proveen una muy agradable experiencia de desarrollo. Herramientas como Graphiql y GraphQL Playground pueden hacer explorar los esquemas de un API GraphQL muy fácil, y muchas librerías para el cliente, como Apollo, pueden proveer otras herramientas para agregar funcionalidad al cliente.</li>
+<li>Desde el momento en que los esquemas son definidos hay un contrato entre el cliente y el servidor. Los esquemas incluyen las propiedades y los tipos de datos esperados en entrada y salida. Más propiedades pueden ser agregadas después al esquema, pero no se recomienda remover propiedades que ya están definidas.</li>
+<li>La barrera de entrada para diseñar un API GraphQL comparada a un API REST es mucho más baja.</li>
+<li>Ya hay una vasta cantidad de implementaciones de la exacta especificación de GraphQL en la mayoría de lenguages de programación grandes, esto permite una interacción consistente entre distintas APIs GraphQL.</li>
+<li>Reduce considerablemente la cantidad de llamadas al servidor, ya que toda la información puede ser pedida, potencialmente, con una sola llamada.</li>
+</ul><p>Pero obviamente no hay solo ventajas en el mundo de GraphQL. Estamos perdiendo algunas de las ventajas proveídas por la arquitectura REST cuando implementamos un API GraphQL, y además hay otras desventajas:</p><ul>
+<li>Aunque es generalmente servida sobre HTTP, se pierde muchos beneficios proporcionados por dicho protocolo como caching, limitación de peticiones, etc. Esto reduce su escalabilidad potencialmente.</li>
+<li>Un API GraphQL es potencialmente menos eficiente que un API REST. Debido a la impredecible complejidad de las llamadas hechas al servidor, es probable que un solo llamado al servidor implique operaciones N+1.</li>
+<li>Al ser publicada en el 2015 (y al iniciar desarrollo en el 2012) se puede argumentar que el cosistema todavía no es maduro y hay posibilidad para considerables cambios en el futuro.</li>
+<li>Para aplicaciones sencillas las llamadas pueden hacerse utilizando fetch API o librerías como Axios. Pero si la aplicación crece, una librería de GraphQL (como Apollo Client) puede ser necesitada. Esto aumentaría el tamaño del bundle de JavaScript.</li>
+<li>Puede aumentar considerablemente la complejidad del código del servidor cuando optimizaciones son requeridas.</li>
+<li>GraphQL suele retornar siempre un estado de 200. Como se pueden enviar varias consultas/mutaciones en un solo llamado, y algunas de estas pueden tener éxito y otras fallar de distinta forma, el manejo de errores puede volverse complicado del lado del cliente.</li>
+</ul><p>Hay varias otras características en la especificación de GraphQL sobre las que no escribí, como fragments, consultas y mutaciones nombradas, variables, etc. Así que puedes revisar <a href="https://graphql.org">graphql.org</a> para aprender más sobre esto si te ha interesado.</p><h2 id="conclusión">Conclusión</h2><p>Entonces, ¿vale la pena el cambio? Cómo todo debate entre tecnologías, la respuesta es si y no. Hay casos de uso para ambos, GraphQL y REST. Por ejemplo, una API GraphQL puede ser útil cuando el desarrollo necesita iniciar antes que los requerimientos del cliente estén propiamente definidos, y puede ayudar a mantener un API consistente sin mucho esfuerzo. Al final, siempre se debe evaluar las ventajas y desventajas, y elegir la herramienta adecuada para el trabajo.</p>
+        </section>
+      </article>
+      <footer class="astro-I2D4UV2X">
+        <ul class="share-buttons svelte-1jqeme3"><li class="svelte-1jqeme3">Compártelo:</li>
+  <li class="svelte-1jqeme3"><a href="https://www.facebook.com/sharer/sharer.php?u=https://pablo.berganza.dev/es/graphql-is-it-worth-the-switch&amp;quote=Una agradable alternativa a APIs REST con una increíble experiencia de desarrollo" target="_blank" title="Share on Facebook" rel="noopener noreferrer"><svg aria-hidden="true" class="fa-svelte  svelte-qwu10m" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"></path></svg>
+  <span class="sr-only svelte-fdnxdp">Share on Facebook</span>
 </a></li>
-  <li class="svelte-1311d53"><a href="https://twitter.com/intent/tweet?source=https://pablo.berganza.dev/es/graphql-is-it-worth-the-switch&amp;text=Una agradable alternativa a APIs REST con una increíble experiencia de desarrollo:%20https://pablo.berganza.dev/es/graphql-is-it-worth-the-switch&amp;via=Pablo_ABC" target="_blank" title="Tweet" rel="noopener noreferrer"><svg aria-hidden="true" class="fa-svelte  svelte-1d15yci" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"></path></svg>
-  <span class="sr-only svelte-12xlsax">Tweet</span>
+  <li class="svelte-1jqeme3"><a href="https://twitter.com/intent/tweet?source=https://pablo.berganza.dev/es/graphql-is-it-worth-the-switch&amp;text=Una agradable alternativa a APIs REST con una increíble experiencia de desarrollo:%20https://pablo.berganza.dev/es/graphql-is-it-worth-the-switch&amp;via=Pablo_ABC" target="_blank" title="Tweet" rel="noopener noreferrer"><svg aria-hidden="true" class="fa-svelte  svelte-qwu10m" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"></path></svg>
+  <span class="sr-only svelte-fdnxdp">Tweet</span>
 </a></li>
-  <li class="svelte-1311d53"><a href="https://getpocket.com/save?url=https://pablo.berganza.dev/es/graphql-is-it-worth-the-switch&amp;title=GraphQL: ¿Vale la pena el cambio?" target="_blank" title="Add to Pocket" rel="noopener noreferrer"><svg aria-hidden="true" class="fa-svelte  svelte-1d15yci" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M407.6 64h-367C18.5 64 0 82.5 0 104.6v135.2C0 364.5 99.7 464 224.2 464c124 0 223.8-99.5 223.8-224.2V104.6c0-22.4-17.7-40.6-40.4-40.6zm-162 268.5c-12.4 11.8-31.4 11.1-42.4 0C89.5 223.6 88.3 227.4 88.3 209.3c0-16.9 13.8-30.7 30.7-30.7 17 0 16.1 3.8 105.2 89.3 90.6-86.9 88.6-89.3 105.5-89.3 16.9 0 30.7 13.8 30.7 30.7 0 17.8-2.9 15.7-114.8 123.2z"></path></svg>
-  <span class="sr-only svelte-12xlsax">Add to Pocket</span>
+  <li class="svelte-1jqeme3"><a href="https://getpocket.com/save?url=https://pablo.berganza.dev/es/graphql-is-it-worth-the-switch&amp;title=GraphQL: ¿Vale la pena el cambio?" target="_blank" title="Add to Pocket" rel="noopener noreferrer"><svg aria-hidden="true" class="fa-svelte  svelte-qwu10m" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M407.6 64h-367C18.5 64 0 82.5 0 104.6v135.2C0 364.5 99.7 464 224.2 464c124 0 223.8-99.5 223.8-224.2V104.6c0-22.4-17.7-40.6-40.4-40.6zm-162 268.5c-12.4 11.8-31.4 11.1-42.4 0C89.5 223.6 88.3 227.4 88.3 209.3c0-16.9 13.8-30.7 30.7-30.7 17 0 16.1 3.8 105.2 89.3 90.6-86.9 88.6-89.3 105.5-89.3 16.9 0 30.7 13.8 30.7 30.7 0 17.8-2.9 15.7-114.8 123.2z"></path></svg>
+  <span class="sr-only svelte-fdnxdp">Add to Pocket</span>
 </a></li>
-  <li class="svelte-1311d53"><a href="http://www.reddit.com/submit?url=https://pablo.berganza.dev/es/graphql-is-it-worth-the-switch&amp;title=GraphQL: ¿Vale la pena el cambio?" target="_blank" title="Submit to Reddit" rel="noopener noreferrer"><svg aria-hidden="true" class="fa-svelte  svelte-1d15yci" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M283.2 345.5c2.7 2.7 2.7 6.8 0 9.2-24.5 24.5-93.8 24.6-118.4 0-2.7-2.4-2.7-6.5 0-9.2 2.4-2.4 6.5-2.4 8.9 0 18.7 19.2 81 19.6 100.5 0 2.4-2.3 6.6-2.3 9 0zm-91.3-53.8c0-14.9-11.9-26.8-26.5-26.8-14.9 0-26.8 11.9-26.8 26.8 0 14.6 11.9 26.5 26.8 26.5 14.6 0 26.5-11.9 26.5-26.5zm90.7-26.8c-14.6 0-26.5 11.9-26.5 26.8 0 14.6 11.9 26.5 26.5 26.5 14.9 0 26.8-11.9 26.8-26.5 0-14.9-11.9-26.8-26.8-26.8zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-99.7 140.6c-10.1 0-19 4.2-25.6 10.7-24.1-16.7-56.5-27.4-92.5-28.6l18.7-84.2 59.5 13.4c0 14.6 11.9 26.5 26.5 26.5 14.9 0 26.8-12.2 26.8-26.8 0-14.6-11.9-26.8-26.8-26.8-10.4 0-19.3 6.2-23.8 14.9l-65.7-14.6c-3.3-.9-6.5 1.5-7.4 4.8l-20.5 92.8c-35.7 1.5-67.8 12.2-91.9 28.9-6.5-6.8-15.8-11-25.9-11-37.5 0-49.8 50.4-15.5 67.5-1.2 5.4-1.8 11-1.8 16.7 0 56.5 63.7 102.3 141.9 102.3 78.5 0 142.2-45.8 142.2-102.3 0-5.7-.6-11.6-2.1-17 33.6-17.2 21.2-67.2-16.1-67.2z"></path></svg>
-  <span class="sr-only svelte-12xlsax">Submit to Reddit</span>
+  <li class="svelte-1jqeme3"><a href="http://www.reddit.com/submit?url=https://pablo.berganza.dev/es/graphql-is-it-worth-the-switch&amp;title=GraphQL: ¿Vale la pena el cambio?" target="_blank" title="Submit to Reddit" rel="noopener noreferrer"><svg aria-hidden="true" class="fa-svelte  svelte-qwu10m" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M283.2 345.5c2.7 2.7 2.7 6.8 0 9.2-24.5 24.5-93.8 24.6-118.4 0-2.7-2.4-2.7-6.5 0-9.2 2.4-2.4 6.5-2.4 8.9 0 18.7 19.2 81 19.6 100.5 0 2.4-2.3 6.6-2.3 9 0zm-91.3-53.8c0-14.9-11.9-26.8-26.5-26.8-14.9 0-26.8 11.9-26.8 26.8 0 14.6 11.9 26.5 26.8 26.5 14.6 0 26.5-11.9 26.5-26.5zm90.7-26.8c-14.6 0-26.5 11.9-26.5 26.8 0 14.6 11.9 26.5 26.5 26.5 14.9 0 26.8-11.9 26.8-26.5 0-14.9-11.9-26.8-26.8-26.8zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-99.7 140.6c-10.1 0-19 4.2-25.6 10.7-24.1-16.7-56.5-27.4-92.5-28.6l18.7-84.2 59.5 13.4c0 14.6 11.9 26.5 26.5 26.5 14.9 0 26.8-12.2 26.8-26.8 0-14.6-11.9-26.8-26.8-26.8-10.4 0-19.3 6.2-23.8 14.9l-65.7-14.6c-3.3-.9-6.5 1.5-7.4 4.8l-20.5 92.8c-35.7 1.5-67.8 12.2-91.9 28.9-6.5-6.8-15.8-11-25.9-11-37.5 0-49.8 50.4-15.5 67.5-1.2 5.4-1.8 11-1.8 16.7 0 56.5 63.7 102.3 141.9 102.3 78.5 0 142.2-45.8 142.2-102.3 0-5.7-.6-11.6-2.1-17 33.6-17.2 21.2-67.2-16.1-67.2z"></path></svg>
+  <span class="sr-only svelte-fdnxdp">Submit to Reddit</span>
 </a></li>
-  <li class="svelte-1311d53"><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://pablo.berganza.dev/es/graphql-is-it-worth-the-switch&amp;title=GraphQL: ¿Vale la pena el cambio?&amp;summary=Una agradable alternativa a APIs REST con una increíble experiencia de desarrollo&amp;source=https://pablo.berganza.dev/es/graphql-is-it-worth-the-switch" target="_blank" title="Share on LinkedIn" rel="noopener noreferrer"><svg aria-hidden="true" class="fa-svelte  svelte-1d15yci" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
-  <span class="sr-only svelte-12xlsax">Share on LinkedIn</span>
+  <li class="svelte-1jqeme3"><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://pablo.berganza.dev/es/graphql-is-it-worth-the-switch&amp;title=GraphQL: ¿Vale la pena el cambio?&amp;summary=Una agradable alternativa a APIs REST con una increíble experiencia de desarrollo&amp;source=https://pablo.berganza.dev/es/graphql-is-it-worth-the-switch" target="_blank" title="Share on LinkedIn" rel="noopener noreferrer"><svg aria-hidden="true" class="fa-svelte  svelte-qwu10m" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
+  <span class="sr-only svelte-fdnxdp">Share on LinkedIn</span>
 </a></li>
-</ul><astro-root uid="2tDttI"><label for="commento-textarea-root" class="visuallyhidden svelte-ob38am">Comentario</label>
-<div id="commento" class="svelte-ob38am"></div>
+</ul>
+        <astro-root uid="ZjCFUS"><label for="commento-textarea-root" class="visuallyhidden svelte-1vnibeq">Comentario</label>
+<div id="commento" class="svelte-1vnibeq"></div>
 
 </astro-root>
-<script type="module">
-import setup from '/_astro_frontend/hydrate/visible.js';
-setup("2tDttI", {}, async () => {
+      </footer>
+    </main>
   
-  const [{ default: Component }, { default: hydrate }] = await Promise.all([import("/_astro/src/components/Commento.svelte.js"), import("/_snowpack/pkg/@astrojs.renderer-svelte.client.v0.1.1.js")]);
-  return (el, children) => hydrate(el)(Component, {
-  "lang": "es",
-  "src": "https://cdn.commento.io/js/commento.js"
-}, children);
-
-});
-</script></footer></main></body></html>
+</body></html>
