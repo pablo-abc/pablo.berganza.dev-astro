@@ -5,6 +5,7 @@
   "scripts": {
     "start": "astro dev",
     "build": "astro build",
+    "preview": "astro preview",
     "deploy": "pnpm build && touch dist/.nojekyll && gh-pages -td dist/"
   },
   "devDependencies": {
