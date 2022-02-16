@@ -11,7 +11,6 @@ tags:
     - programación
     - tecnología
 lang: es
-layout: ../../../layouts/PostLayout.astro
 ---
 
 Para bien o para mal, la mayor parte de mi vida digital ha seguido una mentalidad de "hazlo tu mismo". Una ventaja de esto es que he logrado aprender el funcionamiento de varias tecnologías desde un nivel más profundo. Por otro lado, nunca logré terminar ninguno de mis proyectos personales debido a esto (después de todo, en la mayor parte de casos estaba intentando reinventar la rueda).

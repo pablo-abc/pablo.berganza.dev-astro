@@ -1,7 +1,6 @@
 ---
 title: 'Svelte: mi nueva obsesión'
 slug: svelte-my-new-obsession
-layout: ../../../layouts/PostLayout.astro
 description: Le di una oportunidad a Svelte y terminé reescribiendo todo mi sitio
 created: '2020-04-20'
 image:

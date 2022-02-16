@@ -2,7 +2,6 @@
 title: En realidad no necesitas Apollo
 description: ¿Proyecto hobby? ¿Aprendiendo GraphQL? Tal vez te estás complicando con Apollo
 slug: you-dont-need-apollo
-layout: ../../../layouts/PostLayout.astro
 created: '2020-06-08'
 image:
   width: 800

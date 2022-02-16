@@ -2,7 +2,16 @@
 import Base from '../../../layouts/Base.astro';
 import Blogs from '../../../components/Blog/Blogs.astro';
 const posts = Astro
-      .fetchContent('./*.md')
+      .fetchContent('../../../posts/es/*.md')
+      .map((post) => ({
+        ...post,
+        lang: 'es',
+        url: post
+          .file
+          .pathname
+          .replace(/\/src\/posts\/es/, '/es/blog')
+          .replace(/\.md$/, ''),
+      }))
       .sort((a, b) => {
         return (
           new Date(b.created).getTime() -
@@ -11,5 +20,5 @@ const posts = Astro
       });
 ---
 <Base title="Blog" lang="es" section="blog">
-  <Blogs lang="es" {posts} />
+  <Blogs lang="es" posts={posts} />
 </Base>

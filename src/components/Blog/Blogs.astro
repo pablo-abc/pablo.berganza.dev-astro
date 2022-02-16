@@ -12,8 +12,8 @@ function getTtr(source) {
 const { lang = 'en', posts = [], title = 'Blog', tag } = Astro.props;
 ---
 
-<HomeLink {lang} />
-<LangLink {lang} section={tag ? `blog/tags/${tag}` : 'blog'} />
+<HomeLink lang={lang} />
+<LangLink lang={lang} section={tag ? `blog/tags/${tag}` : 'blog'} />
 <section class="blog">
   <h1 class="title">{title}</h1>
   <ul>
@@ -24,14 +24,14 @@ const { lang = 'en', posts = [], title = 'Blog', tag } = Astro.props;
         <div class="stats">
           <div class="ttr">
             <span>
-              <Clock {lang} />
+              <Clock lang={lang} />
             </span>
             <span>{getTtr(post.astro.source)}</span>
             <span>{lang === 'en' ? 'minutes' : 'minutos'}</span>
           </div>
           <div class="created">
             <span>
-              <Calendar {lang} />
+              <Calendar lang={lang} />
             </span>
             <span>
               {post.created}

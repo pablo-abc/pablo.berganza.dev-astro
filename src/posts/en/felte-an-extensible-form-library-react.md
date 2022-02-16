@@ -2,7 +2,6 @@
 title: "Felte: An extensible form library for React"
 description: A flexible way to handle your forms in React
 slug: felte-an-extensible-form-library-react
-layout: ../../layouts/PostLayout.astro
 created: '2022-02-14'
 imgext: png
 image:

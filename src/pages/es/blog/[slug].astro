@@ -1,0 +1,27 @@
+---
+import PostLayout from '../../../layouts/PostLayout.astro';
+export async function getStaticPaths() {
+  const posts = Astro.fetchContent('../../../posts/es/*.md');
+  const slugs = posts.map((post) => post.slug);
+
+  return slugs.map(slug => {
+    return {
+      params: { slug },
+      props: {
+        post: posts
+          .find(post => {
+            post.lang = 'es';
+            return post.slug === slug
+          })
+      },
+    }
+  });
+}
+
+const { slug } = Astro.request.params;
+const { post } = Astro.props;
+---
+
+<PostLayout content={post}>
+  {post.content.html}
+</PostLayout>

@@ -1,11 +1,9 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import LangLink from '../../../components/LangLink.astro';
-import HomeLink from '../../../components/HomeLink.astro';
 import Blogs from '../../../components/Blog/Blogs.astro';
 
 export async function getStaticPaths() {
-  const posts = Astro.fetchContent('../*.md');
+  const posts = Astro.fetchContent('../../../posts/en/*.md');
   const possibleTags = new Set();
   for (const post of posts) {
     for (const tag of post.tags) {
@@ -19,6 +17,17 @@ export async function getStaticPaths() {
       props: {
         posts: posts
           .filter(post => post.tags.includes(tag))
+          .map(post => {
+            const url = post
+                  .file
+                  .pathname
+                  .replace('/src/posts/en', '/blog')
+                  .replace('.md', '');
+            return {
+              ...post,
+              url,
+            };
+          })
           .sort((a, b) => {
             return (
               new Date(b.created).getTime() -
@@ -33,8 +42,9 @@ export async function getStaticPaths() {
 const { tag } = Astro.request.params;
 const { posts } = Astro.props;
 const section = `blog/tags/${tag}`;
+const title = `Tag: ${tag}`;
 ---
 
-<Base lang="en" {section}>
-  <Blogs {posts} lang="en" {tag} title={`Tag: ${tag}`} />
+<Base lang="en" section={section} title={title}>
+  <Blogs posts={posts} lang="en" tag={tag} title={title} />
 </Base>

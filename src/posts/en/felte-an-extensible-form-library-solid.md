@@ -2,7 +2,6 @@
 title: "Felte: An extensible form library for Solid"
 description: A flexible way to handle your forms in Solid
 slug: felte-an-extensible-form-library-solid
-layout: ../../layouts/PostLayout.astro
 created: '2021-12-08'
 imgext: png
 image:

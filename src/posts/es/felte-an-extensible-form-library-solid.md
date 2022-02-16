@@ -2,7 +2,6 @@
 title: "Felte: Manejo de formularios en Solid"
 description: Una forma flexible de manejar tus formularios en Solid
 slug: felte-an-extensible-form-library-solid
-layout: ../../../layouts/PostLayout.astro
 created: '2021-12-08'
 imgext: png
 lang: es
