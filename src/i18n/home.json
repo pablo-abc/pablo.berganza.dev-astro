@@ -38,8 +38,8 @@
       {
         "title": "Felte",
         "description": {
-          "en": "<p>A form management library for Svelte and Solid.</p><p><span aria-hidden=\"true\">→</span> Check the <a href=\"https://felte.dev\">website</a>.</p><p><span aria-hidden=\"true\">→</span> Check the <a href=\"https://github.com/pablo-abc/felte\">code on GitHub</a>.</p>",
-          "es": "<p>Librería para el manejo de formularios en Svelte y Solid.</p><p><span aria-hidden=\"true\">→</span> Ve al <a href=\"https://felte.dev\">sitio web</a>.</p><p><span aria-hidden=\"true\">→</span> Ve al <a href=\"https://github.com/pablo-abc/felte\">código en GitHub</a>.</p>"
+          "en": "<p>A form management library for Svelte, Solid and React.</p><p><span aria-hidden=\"true\">→</span> Check the <a href=\"https://felte.dev\">website</a>.</p><p><span aria-hidden=\"true\">→</span> Check the <a href=\"https://github.com/pablo-abc/felte\">code on GitHub</a>.</p>",
+          "es": "<p>Librería para el manejo de formularios en Svelte, Solid y React.</p><p><span aria-hidden=\"true\">→</span> Ve al <a href=\"https://felte.dev\">sitio web</a>.</p><p><span aria-hidden=\"true\">→</span> Ve al <a href=\"https://github.com/pablo-abc/felte\">código en GitHub</a>.</p>"
         }
       },
       {
