@@ -44,7 +44,7 @@ const jsonLd = `
 `;
 ---
 
-<html {lang}>
+<html lang={lang}>
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -86,18 +86,18 @@ const jsonLd = `
       description={content.description}
       created={content.created}
       isArticle
-      {host}
-      {lang}
+      host={host}
+      lang={lang}
       img={imgSrc}
-      {ttr}
-      {section}
+      ttr={ttr}
+      section={section}
     />
     <meta name="color-scheme" content="light dark">
   </head>
   <body>
     <main>
-      <HomeLink {lang} />
-      <LangLink {lang} {section}} />
+      <HomeLink lang={lang} />
+      <LangLink lang={lang} section={section} />
       <article>
         <header>
           <h1 class="title">{content.title}</h1>
@@ -113,14 +113,14 @@ const jsonLd = `
         <div class="stats">
           <div class="ttr">
             <span>
-              <Clock {lang} />
+              <Clock lang={lang} />
             </span>
             <span>{ttr}</span>
             <span>{lang === 'en' ? 'minutes' : 'minutos'}</span>
           </div>
           <div class="created">
             <span>
-              <Calendar {lang} />
+              <Calendar lang={lang} />
             </span>
             <span>
               {content.created}
@@ -144,11 +144,11 @@ const jsonLd = `
         </section>
       </article>
       <footer>
-        <ShareButtons {host} blog={content} {lang} />
+        <ShareButtons host={host} blog={content} lang={lang} />
         <Commento
           client:visible
-          {lang}
-          src={__SNOWPACK_ENV__.NODE_ENV === 'production'
+          lang={lang}
+          src={import.meta.env.PROD
           ? 'https://cdn.commento.io/js/commento.js'
           : 'http://localhost:8080/js/commento.js'}
           />

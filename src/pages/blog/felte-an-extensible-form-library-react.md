@@ -110,7 +110,7 @@ We are currently maintaining four packages to integrate Felte with some popular 
 
 The package to use `yup` is on npm under the name `@felte/validator-yup`. You will need to install it alongside `yup`:
 
-```sh
+```bash
 npm install --save @felte/validator-yup yup
 
 # Or, if you use yarn
@@ -171,7 +171,7 @@ For brevity, I am only going to cover the first package. But you can read more a
 
 Using a React component to get your validation messages can be done with the package `@felte/reporter-react`.  You’ll need to add it to your project using your favourite package manager:
 
-```sh
+```bash
 # npm
 npm i -S @felte/reporter-react
 

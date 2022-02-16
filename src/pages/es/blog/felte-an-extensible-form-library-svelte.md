@@ -105,7 +105,7 @@ Actualmente mantenemos cuatro paquetes para integrar Felte con algunas librería
 
 Nuestro paquete para usar `yup` se encuentra en npm bajo el nombre `@felte/validator-yup`. Necesitarás instalarlo junto a `yup`:
 
-```sh
+```bash
 npm install --save @felte/validator-yup yup
 
 # O, si usas yarn
@@ -163,7 +163,7 @@ Para mantener todo breve, solo escribiré sobre la primera librería mencionada.
 
 Utilizar un componente de Svelte para obtener tus mensajes de validación puede hacerse con la librería `@felte/reporter-svelte`. Necesitarás añadir esta librería a tu proyecto con tu administrador de paquetes preferido:
 
-```sh
+```bash
 # npm
 npm i -S @felte/reporter-svelte
 
