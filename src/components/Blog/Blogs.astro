@@ -2,6 +2,7 @@
 import LangLink from '../../components/LangLink.astro';
 import HomeLink from '../../components/HomeLink.astro';
 import Clock from '../../components/icons/Clock.astro';
+import RSS from '../../components/icons/RSS.astro';
 import Calendar from '../../components/icons/Calendar.astro';
 import readingTime from 'reading-time';
 
@@ -9,13 +10,18 @@ function getTtr(source) {
   return Math.round(readingTime(source).minutes)
 }
 
-const { lang = 'en', posts = [], title = 'Blog', tag } = Astro.props;
+const { lang = 'en', posts = [], title = 'Blog', tag, showRss } = Astro.props;
+
+const rssLink = lang === 'en' ? '/blog/rss.xml' : '/es/blog/rss.xml';
 ---
 
 <HomeLink lang={lang} />
 <LangLink lang={lang} section={tag ? `blog/tags/${tag}` : 'blog'} />
 <section class="blog">
-  <h1 class="title">{title}</h1>
+  <h1 class="title">
+    {title}
+    {showRss && <a class="rss-link" href={rssLink}><RSS lang={lang} /></a>}
+  </h1>
   <ul>
     {posts.map(post => (
     <a href={post.url}>
@@ -110,5 +116,13 @@ const { lang = 'en', posts = [], title = 'Blog', tag } = Astro.props;
       background-color: var(--color-card-hover);
       text-decoration: none;
     }
+  }
+
+  .rss-link :global(svg) {
+    height: 4rem;
+  }
+
+  .rss-link {
+    display: inline;
   }
 </style>

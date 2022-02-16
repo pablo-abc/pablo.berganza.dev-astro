@@ -1,8 +1,33 @@
 ---
 import PostLayout from '../../../layouts/PostLayout.astro';
-export async function getStaticPaths() {
+export async function getStaticPaths({ rss }) {
   const posts = Astro.fetchContent('../../../posts/es/*.md');
   const slugs = posts.map((post) => post.slug);
+
+  rss({
+    title: 'Blog | Pablo Berganza',
+    stylesheet: true,
+    description: 'Articulos sobre desarrollo web entre otras cosas',
+    customData: '<language>es-sv</language>',
+    items: posts
+      .sort((a, b) => {
+        return (
+          new Date(b.created).getTime() -
+            new Date(a.created).getTime()
+        )
+      })
+      .map(item => ({
+        title: item.title,
+        description: item.description,
+        link: item
+          .file
+          .pathname
+          .replace('/src/posts/es', '/es/blog')
+          .replace('.md', ''),
+        pubDate: item.created,
+      })),
+    dest: '/es/blog/rss.xml',
+  });
 
   return slugs.map(slug => {
     return {
@@ -18,7 +43,6 @@ export async function getStaticPaths() {
   });
 }
 
-const { slug } = Astro.request.params;
 const { post } = Astro.props;
 ---
 
