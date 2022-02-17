@@ -1,6 +1,6 @@
 ---
 title: "Creating a Chai like assertion library using proxies"
-description: Showcasing how I made a fun side-project I made to be used with uvu
+description: Showcasing how I made a fun side-project to be used with uvu
 slug: creating-a-chai-like-assertion-library-using-proxies
 published: false
 created: '2022-02-17'
