@@ -65,7 +65,7 @@ export function expect(value) {
 expect().this.does.nothing.but.also.does.not.crash;
 ```
 
-Next we will allow for /any/ of these chain words to be functions.
+Next we will allow for _any_ of these chain words to be functions.
 
 ```javascript
 export function expect(value) {
@@ -92,7 +92,7 @@ export function expect(value) {
 expect().this.does.nothing().but.also.does.not.crash();
 ```
 
-With this we already got the base for our syntax. We now need to be able to add some /meaning/ to certain properties. For example, we might want to make `expect(…).to.be.null` to check whether a value is null or not.
+With this we already got the base for our syntax. We now need to be able to add some _meaning_ to certain properties. For example, we might want to make `expect(…).to.be.null` to check whether a value is null or not.
 
 ## Adding meaning to our properties
 We could perfectly check the `name` of the prop being received and use that to run validations. For example, if we wanted to add a validation for checking if a value is `null`:
