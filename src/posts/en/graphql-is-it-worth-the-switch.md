@@ -3,6 +3,7 @@ title: 'GraphQL: Is it worth the switch?'
 slug: graphql-is-it-worth-the-switch
 description: A nice alternative to REST APIs with a fantastic developer experience
 created: '2019-06-11'
+published: true
 image:
   width: 800
   height: 600

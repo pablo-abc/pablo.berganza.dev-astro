@@ -10,6 +10,12 @@ export async function getStaticPaths({ rss }) {
     description: 'Articulos sobre desarrollo web entre otras cosas',
     customData: '<language>es-sv</language>',
     items: posts
+      .filter((post) => {
+        if (import.meta.env.PROD) {
+          return post.published;
+        }
+        return true;
+      })
       .sort((a, b) => {
         return (
           new Date(b.created).getTime() -

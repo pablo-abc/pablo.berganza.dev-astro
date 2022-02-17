@@ -3,6 +3,7 @@ title: 'Svelte: mi nueva obsesión'
 slug: svelte-my-new-obsession
 description: Le di una oportunidad a Svelte y terminé reescribiendo todo mi sitio
 created: '2020-04-20'
+published: true
 image:
   width: 800
   height: 450

@@ -3,6 +3,7 @@ title: "Announcing Felte 1.0: A form library for Svelte, Solid and React"
 description: After more than a year of work, v1 is here!
 slug: announcing-felte-v1
 created: '2022-02-14'
+published: true
 imgext: png
 image:
   width: 800

@@ -16,6 +16,12 @@ export async function getStaticPaths() {
       params: { tag },
       props: {
         posts: posts
+          .filter((post) => {
+            if (import.meta.env.PROD) {
+              return post.published;
+            }
+            return true;
+          })
           .filter(post => post.tags.includes(tag))
           .map(post => {
             const url = post

@@ -3,6 +3,7 @@ title: 'GraphQL: ¿Vale la pena el cambio?'
 slug: graphql-is-it-worth-the-switch
 description: Una agradable alternativa a APIs REST con una increíble experiencia de desarrollo
 created: '2019-06-11'
+published: true
 image:
   width: 800
   height: 600

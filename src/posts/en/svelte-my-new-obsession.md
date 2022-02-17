@@ -3,6 +3,7 @@ title: 'Svelte: my new obsession'
 slug: svelte-my-new-obsession
 description: I gave Svelte a try and ended up rewriting my whole site
 created: '2020-04-20'
+published: true
 image:
   width: 800
   height: 450

@@ -9,6 +9,7 @@ import ShareButtons from 'components:ShareButtons.svelte';
 import Commento from 'components:Commento.svelte';
 
 const { content } = Astro.props;
+const { published } = content;
 const host = Astro.site;
 const ttr = Math.round(readingTime(content.astro.source).minutes);
 const lang = content.lang || 'en';
@@ -48,6 +49,7 @@ const jsonLd = `
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {!published && <meta name="robots" content="noindex">}
     <title>{content.title} | Pablo Berganza</title>
     <link
       rel="alternate"

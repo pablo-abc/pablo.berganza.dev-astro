@@ -3,6 +3,7 @@ title: "Felte: An extensible form library for Solid"
 description: A flexible way to handle your forms in Solid
 slug: felte-an-extensible-form-library-solid
 created: '2021-12-08'
+published: true
 imgext: png
 image:
   width: 800
