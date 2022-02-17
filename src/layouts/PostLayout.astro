@@ -145,6 +145,33 @@ const jsonLd = `
           <slot />
         </section>
       </article>
+      <script>
+       const codeBlocks = document.querySelectorAll('pre');
+       for (const block of codeBlocks) {
+         const textContent = block.textContent;
+         const parent = block.parentNode;
+         const container = document.createElement('div');
+         container.className = 'code-container';
+         parent.insertBefore(container, block);
+         container.appendChild(block);
+         block.tabIndex = 0;
+         const copyButton = document.createElement('button');
+         copyButton.textContent = 'Copy';
+         copyButton.className = 'copy-button';
+         container.appendChild(copyButton);
+         copyButton.addEventListener('click', () => {
+           navigator
+             .clipboard
+             .writeText(textContent)
+             .then(() => {
+               copyButton.textContent = 'Copied!';
+               setTimeout(() => {
+                 copyButton.textContent = 'Copy';
+               }, 500);
+             });
+         });
+       }
+      </script>
       <footer>
         <ShareButtons host={host} blog={content} lang={lang} />
         <Commento
@@ -271,6 +298,8 @@ const jsonLd = `
       overflow: auto;
       display: flex;
       padding: 10px;
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
       border-left: 5px solid var(--color-primary-2);
       border-radius: 10px;
       white-space: pre;       /* css-3 */
@@ -292,6 +321,34 @@ const jsonLd = `
     color: var(--color-heading);
     span {
       margin-right: 0.2rem;
+    }
+  }
+
+  main {
+    :global(.code-container) {
+      position: relative;
+    }
+
+    :global(.copy-button) {
+      opacity: 0.5;
+      position: absolute;
+      top: 0.2rem;
+      right: 2rem;
+      padding: 0.5rem;
+      padding-top: 0.7rem;
+      border-radius: 10px;
+    }
+
+    :global(.copy-button):focus-visible {
+      opacity: 1;
+    }
+
+    :global(.copy-button):hover {
+      opacity: 1;
+      background: hsl(231,15,28);
+    }
+    :global(.copy-button):active {
+      background: hsl(231,15,38);
     }
   }
 </style>
