@@ -207,7 +207,7 @@
 <span class="token punctuation">}</span>
 
 <span class="token function">expect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>this<span class="token punctuation">.</span>does<span class="token punctuation">.</span>nothing<span class="token punctuation">.</span>but<span class="token punctuation">.</span>also<span class="token punctuation">.</span>does<span class="token punctuation">.</span>not<span class="token punctuation">.</span>crash<span class="token punctuation">;</span></code></pre>
-<p>Next we will allow for /any/ of these chain words to be functions.</p>
+<p>Next we will allow for <em>any</em> of these chain words to be functions.</p>
 <pre class="language-javascript"><code data-astro-raw="" class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">expect</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> proxy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>
     <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -230,7 +230,7 @@
 <span class="token punctuation">}</span>
 
 <span class="token function">expect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>this<span class="token punctuation">.</span>does<span class="token punctuation">.</span><span class="token function">nothing</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>but<span class="token punctuation">.</span>also<span class="token punctuation">.</span>does<span class="token punctuation">.</span>not<span class="token punctuation">.</span><span class="token function">crash</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>With this we already got the base for our syntax. We now need to be able to add some /meaning/ to certain properties. For example, we might want to make <code data-astro-raw="">expect(…).to.be.null</code> to check whether a value is null or not.</p>
+<p>With this we already got the base for our syntax. We now need to be able to add some <em>meaning</em> to certain properties. For example, we might want to make <code data-astro-raw="">expect(…).to.be.null</code> to check whether a value is null or not.</p>
 <h2 id="adding-meaning-to-our-properties">Adding meaning to our properties</h2>
 <p>We could perfectly check the <code data-astro-raw="">name</code> of the prop being received and use that to run validations. For example, if we wanted to add a validation for checking if a value is <code data-astro-raw="">null</code>:</p>
 <pre class="language-javascript"><code data-astro-raw="" class="language-javascript"><span class="token comment">// For brevity, we're not going to use the code that handles functions.</span>
