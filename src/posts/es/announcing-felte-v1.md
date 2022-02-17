@@ -1,7 +1,6 @@
 ---
 title: "Anunciando Felte 1.0: Una librería de formularios para Svelte, Solid y React"
 description: Después de más de un año de trabajo, ¡v1 está aquí!
-slug: announcing-felte-v1
 created: '2022-02-14'
 published: true
 imgext: png

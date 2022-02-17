@@ -1,7 +1,6 @@
 ---
 title: "Felte: Manejo de formularios en Svelte"
 description: Una forma flexible de manejar tus formularios en Svelte
-slug: felte-an-extensible-form-library-svelte
 created: '2021-12-08'
 published: true
 imgext: png

@@ -1,7 +1,6 @@
 ---
 title: "Felte: Manejo de formularios en React"
 description: Una forma flexible de manejar tus formularios en React
-slug: felte-an-extensible-form-library-react
 created: '2022-02-14'
 published: true
 imgext: png

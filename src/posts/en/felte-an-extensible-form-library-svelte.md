@@ -1,7 +1,6 @@
 ---
 title: "Felte: An extensible form library for Svelte"
 description: A flexible way to handle your forms in Svelte
-slug: felte-an-extensible-form-library-svelte
 created: '2021-12-08'
 published: true
 imgext: png

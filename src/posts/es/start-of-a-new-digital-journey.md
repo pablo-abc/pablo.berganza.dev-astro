@@ -1,6 +1,5 @@
 ---
 title: Inicio de un nuevo viaje digital
-slug: start-of-a-new-digital-journey
 description: Cómo me compliqué la vida al intentar crear mi sitio web desde cero
 created: '2019-03-18'
 published: true

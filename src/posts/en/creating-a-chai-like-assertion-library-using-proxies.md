@@ -1,7 +1,6 @@
 ---
 title: "Creating a Chai like assertion library using proxies"
 description: Showcasing how I made a fun side-project to be used with uvu
-slug: creating-a-chai-like-assertion-library-using-proxies
 published: false
 created: '2022-02-17'
 imgext: png
@@ -19,14 +18,14 @@ For the past few weeks I’ve taken the (arguably pointless) work of migrating [
 
 While this is fine and I could have perfectly moved all my tests to use said assertion style, I like the descriptive way Jest tests look like. As a quick way to maintain certain similarity I reached for [ChaiJS](https://chaijs.com), an assertion library that is mainly used with [mocha](https://mochajs.org). Chai offers `expect` like assertions that can arguably be more descriptive than Jest’s. Instead of writing `expect(…).toBe(true)`, you’d write `expect(…).to.be.true`. For the most part I managed to do a search and replace for this.
 
-This set up works really good! But there’s some minor details. The assertion errors thrown by Chai are slightly different than those expected by uvu. So sometimes I’d get messages or extra details that are not so relevant to the test itself. Or sometimes diffs comparing `undefined` to `undefined` when an assertion failed. As a proper developer with too much free time, I went ahead and decided to experiment with writing my own assertion library built on top of uvu’s assertions that I called [uvu-expect](https://github.com/pablo-abc/uvu-expect). Here’s more or less how I did it.
+This set up works really good! But there’s some minor details. The assertion errors thrown by Chai are slightly different than those expected by uvu. So sometimes I’d get messages or extra details that are not so relevant to the test itself. Or diffs comparing `undefined` to `undefined` when an assertion failed would appear. As a proper developer with too much free time, I went ahead and decided to experiment with writing my own assertion library built on top of uvu’s assertions that I called [uvu-expect](https://github.com/pablo-abc/uvu-expect). Here’s more or less how I did it.
 
 ## The “expect” function
 The main thing our assertion library needs is an `expect` function that should receive the value you’re planning to validate.
 
 ```javascript
 export function expect(value) {
-	// run your validations here
+  // run your validations here
 }
 ```
 

@@ -24,7 +24,7 @@
   --color-complement-3: #a5f026;
   --color-complement-4: #8de000;
 
-  --background-color: #eee0ee;
+  --background-color: hsl(300, 29%, 91%);
   --background-color-alt: #ffbfed;
   --color-heading: #c60065;
   --color-subheading: var(--color-secondary-2-4);
@@ -35,6 +35,8 @@
   --color-stats: #77606c;
   --background-color-quote: #fff7fb;
   --color-memage: var(--color-secondary-2-2);
+
+  --background-codespan: hsl(300, 29%, 86%);
 
   --h1: 3rem;
 }
@@ -53,6 +55,8 @@
     --color-heading: #e22485;
     --color-subheading: var(--color-secondary-2-1);
     --color-primary-on-alt: var(--color-heading);
+
+    --background-codespan: hsl(231, 15%, 18%);
   }
 }
 
