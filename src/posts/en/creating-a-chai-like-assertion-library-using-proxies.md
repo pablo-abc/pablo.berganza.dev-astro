@@ -21,7 +21,7 @@ While this is fine and I could have perfectly moved all my tests to use said ass
 
 This set up works really good! But there’s some minor details. The assertion errors thrown by Chai are slightly different than those expected by uvu. So some times I’d get messages or extra details that are not so relevant to the test itself. Or sometimes diffs comparing `undefined` to `undefined` when an assertion failed. As a proper developer with too much free time, I went ahead and decided to experiment with writing my own assertion library built on top of uvu’s assertions that I called [uvu-expect](https://github.com/pablo-abc/uvu-expect). Here’s more or less how I did it.
 
-## The `expect` function
+## The "expect" function
 The main thing our assertion library needs is an `expect` function that should receive the value you’re planning to validate.
 
 ```javascript
