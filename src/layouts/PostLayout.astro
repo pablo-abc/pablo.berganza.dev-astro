@@ -147,6 +147,18 @@ const jsonLd = `
       </article>
       <script>
        const codeBlocks = document.querySelectorAll('pre');
+       const copySvg = `
+<span class="sr-only">Copy to clipboard</span>
+<svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<title>Copy to clipboard</title>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path>
+</svg>`;
+       const copiedSvg = `
+<span class="sr-only">Copied</span>
+<svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<title>Copied!</title>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+</svg>`;
        for (const block of codeBlocks) {
          const textContent = block.textContent;
          const parent = block.parentNode;
@@ -156,7 +168,7 @@ const jsonLd = `
          container.appendChild(block);
          block.tabIndex = 0;
          const copyButton = document.createElement('button');
-         copyButton.textContent = 'Copy';
+         copyButton.innerHTML = copySvg;
          copyButton.className = 'copy-button';
          container.appendChild(copyButton);
          copyButton.addEventListener('click', () => {
@@ -164,9 +176,11 @@ const jsonLd = `
              .clipboard
              .writeText(textContent)
              .then(() => {
-               copyButton.textContent = 'Copied!';
+               copyButton.innerHTML = copiedSvg;
+               copyButton.classList.add('copied');
                setTimeout(() => {
-                 copyButton.textContent = 'Copy';
+                 copyButton.innerHTML = copySvg;
+                 copyButton.classList.remove('copied');
                }, 500);
              });
          });
@@ -334,9 +348,19 @@ const jsonLd = `
       position: absolute;
       top: 0.2rem;
       right: 2rem;
-      padding: 0.5rem;
-      padding-top: 0.7rem;
+      padding-left: 0.5rem;
+      padding-right: 0.3rem;
+      padding-top: 0.6rem;
+      padding-bottom: 0.1rem;
       border-radius: 10px;
+    }
+
+    :global(.copied) {
+      color: var(--color-complement-3);
+    }
+
+    :global(.copy-button svg) {
+      height: 1.5rem;
     }
 
     :global(.copy-button):focus-visible {

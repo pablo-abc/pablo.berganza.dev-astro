@@ -1,39 +1,39 @@
 :root {
-  --color-primary-0: #E34495;
-  --color-primary-1: #F499C7;
-  --color-primary-2: #EC69AB;
-  --color-primary-3: #DA2280;
-  --color-primary-4: #C60065;
-  --color-primary-on-alt: #8C0048;
+  --color-primary-0: #e34495;
+  --color-primary-1: #f499c7;
+  --color-primary-2: #ec69ab;
+  --color-primary-3: #da2280;
+  --color-primary-4: #c60065;
+  --color-primary-on-alt: #8c0048;
 
-  --color-secondary-1-0: #FF914C;
-  --color-secondary-1-1: #FFC49F;
-  --color-secondary-1-2: #FFA872;
-  --color-secondary-1-3: #FF7A28;
-  --color-secondary-1-4: #F15C00;
+  --color-secondary-1-0: #ff914c;
+  --color-secondary-1-1: #ffc49f;
+  --color-secondary-1-2: #ffa872;
+  --color-secondary-1-3: #ff7a28;
+  --color-secondary-1-4: #f15c00;
 
-  --color-secondary-2-0: #7F4ACD;
-  --color-secondary-2-1: #BC9CEC;
-  --color-secondary-2-2: #9A6DDC;
-  --color-secondary-2-3: #672CBD;
-  --color-secondary-2-4: #4B0EA4;
+  --color-secondary-2-0: #7f4acd;
+  --color-secondary-2-1: #bc9cec;
+  --color-secondary-2-2: #9a6ddc;
+  --color-secondary-2-3: #672cbd;
+  --color-secondary-2-4: #4b0ea4;
 
-  --color-complement-0: #B4F349;
-  --color-complement-1: #D8FB9D;
-  --color-complement-2: #C4F76E;
-  --color-complement-3: #A5F026;
-  --color-complement-4: #8DE000;
+  --color-complement-0: #b4f349;
+  --color-complement-1: #d8fb9d;
+  --color-complement-2: #c4f76e;
+  --color-complement-3: #a5f026;
+  --color-complement-4: #8de000;
 
   --background-color: #eee0ee;
   --background-color-alt: #ffbfed;
   --color-heading: #c60065;
   --color-subheading: var(--color-secondary-2-4);
-  --base-font-color: #523E49;
-  --base-font-color-on-alt: #361E2A;
-  --color-link: #33007E;
+  --base-font-color: #523e49;
+  --base-font-color-on-alt: #361e2a;
+  --color-link: #33007e;
   --color-card-hover: #d3c6e6;
   --color-stats: #77606c;
-  --background-color-quote: #FFF7FB;
+  --background-color-quote: #fff7fb;
   --color-memage: var(--color-secondary-2-2);
 
   --h1: 3rem;
@@ -50,7 +50,7 @@
     --color-card-hover: hsl(278, 50%, 10%);
     --color-stats: hsl(329, 10%, 75%);
 
-    --color-heading: #E22485;
+    --color-heading: #e22485;
     --color-subheading: var(--color-secondary-2-1);
     --color-primary-on-alt: var(--color-heading);
   }
@@ -64,7 +64,8 @@
 
 body {
   background: var(--background-color);
-  font-family: 'Overpass', 'Helvetica Neue', Verdana, Helvetica, Arial, sans-serif;
+  font-family: 'Overpass', 'Helvetica Neue', Verdana, Helvetica, Arial,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--base-font-color-on-alt);
@@ -85,7 +86,9 @@ h1 {
   font-size: var(--h1);
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: 'Roboto Slab', serif;
 }
 
@@ -124,4 +127,15 @@ select:focus-visible,
 [tabindex]:focus-visible {
   outline: 3px solid var(--color-subheading);
   outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
 }
