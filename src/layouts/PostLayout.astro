@@ -145,9 +145,7 @@ const jsonLd = `
           <slot />
         </section>
       </article>
-      <script src="https://unpkg.com/@popperjs/core@2"></script>
-      <script src="https://unpkg.com/tippy.js@6"></script>
-      <script src="/scripts/copy-button.js"></script>
+      <script src={Astro.resolve('./copy-button.js')}></script>
       <footer>
         <ShareButtons host={host} blog={content} lang={lang} />
         <Commento
@@ -327,6 +325,10 @@ const jsonLd = `
       border-radius: 10px;
     }
 
+    :global(.button-container) {
+      color: var(--foreground);
+    }
+
     :global(.copied) {
       color: var(--color-complement-3);
     }
@@ -339,7 +341,7 @@ const jsonLd = `
       opacity: 1;
     }
 
-    :global(.copy-button):hover {
+    :global(.copy-button):hover, :global(.copy-button):focus-visible {
       opacity: 1;
       background: hsl(231,15%,28%);
     }
