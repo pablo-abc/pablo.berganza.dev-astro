@@ -45,7 +45,7 @@ export function expect(value) {
 
 ```
 
-But I actually really enjoyed Chai’s syntax. So I decided to use proxies to achieve something similar. We could start by allowing to chain arbitrary words after our `expect` call. For the purposes of this example, we will make no restrictions on possible “chain” words.
+But I actually really enjoyed Chai’s syntax. So I decided to use proxies to achieve something similar. We could start by allowing to chain arbitrary words after our `expect` call. I decided not to restrict the possible “chain” words to simplify development.
 
 ```javascript
 export function expect(value) {
