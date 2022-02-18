@@ -342,9 +342,10 @@ const jsonLd = `
       opacity: 1;
     }
 
-    :global(.copy-button):hover, :global(.copy-button):focus-visible {
+    :global(.button-container:hover .copy-button), :global(.copy-button):focus-visible {
       opacity: 1;
       background: hsl(231,15%,28%);
+      cursor: pointer;
     }
     :global(.copy-button):active {
       background: hsl(231,15%,38%);

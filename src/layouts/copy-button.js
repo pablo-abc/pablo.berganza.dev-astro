@@ -63,6 +63,9 @@ function load() {
       if (!interval) return;
       clearInterval(interval);
       interval = null;
+      setTimeout(() => {
+        tooltip.removeAttribute('style');
+      });
     }
     copyButton.addEventListener('mouseenter', showTooltip);
     copyButton.addEventListener('focusin', showTooltip);
