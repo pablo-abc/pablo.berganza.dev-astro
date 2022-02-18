@@ -1,4 +1,21 @@
+const i18n = {
+  en: {
+    tooltip: {
+      idle: 'Copy to clipboard',
+      success: 'Copied!',
+    },
+  },
+  es: {
+    tooltip: {
+      idle: 'Copiar al portapapeles',
+      success: '¡Copiado!',
+    },
+  },
+};
+
 function load() {
+  const lang = document.documentElement.lang;
+  const messages = i18n[lang];
   const codeBlocks = document.querySelectorAll('pre');
   const copySvg = `
 <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -23,7 +40,7 @@ function load() {
     const tooltip = document.createElement('span');
     tooltip.id = `tooltip-copy-${id}`;
     tooltip.className = 'button-tooltip sr-only';
-    tooltip.textContent = 'Copy to clipboard';
+    tooltip.textContent = messages.tooltip.idle;
     svgContainer.innerHTML = copySvg;
     buttonContainer.appendChild(tooltip);
     copyButton.appendChild(svgContainer);
@@ -35,12 +52,12 @@ function load() {
     copyButton.addEventListener('click', () => {
       navigator.clipboard.writeText(textContent).then(() => {
         svgContainer.innerHTML = copiedSvg;
-        tooltip.textContent = 'Copied!';
+        tooltip.textContent = messages.tooltip.success;
         buttonContainer.classList.add('copied');
         setTimeout(() => {
           svgContainer.innerHTML = copySvg;
           buttonContainer.classList.remove('copied');
-          tooltip.textContent = 'Copy to clipboard';
+          tooltip.textContent = messages.tooltip.idle;
         }, 500);
       });
     });
