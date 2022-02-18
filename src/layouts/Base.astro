@@ -35,10 +35,10 @@ const host = Astro.site;
     <meta content="#E34495" name="msapplication-TileColor">
     <meta content="ms-icon-144x144.png" name="msapplication-TileImage">
     <meta content="#E34495" name="theme-color">
-    <link rel="stylesheet" type="text/css" href="/style/roboto.css">
-    <link rel="stylesheet" type="text/css" href="/style/overpass.css">
-    <link rel="stylesheet" type="text/css" href="/style/reset.css">
-    <link rel="stylesheet" type="text/css" href="/style/global.css">
+    <link rel="stylesheet" type="text/css" href={Astro.resolve('../style/roboto.css')}>
+    <link rel="stylesheet" type="text/css" href={Astro.resolve('../style/overpass.css')}>
+    <link rel="stylesheet" type="text/css" href={Astro.resolve('../style/reset.css')}>
+    <link rel="stylesheet" type="text/css" href={Astro.resolve('../style/global.css')}>
     <script src="/scripts/focus-visible.js"></script>
     <MetaHead
       title="Pablo Berganza"

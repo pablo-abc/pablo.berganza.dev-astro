@@ -74,11 +74,11 @@ const jsonLd = `
     <meta content="#E34495" name="msapplication-TileColor">
     <meta content="ms-icon-144x144.png" name="msapplication-TileImage">
     <meta content="#E34495" name="theme-color">
-    <link rel="stylesheet" type="text/css" href="/style/roboto.css">
-    <link rel="stylesheet" type="text/css" href="/style/overpass.css">
-    <link rel="stylesheet" type="text/css" href="/style/reset.css">
-    <link rel="stylesheet" type="text/css" href="/style/global.css">
-    <link rel="stylesheet" type="text/css" href="/style/dracula.css">
+    <link rel="stylesheet" type="text/css" href={Astro.resolve('../style/roboto.css')}>
+    <link rel="stylesheet" type="text/css" href={Astro.resolve('../style/overpass.css')}>
+    <link rel="stylesheet" type="text/css" href={Astro.resolve('../style/reset.css')}>
+    <link rel="stylesheet" type="text/css" href={Astro.resolve('../style/global.css')}>
+    <link rel="stylesheet" type="text/css" href={Astro.resolve('../style/dracula.css')}>
     <script type="module" src="https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.js"></script>
     <script src="/scripts/focus-visible.js" defer></script>
@@ -315,9 +315,6 @@ const jsonLd = `
 
     :global(.copy-button) {
       opacity: 0.5;
-      position: absolute;
-      top: 0.2rem;
-      right: 0.2rem;
       padding-left: 0.5rem;
       padding-right: 0.3rem;
       padding-top: 0.6rem;
@@ -327,6 +324,10 @@ const jsonLd = `
 
     :global(.button-container) {
       color: var(--foreground);
+      font-size: 1rem;
+      position: absolute;
+      top: 0.2rem;
+      right: 0.2rem;
     }
 
     :global(.copied) {

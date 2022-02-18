@@ -48,8 +48,8 @@ function load() {
       const tooltipRect = tooltip.getBoundingClientRect();
       const buttonRect = copyButton.getBoundingClientRect();
       tooltip.style.left = `${buttonRect.left - tooltipRect.width - 8}px`;
-      tooltip.style.top = `${buttonRect.top}px`;
-      tooltip.style.transform = 'translateY(50%)';
+      tooltip.style.top = `${buttonRect.top + buttonRect.height / 2}px`;
+      tooltip.style.transform = 'translateY(-50%)';
     }
     let interval = null;
     function showTooltip() {
