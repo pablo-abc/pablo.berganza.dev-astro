@@ -14,11 +14,11 @@ tags:
   - programming
 ---
 
-For the past few weeks I’ve taken the (arguably pointless) work of migrating [Felte](https://felte.dev) from using Jest to [uvu](https://github.com/lukeed/uvu). The only thing that would have made this work even more tedious is that Jest prefers assertions to the style of `expect(…).toBe*` while uvu gives you freedom to choose any assertion library, although there’s an official `uvu/assert` module that comes with assertions to the style of `assert.is(value, expected)`.
+For the past few weeks I’ve taken the (arguably pointless) work of migrating [Felte](https://felte.dev) from using Jest to [uvu](https://github.com/lukeed/uvu). This is a really tedious work by itself, but one of details that would have made this work even more tedious is that Jest prefers assertions to the style of `expect(…).toBe*` while uvu gives you freedom to choose any assertion library, although there’s an official `uvu/assert` module that comes with assertions to the style of `assert.is(value, expected)`.
 
 While this is fine and I could have perfectly moved all my tests to use said assertion style, I like the descriptive way Jest tests look like. As a quick way to maintain certain similarity I reached for [ChaiJS](https://chaijs.com), an assertion library that is mainly used with [mocha](https://mochajs.org). Chai offers `expect` like assertions that can arguably be more descriptive than Jest’s. Instead of writing `expect(…).toBe(true)`, you’d write `expect(…).to.be.true`. For the most part I managed to do a search and replace for this.
 
-This setup works really good! But there’s some minor details. The assertion errors thrown by Chai are slightly different than those expected by uvu. So sometimes I’d get messages or extra details that are not so relevant to the test itself. Another issue is that I'd receive diffs comparing `undefined` to `undefined` when an assertion failed. As a proper developer with too much free time, I went ahead and decided to experiment with writing my own assertion library built on top of uvu’s assertions that I called [uvu-expect](https://github.com/pablo-abc/uvu-expect). Here’s more or less how I did it.
+This setup works really good! But there’s some minor details: The assertion errors thrown by Chai are slightly different than those expected by uvu., so sometimes I’d get messages or extra details that are not so relevant to the test itself. Another issue is that I’d receive diffs comparing `undefined` to `undefined` when an assertion failed. As a proper developer with too much free time, I went ahead and decided to experiment with writing my own assertion library built on top of uvu’s assertions that I called [uvu-expect](https://github.com/pablo-abc/uvu-expect). Here’s more or less how I did it.
 
 ## The “expect” function
 The main thing our assertion library needs is an `expect` function that should receive the value you’re planning to validate.
@@ -41,7 +41,6 @@ export function expect(value) {
     },
   };
 }
-
 ```
 
 But I actually really enjoyed Chai’s syntax. So I decided to use proxies to achieve something similar. We could start by allowing to chain arbitrary words after our `expect` call. I decided not to restrict the possible “chain” words to simplify development.
@@ -64,7 +63,7 @@ export function expect(value) {
 expect().this.does.nothing.but.also.does.not.crash;
 ```
 
-Next we will allow for _any_ of these chain words to be functions.
+Next we will allow for /any/ of these chain words to be functions.
 
 ```javascript
 export function expect(value) {
@@ -91,10 +90,10 @@ export function expect(value) {
 expect().this.does.nothing().but.also.does.not.crash();
 ```
 
-With this we already got the base for our syntax. We now need to be able to add some _meaning_ to certain properties. For example, we might want to make `expect(…).to.be.null` to check whether a value is null or not.
+With this we already got the base for our syntax. We now need to be able to add some /meaning/ to certain properties. For example, we might want to make `expect(…).to.be.null` to check whether a value is null or not.
 
 ## Adding meaning to our properties
-We could perfectly check the `name` of the prop being received and use that to run validations. For example, if we wanted to add a validation for checking if a value is `null`:
+We could perfectly check the `name` of the property being accessed and use that to run validations. For example, if we wanted to add a validation for checking if a value is `null`:
 
 ```javascript
 // For brevity, we're not going to use the code that handles functions.
@@ -104,7 +103,8 @@ export function expect(value) {
     {},
     {
       get(_, prop) {
-        // `prop` is the value being accessed
+        // `prop` is the name of the propery being
+        // accessed.
         switch (prop) {
           case 'null':
             if (value !== null) {
@@ -216,7 +216,7 @@ expect('a').to.equal('a');
 
 We suddenly have a really basic assertion library! And it can be easily extended by adding properties to our `properties` object!
 
-There’s one thing we’re still not able to do: negate assertions. We need a way to modify the behaviour of future assertions.
+There’s one thing we’re still not able to do with our current implementation: negate assertions. We need a way to modify the behaviour of future assertions.
 
 ## Negating assertions
 In order to be able to achieve this, we need a way to communicate to our properties that the current assertions is being negated. For this we’re going to change a bit how we define our properties. Instead of expecting the `actual` value being validated as first argument, we’re going to receive a `context` object that will contain our `actual` value and a new `negated` property that will be a boolean indicating if the assertion is being negated. Our new properties for `equal` and `null` will then look like this:
@@ -298,7 +298,7 @@ expect('a').to.not.equal('b');
 This technique can be used to communicate more details about our assertions to future assertions.
 
 ## Do not throw normal Errors
-To make examples simpler, they throw normal errors (`throw new Error(…)`). Since this is to be used with a test runner, it’d be better to throw something like Node’s built-in [`AssertionError`](https://nodejs.org/api/assert.html#class-assertassertionerror) or, in the case of uvu, its own `Assertion` error. These would give way more information when assertions fail. And it can be picked by Node or test runners to show prettier messages and diffs!
+To make examples simpler, we throw normal errors (`throw new Error(…)`). Since this is to be used with a test runner, it’d be better to throw something like Node’s built-in [`AssertionError`](https://nodejs.org/api/assert.html#class-assertassertionerror) or, in the case of uvu, its own `Assertion` error. These would give way more information when assertions fail. And it can be picked by Node or test runners to show prettier messages and diffs!
 
 ## Conclusion
 This is a simplified explanation of how I made [uvu-expect](https://github.com/pablo-abc/uvu-expect). `uvu-expect` has way more features and validations such as:
