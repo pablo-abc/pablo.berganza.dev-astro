@@ -18,10 +18,17 @@ const rssLink = lang === 'en' ? '/blog/rss.xml' : '/es/blog/rss.xml';
 <HomeLink lang={lang} />
 <LangLink lang={lang} section={tag ? `blog/tags/${tag}` : 'blog'} />
 <section class="blog">
-  <h1 class="title">
-    {title}
-    {showRss && <a class="rss-link" href={rssLink}><RSS lang={lang} /></a>}
-  </h1>
+  <div class="title">
+  <h1>{title}</h1>
+  {showRss && (
+  <a class="rss-link" href={rssLink}>
+    <span class="sr-only">
+      {lang === 'en' ? 'RSS feed' : 'Contenido en RSS'}
+    </span>
+    <RSS lang={lang} />
+  </a>
+  )}
+  </div>
   <ul>
     {posts.map(post => (
     <a href={post.url}>
@@ -52,11 +59,15 @@ const rssLink = lang === 'en' ? '/blog/rss.xml' : '/es/blog/rss.xml';
 </section>
 
 <style lang="scss">
-  h1.title {
+  .title {
     margin-top: 3rem;
     font-size: var(--h1);
     color: var(--color-heading);
     font-weight: 700;
+
+    h1 {
+      display: inline-block;
+    }
   }
 
   a {
