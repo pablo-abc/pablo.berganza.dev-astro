@@ -2,7 +2,7 @@
 title: "Creating a Chai like assertion library using proxies"
 description: Showcasing how I made a fun side-project to be used with uvu
 published: false
-created: '2022-02-17'
+created: '2022-02-19'
 imgext: png
 image:
   width: 1136

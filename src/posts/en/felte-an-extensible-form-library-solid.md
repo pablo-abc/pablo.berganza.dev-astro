@@ -218,4 +218,4 @@ function Form() {
 You can check more about Felte in its [official website](https://felte.dev) with some functional examples. There’s also a more complex example showcasing its usage with Tippy.js and Yup available on [CodeSandbox](https://codesandbox.io/s/felte-v1-demo-solidjs-rt0cm?file=/src/main.tsx).
 
 ## Finishing thoughts
-I hope this served as a good introduction to Felte, and that it is interesting enough for you to give it a try. Felte is currently in quite a useable state and I feel it’s flexible enough for most use cases.  I am also open to help and suggestions so feel free to open an issue or make a pull request on [GitHub](https://github.com/pablo-abc/felte).
+I hope this served as a good introduction to Felte, and that it is interesting enough for you to give it a try. Felte is already on a stable state and used by some people.  I am also open to help and suggestions so feel free to open an issue or make a pull request on [GitHub](https://github.com/pablo-abc/felte).

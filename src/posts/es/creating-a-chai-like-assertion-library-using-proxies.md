@@ -2,7 +2,7 @@
 title: "Creando una librería de aserciones estilo Chai usando proxies"
 description: Mostrando un divertido proyecto que construí para uvu
 published: false
-created: '2022-02-17'
+created: '2022-02-19'
 imgext: png
 image:
   width: 1136
