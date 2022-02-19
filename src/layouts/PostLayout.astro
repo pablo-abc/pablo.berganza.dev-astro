@@ -175,9 +175,13 @@ const jsonLd = `
     margin-top: 4rem;
 
     h1.title {
-      font-size: 3rem;
+      font-size: 2rem;
       margin-bottom: 1rem;
       color: var(--color-heading);
+
+      @media only screen and (min-width: 767px) {
+        font-size: 3rem;
+      }
     }
 
     p {
