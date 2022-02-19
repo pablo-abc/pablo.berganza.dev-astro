@@ -37,9 +37,12 @@ function load() {
     const buttonContainer = document.createElement('div');
     const copyButton = document.createElement('button');
     const svgContainer = document.createElement('span');
-    const tooltip = document.createElement('span');
+    const tooltip = document.createElement('div');
     tooltip.id = `tooltip-copy-${id}`;
-    tooltip.className = 'button-tooltip sr-only';
+    tooltip.className = 'button-tooltip';
+    tooltip.setAttribute('aria-hidden', true);
+    tooltip.style.visibility = 'hidden';
+    tooltip.style.position = 'fixed';
     tooltip.textContent = messages.tooltip.idle;
     svgContainer.innerHTML = copySvg;
     buttonContainer.appendChild(tooltip);
@@ -70,20 +73,17 @@ function load() {
     }
     let interval = null;
     function showTooltip() {
-      tooltip.style.position = 'fixed';
-      tooltip.classList.remove('sr-only');
+      tooltip.style.visibility = 'visible';
       if (interval) clearInterval(interval);
       interval = setInterval(repositionTooltip, 10);
     }
     function hideTooltip() {
-      tooltip.classList.add('sr-only');
+      tooltip.style.visibility = 'hidden';
       if (!interval) return;
       clearInterval(interval);
       interval = null;
-      setTimeout(() => {
-        tooltip.removeAttribute('style');
-      });
     }
+    repositionTooltip();
     copyButton.addEventListener('mouseenter', showTooltip);
     copyButton.addEventListener('focusin', showTooltip);
     copyButton.addEventListener('mouseleave', hideTooltip);
