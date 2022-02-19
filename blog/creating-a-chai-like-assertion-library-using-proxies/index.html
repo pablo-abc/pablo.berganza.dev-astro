@@ -191,6 +191,7 @@
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>But I actually really enjoyed Chai’s syntax. So I decided to use proxies to achieve something similar. We could start by allowing to chain arbitrary words after our <code data-astro-raw="">expect</code> call. I decided not to restrict the possible “chain” words to simplify development.</p>
+<p><strong>Proxy</strong> is a JavaScript feature that allows you to “wrap” an object in order to intercept and modify its functionality. In our case we will use it to modify the behaviour when <em>accessing</em> our object’s properties.</p>
 <pre class="language-javascript"><code data-astro-raw="" class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">expect</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> proxy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>
     <span class="token comment">// The target we are adding the proxy on. For now it's empty.</span>

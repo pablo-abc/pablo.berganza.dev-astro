@@ -191,6 +191,7 @@
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>Pero usando Chai, me encantó la sintáxis que ofrece. Por esto, decidí usar proxies para lograr tener una API similar. Para lograrlo, podríamos empezar permitiendo encadenar palabras arbitrarias después de nuestra llamada a <code data-astro-raw="">expect</code>. Para simplificar el desarrollo, decidí no restringir las posibles palabras que se pueden encadenar.</p>
+<p><strong>Proxy</strong> es un objeto de JavaScript con el que puedes “envolver” otro objeto para poder interceptar y modificar su funcionalidad. En nuestro caso lo usaremos para modificar el comportamiento de nuestro objeto cuando <em>accedemos</em> a una de sus propiedades.</p>
 <pre class="language-javascript"><code data-astro-raw="" class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">expect</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> proxy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>
     <span class="token comment">// El target que querémos envolver en el proxy.</span>
