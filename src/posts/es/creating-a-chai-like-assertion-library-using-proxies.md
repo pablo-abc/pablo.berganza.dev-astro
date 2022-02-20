@@ -45,6 +45,8 @@ export function expect(value) {
 
 Pero usando Chai, me encantó la sintáxis que ofrece. Por esto, decidí usar proxies para lograr tener una API similar. Para lograrlo, podríamos empezar permitiendo encadenar palabras arbitrarias después de nuestra llamada a `expect`. Para simplificar el desarrollo, decidí no restringir las posibles palabras que se pueden encadenar.
 
+**Proxy** es un objeto de JavaScript con el que puedes "envolver" otro objeto para poder interceptar y modificar su funcionalidad. En nuestro caso lo usaremos para modificar el comportamiento de nuestro objeto cuando _accedemos_ a una de sus propiedades.
+
 ```javascript
 export function expect(value) {
   const proxy = new Proxy(

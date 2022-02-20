@@ -45,6 +45,8 @@ export function expect(value) {
 
 But I actually really enjoyed Chai’s syntax. So I decided to use proxies to achieve something similar. We could start by allowing to chain arbitrary words after our `expect` call. I decided not to restrict the possible “chain” words to simplify development.
 
+**Proxy** is a JavaScript feature that allows you to "wrap" an object in order to intercept and modify its functionality. In our case we will use it to modify the behaviour when _accessing_ our object's properties.
+
 ```javascript
 export function expect(value) {
   const proxy = new Proxy(
