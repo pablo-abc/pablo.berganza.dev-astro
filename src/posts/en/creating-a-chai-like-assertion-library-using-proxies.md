@@ -18,7 +18,7 @@ For the past few weeks I’ve taken the (arguably pointless) work of migrating [
 
 While this is fine and I could have perfectly moved all my tests to use said assertion style, I like the descriptive way Jest tests look like. As a quick way to maintain certain similarity I reached for [ChaiJS](https://chaijs.com), an assertion library that is mainly used with [mocha](https://mochajs.org). Chai offers `expect` like assertions that can arguably be more descriptive than Jest’s. Instead of writing `expect(…).toBe(true)`, you’d write `expect(…).to.be.true`. For the most part I managed to do a search and replace for this.
 
-This setup works really good! But there’s some minor details: The assertion errors thrown by Chai are slightly different than those expected by uvu., so sometimes I’d get messages or extra details that are not so relevant to the test itself. Another issue is that I’d receive diffs comparing `undefined` to `undefined` when an assertion failed. As a proper developer with too much free time, I went ahead and decided to experiment with writing [my own assertion library](https://xkcd.com/927/) built on top of uvu’s assertions that I called [uvu-expect](https://github.com/pablo-abc/uvu-expect). Here’s more or less how I did it.
+This setup works really good! But there’s some minor details: The assertion errors thrown by Chai are slightly different than those expected by uvu., so sometimes I’d get messages or extra details that are not so relevant to the test itself. Another issue is that I’d receive diffs comparing `undefined` to `undefined` when an assertion failed. As a proper developer with too much free time, I went ahead and decided to experiment with [writing my own assertion library](https://xkcd.com/927/) built on top of uvu’s assertions that I called [uvu-expect](https://github.com/pablo-abc/uvu-expect). Here’s more or less how I did it.
 
 ## The “expect” function
 The main thing our assertion library needs is an `expect` function that should receive the value you’re planning to validate.
@@ -45,8 +45,6 @@ export function expect(value) {
 
 But I actually really enjoyed Chai’s syntax. So I decided to use proxies to achieve something similar. We could start by allowing to chain arbitrary words after our `expect` call. I decided not to restrict the possible “chain” words to simplify development.
 
-**Proxy** is a JavaScript feature that allows you to "wrap" an object in order to intercept and modify its functionality. In our case we will use it to modify the behaviour when _accessing_ our object's properties.
-
 ```javascript
 export function expect(value) {
   const proxy = new Proxy(
@@ -65,7 +63,7 @@ export function expect(value) {
 expect().this.does.nothing.but.also.does.not.crash;
 ```
 
-Next we will allow for /any/ of these chain words to be functions.
+Next we will allow for _any_ of these chain words to be functions.
 
 ```javascript
 export function expect(value) {
@@ -92,7 +90,7 @@ export function expect(value) {
 expect().this.does.nothing().but.also.does.not.crash();
 ```
 
-With this we already got the base for our syntax. We now need to be able to add some /meaning/ to certain properties. For example, we might want to make `expect(…).to.be.null` to check whether a value is null or not.
+With this we already got the base for our syntax. We now need to be able to add some _meaning_ to certain properties. For example, we might want to make `expect(…).to.be.null` to check whether a value is null or not.
 
 ## Adding meaning to our properties
 We could perfectly check the `name` of the property being accessed and use that to run validations. For example, if we wanted to add a validation for checking if a value is `null`:
