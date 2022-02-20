@@ -18,7 +18,7 @@ Durante las últimas semanas he tomado el (probablemente inútil) trabajo de mig
 
 Aunque esto funciona perfectamente bien, y es posible mover todos mis tests a usar el tipo de validaciones que `uvu/assert` ofrece, me gusta la forma descriptiva de los t esta de Jest. Para poder mantener una forma similar de realizar mis tests, decidí usar [ChaiJS](https://chaijs.com): una librería de aserciones que es principalmente usada con [mocha](https://mochajs.org). Chai ofrece aserciones estilo `expect` que son, debatiblemente, más descriptivas que las que Jest ofrece. En lugar de escribir `expect(…).toBe(true)`, con Chai escribirías `expect(…).to.be.true`. En la mayor parte de casos pude usar un “search and replace” para migrar.
 
-Este setup funciona perfectamente bien. Pero hay unos cuantos pequeños detalles: Los errores lanzados por las aserciones son /un poquito/ distintos a los esperados por uvu. Esto significa que en algunos casos uvu muestra detalles o mensajes de error que no son muy relevantes al test que falló. O que uvu muestra diffs comparando `undefined` con `undefined`. Como un buen desarrollador con demasiado tiempo libre, decidí escribir [mi propia librería de aserciones](https://xkcd.com/927/) sobre las aserciones proveídas por uvu: [uvu-expect](https://github.com/pablo-abc/uvu-expect). A continuación explicaré más o menos como lo hice.
+Este setup funciona perfectamente bien. Pero hay unos cuantos pequeños detalles: Los errores lanzados por las aserciones son _un poquito_ distintos a los esperados por uvu. Esto significa que en algunos casos uvu muestra detalles o mensajes de error que no son muy relevantes al test que falló. O que uvu muestra diffs comparando `undefined` con `undefined`. Como un buen desarrollador con demasiado tiempo libre, decidí escribir [mi propia librería de aserciones](https://xkcd.com/927/) sobre las aserciones proveídas por uvu: [uvu-expect](https://github.com/pablo-abc/uvu-expect). A continuación explicaré más o menos como lo hice.
 
 ## La función “expect”
 El principal requisito de nuestra librería de aserciones es una función `expect` que debe recibir el velor que esperas validar.
@@ -45,8 +45,6 @@ export function expect(value) {
 
 Pero usando Chai, me encantó la sintáxis que ofrece. Por esto, decidí usar proxies para lograr tener una API similar. Para lograrlo, podríamos empezar permitiendo encadenar palabras arbitrarias después de nuestra llamada a `expect`. Para simplificar el desarrollo, decidí no restringir las posibles palabras que se pueden encadenar.
 
-**Proxy** es un objeto de JavaScript con el que puedes "envolver" otro objeto para poder interceptar y modificar su funcionalidad. En nuestro caso lo usaremos para modificar el comportamiento de nuestro objeto cuando _accedemos_ a una de sus propiedades.
-
 ```javascript
 export function expect(value) {
   const proxy = new Proxy(
@@ -67,7 +65,7 @@ export function expect(value) {
 expect().this.does.nothing.but.also.does.not.crash;
 ```
 
-Ahora vamos a permitir que /cualquier/ palabra encadenada pueda ser llamada como una función.
+Ahora vamos a permitir que _cualquier_ palabra encadenada pueda ser llamada como una función.
 
 ```javascript
 export function expect(value) {
@@ -95,7 +93,7 @@ export function expect(value) {
 expect().this.does.nothing().but.also.does.not.crash();
 ```
 
-Con esto, ya tenemos lo básico para la sintaxis que buscamos soportar. Ahora necesitamos lograr darle /significado/ a algunas propiedades. Por ejemplo, tal vez queramos que algo como `expect(…).to.be.null` revise si el value pasado a `expect` sea null o no.
+Con esto, ya tenemos lo básico para la sintaxis que buscamos soportar. Ahora necesitamos lograr darle _significado_ a algunas propiedades. Por ejemplo, tal vez queramos que algo como `expect(…).to.be.null` revise si el value pasado a `expect` sea null o no.
 
 ## Dándole significado a nuestras propiedades
 Podríamos revisar directamente el nombre de la propiedad siendo accedida y utilizar esto para decidir que validaciones correr. Por ejemplo, para tener una validación que revise si el valor recibido es `null`:
