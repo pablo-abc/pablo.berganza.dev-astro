@@ -85,9 +85,22 @@ function load() {
     }
     repositionTooltip();
     copyButton.addEventListener('mouseenter', showTooltip);
-    copyButton.addEventListener('focusin', showTooltip);
+    copyButton.addEventListener('focusin', () => {
+      if (!copyButton.classList.contains('focus-visible')) return;
+      showTooltip();
+    });
     copyButton.addEventListener('mouseleave', hideTooltip);
     copyButton.addEventListener('focusout', hideTooltip);
+    copyButton.addEventListener('touchstart', () => {
+      copyButton.style.opacity = '1';
+      showTooltip();
+    });
+    copyButton.addEventListener('touchend', () => {
+      setTimeout(() => {
+        copyButton.style.opacity = '';
+        hideTooltip();
+      }, 700);
+    });
     document.addEventListener('visibilitychange', hideTooltip);
     const resizeObserver = new ResizeObserver(repositionTooltip);
     resizeObserver.observe(tooltip);
