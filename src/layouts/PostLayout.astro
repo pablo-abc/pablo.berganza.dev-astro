@@ -176,7 +176,7 @@ const jsonLd = `
 <style lang="scss">
   article, footer {
     max-width: 50rem;
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
   }
 
@@ -201,6 +201,7 @@ const jsonLd = `
       font-family: 'Overpass', 'Helvetica Neue', Verdana, Helvetica, Arial, sans-serif;
       font-size: 1.2rem;
       color: var(--color-heading);
+      font-style: italic;
       margin-top: 0;
       font-weight: 600;
       margin-bottom: 2rem;
@@ -208,7 +209,8 @@ const jsonLd = `
   }
 
   .banner {
-    width: 90%;
+    width: 100%;
+    max-width: 45rem;
     height: auto;
     display: block;
     margin: 0 auto;
@@ -230,6 +232,8 @@ const jsonLd = `
   }
 
   .content {
+    max-width: 45rem;
+    margin: 0 auto;
     :global(ul) {
       list-style-type: disc;
       margin-left: 2rem;
@@ -260,6 +264,14 @@ const jsonLd = `
 
     > :global(*) {
       margin-top: 2rem;
+    }
+
+    :global(h2) {
+      font-size: 1.7rem;
+
+      @media only screen and (min-width: 767px) {
+        font-size: 2rem;
+      }
     }
   }
 
@@ -306,6 +318,7 @@ const jsonLd = `
       :global(code) {
         background: inherit;
         color: inherit;
+        font-size: 0.875rem;
       }
   }
 
@@ -323,6 +336,12 @@ const jsonLd = `
     justify-content: space-between;
     margin-bottom: 1rem;
     margin-top: 2rem;
+  }
+
+  .stats, .tags {
+    max-width: 45rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .ttr, .created {
@@ -358,6 +377,10 @@ const jsonLd = `
 
     :global(.copied) {
       color: var(--color-complement-3);
+    }
+
+    :global(.failed) {
+      color: var(--color-secondary-1-2);
     }
 
     :global(.copy-button svg) {

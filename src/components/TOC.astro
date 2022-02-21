@@ -64,7 +64,7 @@ for (const header of origHeaders) {
     align-items: center;
     font-family: 'Roboto Slab', serif;
     color: var(--color-subheading);
-    font-size: 2rem;
+    font-size: 1.7rem;
     font-weight: 700;
     list-style: none;
     cursor: pointer;
@@ -73,12 +73,15 @@ for (const header of origHeaders) {
     -ms-user-select: none;
     user-select: none;
 
+    @media only screen and (min-width: 767px) {
+      font-size: 2rem;
+    }
+
     :global(svg) {
       position: absolute;
       left: 0;
       transform: translateX(-100%);
       width: 1em;
-      height: 1em;
       transition: transform 0.1s;
     }
   }

@@ -92,7 +92,11 @@ const available = lang === 'en'
   h2 {
     margin-top: 0;
     color: var(--color-heading);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+
+    @media only screen and (min-width: 767px) {
+      font-size: 1.5rem;
+    }
   }
 
   .blog {
@@ -112,7 +116,10 @@ const available = lang === 'en'
   }
 
   .ttr, .created {
+    display: flex;
+    align-items: center;
     color: var(--color-stats);
+    font-size: 1rem;
     span {
       margin-right: 0.2rem;
     }
@@ -121,6 +128,11 @@ const available = lang === 'en'
   p {
     color: var(--base-font-color-on-alt);
     margin-bottom: 0.5rem;
+    font-size: 1rem;
+
+    @media only screen and (min-width: 767px) {
+      font-size: 1.125rem;
+    }
   }
 
   article {

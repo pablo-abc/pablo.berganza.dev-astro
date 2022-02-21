@@ -3,12 +3,14 @@ const i18n = {
     tooltip: {
       idle: 'Copy to clipboard',
       success: 'Copied!',
+      failed: 'Failed to copy',
     },
   },
   es: {
     tooltip: {
       idle: 'Copiar al portapapeles',
       success: '¡Copiado!',
+      failed: 'Error al copiar',
     },
   },
 };
@@ -24,6 +26,10 @@ function load() {
   const copiedSvg = `
 <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+</svg>`;
+  const failedSvg = `
+<svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>`;
   let id = 0;
   for (const block of codeBlocks) {
@@ -52,17 +58,28 @@ function load() {
     buttonContainer.className = 'button-container';
     buttonContainer.appendChild(copyButton);
     container.appendChild(buttonContainer);
-    copyButton.addEventListener('click', () => {
-      navigator.clipboard.writeText(textContent).then(() => {
-        svgContainer.innerHTML = copiedSvg;
-        tooltip.textContent = messages.tooltip.success;
-        buttonContainer.classList.add('copied');
+    copyButton.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(textContent).then(() => {
+          svgContainer.innerHTML = copiedSvg;
+          tooltip.textContent = messages.tooltip.success;
+          buttonContainer.classList.add('copied');
+          setTimeout(() => {
+            svgContainer.innerHTML = copySvg;
+            buttonContainer.classList.remove('copied');
+            tooltip.textContent = messages.tooltip.idle;
+          }, 500);
+        });
+      } catch {
+        svgContainer.innerHTML = failedSvg;
+        tooltip.textContent = messages.tooltip.failed;
+        buttonContainer.classList.add('failed');
         setTimeout(() => {
           svgContainer.innerHTML = copySvg;
-          buttonContainer.classList.remove('copied');
+          buttonContainer.classList.remove('failed');
           tooltip.textContent = messages.tooltip.idle;
         }, 500);
-      });
+      }
     });
     function repositionTooltip() {
       const tooltipRect = tooltip.getBoundingClientRect();

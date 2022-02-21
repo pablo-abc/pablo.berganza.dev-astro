@@ -36,6 +36,8 @@
   --background-color-quote: #fff7fb;
   --color-memage: var(--color-secondary-2-2);
 
+  --color-h3: hsl(23, 100%, 37%);
+
   --background-codespan: hsl(300, 29%, 86%);
 
   --h1: 3rem;
@@ -57,6 +59,7 @@
     --color-primary-on-alt: var(--color-heading);
 
     --background-codespan: hsl(231, 15%, 18%);
+    --color-h3: hsl(23, 100%, 47%);
   }
 }
 
@@ -102,6 +105,11 @@ h2 {
   font-size: 2rem;
   font-weight: 700;
   margin-top: 2rem;
+}
+
+h3 {
+  color: var(--color-h3);
+  font-size: 1.4rem;
 }
 
 strong {
