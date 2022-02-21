@@ -1,56 +1,44 @@
 import fs from 'node:fs/promises';
 import fm from 'front-matter';
-import got from 'got';
 
-export async function getOptions() {
+export async function getSaved(platform) {
   try {
-    const content = await fs.readFile('./bin/.crosspost.options.json', 'utf-8');
-    const options = JSON.parse(content);
-    if (!options.drafts) options.drafts = [];
-    if (!options.published) options.published = [];
-    return options;
+    const content = await fs.readFile('./bin/.crosspost.saved.json', 'utf-8');
+    const saved = JSON.parse(content);
+    if (!saved[platform]) saved[platform] = {};
+    if (!saved[platform].published) saved[platform].published = [];
+    return saved;
   } catch {
-    const defaultOptions = {
-      drafts: [],
-      published: [],
+    const defaultSaved = {
+      [platform]: {
+        published: [],
+      },
     };
     await fs.writeFile(
-      './bin/.crosspost.options.json',
-      JSON.stringify(defaultOptions, null, 2)
+      './bin/.crosspost.saved.json',
+      JSON.stringify(defaultSaved, null, 2)
     );
-    return defaultOptions;
+    return defaultSaved;
   }
 }
 
-export async function writeOptions(options) {
+export async function writeSaved(saved) {
   return fs.writeFile(
-    './bin/.crosspost.options.json',
-    JSON.stringify(options, null, 2)
+    './bin/.crosspost.saved.json',
+    JSON.stringify(saved, null, 2)
   );
 }
 
-export async function updateOptions(article) {
-  const options = await getOptions();
-  if (article.published) {
-    options.drafts = options.drafts.filter((d) => d.id !== article.id);
-    if (!options.published.find((p) => p.id === article.id)) {
-      options.published = options.published.push({
-        id: article.id,
-        title: article.title,
-        slug: article.slug,
-      });
-    }
-  } else {
-    options.published = options.drafts.filter((d) => d.id !== article.id);
-    if (!options.drafts.find((p) => p.id === article.id)) {
-      options.drafts = options.published.push({
-        id: article.id,
-        title: article.title,
-        slug: article.slug,
-      });
-    }
+export async function updateSaved(article, platform) {
+  const saved = await getSaved(platform);
+  if (!saved[platform].published.find((p) => p.id === article.id)) {
+    saved[platform].published.push({
+      id: article.id,
+      title: article.title,
+      slug: article.slug,
+    });
   }
-  return writeOptions(options);
+  return writeSaved(saved);
 }
 
 export async function readFile(slug) {
@@ -67,35 +55,7 @@ export async function readFile(slug) {
         series: p.attributes.series,
         title: p.attributes.title,
         description: p.attributes.description,
+        slug,
       };
     });
-}
-
-export async function updateDevtoArticle(id, article) {
-  const response = await got
-    .put(`https://dev.to/api/articles/${id}`, {
-      headers: {
-        'api-key': process.env.DEVTO_KEY,
-      },
-      json: { article },
-    })
-    .json();
-  await updateOptions(response);
-}
-
-export async function createDevtoArticle(article) {
-  const response = await got
-    .post('https://dev.to/api/articles', {
-      headers: {
-        'api-key': process.env.DEVTO_KEY,
-      },
-      json: { article },
-    })
-    .json();
-  options.drafts.push({
-    id: response.id,
-    title: response.title,
-    slug: response.slug,
-  });
-  await updateOptions(response);
 }

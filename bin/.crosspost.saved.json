@@ -1,0 +1,70 @@
+{
+  "devto": {
+    "published": [
+      {
+        "id": 994239,
+        "title": "Creating a Chai like assertion library using proxies",
+        "slug": "creating-a-chai-like-assertion-library-using-proxies-1ol7"
+      },
+      {
+        "id": 988833,
+        "title": "Announcing Felte 1.0: A form library for Svelte, Solid and React",
+        "slug": "announcing-felte-10-a-form-library-for-svelte-solid-and-react-5ble"
+      },
+      {
+        "id": 988793,
+        "title": "Felte: An extensible form library for React",
+        "slug": "felte-an-extensible-form-library-for-react-3bje"
+      },
+      {
+        "id": 921210,
+        "title": "Felte: An extensible form library for Solid",
+        "slug": "felte-an-extensible-form-library-for-solid-4cde"
+      },
+      {
+        "id": 921186,
+        "title": "Felte: An extensible form library for Svelte",
+        "slug": "felte-an-extensible-form-library-for-svelte-3m78"
+      },
+      {
+        "id": 352858,
+        "title": "You don't really need Apollo",
+        "slug": "you-don-t-really-need-apollo-5hln"
+      },
+      {
+        "id": 314183,
+        "title": "Svelte: my new obsession",
+        "slug": "svelte-my-new-obsession-399b"
+      }
+    ]
+  },
+  "hashnode": {
+    "published": [
+      {
+        "id": "621171f2c6ed3906e81c352d",
+        "title": "Creating a Chai like assertion library using proxies",
+        "slug": "creating-a-chai-like-assertion-library-using-proxies"
+      },
+      {
+        "id": "62105fd230c8050670ed21b2",
+        "title": "Announcing Felte 1.0: A form library for Svelte, Solid and React",
+        "slug": "announcing-felte-10-a-form-library-for-svelte-solid-and-react"
+      },
+      {
+        "id": "62105797c6ed3906e81c16bf",
+        "title": "Felte: an extensible form library for React",
+        "slug": "felte-an-extensible-form-library-for-react"
+      },
+      {
+        "id": "621056fac6ed3906e81c16af",
+        "title": "Felte: an extensible form library for Solid",
+        "slug": "felte-an-extensible-form-library-for-solid"
+      },
+      {
+        "id": "6210539f30c8050670ed20e2",
+        "title": "Felte: an extensible form library for Svelte",
+        "slug": "felte-an-extensible-form-library-for-svelte"
+      }
+    ]
+  }
+}
