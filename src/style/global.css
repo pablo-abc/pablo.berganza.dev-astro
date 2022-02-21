@@ -129,6 +129,7 @@ button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
+summary:focus-visible,
 [tabindex]:focus-visible {
   outline: 3px solid var(--color-subheading);
   outline-offset: 2px;
@@ -139,6 +140,7 @@ button:focus:not(:focus-visible),
 input:focus:not(:focus-visible),
 textarea:focus:not(:focus-visible),
 select:focus:not(:focus-visible),
+summary:focus:not(:focus-visible),
 [tabindex]:focus:not(:focus-visible) {
   outline: none;
 }

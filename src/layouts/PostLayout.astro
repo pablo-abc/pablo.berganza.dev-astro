@@ -2,6 +2,7 @@
 import readingTime from 'reading-time';
 import LangLink from 'components:LangLink.astro';
 import HomeLink from 'components:HomeLink.astro';
+import TOC from 'components:TOC.astro';
 import Clock from 'components:icons/Clock.astro';
 import Calendar from 'components:icons/Calendar.astro';
 import MetaHead from 'components:MetaHead.svelte';
@@ -9,6 +10,7 @@ import ShareButtons from 'components:ShareButtons.svelte';
 import Commento from 'components:Commento.svelte';
 
 const { content } = Astro.props;
+const headers = content.astro.headers;
 const { published } = content;
 const host = Astro.site;
 const ttr = Math.round(readingTime(content.astro.source).minutes);
@@ -152,6 +154,7 @@ const jsonLd = `
         </div>
         )}
         <section class="content">
+          <TOC headers={headers} lang={lang} />
           <slot />
         </section>
       </article>
@@ -229,6 +232,11 @@ const jsonLd = `
   .content {
     :global(ul) {
       list-style-type: disc;
+      margin-left: 2rem;
+      line-height: 1.5rem;
+    }
+
+    :global(ol) {
       margin-left: 2rem;
       line-height: 1.5rem;
     }
