@@ -15,8 +15,8 @@ const { lang = 'en', posts = [], title = 'Blog', tag, showRss } = Astro.props;
 
 const rssLink = lang === 'en' ? '/blog/rss.xml' : '/es/blog/rss.xml';
 const available = lang === 'en'
-      ? 'Also available on [dev.to](https://dev.to/pabloabc) and [Hashnode](https://hn.berganza.dev)'
-      : 'También disponible en [dev.to](https://dev.to/pabloabc) y [Hashnode](https://hn.berganza.dev) (Sólo en inglés)';
+      ? 'Also available on [dev.to](https://dev.to/pabloabc) and [hashnode](https://hn.berganza.dev)'
+      : 'También disponible en [dev.to](https://dev.to/pabloabc) y [hashnode](https://hn.berganza.dev) (Sólo en inglés)';
 ---
 
 <HomeLink lang={lang} />
