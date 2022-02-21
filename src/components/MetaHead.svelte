@@ -13,6 +13,7 @@
 
 <meta name="author" content="Pablo Berganza" />
 <meta name="description" content="{description}" />
+<meta name="title" content="{title}">
 <meta itemprop="name" content="{title}" />
 <meta itemprop="description" content="{description}" />
 {#if img}
