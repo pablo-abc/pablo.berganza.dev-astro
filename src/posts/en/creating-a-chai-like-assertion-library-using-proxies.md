@@ -7,6 +7,9 @@ imgext: png
 image:
   width: 1136
   height: 852
+crosspost:
+  devto: "https://dev.to/pabloabc/creating-a-chai-like-assertion-library-using-proxies-1ol7"
+  hashnode: "https://hn.berganza.dev/creating-a-chai-like-assertion-library-using-proxies"
 tags:
   - javascript
   - testing

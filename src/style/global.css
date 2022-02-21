@@ -86,7 +86,7 @@ a code {
 }
 
 h1 {
-  color: var(--color-primary-on-alt);
+  color: var(--color-primary);
   font-weight: 700;
   font-size: var(--h1);
 }

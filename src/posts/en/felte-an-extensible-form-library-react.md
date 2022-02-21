@@ -7,6 +7,9 @@ imgext: png
 image:
   width: 800
   height: 444
+crosspost:
+  devto: "https://dev.to/pabloabc/felte-an-extensible-form-library-for-react-3bje"
+  hashnode: "https://hn.berganza.dev/felte-an-extensible-form-library-for-react"
 tags:
   - javascript
   - react

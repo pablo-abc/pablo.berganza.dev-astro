@@ -1,4 +1,5 @@
 ---
+import { Markdown } from 'astro/components';
 import LangLink from '../../components/LangLink.astro';
 import HomeLink from '../../components/HomeLink.astro';
 import Clock from '../../components/icons/Clock.astro';
@@ -13,47 +14,53 @@ function getTtr(source) {
 const { lang = 'en', posts = [], title = 'Blog', tag, showRss } = Astro.props;
 
 const rssLink = lang === 'en' ? '/blog/rss.xml' : '/es/blog/rss.xml';
+const available = lang === 'en'
+      ? 'Also available on [dev.to](https://dev.to/pabloabc) and [Hashnode](https://hn.berganza.dev)'
+      : 'También disponible en [dev.to](https://dev.to/pabloabc) y [Hashnode](https://hn.berganza.dev) (Sólo en inglés)';
 ---
 
 <HomeLink lang={lang} />
 <LangLink lang={lang} section={tag ? `blog/tags/${tag}` : 'blog'} />
 <section class="blog">
   <div class="title">
-  <h1>{title}</h1>
-  {showRss && (
-  <a class="rss-link" href={rssLink}>
-    <span class="sr-only">
-      {lang === 'en' ? 'RSS feed' : 'Contenido en RSS'}
-    </span>
-    <RSS lang={lang} />
-  </a>
-  )}
+    <h1>{title}</h1>
+    {showRss && (
+    <a class="rss-link" href={rssLink}>
+      <span class="sr-only">
+        {lang === 'en' ? 'RSS feed' : 'Contenido en RSS'}
+      </span>
+      <RSS lang={lang} />
+    </a>
+    )}
   </div>
+  <Markdown class="available" content={available} />
   <ul>
     {posts.map(post => (
-    <a href={post.url}>
-      <article>
-        <h2>{post.title}</h2>
-        <div class="stats">
-          <div class="ttr">
-            <span>
-              <Clock lang={lang} />
-            </span>
-            <span>{getTtr(post.astro.source)}</span>
-            <span>{lang === 'en' ? 'minutes' : 'minutos'}</span>
+    <li>
+      <a href={post.url}>
+        <article>
+          <h2>{post.title}</h2>
+          <div class="stats">
+            <div class="ttr">
+              <span>
+                <Clock lang={lang} />
+              </span>
+              <span>{getTtr(post.astro.source)}</span>
+              <span>{lang === 'en' ? 'minutes' : 'minutos'}</span>
+            </div>
+            <div class="created">
+              <span>
+                <Calendar lang={lang} />
+              </span>
+              <span>
+                {post.created}
+              </span>
+            </div>
           </div>
-          <div class="created">
-            <span>
-              <Calendar lang={lang} />
-            </span>
-            <span>
-              {post.created}
-            </span>
-          </div>
-        </div>
-        <p>{post.description}</p>
-      </article>
-    </a>
+          <p>{post.description}</p>
+        </article>
+      </a>
+    </li>
     ))}
   </ul>
 </section>
@@ -74,6 +81,12 @@ const rssLink = lang === 'en' ? '/blog/rss.xml' : '/es/blog/rss.xml';
     text-decoration: none;
     display: block;
     border-radius: 10px;
+  }
+
+  .available a {
+    display: inline;
+    text-decoration: undefline;
+    border-radius: 0px;
   }
 
   h2 {
@@ -136,5 +149,6 @@ const rssLink = lang === 'en' ? '/blog/rss.xml' : '/es/blog/rss.xml';
 
   .rss-link {
     display: inline;
+    border-radius: 0px;
   }
 </style>

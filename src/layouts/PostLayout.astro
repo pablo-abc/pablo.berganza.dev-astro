@@ -15,6 +15,7 @@ const ttr = Math.round(readingTime(content.astro.source).minutes);
 const lang = content.lang || 'en';
 const imgSrc = `assets/blog-pics/${content.created}.${content.imgext ?? 'jpg'}`;
 const section = `blog/${content.slug}`;
+const crosspost = content.crosspost;
 const jsonLd = `
     <script type="application/ld+json">
      {
@@ -141,6 +142,15 @@ const jsonLd = `
             ))}
           </ul>
         </div>
+        {!!crosspost && (
+        <div class="tags">
+          {lang === 'en' ? 'Also available on:' : 'También disponible en (inglés):'}
+          <ul>
+            {!!crosspost.devto && <li><a href={crosspost.devto}>dev.to</a></li>}
+            {!!crosspost.hashnode && <li><a href={crosspost.hashnode}>Hashnode</a></li>}
+          </ul>
+        </div>
+        )}
         <section class="content">
           <slot />
         </section>

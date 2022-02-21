@@ -8,6 +8,9 @@ lang: es
 image:
   width: 800
   height: 444
+crosspost:
+  devto: "https://dev.to/pabloabc/felte-an-extensible-form-library-for-svelte-3m78"
+  hashnode: "https://hn.berganza.dev/felte-an-extensible-form-library-for-svelte"
 tags:
   - javascript
   - solid

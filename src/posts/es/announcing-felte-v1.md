@@ -8,6 +8,9 @@ lang: es
 image:
   width: 800
   height: 444
+crosspost:
+  devto: "https://dev.to/pabloabc/announcing-felte-10-a-form-library-for-svelte-solid-and-react-5ble"
+  hashnode: "https://hn.berganza.dev/announcing-felte-10-a-form-library-for-svelte-solid-and-react"
 tags:
   - javascript
   - forms

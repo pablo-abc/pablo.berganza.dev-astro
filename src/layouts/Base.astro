@@ -6,7 +6,7 @@ const imgSrc = `assets/metaimage.png`
 const description = lang === 'en' ? 'Software developer and occasional open sourcerer.' : 'Desarrollador de software y contribuyente open source.';
 const host = Astro.site;
 ---
-<html lang="{lang ?? 'en'}">
+<html lang={lang ?? 'en'}>
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,8 +43,8 @@ const host = Astro.site;
     <MetaHead
       title="Pablo Berganza"
       description={description}
-      {lang}
-      {host}
+      lang={lang}
+      host={host}
       img={imgSrc}
     />
     <meta name="color-scheme" content="light dark">
