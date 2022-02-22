@@ -7,8 +7,8 @@ const { lang } = Astro.props;
 
 <div class="hero">
   <LangLink {lang} />
-  <section class="info">
-    <h1>
+  <section class="info" aria-labelledby="welcome-hero">
+    <h1 id="welcome-hero">
       <span>
         {i18n.welcome[lang]}
         <Sil className="memage-mobile" />

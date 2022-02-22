@@ -35,34 +35,50 @@ const available = lang === 'en'
   </div>
   <Markdown class="available" content={available} />
   <ul>
-    {posts.map(post => (
-    <li>
-      <a href={post.url}>
-        <article>
-          <h2>{post.title}</h2>
-          <div class="stats">
-            <div class="ttr">
-              <span>
-                <Clock lang={lang} />
-              </span>
-              <span>{getTtr(post.astro.source)}</span>
-              <span>{lang === 'en' ? 'minutes' : 'minutos'}</span>
-            </div>
-            <div class="created">
-              <span>
-                <Calendar lang={lang} />
-              </span>
-              <span>
-                {post.created}
-              </span>
-            </div>
-          </div>
-          <p>{post.description}</p>
-        </article>
-      </a>
-    </li>
-    ))}
+    {posts.map(post => {
+      const duration = getTtr(post.astro.source);
+      return (
+        <li>
+          <a href={post.url}>
+            <article>
+              <h2>{post.title}</h2>
+              <div class="stats">
+                <div class="ttr">
+                  <span>
+                    <Clock lang={lang} />
+                  </span>
+                  <time datetime={`${duration}m`}>
+                    {duration}
+                    {lang === 'en' ? 'minutes' : 'minutos'}
+                  </time>
+                </div>
+                <div class="created">
+                  <span>
+                    <Calendar lang={lang} />
+                  </span>
+                  <time class="created-date" datetime={post.created}>{post.created}</time>
+                </div>
+              </div>
+              <p>{post.description}</p>
+            </article>
+          </a>
+        </li>
+      );
+    })}
   </ul>
+  <script>
+   const lang = document.documentElement.lang;
+   const timeElements = document.querySelectorAll('time.created-date');
+   for (const timeElement of timeElements) {
+     const created = timeElement.textContent;
+     const localeDate = new Date(created).toLocaleDateString(lang ?? 'en', {
+       year: 'numeric',
+       month: 'long',
+       day: 'numeric',
+     });
+     timeElement.textContent = localeDate;
+   }
+  </script>
 </section>
 
 <style lang="scss">

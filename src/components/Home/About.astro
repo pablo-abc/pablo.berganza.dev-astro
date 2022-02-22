@@ -8,16 +8,16 @@ const { lang } = Astro.props;
   <source srcset="/assets/curves-dark.svg" media="(prefers-color-scheme: dark)" />
   <img class="curves" src="/assets/curves.svg" alt="" />
 </picture>
-<section class="about">
-  <div class="about-text">
-    <h1>{i18n.aboutMe.title[lang]}</h1>
+<div class="about">
+  <section class="about-text" aria-labelledby="about-me-title">
+    <h1 id="about-me-title">{i18n.aboutMe.title[lang]}</h1>
     <Markdown content={i18n.aboutMe.description[lang]} />
-  </div>
+  </section>
   <div class="abilities">
-    <Abilities client:visible />
+    <Abilities lang={lang} client:visible />
   </div>
-  <div>
-    <h1>{i18n.projects.title[lang]}</h1>
+  <section aria-labelledby="projects-title">
+    <h1 id="projects-title">{i18n.projects.title[lang]}</h1>
     <dl>
       {i18n.projects.list.map(project => (
       <div>
@@ -26,9 +26,9 @@ const { lang } = Astro.props;
       </div>
       ))}
     </dl>
-  </div>
-  <div class="contact">
-    <h1>{i18n.networks.title[lang]}</h1>
+  </section>
+  <section class="contact" aria-labelledby="contact-title">
+    <h1 id="contact-title">{i18n.networks.title[lang]}</h1>
     <p>{i18n.networks.description[lang]}</p>
     <ul>
       {i18n
@@ -36,8 +36,8 @@ const { lang } = Astro.props;
       .links
       .map(link => <li>{link[lang]}</li>)}
     </ul>
-  </div>
-</section>
+  </section>
+</div>
 
 <style lang="scss">
 .curves {

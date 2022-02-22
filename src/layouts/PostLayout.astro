@@ -120,16 +120,27 @@ const jsonLd = `
             <span>
               <Clock lang={lang} />
             </span>
-            <span>{ttr}</span>
-            <span>{lang === 'en' ? 'minutes' : 'minutos'}</span>
+            <time datetime={`${ttr}m`}>
+              {ttr}
+              {lang === 'en' ? 'minutes' : 'minutos'}
+            </time>
           </div>
           <div class="created">
             <span>
               <Calendar lang={lang} />
             </span>
-            <span>
-              {content.created}
-            </span>
+            <time class="created-date" datetime={content.created}>{content.created}</time>
+            <script>
+             const lang = document.documentElement.lang;
+             const timeElement = document.querySelector('time.created-date');
+             const created = timeElement.textContent;
+             const localeDate = new Date(created).toLocaleDateString(lang ?? 'en', {
+               year: 'numeric',
+               month: 'long',
+               day: 'numeric',
+             });
+             timeElement.textContent = localeDate;
+            </script>
           </div>
         </div>
         <div class="tags">

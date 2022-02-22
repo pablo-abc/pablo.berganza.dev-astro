@@ -1,6 +1,7 @@
 <script>
   import { onMount, onDestroy } from 'svelte';
   import { fade } from 'svelte/transition';
+  export let lang = 'en';
   const abilities = [
     ['https://cdn.svgporn.com/logos/javascript.svg', 'JavaScript'],
     ['https://cdn.svgporn.com/logos/typescript-icon.svg', 'TypeScript'],
@@ -22,11 +23,17 @@
     }, 2000);
   });
   onDestroy(() => clearInterval(interval));
+
+  const abString = abilities.map(ab => ab[1]).join(', ');
+
+  let label = lang === 'en'
+      ? `I have experience with: ${abString}`
+      : `Tengo experiencia con: ${abString}`;
 </script>
 
-<div aria-hidden="true">
+<div aria-label="{label}">
   {#key index}
-  <img transition:fade src="{abilities[index][0]}" alt="" />
+  <img aria-hidden="true" transition:fade src="{abilities[index][0]}" alt="" />
   {/key}
 </div>
 
