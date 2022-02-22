@@ -22,7 +22,7 @@
     <meta content="#E34495" name="msapplication-TileColor">
     <meta content="ms-icon-144x144.png" name="msapplication-TileImage">
     <meta content="#E34495" name="theme-color">
-    <link rel="stylesheet" type="text/css" href="../../../assets/global.2d8605b0.css"><link rel="stylesheet" type="text/css" href="../../../assets/blog.62506d28.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/global.2d8605b0.css"><link rel="stylesheet" type="text/css" href="../../../assets/index.bd5e8d07.css">
     
     
     
@@ -72,23 +72,23 @@
 
 
 
-<section class="blog astro-4OGDFSJ4">
-  <div class="title astro-4OGDFSJ4">
-    <h1 class="astro-4OGDFSJ4">Tag: api</h1>
+<section class="blog astro-RXAMQS4R">
+  <div class="title astro-RXAMQS4R">
+    <h1 class="astro-RXAMQS4R">Tag: api</h1>
     
   </div>
   
-<p class="available astro-4OGDFSJ4">Also available on <a href="https://dev.to/pabloabc" class="available astro-4OGDFSJ4">dev.to</a> and <a href="https://hn.berganza.dev" class="available astro-4OGDFSJ4">hashnode</a></p>
+<p class="available astro-RXAMQS4R">Also available on <a href="https://dev.to/pabloabc" class="available astro-RXAMQS4R">dev.to</a> and <a href="https://hn.berganza.dev" class="available astro-RXAMQS4R">hashnode</a></p>
 
-  <ul class="astro-4OGDFSJ4">
-    <li class="astro-4OGDFSJ4">
-      <a href="/blog/graphql-is-it-worth-the-switch" class="astro-4OGDFSJ4">
-        <article class="astro-4OGDFSJ4">
-          <h2 class="astro-4OGDFSJ4">GraphQL: Is it worth the switch?</h2>
-          <div class="stats astro-4OGDFSJ4">
-            <div class="ttr astro-4OGDFSJ4">
-              <span class="astro-4OGDFSJ4">
-                
+  <ul class="astro-RXAMQS4R">
+    <li class="astro-RXAMQS4R">
+          <a href="/blog/graphql-is-it-worth-the-switch" class="astro-RXAMQS4R">
+            <article class="astro-RXAMQS4R">
+              <h2 class="astro-RXAMQS4R">GraphQL: Is it worth the switch?</h2>
+              <div class="stats astro-RXAMQS4R">
+                <div class="ttr astro-RXAMQS4R">
+                  <span class="astro-RXAMQS4R">
+                    
 <svg role="img" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="astro-NHECQHBJ">
   <title>Reading time:</title>
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" class="astro-NHECQHBJ"></path>
@@ -96,13 +96,15 @@
 
 
 
-              </span>
-              <span class="astro-4OGDFSJ4">10</span>
-              <span class="astro-4OGDFSJ4">minutes</span>
-            </div>
-            <div class="created astro-4OGDFSJ4">
-              <span class="astro-4OGDFSJ4">
-                
+                  </span>
+                  <time datetime="10m" class="astro-RXAMQS4R">
+                    10
+                    minutes
+                  </time>
+                </div>
+                <div class="created astro-RXAMQS4R">
+                  <span class="astro-RXAMQS4R">
+                    
 <svg role="img" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="astro-ZGM2KRLC">
   <title>Creation date:</title>
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" class="astro-ZGM2KRLC"></path>
@@ -110,17 +112,28 @@
 
 
 
-              </span>
-              <span class="astro-4OGDFSJ4">
-                2019-06-11
-              </span>
-            </div>
-          </div>
-          <p class="astro-4OGDFSJ4">A nice alternative to REST APIs with a fantastic developer experience</p>
-        </article>
-      </a>
-    </li>
+                  </span>
+                  <time class="created-date astro-RXAMQS4R" datetime="2019-06-11">2019-06-11</time>
+                </div>
+              </div>
+              <p class="astro-RXAMQS4R">A nice alternative to REST APIs with a fantastic developer experience</p>
+            </article>
+          </a>
+        </li>
   </ul>
+  <script>
+   const lang = document.documentElement.lang;
+   const timeElements = document.querySelectorAll('time.created-date');
+   for (const timeElement of timeElements) {
+     const created = timeElement.textContent;
+     const localeDate = new Date(created).toLocaleDateString(lang ?? 'en', {
+       year: 'numeric',
+       month: 'long',
+       day: 'numeric',
+     });
+     timeElement.textContent = localeDate;
+   }
+  </script>
 </section>
 
 
