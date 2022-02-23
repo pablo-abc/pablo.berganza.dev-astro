@@ -228,7 +228,7 @@ expect('a').to.equal('a');
 Hay un pequeño detalle que todavía no podemos manejar con nuestra implementación actual: negar aserciones. Necesitamos implementar una forma para modificar el comportamiento de aserciones futuras.
 
 ## Negando aserciones
-Para lograr manejar esto, necesitamos una forma de comunicarle a nuestras propiedades que la aserción siendo realizada ha sido negada. Para esto, cambiaremos un poco como definimos nuestras propiedades. En lugar de recibir el valor siendo validado como primer argumento, vamos a recibir un objeto `context` que contendrá nuestro valor siendo validado en la propiedad `actual`, y una nueva propiedad `negated` que contendrá un boleado indicando si la aserción ha sido negada. La definición de nuestras propiedades para `equal` y `null` ahora se verán así:
+Para lograr manejar esto, necesitamos una forma de comunicarle a nuestras propiedades que la aserción siendo realizada ha sido negada. Para esto, cambiaremos un poco como definimos nuestras propiedades. En lugar de recibir el valor siendo validado como primer argumento, vamos a recibir un objeto `context` que contendrá nuestro valor siendo validado en la propiedad `actual`, y una nueva propiedad `negated` que contendrá un booleano indicando si la aserción ha sido negada. La definición de nuestras propiedades para `equal` y `null` ahora se verán así:
 
 ```javascript
 const isNull = {
