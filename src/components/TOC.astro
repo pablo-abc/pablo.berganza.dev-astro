@@ -1,9 +1,9 @@
 ---
 import ChevronRight from 'components:icons/ChevronRight.astro';
 
-const { headers: origHeaders, lang = 'en' } = Astro.props;
+const { headers: astroHeaders, lang = 'en' } = Astro.props;
 let headers = [];
-for (const header of origHeaders) {
+for (const header of astroHeaders) {
   if (header.depth === 2) {
     headers.push({
       ...header,
@@ -25,20 +25,20 @@ for (const header of origHeaders) {
   </summary>
   <ol id="toc">
     {headers.map((header) => {
-    return (
-    <li>
-      <a href={`#${header.slug}`}>{header.text}</a>
-      {header.subheaders.length !== 0 && (
-      <ul>
-        {header.subheaders.map((sh) => (
+      return (
         <li>
-          <a href={`#${sh.slug}`}>{sh.text}</a>
+          <a href={`#${header.slug}`}>{header.text}</a>
+          {header.subheaders.length !== 0 && (
+            <ul>
+              {header.subheaders.map((sh) => (
+                <li>
+                  <a href={`#${sh.slug}`}>{sh.text}</a>
+                </li>
+              ))}
+            </ul>
+          )}
         </li>
-        ))}
-      </ul>
-      )}
-    </li>
-    );
+      );
     })}
   </ol>
 </details>
