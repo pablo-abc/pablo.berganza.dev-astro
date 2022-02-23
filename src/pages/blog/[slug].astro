@@ -1,5 +1,6 @@
 ---
-import PostLayout from 'layouts:PostLayout.astro';
+import Post from 'layouts:PostLayout.astro';
+
 export async function getStaticPaths({ rss }) {
   const posts = Astro
         .fetchContent('../../posts/en/*.md')
@@ -11,9 +12,11 @@ export async function getStaticPaths({ rss }) {
                 .replace('.md', '');
           return {
             ...post,
+            lang: 'en',
             slug,
           };
         });
+
   const slugs = posts.map((post) => post.slug);
 
   rss({
@@ -51,11 +54,7 @@ export async function getStaticPaths({ rss }) {
     return {
       params: { slug },
       props: {
-        post: posts
-          .find(post => {
-            post.lang = 'en';
-            return post.slug === slug
-          })
+        post: posts.find(post => post.slug === slug)
       },
     }
   });
@@ -64,6 +63,4 @@ export async function getStaticPaths({ rss }) {
 const { post } = Astro.props;
 ---
 
-<PostLayout content={post}>
-  {post.content.html}
-</PostLayout>
+<Post post={post} />

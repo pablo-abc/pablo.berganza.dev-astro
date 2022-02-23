@@ -3,19 +3,8 @@ import Base from 'layouts:Base.astro';
 import Blogs from 'components:Blog/Blogs.astro';
 
 export async function getStaticPaths() {
-  const posts = Astro
-        .fetchContent('../../../posts/en/*.md')
-        .map((post) => {
-          const slug = post
-                .file
-                .pathname
-                .replace('/src/posts/en/', '')
-                .replace('.md', '');
-          return {
-            ...post,
-            slug,
-          };
-        });
+  const posts = Astro.fetchContent('../../../posts/en/*.md');
+
   const possibleTags = new Set();
   for (const post of posts) {
     for (const tag of post.tags) {

@@ -3,17 +3,6 @@ import Base from 'layouts:Base.astro';
 import Blogs from 'components:Blog/Blogs.astro';
 const posts = Astro
       .fetchContent('../../../posts/es/*.md')
-      .map((post) => {
-        const slug = post
-              .file
-              .pathname
-              .replace('/src/posts/es/', '')
-              .replace('.md', '');
-        return {
-          ...post,
-          slug,
-        };
-      })
       .filter((post) => {
         if (import.meta.env.PROD) {
           return post.published;
@@ -22,7 +11,6 @@ const posts = Astro
       })
       .map((post) => ({
         ...post,
-        lang: 'es',
         url: post
           .file
           .pathname

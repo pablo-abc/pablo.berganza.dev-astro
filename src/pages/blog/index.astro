@@ -3,32 +3,22 @@ import Base from 'layouts:Base.astro';
 import Blogs from 'components:Blog/Blogs.astro';
 const posts = Astro
       .fetchContent('../../posts/en/*.md')
-      .map((post) => {
-        const slug = post
-              .file
-              .pathname
-              .replace('/src/posts/en/', '')
-              .replace('.md', '');
-        return {
-          ...post,
-          slug,
-        };
-      })
       .filter((post) => {
         if (import.meta.env.PROD) {
           return post.published;
         }
         return true;
       })
-      .map((post) => ({
-        ...post,
-        lang: 'en',
-        url: post
-          .file
-          .pathname
-          .replace(/\/src\/posts\/en/, '/blog')
-          .replace(/\.md$/, ''),
-      }))
+      .map((post) => {
+        return {
+          ...post,
+          url: post
+            .file
+            .pathname
+            .replace(/\/src\/posts\/en/, '/blog')
+            .replace(/\.md$/, ''),
+        };
+      })
       .sort((a, b) => {
         return (
           new Date(b.created).getTime() -
