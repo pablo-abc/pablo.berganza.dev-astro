@@ -18,6 +18,11 @@ const lang = post.lang || 'en';
 const imgSrc = `assets/blog-pics/${post.created}.${post.imgext ?? 'jpg'}`;
 const section = `blog/${post.slug}`;
 const crosspost = post.crosspost;
+const localeDate = new Date(post.created).toLocaleDateString(lang ?? 'en', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
 const jsonLd = `
     <script type="application/ld+json">
      {
@@ -129,18 +134,7 @@ const jsonLd = `
             <span>
               <Calendar lang={lang} />
             </span>
-            <time class="created-date" datetime={post.created}>{post.created}</time>
-            <script>
-             const lang = document.documentElement.lang;
-             const timeElement = document.querySelector('time.created-date');
-             const created = timeElement.textContent;
-             const localeDate = new Date(created).toLocaleDateString(lang ?? 'en', {
-               year: 'numeric',
-               month: 'long',
-               day: 'numeric',
-             });
-             timeElement.textContent = localeDate;
-            </script>
+            <time class="created-date" datetime={post.created}>{localeDate}</time>
           </div>
         </div>
         <div class="tags">

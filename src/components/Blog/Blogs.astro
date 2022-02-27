@@ -37,6 +37,11 @@ const available = lang === 'en'
   <ul>
     {posts.map(post => {
       const duration = getTtr(post.astro.source);
+      const localeDate = new Date(post.created).toLocaleDateString(lang ?? 'en', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
       return (
         <li>
           <a href={post.url}>
@@ -56,7 +61,7 @@ const available = lang === 'en'
                   <span>
                     <Calendar lang={lang} />
                   </span>
-                  <time class="created-date" datetime={post.created}>{post.created}</time>
+                  <time class="created-date" datetime={post.created}>{localeDate}</time>
                 </div>
               </div>
               <p>{post.description}</p>
@@ -66,19 +71,6 @@ const available = lang === 'en'
       );
     })}
   </ul>
-  <script>
-   const lang = document.documentElement.lang;
-   const timeElements = document.querySelectorAll('time.created-date');
-   for (const timeElement of timeElements) {
-     const created = timeElement.textContent;
-     const localeDate = new Date(created).toLocaleDateString(lang ?? 'en', {
-       year: 'numeric',
-       month: 'long',
-       day: 'numeric',
-     });
-     timeElement.textContent = localeDate;
-   }
-  </script>
 </section>
 
 <style lang="scss">
