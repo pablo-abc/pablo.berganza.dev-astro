@@ -5,11 +5,12 @@ export async function getStaticPaths({ rss }) {
   const posts = Astro
         .fetchContent('../../posts/en/*.md')
         .map((post) => {
-          const slug = post
-                .file
-                .pathname
-                .replace('/src/posts/en/', '')
-                .replace('.md', '');
+          let slug = post
+            .file
+            .pathname
+            .replace('/src/posts/en/', '')
+            .replace('.md', '');
+          if (!post.published) slug = `__draft__${slug}`;
           return {
             ...post,
             lang: 'en',

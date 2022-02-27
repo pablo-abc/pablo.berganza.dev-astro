@@ -9,20 +9,25 @@ const posts = Astro
         }
         return true;
       })
-      .map((post) => ({
-        ...post,
-        url: post
+      .map((post) => {
+        let slug = post
           .file
           .pathname
-          .replace(/\/src\/posts\/es/, '/es/blog')
-          .replace(/\.md$/, ''),
-      }))
-      .sort((a, b) => {
-        return (
-          new Date(b.created).getTime() -
-            new Date(a.created).getTime()
-        )
-      });
+          .replace(/\/src\/posts\/es\//, '')
+          .replace(/\.md$/, '');
+        if (!post.published) slug = `__draft__${slug}`;
+        const url = `/es/blog/${slug}`;
+        return {
+          ...post,
+          url,
+        }
+      })
+  .sort((a, b) => {
+    return (
+      new Date(b.created).getTime() -
+      new Date(a.created).getTime()
+    )
+  });
 ---
 <Base title="Blog" lang="es" section="blog">
   <Blogs lang="es" posts={posts} showRss />

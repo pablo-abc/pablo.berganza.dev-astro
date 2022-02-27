@@ -23,11 +23,13 @@ export async function getStaticPaths() {
           })
           .filter(post => post.tags.includes(tag))
           .map(post => {
-            const url = post
-                  .file
-                  .pathname
-                  .replace('/src/posts/es', '/es/blog')
-                  .replace('.md', '');
+            let slug = post
+              .file
+              .pathname
+              .replace('/src/posts/es/', '')
+              .replace('.md', '');
+            if (!post.published) slug = `__draft__${slug}`;
+            const url = `/es/blog/${slug}`;
             return {
               ...post,
               url,
