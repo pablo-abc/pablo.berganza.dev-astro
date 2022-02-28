@@ -21,7 +21,7 @@ for (const header of astroHeaders) {
 <details>
   <summary>
     <ChevronRight />
-    {lang === 'en' ? 'Table of contents' : 'Índice'}
+    <span>{lang === 'en' ? 'Table of contents' : 'Índice'}</span>
   </summary>
   <ol id="toc">
     {headers.map((header) => {
@@ -60,7 +60,6 @@ for (const header of astroHeaders) {
   summary {
     position: relative;
     display: flex;
-    margin-left: 1rem;
     align-items: center;
     font-family: 'Roboto Slab', serif;
     color: var(--color-subheading);
@@ -80,13 +79,21 @@ for (const header of astroHeaders) {
     :global(svg) {
       position: absolute;
       left: 0;
-      transform: translateX(-100%);
       width: 1em;
       transition: transform 0.1s;
+    }
+
+    & > span {
+      padding: 0.5rem 1rem 0.5rem 2rem;
+      border-radius: 10px;
+    }
+
+    &:hover > span {
+      background: var(--color-card-hover);
     }
   }
 
   details[open] > summary :global(svg) {
-    transform: rotate(90deg) translateY(100%);
+    transform: rotate(90deg);
   }
 </style>

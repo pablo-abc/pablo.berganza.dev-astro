@@ -137,10 +137,14 @@ button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
-summary:focus-visible,
+summary:focus-visible > span,
 [tabindex]:focus-visible {
   outline: 3px solid var(--color-subheading);
   outline-offset: 2px;
+}
+
+summary:focus-visible {
+  outline: none;
 }
 
 a:focus:not(:focus-visible),
