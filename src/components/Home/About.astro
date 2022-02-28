@@ -17,24 +17,24 @@ const { lang } = Astro.props;
     <Abilities lang={lang} client:visible />
   </div>
   <section aria-labelledby="projects-title">
-    <h1 id="projects-title">{i18n.projects.title[lang]}</h1>
+    <h1 id="projects-title" set:html={i18n.projects.title[lang]} />
     <dl>
       {i18n.projects.list.map(project => (
       <div>
-        <dt>{project.title}</dt>
-        <dd>{project.description[lang]}</dd>
+        <dt set:html={project.title} />
+        <dd set:html={project.description[lang]} />
       </div>
       ))}
     </dl>
   </section>
   <section class="contact" aria-labelledby="contact-title">
-    <h1 id="contact-title">{i18n.networks.title[lang]}</h1>
-    <p>{i18n.networks.description[lang]}</p>
+    <h1 id="contact-title" set:html={i18n.networks.title[lang]} />
+    <p set:html={i18n.networks.description[lang]} />
     <ul>
       {i18n
       .networks
       .links
-      .map(link => <li>{link[lang]}</li>)}
+      .map(link => <li set:html={link[lang]} />)}
     </ul>
   </section>
 </div>

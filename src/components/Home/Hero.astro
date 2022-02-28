@@ -10,17 +10,17 @@ const { lang } = Astro.props;
   <section class="info" aria-labelledby="welcome-hero">
     <h1 id="welcome-hero">
       <span>
-        {i18n.welcome[lang]}
+        <Fragment set:html={i18n.welcome[lang]} />
         <Sil className="memage-mobile" />
       </span>
       Pablo Berganza
     </h1>
     <ul>
       {i18n.description[lang].map(desc => (
-        <li>{desc}</li>
+        <li set:html={desc} />
       ))}
     </ul>
-    <p>{i18n.blog[lang]}</p>
+    <p set:html={i18n.blog[lang]} />
   </section>
   <Sil className="memage" />
 </div>

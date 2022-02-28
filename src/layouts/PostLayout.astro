@@ -90,7 +90,7 @@ const jsonLd = `
     <script type="module" src="https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.js"></script>
     <script src="/scripts/focus-visible.js" defer></script>
-    {jsonLd}
+    <Fragment set:html={jsonLd} />
     <MetaHead
       title={post.title}
       description={post.description}
@@ -110,8 +110,8 @@ const jsonLd = `
       <LangLink lang={lang} section={section} />
       <article>
         <header>
-          <h1 class="title">{post.title}</h1>
-          <p>{post.description}</p>
+          <h1 class="title" set:html={post.title} />
+          <p set:html={post.description} />
         </header>
         <img
           alt=""
@@ -160,7 +160,7 @@ const jsonLd = `
         )}
         <section class="content">
           <TOC headers={headers} lang={lang} />
-          {post.astro.html}
+          <Fragment set:html={post.astro.html} />
         </section>
       </article>
       <script src={Astro.resolve('./copy-button.js')}></script>
@@ -330,6 +330,8 @@ const jsonLd = `
   .content :global(code) {
     background: var(--background-codespan);
     color: var(--base-font-color);
+    padding: 0.1rem 0.2rem 0.1rem 0.2rem;
+    border-radius: 5px;
   }
 
   .content :global(a code) {
