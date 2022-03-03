@@ -1,4 +1,9 @@
 ---
+import 'style:roboto.css';
+import 'style:overpass.css';
+import 'style:reset.css'
+import 'style:global.css'
+import 'style:dracula.css'
 import readingTime from 'reading-time';
 import LangLink from 'components:LangLink.astro';
 import HomeLink from 'components:HomeLink.astro';
@@ -82,11 +87,6 @@ const jsonLd = `
     <meta content="#E34495" name="msapplication-TileColor">
     <meta content="ms-icon-144x144.png" name="msapplication-TileImage">
     <meta content="#E34495" name="theme-color">
-    <link rel="stylesheet" type="text/css" href={Astro.resolve('../style/roboto.css')}>
-    <link rel="stylesheet" type="text/css" href={Astro.resolve('../style/overpass.css')}>
-    <link rel="stylesheet" type="text/css" href={Astro.resolve('../style/reset.css')}>
-    <link rel="stylesheet" type="text/css" href={Astro.resolve('../style/global.css')}>
-    <link rel="stylesheet" type="text/css" href={Astro.resolve('../style/dracula.css')}>
     <script type="module" src="https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.js"></script>
     <script src="/scripts/focus-visible.js" defer></script>
