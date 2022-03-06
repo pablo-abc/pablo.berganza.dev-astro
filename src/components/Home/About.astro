@@ -3,6 +3,25 @@ import { Markdown } from 'astro/components';
 import Abilities from './Abilities.svelte';
 import i18n from '../../i18n/home.json';
 const { lang } = Astro.props;
+
+const addresses = [
+  {
+    name: 'ETH',
+    address: '0x4dc270218e1E00D11a2675c18D2309711b1e408A',
+  },
+  {
+    name: 'BTC',
+    address: 'bc1qdy448pww6gjdlg2n0ue8hdhcz6cch72mpst6md',
+  },
+  {
+    name: 'ADA',
+    address: 'addr1q8pqz0fdp0l3wd6j0qud3vnwmnkapcqqcm8vygk6pjahknu3uvr9vfz444648tvsfkzrg8dejsupegmp0jerhkf6ffmq0c0jkj',
+  }
+];
+
+const copyLabel = lang === 'en' ? 'Copy to clipboard' : 'Copiar al portapapeles'
+const qrLabel = lang === 'en' ? 'Show QR code' : 'Mostrar código QR';
+const modalCloseLabel = lang === 'en' ? 'Close' : 'Cerrar';
 ---
 <picture aria-hidden="true">
   <source srcset="/assets/curves-dark.svg" media="(prefers-color-scheme: dark)" />
@@ -10,14 +29,14 @@ const { lang } = Astro.props;
 </picture>
 <div class="about">
   <section class="about-text" aria-labelledby="about-me-title">
-    <h1 id="about-me-title">{i18n.aboutMe.title[lang]}</h1>
+    <h2 id="about-me-title">{i18n.aboutMe.title[lang]}</h2>
     <Markdown content={i18n.aboutMe.description[lang]} />
   </section>
   <div class="abilities">
     <Abilities lang={lang} client:visible />
   </div>
   <section aria-labelledby="projects-title">
-    <h1 id="projects-title" set:html={i18n.projects.title[lang]} />
+    <h2 id="projects-title" set:html={i18n.projects.title[lang]} />
     <dl>
       {i18n.projects.list.map(project => (
       <div>
@@ -28,7 +47,7 @@ const { lang } = Astro.props;
     </dl>
   </section>
   <section class="contact" aria-labelledby="contact-title">
-    <h1 id="contact-title" set:html={i18n.networks.title[lang]} />
+    <h2 id="contact-title" set:html={i18n.networks.title[lang]} />
     <p set:html={i18n.networks.description[lang]} />
     <ul>
       {i18n
@@ -37,13 +56,27 @@ const { lang } = Astro.props;
       .map(link => <li set:html={link[lang]} />)}
     </ul>
   </section>
+  <section class="support" aria-labelledby="support-title">
+    <h2 id="support-title" set:text={i18n.supportMe.title[lang]} />
+    <p set:text={i18n.supportMe.description[lang]} />
+    <walisto-container>
+      {addresses.map((a) => <walisto-item
+                              name={a.name}
+                              address={a.address}
+                              copy-label={copyLabel}
+                              qr-label={qrLabel}
+                              modal-close-label={modalCloseLabel}
+                              />)}
+    </walisto-container>
+    <script hoist type="module" src="https://unpkg.com/walisto@0.0.5/dist/esm/index.min.js"></script>
+  </section>
 </div>
 
 <style lang="scss">
-.curves {
-   display: block;
-   width: 100%;
- }
+  .curves {
+    display: block;
+    width: 100%;
+  }
 
  .about {
    display: flex;
@@ -63,7 +96,7 @@ const { lang } = Astro.props;
      line-height: 1.5rem;
    }
 
-   :global(h1) {
+   :global(h2) {
      color: var(--color-primary-on-alt);
      font-size: var(--h1);
      font-weight: 700;
@@ -113,6 +146,15 @@ const { lang } = Astro.props;
  .contact {
    p {
      margin-bottom: 0.5rem;
+   }
+ }
+
+ .support {
+   width: 100%;
+   margin-top: 2rem;
+
+   p {
+     margin-bottom: 1rem;
    }
  }
 </style>

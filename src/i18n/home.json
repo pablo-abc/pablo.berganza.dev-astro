@@ -99,5 +99,15 @@
         "es": "En Twitter como <a href=\"https://twitter.com/Pablo_ABC\">@Pablo_ABC</a>"
       }
     ]
+  },
+  "supportMe": {
+    "title": {
+      "en": "How to support me",
+      "es": "Cómo ayudarme"
+    },
+    "description": {
+      "en": "If you can, I really appreciate issues and pull requests on any of my repositories! You can also support me financially with the following:",
+      "es": "Si puedes, aprecio mucho que reporten errores o hagan pull requests en mis repositorios! También puedes ayudarme económicamente con lo siguiente:"
+    }
   }
 }

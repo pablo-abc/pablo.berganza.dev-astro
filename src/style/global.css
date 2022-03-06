@@ -167,3 +167,58 @@ summary:focus:not(:focus-visible),
   width: 1px;
   overflow: hidden;
 }
+
+walisto-container {
+  --walisto-width: 45rem;
+  --walisto-font-family: 'PT Mono', Consolas, Monaco, 'Andale Mono',
+    'Ubuntu Mono', monospace;
+}
+
+walisto-item {
+  --walisto-item-bg: hsl(329, 20%, 10%);
+  --walisto-font-color: var(--base-font-color);
+  --walisto-button-font-color: #eee;
+  --walisto-button-bg: hsl(329, 40%, 17%);
+  --walisto-button-bg-hover: hsl(329, 30%, 37%);
+  --walisto-button-bg-active: hsl(329, 40%, 47%);
+  --walisto-outline-fv: 3px solid var(--color-subheading);
+}
+
+walisto-modal {
+  --walisto-modal-backdrop-bg: rgba(255, 255, 255, 0.2);
+  --walisto-modal-bg: var(--background-color);
+  --walisto-modal-font-color: var(--color-primary-on-alt);
+  --walisto-modal-button-font-color: #eee;
+  --walisto-modal-button-bg: hsl(329, 40%, 17%);
+  --walisto-modal-button-bg-hover: hsl(329, 30%, 37%);
+  --walisto-modal-button-bg-active: hsl(329, 40%, 47%);
+  --walisto-modal-outline-fv: 3px solid var(--color-subheading);
+
+  --walisto-modal-font-family: 'PT Mono', Consolas, Monaco, 'Andale Mono',
+    'Ubuntu Mono', monospace;
+}
+
+@media (prefers-color-scheme: light) {
+  walisto-item {
+    --walisto-item-bg: var(--background-color);
+    --walisto-font-color: var(--base-font-color);
+    --walisto-button-font-color: #eee;
+    --walisto-button-bg: hsl(329, 100%, 27%);
+    --walisto-button-bg-hover: hsl(329, 80%, 37%);
+    --walisto-button-bg-active: hsl(329, 70%, 47%);
+  }
+
+  walisto-modal {
+    --walisto-modal-backdrop-bg: rgba(0, 0, 0, 0.2);
+    --walisto-modal-bg: var(--background-color);
+    --walisto-modal-font-color: var(--color-primary-on-alt);
+    --walisto-modal-button-font-color: #eee;
+    --walisto-modal-button-bg: hsl(329, 100%, 27%);
+    --walisto-modal-button-bg-hover: hsl(329, 80%, 37%);
+    --walisto-modal-button-bg-active: hsl(329, 70%, 47%);
+  }
+}
+
+walisto-item + walisto-item {
+  margin-top: 0.5rem;
+}
