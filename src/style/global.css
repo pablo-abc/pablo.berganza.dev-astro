@@ -174,7 +174,7 @@ walisto-container {
     'Ubuntu Mono', monospace;
 }
 
-walisto-item {
+walisto-container::part(item) {
   --walisto-item-bg: hsl(329, 20%, 10%);
   --walisto-font-color: var(--base-font-color);
   --walisto-button-font-color: #eee;
@@ -199,7 +199,7 @@ walisto-modal {
 }
 
 @media (prefers-color-scheme: light) {
-  walisto-item {
+  walisto-container::part(item) {
     --walisto-item-bg: var(--background-color);
     --walisto-font-color: var(--base-font-color);
     --walisto-button-font-color: #eee;
@@ -217,8 +217,4 @@ walisto-modal {
     --walisto-modal-button-bg-hover: hsl(329, 80%, 37%);
     --walisto-modal-button-bg-active: hsl(329, 70%, 47%);
   }
-}
-
-walisto-item + walisto-item {
-  margin-top: 0.5rem;
 }

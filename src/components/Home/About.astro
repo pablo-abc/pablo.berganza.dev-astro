@@ -60,15 +60,20 @@ const modalCloseLabel = lang === 'en' ? 'Close' : 'Cerrar';
     <h2 id="support-title" set:text={i18n.supportMe.title[lang]} />
     <p set:text={i18n.supportMe.description[lang]} />
     <walisto-container>
-      {addresses.map((a) => <walisto-item
-                              name={a.name}
-                              address={a.address}
-                              copy-label={copyLabel}
-                              qr-label={qrLabel}
-                              modal-close-label={modalCloseLabel}
-                              />)}
+      <template>
+        {addresses.map((a) => (
+        <walisto-item
+          part="item"
+          data-name={a.name}
+          data-address={a.address}
+          data-copy-label={copyLabel}
+          data-qr-label={qrLabel}
+          data-modal-close-label={modalCloseLabel}
+          />
+        ))}
+      </template>
     </walisto-container>
-    <script hoist type="module" src="https://unpkg.com/walisto@0.0.6/dist/esm/index.min.js"></script>
+    <script hoist type="module" src="https://unpkg.com/walisto@0.1.2/dist/index.min.js"></script>
   </section>
 </div>
 
