@@ -64,16 +64,16 @@ const modalCloseLabel = lang === 'en' ? 'Close' : 'Cerrar';
         {addresses.map((a) => (
         <walisto-item
           part="item"
-          data-name={a.name}
-          data-address={a.address}
-          data-copy-label={copyLabel}
-          data-qr-label={qrLabel}
-          data-modal-close-label={modalCloseLabel}
+          name={a.name}
+          address={a.address}
+          copy-label={copyLabel}
+          qr-label={qrLabel}
+          modal-close-label={modalCloseLabel}
           />
         ))}
       </template>
     </walisto-container>
-    <script hoist type="module" src="https://unpkg.com/walisto@0.1.4/dist/index.min.js"></script>
+    <script hoist type="module" src="https://unpkg.com/walisto@0.2.0/dist/index.min.js"></script>
   </section>
 </div>
 
