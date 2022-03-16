@@ -14,7 +14,7 @@ crosspost:
 tags:
   - javascript
   - forms
-  - programación
+  - webdev
 ---
 
 Después de más de un año de trabajo, estoy orgulloso de poder anunciar el lanzamiento de la versión 1.0 de [Felte](https://felte.dev).

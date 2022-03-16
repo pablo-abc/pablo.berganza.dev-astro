@@ -10,7 +10,7 @@ lang: es
 tags:
     - svelte
     - javascript
-    - programación
+    - webdev
 ---
 
 Admito que soy la clase de persona que se obsesiona inmediatamente con algo si es nuevo e interesante. Así es como empecé con [Clojure](https://clojure.org), [Rust](https://www.rust-lang.org/), y con el tema de hoy: [Svelte](https://svelte.dev/).

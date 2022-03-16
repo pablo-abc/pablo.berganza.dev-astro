@@ -8,7 +8,7 @@ image:
   height: 600
 tags:
     - clojure
-    - programación
+    - webdev
     - tecnología
 lang: es
 ---

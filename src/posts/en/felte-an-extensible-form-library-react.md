@@ -14,7 +14,7 @@ tags:
   - javascript
   - react
   - forms
-  - programming
+  - webdev
 ---
 
 Arguably one of the most common problems front-end developers need to solve is form handling. Specially in modern web applications that require instant validation and other real-time interactions with the user.  To provide the best user experience as possible, you’ll probably grab a third party form management library to help you.

@@ -1,8 +1,8 @@
 ---
 title: "Shadow DOM, Firefox y contenteditable"
 description: Haciendo que el focus funcione correctamente en Firefox usando el shadow DOM
-created: '2022-03-15'
-published: false
+created: '2022-03-16'
+published: true
 imgext: png
 lang: es
 image:
@@ -12,7 +12,7 @@ tags:
   - javascript
   - firefox
   - webcomponents
-  - programación
+  - webdev
 ---
 
  Esta es más una nota sobre unos experimentos que estaba realizando con web components que estoy publicando como referencia para mi yo futuro (u otras personas que encuentren el mismo problema).
@@ -80,3 +80,5 @@ customElements.define('my-field', MyField);
 ```
 
 De esta forma puedes usar `<my-field></my-field>` como un “div” `[contenteditable]` donde sea!
+
+Ten en mente que este artículo solo se preocupa en hacer que el "focus" en elementos con `[contenteditable]` funcione bien. Hay otras cosas que considerar a la hora de utilizar algo así que dependerán del caso de uso.

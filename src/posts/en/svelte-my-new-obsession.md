@@ -9,7 +9,7 @@ image:
 tags:
     - svelte
     - javascript
-    - programming
+    - webdev
 ---
 
 I admit I am the kind of person who gets immediately obsessed with something if it is new and interesting. That's how I got into [Clojure](https://clojure.org), how I got into [Rust](https://www.rust-lang.org/), and how I got into the topic I'm writing about today: [Svelte](https://svelte.dev/).

@@ -13,7 +13,7 @@ crosspost:
 tags:
   - javascript
   - forms
-  - programming
+  - webdev
 ---
 
 After more than a year of work, I am proud to announce the release of version 1.0.0 of [Felte](https://felte.dev)!

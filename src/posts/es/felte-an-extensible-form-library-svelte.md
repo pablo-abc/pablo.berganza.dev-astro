@@ -15,7 +15,7 @@ tags:
   - javascript
   - solid
   - forms
-  - programación
+  - webdev
 ---
 
 > Este artículo ha sido actualizado para mostrar el uso de Felte 1.0

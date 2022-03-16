@@ -14,7 +14,7 @@ tags:
   - javascript
   - testing
   - uvu
-  - programación
+  - webdev
 ---
 
 Durante las últimas semanas he tomado el (probablemente inútil) trabajo de migrar [Felte](https://felte.dev) de usar Jest a usar [uvu](https://github.com/lukeed/uvu). Esta labor es tediosa de por sí, pero uno de los detalles que dificultan la transición es que Jest espera que hagas tus tests con una sintaxis estilo `expect(…).toBe*`; mientras que uvu te da total libertad sobre cómo realizar tus tests. Aunque uvu ofrece un paquete oficial `uvu/assert` que  te permite realizar tus tests estilo `assert.is(value, expected)`.

@@ -14,7 +14,7 @@ tags:
   - javascript
   - solid
   - forms
-  - programming
+  - webdev
 ---
 
 > This article has been updated to showcase Felte 1.0

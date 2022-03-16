@@ -159,7 +159,7 @@ const jsonLd = `
         </div>
         )}
         <section class="content">
-          <TOC headers={headers} lang={lang} />
+          {headers.length >= 3 && <TOC headers={headers} lang={lang} />}
           <Fragment set:html={post.astro.html} />
         </section>
       </article>

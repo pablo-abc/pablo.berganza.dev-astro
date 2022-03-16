@@ -15,7 +15,7 @@ tags:
   - javascript
   - react
   - forms
-  - programación
+  - webdev
 ---
 
 Posiblemente uno de los problemas más comunes que desarrolladores front-end deben resolver es manejo de formularios. Especialmente en aplicaciones web modernas que requieren validaciones instantáneas y otras interacciones en tiempo real con el usuario. Para proveer la mejor experiencia de usuario posible, probablemente uses una librería de terceros para manejo de formularios que te ayude a resolver esto.

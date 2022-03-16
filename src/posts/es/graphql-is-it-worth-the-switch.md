@@ -11,6 +11,7 @@ tags:
     - graphql
     - rest
     - api
+    - webdev
 ---
 
 Este último año trabajando como desarrollador web he estado, básicamente, respirando [REST](https://es.wikipedia.org/wiki/Transferencia_de_Estado_Representacional) todos los días. Aunque no es tanto tiempo, ha sido más que suficiente para apreciar la simplicidad sobre SOAP, y para odiar los momentos en que los requerimientos del cliente o otras situaciones te fuerzan a escribir endpoints que no son [RESTful](https://restfulapi.net/rest-architectural-constraints/). Aunque REST es ya un estándar para crear APIs web modernas, hace un par de años ha habido un competidor del cual no me había forzado a investigar todavía: [GraphQL](https://graphql.org). Pero eso ha cambiado y ya he experimentado un poco implementándolo en el cliente y en el servidor.

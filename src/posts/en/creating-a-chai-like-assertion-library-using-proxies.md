@@ -14,7 +14,7 @@ tags:
   - javascript
   - testing
   - uvu
-  - programming
+  - webdev
 ---
 
 For the past few weeks I’ve taken the (arguably pointless) work of migrating [Felte](https://felte.dev) from using Jest to [uvu](https://github.com/lukeed/uvu). This is a really tedious work by itself, but one of details that would have made this work even more tedious is that Jest prefers assertions to the style of `expect(…).toBe*` while uvu gives you freedom to choose any assertion library, although there’s an official `uvu/assert` module that comes with assertions to the style of `assert.is(value, expected)`.
