@@ -12,7 +12,7 @@ import Clock from 'components:icons/Clock.astro';
 import Calendar from 'components:icons/Calendar.astro';
 import MetaHead from 'components:MetaHead.svelte';
 import ShareButtons from 'components:ShareButtons.svelte';
-import Commento from 'components:Commento.svelte';
+import Commento from '../components/Commento.svelte';
 
 const { post } = Astro.props;
 const headers = post.astro.headers;
@@ -163,11 +163,14 @@ const jsonLd = `
           <Fragment set:html={post.astro.html} />
         </section>
       </article>
-      <script src={Astro.resolve('./copy-button.js')}></script>
+      <script type="module" hoist>
+        import { load } from './copy-button.js';
+        load();
+      </script>
       <footer>
         <ShareButtons host={host} blog={post} lang={lang} />
         <Commento
-          client:visible
+          client:only
           lang={lang}
           src={import.meta.env.PROD
           ? 'https://cdn.commento.io/js/commento.js'

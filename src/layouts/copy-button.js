@@ -62,7 +62,7 @@ const i18n = {
   },
 };
 
-function load() {
+export function load() {
   const lang = document.documentElement.lang;
   const messages = i18n[lang];
   const codeBlocks = document.querySelectorAll('pre');
@@ -173,5 +173,3 @@ function load() {
     id += 1;
   }
 }
-
-load();
