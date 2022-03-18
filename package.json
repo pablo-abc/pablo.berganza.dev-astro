@@ -10,7 +10,7 @@
     "deploy": "pnpm build && touch dist/.nojekyll && gh-pages -td dist/"
   },
   "devDependencies": {
-    "@astrojs/renderer-svelte": "^0.4.0",
+    "@astrojs/renderer-svelte": "^0.5.2",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "astro": "0.24.3",
     "commander": "^9.0.0",

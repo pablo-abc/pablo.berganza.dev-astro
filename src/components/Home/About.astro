@@ -33,7 +33,7 @@ const modalCloseLabel = lang === 'en' ? 'Close' : 'Cerrar';
     <Markdown content={i18n.aboutMe.description[lang]} />
   </section>
   <div class="abilities">
-    <Abilities lang={lang} client:visible />
+    <Abilities lang={lang} client:only />
   </div>
   <section aria-labelledby="projects-title">
     <h2 id="projects-title" set:html={i18n.projects.title[lang]} />

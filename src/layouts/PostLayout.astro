@@ -1,18 +1,18 @@
 ---
+import MetaHead from '../components/MetaHead.astro';
+import ShareButtons from '../components/ShareButtons.svelte';
+import Commento from '../components/Commento.svelte';
+import LangLink from 'components:LangLink.astro';
+import HomeLink from 'components:HomeLink.astro';
+import TOC from 'components:TOC.astro';
+import Clock from 'components:icons/Clock.astro';
+import Calendar from 'components:icons/Calendar.astro';
 import 'style:roboto.css';
 import 'style:overpass.css';
 import 'style:reset.css'
 import 'style:global.css'
 import 'style:dracula.css'
 import readingTime from 'reading-time';
-import LangLink from 'components:LangLink.astro';
-import HomeLink from 'components:HomeLink.astro';
-import TOC from 'components:TOC.astro';
-import Clock from 'components:icons/Clock.astro';
-import Calendar from 'components:icons/Calendar.astro';
-import MetaHead from 'components:MetaHead.svelte';
-import ShareButtons from 'components:ShareButtons.svelte';
-import Commento from '../components/Commento.svelte';
 
 const { post } = Astro.props;
 const headers = post.astro.headers;
