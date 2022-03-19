@@ -1,6 +1,5 @@
 ---
 import { Markdown } from 'astro/components';
-import Abilities from './Abilities.svelte';
 import i18n from '../../i18n/home.json';
 const { lang } = Astro.props;
 
@@ -33,7 +32,7 @@ const modalCloseLabel = lang === 'en' ? 'Close' : 'Cerrar';
     <Markdown content={i18n.aboutMe.description[lang]} />
   </section>
   <div class="abilities">
-    <Abilities lang={lang} client:only />
+    <my-abilities lang={lang}></my-abilities>
   </div>
   <section aria-labelledby="projects-title">
     <h2 id="projects-title" set:html={i18n.projects.title[lang]} />
@@ -74,6 +73,9 @@ const modalCloseLabel = lang === 'en' ? 'Close' : 'Cerrar';
       </template>
     </walisto-container>
     <script hoist type="module" src="https://unpkg.com/walisto@0.2.2/dist/index.min.js"></script>
+  <script type="module" hoist>
+    import 'components:Home/my-abilities.js';
+  </script>
   </section>
 </div>
 
