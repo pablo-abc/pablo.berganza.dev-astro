@@ -89,7 +89,8 @@ export class MyAbilities extends HTMLElement {
     clearInterval(this.interval);
   }
 
-  attributeChangedCallback(name, _, newValue) {
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (oldValue === newValue) return;
     switch (name) {
       case 'lang':
         this.lang = newValue;

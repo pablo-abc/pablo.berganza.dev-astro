@@ -1,5 +1,5 @@
 {
-  "name": "@example/starter",
+  "name": "@pberganza/site",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "@astrojs/svelte": "^0.0.2",
+    "@astrojs/turbolinks": "^0.0.2",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "astro": "0.25.2",
     "commander": "^9.0.0",

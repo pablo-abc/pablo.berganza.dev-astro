@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@astrojs/svelte': ^0.0.2
+  '@astrojs/turbolinks': ^0.0.2
   '@fortawesome/free-brands-svg-icons': ^5.15.3
   astro: 0.25.2
   commander: ^9.0.0
@@ -25,6 +26,7 @@ specifiers:
 
 devDependencies:
   '@astrojs/svelte': 0.0.2_a7a521531f979d86de3d924504573cc9
+  '@astrojs/turbolinks': 0.0.2
   '@fortawesome/free-brands-svg-icons': 5.15.3
   astro: 0.25.2_sass@1.49.9
   commander: 9.0.0
@@ -147,6 +149,12 @@ packages:
       - ts-node
       - typescript
       - vite
+    dev: true
+
+  /@astrojs/turbolinks/0.0.2:
+    resolution: {integrity: sha512-e2xZPJCJ5PKA80nY9jPkgNMpslgbYEWsOgvJa7sBCKWWhcfPUUVLJ/lF5/ZTCrn9ab1IPbIGYUO69JyQBTsn7w==}
+    dependencies:
+      turbolinks: 5.2.0
     dev: true
 
   /@astrojs/webapi/0.11.0:
@@ -5625,6 +5633,10 @@ packages:
     hasBin: true
     dependencies:
       esbuild: 0.14.25
+    dev: true
+
+  /turbolinks/5.2.0:
+    resolution: {integrity: sha512-pMiez3tyBo6uRHFNNZoYMmrES/IaGgMhQQM+VFF36keryjb5ms0XkVpmKHkfW/4Vy96qiGW3K9bz0tF5sK9bBw==}
     dev: true
 
   /type-fest/0.13.1:

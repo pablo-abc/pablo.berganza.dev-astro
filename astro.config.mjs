@@ -1,4 +1,5 @@
 import svelte from '@astrojs/svelte';
+import turbolinks from '@astrojs/turbolinks';
 
 /** @type {import('astro').AstroUserConfig} */
 export default {
@@ -26,5 +27,5 @@ export default {
     // port: 3000,             // The port to run the dev server on.
     // tailwindConfig: '',     // Path to tailwind.config.js if used, e.g. './tailwind.config.js'
   },
-  integrations: [svelte()],
+  integrations: [svelte(), turbolinks()],
 };
