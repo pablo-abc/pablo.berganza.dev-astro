@@ -25,7 +25,7 @@ REST is an architectural style that defines a set of constraint to build web ser
 
 Some examples of REST endpoints can be:
 
-```http
+```
 GET http://api.example.com/accounts
 
 GET http://api.example.com/accounts/8326

@@ -10,9 +10,9 @@
     "deploy": "pnpm build && touch dist/.nojekyll && gh-pages -td dist/"
   },
   "devDependencies": {
-    "@astrojs/renderer-svelte": "^0.5.2",
+    "@astrojs/svelte": "^0.0.2",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
-    "astro": "0.24.3",
+    "astro": "0.25.2",
     "commander": "^9.0.0",
     "dotenv": "^16.0.0",
     "front-matter": "^4.0.2",
@@ -29,6 +29,7 @@
     "reading-time": "^1.3.0",
     "rollup": "^2.67.2",
     "sass": "^1.49.9",
+    "svelte": "^3.46.4",
     "vite": "^2.8.3"
   },
   "volta": {

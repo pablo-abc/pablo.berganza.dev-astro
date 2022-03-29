@@ -26,7 +26,7 @@ REST es un estilo de arquitectura que define una serie de reglas para construir 
 
 Algunos ejemplos de endpoints REST son:
 
-```http
+```
 GET http://api.example.com/accounts
 
 GET http://api.example.com/accounts/8326
