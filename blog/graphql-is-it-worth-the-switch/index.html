@@ -80,7 +80,7 @@
 
     <meta name="color-scheme" content="light dark">
   <link rel="stylesheet" href="/assets/asset.4f02b817.css"></link><style astro-style="true">astro-root, astro-fragment { display: contents; }</style><script type="module" src="/entry.2b27f31e.js" astro-script="/blog/graphql-is-it-worth-the-switch//script-0"></script>
-<script type="module" data-astro-component-hydration astro-script="/blog/graphql-is-it-worth-the-switch//script-1">import setup from '../../entry.2652f404.js';
+<script type="module" data-astro-component-hydration astro-script="/blog/graphql-is-it-worth-the-switch//script-1">import setup from '../../entry.f37101c7.js';
 import 'data:text/javascript;charset=utf-8,//[no before-hydration script]';
 setup("Z2aq14Q", {name:"Commento",value: true}, async () => {
   const [{ default: Component }, { default: hydrate }] = await Promise.all([import("../../entry.9a4c0533.js"), import("../../entry.b93a8669.js")]);
@@ -167,7 +167,7 @@ setup("Z2aq14Q", {name:"Commento",value: true}, async () => {
 <h2 id="rest">REST</h2>
 <p>REST is an architectural style that defines a set of constraint to build web services. When someone speaks about an API that follows the REST architecture, they usually mean a server that communicates with the client via HTTP. The client leverages the different HTTP methods (GET, POST, PUT, PATCH, DELETE) to send requests to URIs in the API that represent resources.</p>
 <p>Some examples of REST endpoints can be:</p>
-<pre class="astro-code" style="background-color: #282A36; overflow-x: auto;"><code is:raw><span class="line"><span style="color: #F8F8F2">GET http://api.example.com/accounts</span></span>
+<pre class="astro-code" style="background-color: #282A36; overflow-x: auto;"><code><span class="line"><span style="color: #F8F8F2">GET http://api.example.com/accounts</span></span>
 <span class="line"><span style="color: #F8F8F2"></span></span>
 <span class="line"><span style="color: #F8F8F2">GET http://api.example.com/accounts/8326</span></span>
 <span class="line"><span style="color: #F8F8F2"></span></span>
@@ -175,54 +175,54 @@ setup("Z2aq14Q", {name:"Commento",value: true}, async () => {
 <span class="line"><span style="color: #F8F8F2"></span></span>
 <span class="line"><span style="color: #F8F8F2">GET http://api.example.com/posts/4123/comments</span></span></code></pre>
 <p>Depending on which method is used to call the endpoint, a different operation will be applied to the resource.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>METHOD</th><th>ENDPOINT</th><th>DESCRIPTION</th><th>RESPONSE STATUS</th></tr></thead><tbody><tr><td>GET</td><td>/resources</td><td>Retrieve a list of elements</td><td>200</td></tr><tr><td>GET</td><td>/resources/:id</td><td>Retrieve a single element</td><td>200, 404</td></tr><tr><td>POST</td><td>/resources</td><td>Create an element</td><td>201, 400</td></tr><tr><td>PUT</td><td>/resources/:id</td><td>Update a whole element</td><td>200, 400</td></tr><tr><td>PATCH</td><td>/resources/:id</td><td>Update specific fields of an element</td><td>200, 400</td></tr><tr><td>DELETE</td><td>/resources/:id</td><td>Delete an element</td><td>204, 200, 404</td></tr></tbody></table>
+<table>
+<thead>
+<tr>
+<th>METHOD</th>
+<th>ENDPOINT</th>
+<th>DESCRIPTION</th>
+<th>RESPONSE STATUS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>/resources</td>
+<td>Retrieve a list of elements</td>
+<td>200</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/resources/:id</td>
+<td>Retrieve a single element</td>
+<td>200, 404</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/resources</td>
+<td>Create an element</td>
+<td>201, 400</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>/resources/:id</td>
+<td>Update a whole element</td>
+<td>200, 400</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>/resources/:id</td>
+<td>Update specific fields of an element</td>
+<td>200, 400</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>/resources/:id</td>
+<td>Delete an element</td>
+<td>204, 200, 404</td>
+</tr>
+</tbody>
+</table>
 <p>This gives us a clean and predictable interface on which we can operate on the resources on the server.</p>
 <p>As you saw in the endpoints examples above, REST endpoints can follow a hierarchical structure. Say, if you perform a POST operation on the endpoint <code>/accounts/8326/posts</code>, it should mean you are creating a post that belongs to the account with the id 8326.</p>
 <p>I’ve talked about how a REST API looks like to the client, but the characteristics described before are not enough for an API to be considered a REST API. In order to be classified as such, it should follow six constraints:</p>
@@ -257,8 +257,8 @@ setup("Z2aq14Q", {name:"Commento",value: true}, async () => {
 <h2 id="graphql">GraphQL</h2>
 <p>As said before, GraphQL is described as a query language for APIs. Unlike REST, GraphQL defines a single endpoint that accepts all operations to the server by sending a parameter called “query” alongside the request. Requests are generally done via a POST request to the GraphQL endpoint, but the specification allows for GET requests as long as it is read only.</p>
 <p>There are two types of requests you can make to a GraphQL API: queries or mutations. A query request may look like this:</p>
-<pre class="astro-code" style="background-color: #282A36; overflow-x: auto;"><code is:raw><span class="line"><span style="color: #F8F8F2">{</span></span>
-<span class="line"><span style="color: #F8F8F2">  </span><span style="color: #F1FA8C">post</span><span style="color: #F8F8F2">(</span><span style="color: #FFB86C; font-style: italic">id</span><span style="color: #FF79C6">:</span><span style="color: #6272A4">"1"</span><span style="color: #F8F8F2">) {</span></span>
+<pre class="astro-code" style="background-color: #282A36; overflow-x: auto;"><code><span class="line"><span style="color: #F8F8F2">{</span></span>
+<span class="line"><span style="color: #F8F8F2">  </span><span style="color: #F1FA8C">post</span><span style="color: #F8F8F2">(</span><span style="color: #FFB86C; font-style: italic">id</span><span style="color: #FF79C6">:</span><span style="color: #6272A4">&quot;1&quot;</span><span style="color: #F8F8F2">) {</span></span>
 <span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F1FA8C">id</span></span>
 <span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F1FA8C">title</span></span>
 <span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F1FA8C">content</span></span>
@@ -269,10 +269,10 @@ setup("Z2aq14Q", {name:"Commento",value: true}, async () => {
 <span class="line"><span style="color: #F8F8F2">}</span></span></code></pre>
 <p>This means there should be a schema of the type “query” with the name “post” defined in the server. This query is asking for the id, title, content, author’s id and author’s email of the post with id “1”. If found, the response will follow the same structure described in the query. A GraphQL query would be analogous to performing a GET request on a REST API endpoint.</p>
 <p>A GraphQL mutation may look like this:</p>
-<pre class="astro-code" style="background-color: #282A36; overflow-x: auto;"><code is:raw><span class="line"><span style="color: #FF79C6">mutation</span><span style="color: #F8F8F2"> {</span></span>
+<pre class="astro-code" style="background-color: #282A36; overflow-x: auto;"><code><span class="line"><span style="color: #FF79C6">mutation</span><span style="color: #F8F8F2"> {</span></span>
 <span class="line"><span style="color: #F8F8F2">  </span><span style="color: #F1FA8C">createAccount</span><span style="color: #F8F8F2">(</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #FFB86C; font-style: italic">email</span><span style="color: #FF79C6">:</span><span style="color: #6272A4">"pablo@berganza.dev"</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #FFB86C; font-style: italic">password</span><span style="color: #FF79C6">:</span><span style="color: #6272A4">"super secure password"</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #FFB86C; font-style: italic">email</span><span style="color: #FF79C6">:</span><span style="color: #6272A4">&quot;pablo@berganza.dev&quot;</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #FFB86C; font-style: italic">password</span><span style="color: #FF79C6">:</span><span style="color: #6272A4">&quot;super secure password&quot;</span></span>
 <span class="line"><span style="color: #F8F8F2">  ) {</span></span>
 <span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F1FA8C">id</span></span>
 <span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F1FA8C">email</span></span>
