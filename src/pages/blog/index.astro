@@ -1,34 +1,37 @@
 ---
 import Base from 'layouts:Base.astro';
 import Blogs from 'components:Blog/Blogs.astro';
+import fs from 'node:fs';
 
-const posts = Astro
-      .fetchContent('../../posts/en/*.md')
-      .filter((post) => {
+const base = new URL('../../posts/en/', import.meta.url).pathname;
+const posts = await Astro
+      .glob('../../posts/en/*.md').then(posts => 
+      posts.filter((post) => {
         if (import.meta.env.PROD) {
-          return post.published;
+          return post.frontmatter.published;
         }
         return true;
       })
       .map((post) => {
         let slug = post
           .file
-          .pathname
-          .replace(/\/src\/posts\/en\//, '')
+          .replace(base, '')
           .replace(/\.md$/, '');
-        if (!post.published) slug = `__draft__${slug}`;
+        const source = fs.readFileSync(post.file, 'utf-8');
+        if (!post.frontmatter.published) slug = `__draft__${slug}`;
         const url = `/blog/${slug}`
         return {
           ...post,
           url,
+          source,
         };
       })
       .sort((a, b) => {
         return (
-          new Date(b.created).getTime() -
-            new Date(a.created).getTime()
+          new Date(b.frontmatter.created).getTime() -
+            new Date(a.frontmatter.created).getTime()
         )
-      });
+      }));
 ---
 
 <Base title="Blog" lang="en" section="blog">

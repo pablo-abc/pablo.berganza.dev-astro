@@ -1,13 +1,15 @@
 ---
 import Base from 'layouts:Base.astro';
 import Blogs from 'components:Blog/Blogs.astro';
+import fs from 'node:fs';
 
 export async function getStaticPaths() {
-  const posts = Astro.fetchContent('../../../posts/en/*.md');
+  const base = new URL('../../../posts/en/', import.meta.url).pathname;
+  const posts = await Astro.glob('../../../posts/en/*.md');
 
   const possibleTags = new Set();
   for (const post of posts) {
-    for (const tag of post.tags) {
+    for (const tag of post.frontmatter.tags) {
       possibleTags.add(tag);
     }
   }
@@ -19,28 +21,29 @@ export async function getStaticPaths() {
         posts: posts
           .filter((post) => {
             if (import.meta.env.PROD) {
-              return post.published;
+              return post.frontmatter.published;
             }
             return true;
           })
-          .filter(post => post.tags.includes(tag))
+          .filter(post => post.frontmatter.tags.includes(tag))
           .map(post => {
             let slug = post
               .file
-              .pathname
-              .replace('/src/posts/en/', '')
+              .replace(base, '')
               .replace('.md', '');
-            if (!post.published) slug = `__draft__${slug}`;
+            const source = fs.readFileSync(post.file, 'utf-8');
+            if (!post.frontmatter.published) slug = `__draft__${slug}`;
             const url = `/blog/${slug}`;
             return {
               ...post,
               url,
+              source,
             };
           })
           .sort((a, b) => {
             return (
-              new Date(b.created).getTime() -
-                new Date(a.created).getTime()
+              new Date(b.frontmatter.created).getTime() -
+                new Date(a.frontmatter.created).getTime()
             )
           }),
       },
@@ -48,7 +51,7 @@ export async function getStaticPaths() {
   });
 }
 
-const { tag } = Astro.request.params;
+const { tag } = Astro.params;
 const { posts } = Astro.props;
 const section = `blog/tags/${tag}`;
 const title = `Tag: ${tag}`;

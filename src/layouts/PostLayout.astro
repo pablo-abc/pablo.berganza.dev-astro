@@ -14,15 +14,14 @@ import 'style:global.css'
 import readingTime from 'reading-time';
 
 const { post } = Astro.props;
-const headers = post.astro.headers;
-const { published } = post;
+const headers = post.getHeaders();
+const { published, crosspost } = post.frontmatter;
 const host = Astro.site;
-const ttr = Math.round(readingTime(post.astro.source).minutes);
+const ttr = Math.round(readingTime(post.source).minutes);
 const lang = post.lang || 'en';
-const imgSrc = `assets/blog-pics/${post.created}.${post.imgext ?? 'jpg'}`;
+const imgSrc = `assets/blog-pics/${post.frontmatter.created}.${post.frontmatter.imgext ?? 'jpg'}`;
 const section = `blog/${post.slug}`;
-const crosspost = post.crosspost;
-const localeDate = new Date(post.created).toLocaleDateString(lang ?? 'en', {
+const localeDate = new Date(post.frontmatter.created).toLocaleDateString(lang ?? 'en', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
@@ -32,11 +31,11 @@ const jsonLd = `
      {
       "@context": "https://schema.org/",
       "@type": "BlogPosting",
-      "headline": "${post.title.split('|')[0].trim()}",
-      "alternativeHeadline": "${post.description}",
+      "headline": "${post.frontmatter.title.split('|')[0].trim()}",
+      "alternativeHeadline": "${post.frontmatter.description}",
       "image": "${host}${imgSrc}",
-      "dateCreated": "${post.created}",
-      "datePublished": "${post.created}",
+      "dateCreated": "${post.frontmatter.created}",
+      "datePublished": "${post.frontmatter.created}",
       "isFamilyFriendly": "true",
       "publisher": {
         "@type": "Person",
@@ -62,7 +61,7 @@ const jsonLd = `
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {!published && <meta name="robots" content="noindex">}
-    <title>{post.title} | Pablo Berganza</title>
+    <title>{post.frontmatter.title} | Pablo Berganza</title>
     <link
       rel="alternate"
       hreflang={lang === 'en' ? 'es' : 'en'}
@@ -88,12 +87,12 @@ const jsonLd = `
     <meta content="#E34495" name="theme-color">
     <script type="module" src="https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.js"></script>
-    <script src="/scripts/focus-visible.js" defer></script>
+    <script is:inline src="/scripts/focus-visible.js" defer></script>
     <Fragment set:html={jsonLd} />
     <MetaHead
-      title={post.title}
-      description={post.description}
-      created={post.created}
+      title={post.frontmatter.title}
+      description={post.frontmatter.description}
+      created={post.frontmatter.created}
       isArticle
       host={host}
       lang={lang}
@@ -109,15 +108,15 @@ const jsonLd = `
       <LangLink lang={lang} section={section} />
       <article>
         <header>
-          <h1 class="title" set:html={post.title} />
-          <p set:html={post.description} />
+          <h1 class="title" set:html={post.frontmatter.title} />
+          <p set:html={post.frontmatter.description} />
         </header>
         <img
           alt=""
           class="banner"
           src={`/${imgSrc}`}
-          width={post.image.width}
-          height={post.image.height}
+          width={post.frontmatter.image.width}
+          height={post.frontmatter.image.height}
         />
         <div class="stats">
           <div class="ttr">
@@ -133,13 +132,13 @@ const jsonLd = `
             <span>
               <Calendar lang={lang} />
             </span>
-            <time class="created-date" datetime={post.created}>{localeDate}</time>
+            <time class="created-date" datetime={post.frontmatter.created}>{localeDate}</time>
           </div>
         </div>
         <div class="tags">
           {lang === 'en' ? 'Tags:' : 'Etiquetas:'}
           <ul>
-            {post.tags.map(tag => (
+            {post.frontmatter.tags.map(tag => (
             <li>
               <a href={`${lang === 'en' ? '/blog/' : '/es/blog/'}tags/${tag}`}>
                 {tag}
@@ -159,10 +158,10 @@ const jsonLd = `
         )}
         <section class="content">
           {headers.length >= 3 && <TOC headers={headers} lang={lang} />}
-          <Fragment set:html={post.astro.html} />
+          <post.Content />
         </section>
       </article>
-      <script type="module" hoist>
+      <script type="module">
         import { load } from './copy-button.js';
         load();
       </script>

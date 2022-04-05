@@ -1,22 +1,25 @@
 ---
 import Post from 'layouts:PostLayout.astro';
+import fs from 'node:fs';
 
 export async function getStaticPaths({ rss }) {
-  const posts = Astro
-        .fetchContent('../../../posts/es/*.md')
-        .map((post) => {
+  const base = new URL('../../../posts/es/', import.meta.url).pathname;
+  const posts = await Astro
+        .glob('../../../posts/es/*.md').then(posts => 
+        posts.map((post) => {
           let slug = post
             .file
-            .pathname
-            .replace('/src/posts/es/', '')
+            .replace(base, '')
             .replace('.md', '');
-          if (!post.published) slug = `__draft__${slug}`;
+          const source = fs.readFileSync(post.file, 'utf-8');
+          if (!post.frontmatter.published) slug = `__draft__${slug}`;
           return {
             ...post,
             lang: 'es',
             slug,
+            source,
           };
-        });
+        }));
   const slugs = posts.map((post) => post.slug);
 
   rss({
@@ -27,25 +30,24 @@ export async function getStaticPaths({ rss }) {
     items: posts
       .filter((post) => {
         if (import.meta.env.PROD) {
-          return post.published;
+          return post.frontmatter.published;
         }
         return true;
       })
       .sort((a, b) => {
         return (
-          new Date(b.created).getTime() -
-            new Date(a.created).getTime()
+          new Date(b.frontmatter.created).getTime() -
+            new Date(a.frontmatter.created).getTime()
         )
       })
       .map(item => ({
-        title: item.title,
-        description: item.description,
+        title: item.frontmatter.title,
+        description: item.frontmatter.description,
         link: item
           .file
-          .pathname
           .replace('/src/posts/es', '/es/blog')
           .replace('.md', ''),
-        pubDate: item.created,
+        pubDate: item.frontmatter.created,
       })),
     dest: '/es/blog/rss.xml',
   });

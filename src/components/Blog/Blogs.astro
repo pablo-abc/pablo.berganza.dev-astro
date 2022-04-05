@@ -36,8 +36,8 @@ const available = lang === 'en'
   <Markdown class="available" content={available} />
   <ul>
     {posts.map(post => {
-      const duration = getTtr(post.astro.source);
-      const localeDate = new Date(post.created).toLocaleDateString(lang ?? 'en', {
+      const duration = getTtr(post.source);
+      const localeDate = new Date(post.frontmatter.created).toLocaleDateString(lang ?? 'en', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
@@ -46,7 +46,7 @@ const available = lang === 'en'
         <li>
           <a href={post.url}>
             <article>
-              <h2>{post.title}</h2>
+              <h2>{post.frontmatter.title}</h2>
               <div class="stats">
                 <div class="ttr">
                   <span>
@@ -61,10 +61,10 @@ const available = lang === 'en'
                   <span>
                     <Calendar lang={lang} />
                   </span>
-                  <time class="created-date" datetime={post.created}>{localeDate}</time>
+                  <time class="created-date" datetime={post.frontmatter.created}>{localeDate}</time>
                 </div>
               </div>
-              <p>{post.description}</p>
+              <p>{post.frontmatter.description}</p>
             </article>
           </a>
         </li>
