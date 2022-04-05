@@ -32,7 +32,7 @@ const modalCloseLabel = lang === 'en' ? 'Close' : 'Cerrar';
     <Markdown content={i18n.aboutMe.description[lang]} />
   </section>
   <div class="abilities">
-    <my-abilities lang={lang}></my-abilities>
+    <my-abilities lang={lang}><div /></my-abilities>
   </div>
   <section aria-labelledby="projects-title">
     <h2 id="projects-title" set:html={i18n.projects.title[lang]} />
@@ -73,8 +73,8 @@ const modalCloseLabel = lang === 'en' ? 'Close' : 'Cerrar';
       </template>
     </walisto-container>
     <script type="module" src="https://unpkg.com/walisto@0.2.2/dist/index.min.js"></script>
-  <script type="module">
-    import 'components:Home/my-abilities.js';
+  <script type="module" hoist>
+    import './my-abilities.js';
   </script>
   </section>
 </div>
