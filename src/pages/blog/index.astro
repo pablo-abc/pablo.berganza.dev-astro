@@ -3,7 +3,6 @@ import Base from 'layouts:Base.astro';
 import Blogs from 'components:Blog/Blogs.astro';
 import fs from 'node:fs';
 
-const base = new URL('../../posts/en/', import.meta.url).pathname;
 const posts = await Astro
       .glob('../../posts/en/*.md').then(posts => 
       posts.filter((post) => {
@@ -13,6 +12,7 @@ const posts = await Astro
         return true;
       })
       .map((post) => {
+        const base = new URL('.', 'file://' + post.file).pathname;
         let slug = post
           .file
           .replace(base, '')

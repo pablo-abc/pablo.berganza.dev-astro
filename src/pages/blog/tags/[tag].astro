@@ -4,7 +4,6 @@ import Blogs from 'components:Blog/Blogs.astro';
 import fs from 'node:fs';
 
 export async function getStaticPaths() {
-  const base = new URL('../../../posts/en/', import.meta.url).pathname;
   const posts = await Astro.glob('../../../posts/en/*.md');
 
   const possibleTags = new Set();
@@ -27,6 +26,7 @@ export async function getStaticPaths() {
           })
           .filter(post => post.frontmatter.tags.includes(tag))
           .map(post => {
+            const base = new URL('.', 'file://' + post.file).pathname;
             let slug = post
               .file
               .replace(base, '')
