@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "astro dev",
+    "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "deploy": "pnpm build && touch dist/.nojekyll && gh-pages -td dist/"
@@ -36,5 +36,8 @@
   },
   "volta": {
     "node": "16.14.0"
+  },
+  "dependencies": {
+    "walisto": "^0.2.4"
   }
 }
