@@ -97,6 +97,10 @@
       {
         "en": "On Twitter as <a href=\"https://twitter.com/Pablo_ABC\">@Pablo_ABC</a>",
         "es": "En Twitter como <a href=\"https://twitter.com/Pablo_ABC\">@Pablo_ABC</a>"
+      },
+      {
+        "en": "On Mastodon as <a rel=\"me\" href=\"https://sivar.cafe/@pablo\">@pablo@sivar.cafe</a>",
+        "es": "En Mastodon como <a rel=\"me\" href=\"https://sivar.cafe/@pablo\">@pablo@sivar.cafe</a>"
       }
     ]
   },
