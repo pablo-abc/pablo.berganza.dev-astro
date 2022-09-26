@@ -1,5 +1,5 @@
 ---
-import { Markdown } from 'astro/components';
+import Markdown from '@astrojs/markdown-component';
 import i18n from '../../i18n/home.json';
 const { lang } = Astro.props;
 
@@ -14,16 +14,22 @@ const addresses = [
   },
   {
     name: 'ADA',
-    address: 'addr1q8pqz0fdp0l3wd6j0qud3vnwmnkapcqqcm8vygk6pjahknu3uvr9vfz444648tvsfkzrg8dejsupegmp0jerhkf6ffmq0c0jkj',
-  }
+    address:
+      'addr1q8pqz0fdp0l3wd6j0qud3vnwmnkapcqqcm8vygk6pjahknu3uvr9vfz444648tvsfkzrg8dejsupegmp0jerhkf6ffmq0c0jkj',
+  },
 ];
 
-const copyLabel = lang === 'en' ? 'Copy to clipboard' : 'Copiar al portapapeles'
+const copyLabel =
+  lang === 'en' ? 'Copy to clipboard' : 'Copiar al portapapeles';
 const qrLabel = lang === 'en' ? 'Show QR code' : 'Mostrar código QR';
 const modalCloseLabel = lang === 'en' ? 'Close' : 'Cerrar';
 ---
+
 <picture aria-hidden="true">
-  <source srcset="/assets/curves-dark.svg" media="(prefers-color-scheme: dark)" />
+  <source
+    srcset="/assets/curves-dark.svg"
+    media="(prefers-color-scheme: dark)"
+  />
   <img class="curves" src="/assets/curves.svg" alt="" />
 </picture>
 <div class="about">
@@ -32,30 +38,29 @@ const modalCloseLabel = lang === 'en' ? 'Close' : 'Cerrar';
     <Markdown content={i18n.aboutMe.description[lang]} />
   </section>
   <div class="abilities">
-    <my-abilities lang={lang}><div /></my-abilities>
+    <my-abilities lang={lang}><div></div></my-abilities>
   </div>
   <section aria-labelledby="projects-title">
-    <h2 id="projects-title" set:html={i18n.projects.title[lang]} />
+    <h2 id="projects-title" set:html={i18n.projects.title[lang]}></h2>
     <dl>
-      {i18n.projects.list.map(project => (
-      <div>
-        <dt set:html={project.title} />
-        <dd set:html={project.description[lang]} />
-      </div>
-      ))}
+      {
+        i18n.projects.list.map((project) => (
+          <div>
+            <dt set:html={project.title} />
+            <dd set:html={project.description[lang]} />
+          </div>
+        ))
+      }
     </dl>
   </section>
   <section class="contact" aria-labelledby="contact-title">
-    <h2 id="contact-title" set:html={i18n.networks.title[lang]} />
-    <p set:html={i18n.networks.description[lang]} />
+    <h2 id="contact-title" set:html={i18n.networks.title[lang]}></h2>
+    <p set:html={i18n.networks.description[lang]}></p>
     <ul>
-      {i18n
-      .networks
-      .links
-      .map(link => <li set:html={link[lang]} />)}
+      {i18n.networks.links.map((link) => <li set:html={link[lang]} />)}
     </ul>
   </section>
-<!--   <section class="support" aria-labelledby="support-title">
+  <!--   <section class="support" aria-labelledby="support-title">
     <h2 id="support-title" set:text={i18n.supportMe.title[lang]} />
     <p set:text={i18n.supportMe.description[lang]} />
     <walisto-container>
@@ -85,83 +90,82 @@ const modalCloseLabel = lang === 'en' ? 'Close' : 'Cerrar';
     width: 100%;
   }
 
- .about {
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: space-between;
-   padding: 3rem 10vw;
-   background: var(--background-color-alt);
-   color: var(--base-font-color-on-alt);
-   font-size: 1.125rem;
+  .about {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 3rem 10vw;
+    background: var(--background-color-alt);
+    color: var(--base-font-color-on-alt);
+    font-size: 1.125rem;
 
-   .about-text {
-     max-width: 100%;
-     margin-bottom: 2rem;
-   }
+    .about-text {
+      max-width: 100%;
+      margin-bottom: 2rem;
+    }
 
-   :global(p) {
-     line-height: 1.5rem;
-   }
+    :global(p) {
+      line-height: 1.5rem;
+    }
 
-   :global(h2) {
-     color: var(--color-primary-on-alt);
-     font-size: var(--h1);
-     font-weight: 700;
-     margin-bottom: 1rem;
-     line-height: var(--h1);
-   }
+    :global(h2) {
+      color: var(--color-primary-on-alt);
+      font-size: var(--h1);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: var(--h1);
+    }
 
-   .abilities {
-     background: var(--color-secondary-2-1);
-     border-radius: 20px;
-     padding: 1rem;
-     width: 100%;
-     height: 16rem;
-     width: 16rem;
-     margin-bottom: 2rem;
-   }
+    .abilities {
+      background: var(--color-secondary-2-1);
+      border-radius: 20px;
+      padding: 1rem;
+      width: 100%;
+      height: 16rem;
+      width: 16rem;
+      margin-bottom: 2rem;
+    }
 
-   ul {
+    ul {
+      li::before {
+        content: '→';
+        margin-right: 0.5rem;
+      }
+    }
 
-     li::before {
-       content: "→";
-       margin-right: 0.5rem;
-     }
-   }
+    dl {
+      margin-bottom: 2rem;
+    }
 
-   dl {
-     margin-bottom: 2rem;
-   }
+    dt {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 1rem;
+    }
 
-   dt {
-     font-size: 1.5rem;
-     font-weight: 700;
-     margin-top: 1rem;
-   }
+    dd {
+      padding-left: 1rem;
+    }
 
-   dd {
-     padding-left: 1rem;
-   }
+    @media only screen and (min-width: 768px) {
+      .about-text {
+        max-width: 50vw;
+      }
+    }
+  }
 
-   @media only screen and (min-width: 768px) {
-     .about-text {
-       max-width: 50vw;
-     }
-   }
- }
+  .contact {
+    p {
+      margin-bottom: 0.5rem;
+    }
+  }
 
- .contact {
-   p {
-     margin-bottom: 0.5rem;
-   }
- }
+  .support {
+    width: 100%;
+    margin-top: 2rem;
 
- .support {
-   width: 100%;
-   margin-top: 2rem;
-
-   p {
-     margin-bottom: 1rem;
-   }
- }
+    p {
+      margin-bottom: 1rem;
+    }
+  }
 </style>

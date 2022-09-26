@@ -2,63 +2,30 @@
 import Post from 'layouts:PostLayout.astro';
 import fs from 'node:fs';
 
-export async function getStaticPaths({ rss }) {
+export async function getStaticPaths() {
   const base = new URL('../../../posts/es/', import.meta.url).pathname;
-  const posts = await Astro
-        .glob('../../../posts/es/*.md').then(posts => 
-        posts.map((post) => {
-          let slug = post
-            .file
-            .replace(base, '')
-            .replace('.md', '');
-          const source = fs.readFileSync(post.file, 'utf-8');
-          if (!post.frontmatter.published) slug = `__draft__${slug}`;
-          return {
-            ...post,
-            lang: 'es',
-            slug,
-            source,
-          };
-        }));
+  const posts = await Astro.glob('../../../posts/es/*.md').then((posts) =>
+    posts.map((post) => {
+      let slug = post.file.replace(base, '').replace('.md', '');
+      const source = fs.readFileSync(post.file, 'utf-8');
+      if (!post.frontmatter.published) slug = `__draft__${slug}`;
+      return {
+        ...post,
+        lang: 'es',
+        slug,
+        source,
+      };
+    })
+  );
   const slugs = posts.map((post) => post.slug);
 
-  rss({
-    title: 'Blog | Pablo Berganza',
-    stylesheet: true,
-    description: 'Articulos sobre desarrollo web entre otras cosas',
-    customData: '<language>es-sv</language>',
-    items: posts
-      .filter((post) => {
-        if (import.meta.env.PROD) {
-          return post.frontmatter.published;
-        }
-        return true;
-      })
-      .sort((a, b) => {
-        return (
-          new Date(b.frontmatter.created).getTime() -
-            new Date(a.frontmatter.created).getTime()
-        )
-      })
-      .map(item => ({
-        title: item.frontmatter.title,
-        description: item.frontmatter.description,
-        link: item
-          .file
-          .replace('/src/posts/es', '/es/blog')
-          .replace('.md', ''),
-        pubDate: item.frontmatter.created,
-      })),
-    dest: '/es/blog/rss.xml',
-  });
-
-  return slugs.map(slug => {
+  return slugs.map((slug) => {
     return {
       params: { slug },
       props: {
-        post: posts.find(post => post.slug === slug)
+        post: posts.find((post) => post.slug === slug),
       },
-    }
+    };
   });
 }
 

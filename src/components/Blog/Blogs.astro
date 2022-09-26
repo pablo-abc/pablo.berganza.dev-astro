@@ -1,5 +1,5 @@
 ---
-import { Markdown } from 'astro/components';
+import Markdown from '@astrojs/markdown-component';
 import LangLink from '../../components/LangLink.astro';
 import HomeLink from '../../components/HomeLink.astro';
 import Clock from '../../components/icons/Clock.astro';
@@ -8,15 +8,16 @@ import Calendar from '../../components/icons/Calendar.astro';
 import readingTime from 'reading-time';
 
 function getTtr(source) {
-  return Math.round(readingTime(source).minutes)
+  return Math.round(readingTime(source).minutes);
 }
 
 const { lang = 'en', posts = [], title = 'Blog', tag, showRss } = Astro.props;
 
 const rssLink = lang === 'en' ? '/blog/rss.xml' : '/es/blog/rss.xml';
-const available = lang === 'en'
-      ? 'Also available on [dev.to](https://dev.to/pabloabc) and [hashnode](https://hn.berganza.dev)'
-      : 'También disponible en [dev.to](https://dev.to/pabloabc) y [hashnode](https://hn.berganza.dev) (Sólo en inglés)';
+const available =
+  lang === 'en'
+    ? 'Also available on [dev.to](https://dev.to/pabloabc) and [hashnode](https://hn.berganza.dev)'
+    : 'También disponible en [dev.to](https://dev.to/pabloabc) y [hashnode](https://hn.berganza.dev) (Sólo en inglés)';
 ---
 
 <HomeLink lang={lang} />
@@ -24,52 +25,63 @@ const available = lang === 'en'
 <section class="blog">
   <div class="title">
     <h1>{title}</h1>
-    {showRss && (
-    <a class="rss-link" href={rssLink}>
-      <span class="sr-only">
-        {lang === 'en' ? 'RSS feed' : 'Contenido en RSS'}
-      </span>
-      <RSS lang={lang} />
-    </a>
-    )}
+    {
+      showRss && (
+        <a class="rss-link" href={rssLink}>
+          <span class="sr-only">
+            {lang === 'en' ? 'RSS feed' : 'Contenido en RSS'}
+          </span>
+          <RSS lang={lang} />
+        </a>
+      )
+    }
   </div>
   <Markdown class="available" content={available} />
   <ul>
-    {posts.map(post => {
-      const duration = getTtr(post.source);
-      const localeDate = new Date(post.frontmatter.created).toLocaleDateString(lang ?? 'en', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      });
-      return (
-        <li>
-          <a href={post.url}>
-            <article>
-              <h2>{post.frontmatter.title}</h2>
-              <div class="stats">
-                <div class="ttr">
-                  <span>
-                    <Clock lang={lang} />
-                  </span>
-                  <time datetime={`${duration}m`}>
-                    {duration}
-                    {lang === 'en' ? 'minutes' : 'minutos'}
-                  </time>
+    {
+      posts.map((post) => {
+        const duration = getTtr(post.source);
+        const localeDate = new Date(
+          post.frontmatter.created
+        ).toLocaleDateString(lang ?? 'en', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        });
+        return (
+          <li>
+            <a href={post.url}>
+              <article>
+                <h2>{post.frontmatter.title}</h2>
+                <div class="stats">
+                  <div class="ttr">
+                    <span>
+                      <Clock lang={lang} />
+                    </span>
+                    <time datetime={`${duration}m`}>
+                      {duration}
+                      {lang === 'en' ? 'minutes' : 'minutos'}
+                    </time>
+                  </div>
+                  <div class="created">
+                    <span>
+                      <Calendar lang={lang} />
+                    </span>
+                    <time
+                      class="created-date"
+                      datetime={post.frontmatter.created}
+                    >
+                      {localeDate}
+                    </time>
+                  </div>
                 </div>
-                <div class="created">
-                  <span>
-                    <Calendar lang={lang} />
-                  </span>
-                  <time class="created-date" datetime={post.frontmatter.created}>{localeDate}</time>
-                </div>
-              </div>
-              <p>{post.frontmatter.description}</p>
-            </article>
-          </a>
-        </li>
-      );
-    })}
+                <p>{post.frontmatter.description}</p>
+              </article>
+            </a>
+          </li>
+        );
+      })
+    }
   </ul>
 </section>
 
@@ -123,7 +135,8 @@ const available = lang === 'en'
     }
   }
 
-  .ttr, .created {
+  .ttr,
+  .created {
     display: flex;
     align-items: center;
     color: var(--color-stats);
