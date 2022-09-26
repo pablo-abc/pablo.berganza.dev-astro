@@ -6,7 +6,11 @@ export async function getStaticPaths() {
   const base = new URL('../../../posts/es/', import.meta.url).pathname;
   const posts = await Astro.glob('../../../posts/es/*.md').then((posts) =>
     posts.map((post) => {
-      let slug = post.file.replace(base, '').replace('.md', '');
+      let slug = post.file
+        .replace(base, '')
+        .replace('.md', '')
+        .split('/')
+        .pop();
       const source = fs.readFileSync(post.file, 'utf-8');
       if (!post.frontmatter.published) slug = `__draft__${slug}`;
       return {
