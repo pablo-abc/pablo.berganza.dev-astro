@@ -43,7 +43,9 @@ template.innerHTML = /* HTML */ `
 export class MyAbilities extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: 'open' }).appendChild(
+      template.content.cloneNode(true)
+    );
     this.lang = 'en';
     this.index = 0;
     this.interval = undefined;
@@ -66,8 +68,6 @@ export class MyAbilities extends HTMLElement {
   }
 
   connectedCallback() {
-    const content = template.content.cloneNode(true);
-    this.shadowRoot.appendChild(content);
     const label =
       this.lang === 'en'
         ? `I have experience with: ${abString}`

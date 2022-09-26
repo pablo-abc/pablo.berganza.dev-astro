@@ -6,7 +6,7 @@ const posts = Object.values(postsImport);
 export const get = () =>
   rss({
     title: 'Blog | Pablo Berganza',
-    stylesheet: true,
+    stylesheet: '/rss.xsl',
     description: 'Articulos sobre desarrollo web entre otras cosas',
     customData: '<language>es-sv</language>',
     site: import.meta.env.SITE,
