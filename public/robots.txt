@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /404
 Allow: /
 
-Sitemap: https://pablo.berganza.dev/sitemap.xml
+Sitemap: https://pablo.berganza.dev/sitemap-index.xml
