@@ -36,7 +36,16 @@ template.innerHTML = /* HTML */ `
     }
   </style>
   <div>
-    <img class="visible" aria-hidden="true" alt="" />
+    ${abilities
+      .map(
+        (ability, i) => /* HTML */ `<img
+          class="${i === 0 ? 'visible' : ''}"
+          src="${ability[0]}"
+          aria-hidden="true"
+          alt=""
+        />`
+      )
+      .join('')}
   </div>
 `;
 
@@ -47,24 +56,31 @@ export class MyAbilities extends HTMLElement {
       template.content.cloneNode(true)
     );
     this.lang = 'en';
-    this.index = 0;
     this.interval = undefined;
   }
 
   static get observedAttributes() {
-    return ['lang', 'index'];
+    return ['lang'];
   }
 
   get container() {
     return this.shadowRoot.querySelector('div');
   }
 
-  get image() {
-    return this.shadowRoot.querySelector('img');
+  get images() {
+    return Array.from(this.shadowRoot.querySelectorAll('img'));
+  }
+
+  get visibleImage() {
+    return this.shadowRoot.querySelector('img.visible');
   }
 
   updateImg() {
-    this.image.setAttribute('src', abilities[this.index][0]);
+    const { images, visibleImage } = this;
+    const visibleIndex = images.indexOf(visibleImage);
+    const nextIndex = (visibleIndex + 1) % images.length;
+    visibleImage.classList.remove('visible');
+    images[nextIndex].classList.add('visible');
   }
 
   connectedCallback() {
@@ -73,16 +89,7 @@ export class MyAbilities extends HTMLElement {
         ? `I have experience with: ${abString}`
         : `Tengo experiencia con: ${abString}`;
     this.container.setAttribute('aria-label', label);
-    this.updateImg();
-    this.interval = setInterval(() => {
-      this.image.classList.remove('visible');
-      if (this.index === abilities.length - 1) this.index = 0;
-      else this.index += 1;
-      setTimeout(() => {
-        this.updateImg();
-        this.image.classList.add('visible');
-      }, 200);
-    }, 2000);
+    this.interval = setInterval(() => this.updateImg(), 2000);
   }
 
   disconnectedCallback() {
@@ -94,9 +101,6 @@ export class MyAbilities extends HTMLElement {
     switch (name) {
       case 'lang':
         this.lang = newValue;
-        break;
-      case 'index':
-        this.index = Number(newValue);
         break;
     }
   }
