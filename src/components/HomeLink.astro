@@ -2,10 +2,14 @@
 const { lang = 'en' } = Astro.props;
 ---
 
-<a aria-label="Home page" href={lang === 'es' ? '/es' : '/'}>PB</a>
+<a
+  class="home-page-link"
+  aria-label="Home page"
+  href={lang === 'es' ? '/es' : '/'}>PB</a
+>
 
 <style lang="scss">
-  a {
+  a.home-page-link {
     display: inline-block;
     font-family: 'Roboto Slab', serif;
     font-size: 2rem;
