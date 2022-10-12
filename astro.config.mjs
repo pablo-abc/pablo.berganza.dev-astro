@@ -1,6 +1,5 @@
 // @ts-check
 import svelte from '@astrojs/svelte';
-import turbolinks from '@astrojs/turbolinks';
 import sitemap from '@astrojs/sitemap';
 
 /** @type {import('astro').AstroUserConfig} */
