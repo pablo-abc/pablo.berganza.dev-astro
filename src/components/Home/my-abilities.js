@@ -1,6 +1,7 @@
 const abilities = [
   ['https://cdn.svgporn.com/logos/javascript.svg', 'JavaScript'],
   ['https://cdn.svgporn.com/logos/typescript-icon.svg', 'TypeScript'],
+  ['https://cdn.svgporn.com/logos/lit-icon.svg', 'Lit'],
   ['https://cdn.svgporn.com/logos/clojure.svg', 'Clojure'],
   ['/assets/abilities/cljs-white.svg', 'ClojureScript'],
   ['https://cdn.svgporn.com/logos/python.svg', 'Python'],
