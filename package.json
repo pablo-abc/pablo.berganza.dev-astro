@@ -10,12 +10,12 @@
     "deploy": "pnpm build && touch dist/.nojekyll && gh-pages -td dist/"
   },
   "devDependencies": {
-    "@astrojs/markdown-component": "^1.0.1",
-    "@astrojs/rss": "^1.0.1",
-    "@astrojs/sitemap": "^1.0.0",
-    "@astrojs/svelte": "^1.0.1",
+    "@astrojs/markdown-component": "^1.0.5",
+    "@astrojs/rss": "^2.4.3",
+    "@astrojs/sitemap": "^2.0.1",
+    "@astrojs/svelte": "^3.1.0",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
-    "astro": "1.3.0",
+    "astro": "2.9.1",
     "commander": "^9.0.0",
     "dotenv": "^16.0.0",
     "front-matter": "^4.0.2",
@@ -30,13 +30,13 @@
     "postcss-preset-env": "^7.3.3",
     "prettier": "^2.3.2",
     "reading-time": "^1.3.0",
-    "rollup": "^2.67.2",
+    "rollup": "^3.26.3",
     "sass": "^1.49.9",
-    "svelte": "^3.46.4",
-    "vite": "^2.8.3"
+    "svelte": "^4.1.1",
+    "vite": "^4.4.6"
   },
   "volta": {
-    "node": "16.14.0"
+    "node": "18.17.0"
   },
   "dependencies": {
     "walisto": "^0.2.4"
