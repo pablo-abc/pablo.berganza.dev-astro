@@ -101,6 +101,10 @@
       {
         "en": "On Mastodon as <a rel=\"me\" href=\"https://sivar.cafe/@pablo\">@pablo@sivar.cafe</a>",
         "es": "En Mastodon como <a rel=\"me\" href=\"https://sivar.cafe/@pablo\">@pablo@sivar.cafe</a>"
+      },
+      {
+        "en": "On Bluesky as <a rel=\"me\" href=\"https://bsky.app/profile/pabloabc.dev\">@pabloabc.dev</a>",
+        "es": "En Bluesky como <a rel=\"me\" href=\"https://bsky.app/profile/pabloabc.dev\">@pabloabc.dev</a>"
       }
     ]
   },
