@@ -95,8 +95,8 @@
         "es": "En LinkedIn como <a href=\"https://www.linkedin.com/in/pabloabc/\">pabloabc</a>"
       },
       {
-        "en": "On Twitter as <a href=\"https://twitter.com/Pablo_ABC\">@Pablo_ABC</a>",
-        "es": "En Twitter como <a href=\"https://twitter.com/Pablo_ABC\">@Pablo_ABC</a>"
+        "en": "On Firefish (Fediverse) as <a rel=\"me\" href=\"https://sivar.social/@pablo\">@pablo@sivar.social</a>",
+        "es": "En Firefish (Fediverse) como <a rel=\"me\" href=\"https://sivar.social/@pablo\">@pablo@sivar.social</a>"
       },
       {
         "en": "On Mastodon as <a rel=\"me\" href=\"https://sivar.cafe/@pablo\">@pablo@sivar.cafe</a>",
@@ -105,6 +105,10 @@
       {
         "en": "On Bluesky as <a rel=\"me\" href=\"https://bsky.app/profile/pabloabc.dev\">@pabloabc.dev</a>",
         "es": "En Bluesky como <a rel=\"me\" href=\"https://bsky.app/profile/pabloabc.dev\">@pabloabc.dev</a>"
+      },
+      {
+        "en": "On Twitter as <a href=\"https://twitter.com/Pablo_ABC\">@Pablo_ABC</a>",
+        "es": "En Twitter como <a href=\"https://twitter.com/Pablo_ABC\">@Pablo_ABC</a>"
       }
     ]
   },
