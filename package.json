@@ -10,12 +10,11 @@
     "deploy": "pnpm build && touch dist/.nojekyll && gh-pages -td dist/"
   },
   "devDependencies": {
-    "@astrojs/markdown-component": "^1.0.5",
-    "@astrojs/rss": "^2.4.3",
-    "@astrojs/sitemap": "^2.0.1",
-    "@astrojs/svelte": "^3.1.0",
+    "@astrojs/rss": "^3.0.0",
+    "@astrojs/sitemap": "^3.0.1",
+    "@astrojs/svelte": "^4.0.3",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
-    "astro": "2.9.1",
+    "astro": "3.3.0",
     "commander": "^9.0.0",
     "dotenv": "^16.0.0",
     "front-matter": "^4.0.2",
@@ -39,6 +38,7 @@
     "node": "18.17.0"
   },
   "dependencies": {
+    "astro-remote": "^0.2.4",
     "walisto": "^0.2.4"
   }
 }
