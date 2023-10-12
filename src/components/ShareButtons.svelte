@@ -1,11 +1,12 @@
 <script>
   import Icon from './FaIcon.svelte';
   import ShareButton from './ShareButton.svelte'
-  import { faRedditSquare, faLinkedin, faTwitterSquare, faFacebookSquare, faGetPocket } from '@fortawesome/free-brands-svg-icons'
+  import { faRedditSquare, faLinkedin, faTwitterSquare, faFacebookSquare, faGetPocket, faMastodon } from '@fortawesome/free-brands-svg-icons'
   export let blog = {}
   export let lang = 'en'
   export let host;
   const encoded = encodeURI(`${host}${lang === 'en' ? '' : 'es/'}${blog.slug}`);
+  $: details = blog.frontmatter ?? {};
 </script>
 
 <ul class=share-buttons>
@@ -20,7 +21,7 @@
     <ShareButton
       href={'https://www.facebook.com/sharer/sharer.php?u=' +
       encoded + '&quote=' +
-      blog.description}
+      details.description}
       title="Share on Facebook"
       >
       <Icon icon={faFacebookSquare} />
@@ -30,7 +31,7 @@
     <ShareButton
       href={'https://twitter.com/intent/tweet?source=' +
       encoded + '&text=' +
-      blog.description + ':%20' +
+      details.description + ':%20' +
       encoded + '&via=Pablo_ABC'}
       title="Tweet"
       >
@@ -41,7 +42,7 @@
     <ShareButton
       href={'https://getpocket.com/save?url=' +
       encoded + '&title=' +
-      blog.title}
+      details.title}
       title="Add to Pocket"
       >
       <Icon icon={faGetPocket} />
@@ -51,7 +52,7 @@
     <ShareButton
       href={'http://www.reddit.com/submit?url=' +
       encoded + '&title=' +
-      blog.title}
+      details.title}
       title="Submit to Reddit"
       >
       <Icon icon={faRedditSquare} />
@@ -61,12 +62,21 @@
     <ShareButton
       href={'http://www.linkedin.com/shareArticle?mini=true&url=' +
       encoded + '&title=' +
-      blog.title +
-      '&summary=' + blog.description +
+      details.title +
+      '&summary=' + details.description +
       '&source=' + encoded}
       title="Share on LinkedIn"
       >
       <Icon icon={faLinkedin} />
+    </ShareButton>
+  </li>
+  <li>
+    <ShareButton
+      href={`https://{host}/share?text=${details.description}%0A%0A${encoded} by @pablo@sivar.social`}
+      title="Share on Mastodon"
+      dynamic
+      >
+      <Icon icon={faMastodon} />
     </ShareButton>
   </li>
 </ul>

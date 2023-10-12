@@ -222,7 +222,7 @@ const jsonLd = `
         load();
       </script>
       <footer>
-        <ShareButtons host={host} blog={post} lang={lang} />
+        <ShareButtons client:visible host={host} blog={post} lang={lang} />
         <Commento
           client:only
           lang={lang}
