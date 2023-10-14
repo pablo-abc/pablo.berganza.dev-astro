@@ -3,7 +3,7 @@ import rss from '@astrojs/rss';
 const postsImport = import.meta.glob('../../../posts/es/*.md', { eager: true });
 const posts = Object.values(postsImport);
 
-export const get = () =>
+export const GET = () =>
   rss({
     title: 'Blog | Pablo Berganza',
     stylesheet: '/rss.xsl',

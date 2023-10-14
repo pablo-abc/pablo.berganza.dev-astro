@@ -1,5 +1,6 @@
 <svg
   aria-hidden="true"
+  title="{title}"
   class="{classes}"
   role="img"
   xmlns="http://www.w3.org/2000/svg"
@@ -9,6 +10,7 @@
 </svg>
 <script>
   export let icon;
+  export let title = '';
   let path = [];
   let classes = '';
   let viewBox = '';

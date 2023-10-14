@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "astro-remote": "^0.2.4",
+    "share-on-fedi": "^0.1.2",
     "walisto": "^0.2.4"
   }
 }

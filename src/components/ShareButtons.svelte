@@ -71,13 +71,9 @@
     </ShareButton>
   </li>
   <li>
-    <ShareButton
-      href={`https://{host}/share?text=${details.description}%0A%0A${encoded} by @pablo@sivar.social`}
-      title="Share on Mastodon"
-      dynamic
-      >
-      <Icon icon={faMastodon} />
-    </ShareButton>
+    <share-on-fedi aria-label="Share on Mastodon">
+      <Icon icon={faMastodon} title="Share on Mastodon" />
+    </share-on-fedi>
   </li>
 </ul>
 
@@ -97,5 +93,53 @@
   ul.share-buttons li :global(a) {
       margin: 10px;
       font-size: 2em;
+  }
+
+  share-on-fedi::part(trigger) {
+    color: var(--color-link);
+    font-size: 2em;
+    margin-bottom: 5px;
+  }
+
+  share-on-fedi::part(dialog) {
+    border: 2px solid var(--color-heading);
+    border-radius: 10px;
+    background-color: var(--background-color);
+  }
+
+  share-on-fedi::part(close-button) {
+    font-weight: 700;
+    border: 2px solid var(--color-heading);
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    cursor: pointer;
+    color: var(--base-font-color);
+  }
+
+  share-on-fedi::part(button):not(:disabled):hover {
+    border-color: var(--color-primary-0);
+    background-color: var(--color-primary-0);
+    color: var(--background-color);
+  }
+
+  share-on-fedi::part(button):not(:disabled):active {
+    border-color: var(--color-primary-1);
+    background-color: var(--color-primary-1);
+  }
+
+  share-on-fedi::part(share-button) {
+    font-weight: 700;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background-color: var(--color-heading);
+    color: var(--background-color);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+
+  share-on-fedi::part(button):disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 </style>
