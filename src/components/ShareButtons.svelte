@@ -71,7 +71,7 @@
     </ShareButton>
   </li>
   <li>
-    <share-on-fedi aria-label="Share on Mastodon">
+    <share-on-fedi placement="top" aria-label="Share on Mastodon">
       <Icon icon={faMastodon} title="Share on Mastodon" />
     </share-on-fedi>
   </li>
