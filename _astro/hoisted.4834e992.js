@@ -108,6 +108,9 @@ import"https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.js";const Te=`
             <label part="label" for="instance">Instance:</label>
             <input
               type="text"
+              autocorrect="off"
+              autocapitalize="off"
+              spellcheck="false"
               id="instance"
               name="instance"
               part="input"
@@ -151,6 +154,8 @@ import"https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.js";const Te=`
       background-color: transparent;
       border: none;
       cursor: pointer;
+      margin: 0;
+      padding: 0;
     }
 
     dialog {
