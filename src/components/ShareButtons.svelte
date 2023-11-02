@@ -98,7 +98,11 @@
   share-on-fedi::part(trigger) {
     color: var(--color-link);
     font-size: 2em;
-    margin-bottom: 5px;
+    margin-left: 8px;
+  }
+
+  share-on-fedi::part(input) {
+    font-size: 1rem;
   }
 
   share-on-fedi::part(dialog) {

@@ -9,8 +9,8 @@ dependencies:
     specifier: ^0.2.4
     version: 0.2.4
   share-on-fedi:
-    specifier: ^0.1.3
-    version: 0.1.3
+    specifier: ^0.1.5
+    version: 0.1.5
   walisto:
     specifier: ^0.2.4
     version: 0.2.4(@types/react@18.2.22)
@@ -5588,8 +5588,8 @@ packages:
     resolution: {integrity: sha512-rb+9B5YBIEzYcD6x2VKidaa+cqYBJQKnU4oe4E3ANwRRN56yk/ua1YCJT1n21NTS8w6CcOclAKNP3PhdCXKYtQ==}
     dev: true
 
-  /share-on-fedi@0.1.3:
-    resolution: {integrity: sha512-1UV9gGfmta9PTonDywbC1R6AQw24fiNvlLtohukYWs6Jx1YivedA0iHf0jHwaDGfEtqAG2yCyP5L6JALmJrvUA==}
+  /share-on-fedi@0.1.5:
+    resolution: {integrity: sha512-Hxk9uqcBGXbt158Fsg5GP0iWzQEPhcaWKpawDyr1N5bh3iDIO+asQ4u1gBhlBklgcsHn8NFgBwTENRyyfZwXSA==}
     dependencies:
       '@floating-ui/dom': 1.5.3
       lit: 2.8.0
