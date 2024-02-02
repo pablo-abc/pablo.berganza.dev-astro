@@ -59,7 +59,7 @@ export async function updateArticle(id, article) {
             tags: article.tags
               .map((tag) => {
                 return tags.find(
-                  (t) => t.slug.toLowerCase() === tag.toLowerCase()
+                  (t) => t.slug.toLowerCase() === tag.toLowerCase(),
                 );
               })
               .filter(Boolean),
@@ -86,7 +86,7 @@ export async function updateArticle(id, article) {
       slug: post.slug,
       title: post.title,
     },
-    'hashnode'
+    'hashnode',
   );
 }
 
@@ -125,7 +125,7 @@ export async function createArticle(article) {
             tags: article.tags
               .map((tag) => {
                 return tags.find(
-                  (t) => t.slug.toLowerCase() === tag.toLowerCase()
+                  (t) => t.slug.toLowerCase() === tag.toLowerCase(),
                 );
               })
               .filter(Boolean),

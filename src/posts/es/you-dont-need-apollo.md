@@ -49,9 +49,9 @@ async function gqlFetcher(query, variables) {
     method: 'post',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ query, variables }),
-  }).then(r => r.json())
-  if (errors) throw errors
-  return data
+  }).then((r) => r.json());
+  if (errors) throw errors;
+  return data;
 }
 ```
 
@@ -62,30 +62,30 @@ Un servidor GraphQL responde con 200 aunque contenga errores. Generalmente solo 
 Este método hace que pierdas la cómoda interfaz que Apollo y urql proveen. Siempre puedes crear tus propios hooks que provean una interfaz más amigable, sin embargo, he preferido usar el hook [swr](https://github.com/vercel/swr) de Vercel. Este hook funciona para cualquier petición de datos remotos. Su funcionamiento consiste en retornar primero la data del cache, luego hace la petición, y finalmente retorna la nueva información recibida. Provee una interfaz amigable para manejar la información dentro de tus componentes mientras mantienen tu UI, como ellos mismos lo describen, rápido y reactivo. La función `gqlFetcher` que hicimos antes ya es compatible con el hook `useSWR`, no se requiere trabajo adicional para hacerlo funcionar.
 
 ```javascript
-import useSWR from 'swr'
+import useSWR from 'swr';
 
-const gqlQuery = `...`
+const gqlQuery = `...`;
 
 function Component() {
   // gqlFetcher es la misma función que se definió antes
-  const { data, error } = useSWR(gqlQuery, gqlFetcher)
+  const { data, error } = useSWR(gqlQuery, gqlFetcher);
 
-  if (error) return <div>{/*...*/}</div> // JSX con la info del error
-  if (!data) return <div>Loading...</div> // Componente de "Loading"
-  return <div>{/*...*/}</div> // JSX con la info recibida
+  if (error) return <div>{/*...*/}</div>; // JSX con la info del error
+  if (!data) return <div>Loading...</div>; // Componente de "Loading"
+  return <div>{/*...*/}</div>; // JSX con la info recibida
 }
 ```
 
 Para pasar múltiples argumentos a la función `fetcher`, `useSWR` permite pasar un arreglo como primer argumento.
 
 ```javascript
-const gqlQuery = `...`
+const gqlQuery = `...`;
 const gqlVariables = {
   // ...
-}
+};
 
 function Component() {
-  const { data, error } = useSWR([gqlQuery, gqlVariables], gqlFetcher)
+  const { data, error } = useSWR([gqlQuery, gqlVariables], gqlFetcher);
   // ...
 }
 ```
@@ -97,12 +97,12 @@ function Component() {
 Si no quieres crear tu propio wrapper sobre `fetch`, puedes usar [graphql-request](https://github.com/prisma-labs/graphql-request). Es un wrapper sobre el API `fetch` para realizar peticiones a un servidor GraphQL que no requiere de mucho trabajo para empezar a utilizarlo. Ya tiene un buen manejo de errores y es isomórfica por defecto (algo que tal vez no le guste a algunas personas). La página de GitHub de `swr` ya muestra un ejemplo con esta herramienta.
 
 ```javascript
-import { request } from 'graphql-request'
+import { request } from 'graphql-request';
 
-const API = 'https://api.graph.cool/simple/v1/movies'
-const fetcher = query => request(API, query)
+const API = 'https://api.graph.cool/simple/v1/movies';
+const fetcher = (query) => request(API, query);
 
-function App () {
+function App() {
   const { data, error } = useSWR(
     `{
       Movie(title: "Inception") {
@@ -112,8 +112,8 @@ function App () {
         }
       }
     }`,
-    fetcher
-  )
+    fetcher,
+  );
   // ...
 }
 ```

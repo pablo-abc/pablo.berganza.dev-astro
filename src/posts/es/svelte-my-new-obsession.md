@@ -8,9 +8,9 @@ image:
   height: 450
 lang: es
 tags:
-    - svelte
-    - javascript
-    - webdev
+  - svelte
+  - javascript
+  - webdev
 ---
 
 Admito que soy la clase de persona que se obsesiona inmediatamente con algo si es nuevo e interesante. Así es como empecé con [Clojure](https://clojure.org), [Rust](https://www.rust-lang.org/), y con el tema de hoy: [Svelte](https://svelte.dev/).
@@ -35,7 +35,7 @@ Claro, si fueras a escribir componentes así, estarías mejor escribiendo puro H
 
 ```html
 <script>
-  console.log('Hello world!')
+  console.log('Hello world!');
 </script>
 ```
 
@@ -43,7 +43,7 @@ Para agregar “estado” a nuestro componente solo necesitamos declarar una var
 
 ```html
 <script>
-  let message = 'Hello world!'
+  let message = 'Hello world!';
 </script>
 ```
 
@@ -51,7 +51,7 @@ Para agregar “estado” a nuestro componente solo necesitamos declarar una var
 
 ```html
 <script>
-  let messsage = 'Hello world!'
+  let messsage = 'Hello world!';
 </script>
 
 <p>{message}</p>
@@ -63,16 +63,16 @@ La plantilla de un componente de Svelte no debe ser un solo elemento, así que p
 
 ```html
 <script>
-  let message = 'Hello world!'
+  let message = 'Hello world!';
 
   function onInput(event) {
-    message = event.target.value
+    message = event.target.value;
   }
 </script>
 
 <p>{message}</p>
 
-<input value={message} on:input={onInput}>
+<input value="{message}" on:input="{onInput}" />
 ```
 
 Esto se terminaría viendo así:
@@ -83,12 +83,12 @@ Pero esto todavía es muy complicado. Svelte nos provee directivas “mágicas�
 
 ```html
 <script>
-  let message = 'Hello world!'
+  let message = 'Hello world!';
 </script>
 
 <p>{message}</p>
 
-<input bind:value={message}>
+<input bind:value="{message}" />
 ```
 
 ¡Esto generaría un resultado igual al anterior!
@@ -123,16 +123,17 @@ Una simple aplicación para manejar un listado de cosas por hacer podría verse 
 
 ```html
 <script>
-  let todos = [], value = '';
+  let todos = [],
+    value = '';
   let filter = 'all';
   // El $: le dice a Svelte que la declaración sea reactiva.
   // En este caso, la asignación a "filtered" se ejecutará
   // siempre que "todos" cambie.
-  $: filtered = todos.filter(todo => {
-    if (filter === 'checked') return todo.checked
-    if (filter === 'unchecked') return !todo.checked
-    return todo
-  })
+  $: filtered = todos.filter((todo) => {
+    if (filter === 'checked') return todo.checked;
+    if (filter === 'unchecked') return !todo.checked;
+    return todo;
+  });
   function addTodo() {
     if (!value) return;
     todos = [...todos, { value, id: Date.now(), checked: false }];
@@ -141,61 +142,62 @@ Una simple aplicación para manejar un listado de cosas por hacer podría verse 
 </script>
 
 <form>
-  <label for=all>
-    <input type=radio id=all value=all bind:group={filter}>
+  <label for="all">
+    <input type="radio" id="all" value="all" bind:group="{filter}" />
     All
   </label>
-  <label for=checked>
-    <input type=radio id=checked value=checked bind:group={filter}>
+  <label for="checked">
+    <input type="radio" id="checked" value="checked" bind:group="{filter}" />
     Checked
   </label>
-  <label for=unchecked>
-    <input type=radio id=unchecked value=unchecked bind:group={filter}>
+  <label for="unchecked">
+    <input
+      type="radio"
+      id="unchecked"
+      value="unchecked"
+      bind:group="{filter}"
+    />
     Unchecked
   </label>
 </form>
-<form on:submit|preventDefault={addTodo}>
-  <input bind:value>
-  <button type=submit>Add Todo</button>
+<form on:submit|preventDefault="{addTodo}">
+  <input bind:value />
+  <button type="submit">Add Todo</button>
 </form>
 <ul>
   {#each filtered as todo, i (todo.id)}
-    <li>
-      <input
-        id={todo.id}
-        bind:checked={todo.checked}
-        type="checkbox"
-        >
-      {todo.value}
-    </li>
+  <li>
+    <input id="{todo.id}" bind:checked="{todo.checked}" type="checkbox" />
+    {todo.value}
+  </li>
   {/each}
 </ul>
 
 <style>
   label {
-      display: inline-block;
-      margin: 0 10px;
+    display: inline-block;
+    margin: 0 10px;
   }
   li {
-      list-style: none;
+    list-style: none;
   }
 </style>
 ```
 
 <iframe height="315px" src="https://pablo-abc.github.io/pablo.berganza.dev-examples/svelte-basic-todo-app/"></iframe>
 
-Este ejemplo usa algunas características de las que no hablé, pero el [tutorial oficial](https://svelte.dev/tutorial/basics "Tutorial oficial de Svelte") es fantástico si estás interesado en aprender más.
+Este ejemplo usa algunas características de las que no hablé, pero el [tutorial oficial](https://svelte.dev/tutorial/basics 'Tutorial oficial de Svelte') es fantástico si estás interesado en aprender más.
 
 ## Otras características
 
 Svelte también nos provee otras características útiles como:
 
-* Transiciones y animaciones incorporadas.
-* Acceder fácilmente al head, window y body del documento.
-* Ciclos de vida para los componentes.
-* Almacenamiento global.
-* Compatibilidad con renderización del lado del servidor.
-* Los componentes pueden ser exportados como Web Components.
+- Transiciones y animaciones incorporadas.
+- Acceder fácilmente al head, window y body del documento.
+- Ciclos de vida para los componentes.
+- Almacenamiento global.
+- Compatibilidad con renderización del lado del servidor.
+- Los componentes pueden ser exportados como Web Components.
 
 ## ¿Por qué reescribir todo el sitio?
 
@@ -207,19 +209,19 @@ Este sitio no fue escrito solo con Svelte. Usa [Sapper](https://sapper.svelte.de
 
 El sitio resultante funciona como una SPA y tiene algunas características que no pude hacer previamente, algunas de ellas:
 
-* Estilizar código de GraphQL.
-* Agregar ejemplos funcionales (cómo los anteriores).
-* Navegar por todo el sitio sin necesidad de refrescar la página.
-* Carga diferida de imágenes.
-* Agregar elementos externos a las publicaciones, cómo videos de YouTube.
+- Estilizar código de GraphQL.
+- Agregar ejemplos funcionales (cómo los anteriores).
+- Navegar por todo el sitio sin necesidad de refrescar la página.
+- Carga diferida de imágenes.
+- Agregar elementos externos a las publicaciones, cómo videos de YouTube.
 
 También ayudó a mejorar la experiencia de desarrollo como:
 
-* Componentes reutilizables.
-* Estilos CSS limitados a componentes. Esto ayudó con varios dolores de cabeza debido a mi falta de conocimiento en CSS.
-* Generación mucho más rápida de los archivos estáticos.
-* Fácilmente añadir elementos interactivos al sitio. (Tal vez agregue un buscador para publicaciones en algún momento).
-* Es fácil seguir una estructura de código mantenible.
+- Componentes reutilizables.
+- Estilos CSS limitados a componentes. Esto ayudó con varios dolores de cabeza debido a mi falta de conocimiento en CSS.
+- Generación mucho más rápida de los archivos estáticos.
+- Fácilmente añadir elementos interactivos al sitio. (Tal vez agregue un buscador para publicaciones en algún momento).
+- Es fácil seguir una estructura de código mantenible.
 
 Una desventaja de usar Svelte es que no posee soporte para TypeScript (aunque se está trabajando en ello).
 Otra desventaja es que Sapper todavía está en desarrollo temprano, no recomendaría usarlo para algún proyecto serio. Aunque Svelte sí se encuentra en un estado listo para producción.

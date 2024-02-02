@@ -42,7 +42,7 @@ async function generateImages(images) {
         // generateResized(imgPath, 1200),
         // generateResized(imgPath, 1600),
       ]);
-    })
+    }),
   );
 }
 

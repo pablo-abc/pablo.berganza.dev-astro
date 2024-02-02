@@ -39,12 +39,13 @@ template.innerHTML = /* HTML */ `
   <div>
     ${abilities
       .map(
-        (ability, i) => /* HTML */ `<img
-          class="${i === 0 ? 'visible' : ''}"
-          src="${ability[0]}"
-          aria-hidden="true"
-          alt=""
-        />`
+        (ability, i) =>
+          /* HTML */ `<img
+            class="${i === 0 ? 'visible' : ''}"
+            src="${ability[0]}"
+            aria-hidden="true"
+            alt=""
+          />`,
       )
       .join('')}
   </div>
@@ -54,7 +55,7 @@ export class MyAbilities extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' }).appendChild(
-      template.content.cloneNode(true)
+      template.content.cloneNode(true),
     );
     this.lang = 'en';
     this.interval = undefined;

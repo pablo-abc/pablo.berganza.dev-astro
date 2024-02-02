@@ -11,7 +11,7 @@ export async function getStaticPaths() {
       possibleTags.add(tag);
     }
   }
-  return Array.from(possibleTags).map(tag => {
+  return Array.from(possibleTags).map((tag) => {
     return {
       params: { tag },
       props: {
@@ -22,13 +22,10 @@ export async function getStaticPaths() {
             }
             return true;
           })
-          .filter(post => post.frontmatter.tags.includes(tag))
-          .map(post => {
+          .filter((post) => post.frontmatter.tags.includes(tag))
+          .map((post) => {
             const base = new URL('.', 'file://' + post.file).pathname;
-            let slug = post
-              .file
-              .replace(base, '')
-              .replace('.md', '');
+            let slug = post.file.replace(base, '').replace('.md', '');
             const source = fs.readFileSync(post.file, 'utf-8');
             if (!post.frontmatter.published) slug = `__draft__${slug}`;
             const url = `/es/blog/${slug}`;
@@ -41,11 +38,11 @@ export async function getStaticPaths() {
           .sort((a, b) => {
             return (
               new Date(b.frontmatter.created).getTime() -
-                new Date(a.frontmatter.created).getTime()
-            )
+              new Date(a.frontmatter.created).getTime()
+            );
           }),
       },
-    }
+    };
   });
 }
 

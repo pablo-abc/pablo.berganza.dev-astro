@@ -7,9 +7,9 @@ image:
   width: 800
   height: 450
 tags:
-    - svelte
-    - javascript
-    - webdev
+  - svelte
+  - javascript
+  - webdev
 ---
 
 I admit I am the kind of person who gets immediately obsessed with something if it is new and interesting. That's how I got into [Clojure](https://clojure.org), how I got into [Rust](https://www.rust-lang.org/), and how I got into the topic I'm writing about today: [Svelte](https://svelte.dev/).
@@ -34,7 +34,7 @@ Of course if you were going to write components like that, you would be better o
 
 ```html
 <script>
-  console.log('Hello world!')
+  console.log('Hello world!');
 </script>
 ```
 
@@ -42,7 +42,7 @@ In order to add “state” to our component we just need to declare JavaScript 
 
 ```html
 <script>
-  let message = 'Hello world!'
+  let message = 'Hello world!';
 </script>
 ```
 
@@ -50,7 +50,7 @@ These variables can be accessed in the template by using curly braces. This is s
 
 ```html
 <script>
-  let messsage = 'Hello world!'
+  let messsage = 'Hello world!';
 </script>
 
 <p>{message}</p>
@@ -62,16 +62,16 @@ The template of a Svelte component does not need to be a single element, so we c
 
 ```html
 <script>
-  let message = 'Hello world!'
+  let message = 'Hello world!';
 
   function onInput(event) {
-    message = event.target.value
+    message = event.target.value;
   }
 </script>
 
 <p>{message}</p>
 
-<input value={message} on:input={onInput}>
+<input value="{message}" on:input="{onInput}" />
 ```
 
 This would end up looking like this:
@@ -82,12 +82,12 @@ But this is still too complicated. Svelte provides some “magic” directives i
 
 ```html
 <script>
-  let message = 'Hello world!'
+  let message = 'Hello world!';
 </script>
 
 <p>{message}</p>
 
-<input bind:value={message}>
+<input bind:value="{message}" />
 ```
 
 This would result in the same output we saw above!
@@ -122,16 +122,17 @@ Here's how a simple to-do app would look like in Svelte:
 
 ```html
 <script>
-  let todos = [], value = '';
+  let todos = [],
+    value = '';
   let filter = 'all';
   // The $: tells Svelte to make the statement reactive.
   // In this case, the assignment statement to "filtered" will be run
   // everytime "todos" changes.
-  $: filtered = todos.filter(todo => {
-    if (filter === 'checked') return todo.checked
-    if (filter === 'unchecked') return !todo.checked
-    return todo
-  })
+  $: filtered = todos.filter((todo) => {
+    if (filter === 'checked') return todo.checked;
+    if (filter === 'unchecked') return !todo.checked;
+    return todo;
+  });
   function addTodo() {
     if (!value) return;
     todos = [...todos, { value, id: Date.now(), checked: false }];
@@ -140,61 +141,62 @@ Here's how a simple to-do app would look like in Svelte:
 </script>
 
 <form>
-  <label for=all>
-    <input type=radio id=all value=all bind:group={filter}>
+  <label for="all">
+    <input type="radio" id="all" value="all" bind:group="{filter}" />
     All
   </label>
-  <label for=checked>
-    <input type=radio id=checked value=checked bind:group={filter}>
+  <label for="checked">
+    <input type="radio" id="checked" value="checked" bind:group="{filter}" />
     Checked
   </label>
-  <label for=unchecked>
-    <input type=radio id=unchecked value=unchecked bind:group={filter}>
+  <label for="unchecked">
+    <input
+      type="radio"
+      id="unchecked"
+      value="unchecked"
+      bind:group="{filter}"
+    />
     Unchecked
   </label>
 </form>
-<form on:submit|preventDefault={addTodo}>
-  <input bind:value>
-  <button type=submit>Add Todo</button>
+<form on:submit|preventDefault="{addTodo}">
+  <input bind:value />
+  <button type="submit">Add Todo</button>
 </form>
 <ul>
   {#each filtered as todo, i (todo.id)}
-    <li>
-      <input
-        id={todo.id}
-        bind:checked={todo.checked}
-        type="checkbox"
-        >
-      {todo.value}
-    </li>
+  <li>
+    <input id="{todo.id}" bind:checked="{todo.checked}" type="checkbox" />
+    {todo.value}
+  </li>
   {/each}
 </ul>
 
 <style>
   label {
-      display: inline-block;
-      margin: 0 10px;
+    display: inline-block;
+    margin: 0 10px;
   }
   li {
-      list-style: none;
+    list-style: none;
   }
 </style>
 ```
 
 <iframe title="todo-app" height="315px" src="https://pablo-abc.github.io/pablo.berganza.dev-examples/svelte-basic-todo-app/"></iframe>
 
-This example uses some features I didn't talk about, but the [official tutorial](https://svelte.dev/tutorial/basics "Svelte official tutorial") is great if you're interested in learning more.
+This example uses some features I didn't talk about, but the [official tutorial](https://svelte.dev/tutorial/basics 'Svelte official tutorial') is great if you're interested in learning more.
 
 ## Other features
 
 Svelte also provides some other nice features, such as:
 
-* Built-in transitions and animations.
-* Easily access the document's head, window and body.
-* Lifecycles for the components.
-* Global stores.
-* Compatibility with server side rendering.
-* Components can be exported as web components.
+- Built-in transitions and animations.
+- Easily access the document's head, window and body.
+- Lifecycles for the components.
+- Global stores.
+- Compatibility with server side rendering.
+- Components can be exported as web components.
 
 ## Why rewrite the whole site?
 
@@ -206,19 +208,19 @@ This site is not written with plain Svelte. It is using [Sapper](https://sapper.
 
 The resulting site works as an SPA and has some features that I couldn't do previously, some of them:
 
-* Highlighting for GraphQL code.
-* Add working examples of code (such as the ones above).
-* Navigate the whole site without having to do a page reload.
-* Lazy loading of images.
-* Embedding external elements to blog posts, like YouTube videos.
+- Highlighting for GraphQL code.
+- Add working examples of code (such as the ones above).
+- Navigate the whole site without having to do a page reload.
+- Lazy loading of images.
+- Embedding external elements to blog posts, like YouTube videos.
 
 It also brought some DX improvements such as:
 
-* Reusable components.
-* Scoped CSS styling, which helped with some headaches I had previously due to my lack of CSS knowledge.
-* Much faster generation of the static files.
-* Easily add more interactive elements to the site. (I might add a search bar for my blog posts at a later time).
-* It's easier to follow a more maintainable code structure.
+- Reusable components.
+- Scoped CSS styling, which helped with some headaches I had previously due to my lack of CSS knowledge.
+- Much faster generation of the static files.
+- Easily add more interactive elements to the site. (I might add a search bar for my blog posts at a later time).
+- It's easier to follow a more maintainable code structure.
 
 One downside to using Svelte is its lack of TypeScript support (although this is being worked on).
 Another downside is that Sapper is still in early development, so I would not recommend it for serious projects. Svelte itself is ready for production, though.

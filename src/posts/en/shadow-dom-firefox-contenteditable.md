@@ -1,5 +1,5 @@
 ---
-title: "Shadow DOM, Firefox and contenteditable"
+title: 'Shadow DOM, Firefox and contenteditable'
 description: Making focus work correctly on contenteditable elements when using the shadow DOM
 created: '2022-03-16'
 published: true
@@ -16,7 +16,7 @@ tags:
 
 > This is more of a short note about some experiments when working with web components that I’m publishing as a reference for future me (or other people that experience the same issue).
 
-I’ve been experimenting with web components in order to build a wrapper for [Felte](https://felte.dev)  that can easily be used with vanilla JS. One of Felte’s features is the ability to use custom field components that are not based on the browser’s native inputs (`input`, `textarea`, `select`). The example I show is a div with an attribute `[contenteditable=“true”]`. While testing this experiment I found some weird behaviour coming from Firefox: while I could perfectly click each field and type of it, if I tried to use the form only using the keyboard (tabbing to each field) the _focus_ moved but trying to type would always result in the text being added to the first field I focused.
+I’ve been experimenting with web components in order to build a wrapper for [Felte](https://felte.dev) that can easily be used with vanilla JS. One of Felte’s features is the ability to use custom field components that are not based on the browser’s native inputs (`input`, `textarea`, `select`). The example I show is a div with an attribute `[contenteditable=“true”]`. While testing this experiment I found some weird behaviour coming from Firefox: while I could perfectly click each field and type of it, if I tried to use the form only using the keyboard (tabbing to each field) the _focus_ moved but trying to type would always result in the text being added to the first field I focused.
 
 Another confusing behaviour is that, even if you can type on the element when _clicking_ on the element itself, the care is not displayed at all. So there’s no visual cue indicating the user that the element itself is editable. Currently, there’s an [open issue on bugzilla that seems to be exactly this](https://bugzilla.mozilla.org/show_bug.cgi?id=1496769).
 
@@ -33,12 +33,10 @@ function handleBlur(e) {
 
 // We query the shadowRoot of the element that contains
 // our `contenteditable` fields
-element.shadowRoot
-  .querySelectorAll('div[role="textbox"]')
-  .forEach((el) => {
-    el.addEventListener('focusin', handleFocus);
-    el.addEventListener('focusout', handleBlur);
-  });
+element.shadowRoot.querySelectorAll('div[role="textbox"]').forEach((el) => {
+  el.addEventListener('focusin', handleFocus);
+  el.addEventListener('focusout', handleBlur);
+});
 ```
 
 Or better yet, in order to make it more easy to reuse, make a custom element that behaves like this:

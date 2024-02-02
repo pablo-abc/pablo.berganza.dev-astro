@@ -27,7 +27,7 @@ const files = await Promise.all(
       ...fm(file),
       path,
     };
-  })
+  }),
 );
 
 const articles = files

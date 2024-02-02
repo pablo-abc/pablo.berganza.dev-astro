@@ -16,7 +16,7 @@ export async function getSaved(platform) {
     };
     await fs.writeFile(
       './bin/.crosspost.saved.json',
-      JSON.stringify(defaultSaved, null, 2)
+      JSON.stringify(defaultSaved, null, 2),
     );
     return defaultSaved;
   }
@@ -25,7 +25,7 @@ export async function getSaved(platform) {
 export async function writeSaved(saved) {
   return fs.writeFile(
     './bin/.crosspost.saved.json',
-    JSON.stringify(saved, null, 2)
+    JSON.stringify(saved, null, 2),
   );
 }
 

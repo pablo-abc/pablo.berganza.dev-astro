@@ -7,9 +7,9 @@ image:
   width: 800
   height: 600
 tags:
-    - clojure
-    - webdev
-    - tech
+  - clojure
+  - webdev
+  - tech
 ---
 
 For better or for worse, most of my digital life has followed a DIY path. One advantage of this DIY approach is that I got to learn how a lot of technologies work on a deeper level. On the other hand, I never managed to finish any of my personal projects because of this (after all, in most cases I was just trying to reinvent the wheel).

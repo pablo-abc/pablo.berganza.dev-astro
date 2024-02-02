@@ -41,7 +41,7 @@ const modalCloseLabel = lang === 'en' ? 'Close' : 'Cerrar';
     <my-abilities lang={lang}><div></div></my-abilities>
   </div>
   <section aria-labelledby="projects-title">
-    <h2 id="projects-title" set:html={i18n.projects.title[lang]}></h2>
+    <h2 id="projects-title" set:html={i18n.projects.title[lang]} />
     <dl>
       {
         i18n.projects.list.map((project) => (
@@ -54,8 +54,8 @@ const modalCloseLabel = lang === 'en' ? 'Close' : 'Cerrar';
     </dl>
   </section>
   <section class="contact" aria-labelledby="contact-title">
-    <h2 id="contact-title" set:html={i18n.networks.title[lang]}></h2>
-    <p set:html={i18n.networks.description[lang]}></p>
+    <h2 id="contact-title" set:html={i18n.networks.title[lang]} />
+    <p set:html={i18n.networks.description[lang]} />
     <ul>
       {i18n.networks.links.map((link) => <li set:html={link[lang]} />)}
     </ul>

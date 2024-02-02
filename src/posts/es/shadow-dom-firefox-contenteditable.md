@@ -1,5 +1,5 @@
 ---
-title: "Shadow DOM, Firefox y contenteditable"
+title: 'Shadow DOM, Firefox y contenteditable'
 description: Haciendo que el focus funcione correctamente en Firefox usando el shadow DOM
 created: '2022-03-16'
 published: true
@@ -15,7 +15,7 @@ tags:
   - webdev
 ---
 
- Esta es más una nota sobre unos experimentos que estaba realizando con web components que estoy publicando como referencia para mi yo futuro (u otras personas que encuentren el mismo problema).
+Esta es más una nota sobre unos experimentos que estaba realizando con web components que estoy publicando como referencia para mi yo futuro (u otras personas que encuentren el mismo problema).
 
 He estado experimentando un poco con Web Components para hacer un paquete para [Felte](https://felte.dev) que pueda ser usado con vanilla JS. Una de las funcionalidades de Felte es permitirte usar campos que no están basados en los elementos nativos del browser como campos de tu formulario (`input`, `textarea`, `select`). El ejemplo que uso para mostrar esta funcionalidad es con `divs` con un atributo `[contenteditable=“true”]`. Mientras experimentaba encontré un comportamiento extraño en Firefox: aun que podía hacer click a cada campo para escribir en ellos, si intentaba usar el formulario solo con el teclado y moverme con `tab` al siguiente campo, el _focus_ se movía correctamente al siguiente campo pero al intentar escribir el texto era agregado al primer campo al que había hecho focus.
 
@@ -34,12 +34,10 @@ function handleBlur(e) {
 
 // Buscamos los elementos con `contenteditable` en el
 // sadow root del elemento que los contiene
-element.shadowRoot
-  .querySelectorAll('div[role="textbox"]')
-  .forEach((el) => {
-    el.addEventListener('focusin', handleFocus);
-    el.addEventListener('focusout', handleBlur);
-  });
+element.shadowRoot.querySelectorAll('div[role="textbox"]').forEach((el) => {
+  el.addEventListener('focusin', handleFocus);
+  el.addEventListener('focusout', handleBlur);
+});
 ```
 
 O mejor aún, para hacer una solución más reusable, hacer un custom element que se comporte de esta forma:

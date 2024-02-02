@@ -1,5 +1,5 @@
 ---
-title: "Creando una librería de aserciones estilo Chai usando proxies"
+title: 'Creando una librería de aserciones estilo Chai usando proxies'
 description: Mostrando un divertido proyecto que construí para uvu
 published: true
 created: '2022-02-19'
@@ -8,8 +8,8 @@ image:
   width: 1136
   height: 852
 crosspost:
-  devto: "https://dev.to/pabloabc/creating-a-chai-like-assertion-library-using-proxies-1ol7"
-  hashnode: "https://hn.berganza.dev/creating-a-chai-like-assertion-library-using-proxies"
+  devto: 'https://dev.to/pabloabc/creating-a-chai-like-assertion-library-using-proxies-1ol7'
+  hashnode: 'https://hn.berganza.dev/creating-a-chai-like-assertion-library-using-proxies'
 tags:
   - javascript
   - testing
@@ -17,13 +17,14 @@ tags:
   - webdev
 ---
 
-Durante las últimas semanas he tomado el (probablemente inútil) trabajo de migrar [Felte](https://felte.dev) de usar Jest a usar [uvu](https://github.com/lukeed/uvu). Esta labor es tediosa de por sí, pero uno de los detalles que dificultan la transición es que Jest espera que hagas tus tests con una sintaxis estilo `expect(…).toBe*`; mientras que uvu te da total libertad sobre cómo realizar tus tests. Aunque uvu ofrece un paquete oficial `uvu/assert` que  te permite realizar tus tests estilo `assert.is(value, expected)`.
+Durante las últimas semanas he tomado el (probablemente inútil) trabajo de migrar [Felte](https://felte.dev) de usar Jest a usar [uvu](https://github.com/lukeed/uvu). Esta labor es tediosa de por sí, pero uno de los detalles que dificultan la transición es que Jest espera que hagas tus tests con una sintaxis estilo `expect(…).toBe*`; mientras que uvu te da total libertad sobre cómo realizar tus tests. Aunque uvu ofrece un paquete oficial `uvu/assert` que te permite realizar tus tests estilo `assert.is(value, expected)`.
 
 Aunque esto funciona perfectamente bien, y es posible mover todos mis tests a usar el tipo de validaciones que `uvu/assert` ofrece, me gusta la forma descriptiva de los t esta de Jest. Para poder mantener una forma similar de realizar mis tests, decidí usar [ChaiJS](https://chaijs.com): una librería de aserciones que es principalmente usada con [mocha](https://mochajs.org). Chai ofrece aserciones estilo `expect` que son, debatiblemente, más descriptivas que las que Jest ofrece. En lugar de escribir `expect(…).toBe(true)`, con Chai escribirías `expect(…).to.be.true`. En la mayor parte de casos pude usar un “search and replace” para migrar.
 
 Este setup funciona perfectamente bien. Pero hay unos cuantos pequeños detalles: Los errores lanzados por las aserciones son _un poquito_ distintos a los esperados por uvu. Esto significa que en algunos casos uvu muestra detalles o mensajes de error que no son muy relevantes al test que falló. O que uvu muestra diffs comparando `undefined` con `undefined`. Como un buen desarrollador con demasiado tiempo libre, decidí escribir [mi propia librería de aserciones](https://xkcd.com/927/) sobre las aserciones proveídas por uvu: [uvu-expect](https://github.com/pablo-abc/uvu-expect). A continuación explicaré más o menos como lo hice.
 
 ## La función “expect”
+
 El principal requisito de nuestra librería de aserciones es una función `expect` que debe recibir el velor que esperas validar.
 
 ```javascript
@@ -62,7 +63,7 @@ export function expect(value) {
         // proxy nuevamente.
         return proxy;
       },
-    }
+    },
   );
   return proxy;
 }
@@ -90,7 +91,7 @@ export function expect(value) {
           },
         });
       },
-    }
+    },
   );
   return proxy;
 }
@@ -101,6 +102,7 @@ expect().this.does.nothing().but.also.does.not.crash();
 Con esto, ya tenemos lo básico para la sintaxis que buscamos soportar. Ahora necesitamos lograr darle _significado_ a algunas propiedades. Por ejemplo, tal vez queramos que algo como `expect(…).to.be.null` revise si el value pasado a `expect` sea null o no.
 
 ## Dándole significado a nuestras propiedades
+
 Podríamos revisar directamente el nombre de la propiedad siendo accedida y utilizar esto para decidir que validaciones correr. Por ejemplo, para tener una validación que revise si el valor recibido es `null`:
 
 ```javascript
@@ -123,7 +125,7 @@ export function expect(value) {
         }
         return proxy;
       },
-    }
+    },
   );
   return proxy;
 }
@@ -139,6 +141,7 @@ try {
 Esto puede hacer que nuestra función `expect` sea algo difícil de mantener. Y agregar nuevas propiedades no será tan fácil a medida que la librería crezca. Para hacerlo más mantenible, vamos a manejar esto de una forma un poco diferente.
 
 ## Definiendo propiedades
+
 En lugar de envolver un objeto vacío en nuestro proxy, vamos a envolver un objeto que contiene las propiedades a las que queremos darle significado.
 
 ```javascript
@@ -200,11 +203,11 @@ export function expect(value) {
   const proxy = new Proxy(properties, {
     get(target, outerProp) {
       const property = target[outerProp];
-		// Ejecutamos `onAccess` cuando esté disponible.
+      // Ejecutamos `onAccess` cuando esté disponible.
       property?.onAccess?.(value);
       return new Proxy(
         (...args) => {
-			// Ejecutamos `onCall` cuando esté disponible.
+          // Ejecutamos `onCall` cuando esté disponible.
           property?.onCall?.(value, ...args);
           return proxy;
         },
@@ -212,7 +215,7 @@ export function expect(value) {
           get(_, innerProp) {
             return proxy[innerProp];
           },
-        }
+        },
       );
     },
   });
@@ -228,6 +231,7 @@ expect('a').to.equal('a');
 Hay un pequeño detalle que todavía no podemos manejar con nuestra implementación actual: negar aserciones. Necesitamos implementar una forma para modificar el comportamiento de aserciones futuras.
 
 ## Negando aserciones
+
 Para lograr manejar esto, necesitamos una forma de comunicarle a nuestras propiedades que la aserción siendo realizada ha sido negada. Para esto, cambiaremos un poco como definimos nuestras propiedades. En lugar de recibir el valor siendo validado como primer argumento, vamos a recibir un objeto `context` que contendrá nuestro valor siendo validado en la propiedad `actual`, y una nueva propiedad `negated` que contendrá un booleano indicando si la aserción ha sido negada. La definición de nuestras propiedades para `equal` y `null` ahora se verán así:
 
 ```javascript
@@ -295,7 +299,7 @@ export function expect(value) {
           get(_, innerProp) {
             return proxy[innerProp];
           },
-        }
+        },
       );
     },
   });
@@ -308,14 +312,16 @@ expect('a').to.not.equal('b');
 Esta técnica puede ser usada para comunicar más detalles a nuestras aserciones futuras.
 
 ## Evitar lanzar errores normales
+
 Para hacer que los ejemplos sean mas sencillos, estuvimos lanzando errores normales (`throw new Error(…)`). Ya que queremos que esta librería sea usada con un test runner, sería mejor lanzar algo como un [`AssertionError`](https://nodejs.org/api/assert.html#class-assertassertionerror) de Node; o, en el caso de uvu, su error `Assertion`. Esto nos daría mucha más información si una aserción falla. Y puede ser recibido por Node o test runners para mostrar mejores mensajes y diffs.
 
 ## Conclusión
+
 Esta es una explicación muy simplificada sobre como hice [uvu-expect](https://github.com/pablo-abc/uvu-expect). `uvu-expect` tiene muchas más funcionalidades y validaciones como:
 
-* `.resolves` y `.rejects` para realizar aserciones en promesas.
-* Posibilidad de crear plugins usando la función `extend`. Así fue como cree un plugin llamado [uvu-expect-dom](https://github.com/pablo-abc/uvu-expect-dom) que ofrece aserciones similares a `@testing-library/jest-dom`.
-* Aserciones sobre funciones “mock”. Compatible con [sinonjs](https://sinonjs.org) y [tinyspy](https://github.com/Aslemammad/tinyspy).
+- `.resolves` y `.rejects` para realizar aserciones en promesas.
+- Posibilidad de crear plugins usando la función `extend`. Así fue como cree un plugin llamado [uvu-expect-dom](https://github.com/pablo-abc/uvu-expect-dom) que ofrece aserciones similares a `@testing-library/jest-dom`.
+- Aserciones sobre funciones “mock”. Compatible con [sinonjs](https://sinonjs.org) y [tinyspy](https://github.com/Aslemammad/tinyspy).
 
 El objetivo era tener por lo menos las funcionalidades que uso de Jest. Puedes leer más sobre esta librería en su README. Escribí documentación sobre todo ahí, incluso como crear tus propios plugins.
 

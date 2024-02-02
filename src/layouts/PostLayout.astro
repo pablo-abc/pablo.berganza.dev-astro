@@ -30,7 +30,7 @@ const localeDate = new Date(post.frontmatter.created).toLocaleDateString(
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-  }
+  },
 );
 const jsonLd = `
     <script type="application/ld+json">
@@ -121,12 +121,10 @@ const jsonLd = `
     </script>
     <script
       type="module"
-      src="https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.esm.js"
-    ></script>
+      src="https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.esm.js"></script>
     <script
       nomodule=""
-      src="https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.js"
-    ></script>
+      src="https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.js"></script>
     <script is:inline src="/scripts/focus-visible.js" defer></script>
     <Fragment set:html={jsonLd} />
     <MetaHead
@@ -148,8 +146,8 @@ const jsonLd = `
       <LangLink lang={lang} section={section} />
       <article>
         <header>
-          <h1 class="title" set:html={post.frontmatter.title}></h1>
-          <p set:html={post.frontmatter.description}></p>
+          <h1 class="title" set:html={post.frontmatter.title} />
+          <p set:html={post.frontmatter.description} />
         </header>
         <img
           alt=""
@@ -229,33 +227,34 @@ const jsonLd = `
       </script>
       <footer>
         <ShareButtons client:visible host={host} blog={post} lang={lang} />
-        {fediId && lang === 'es' ? (
-              <>
+        {
+          fediId && lang === 'es' ? (
+            <>
               <fedi-comments postId={fediId} instance="sivar.cafe">
-              <span slot="instructions">
-              Agrega tu comentario respondiendo con tu cuenta en el Fediverso al siguiente post:
-              </span>
-              <span slot="view-post-text">
-              Ver post
-              </span>
-              <span slot="view-on-text">
-              Ver en
-              </span>
+                <span slot="instructions">
+                  Agrega tu comentario respondiendo con tu cuenta en el
+                  Fediverso al siguiente post:
+                </span>
+                <span slot="view-post-text">Ver post</span>
+                <span slot="view-on-text">Ver en</span>
               </fedi-comments>
-             </>
-            ) : fediId ? (
-              <>
-                <fedi-comments postId={fediId} instance="sivar.cafe"></fedi-comment>
-              </>
-            ) : (
+            </>
+          ) : fediId ? (
+            <>
+              <fedi-comments postId={fediId} instance="sivar.cafe" />
+            </>
+          ) : (
             <Commento
               client:only
               lang={lang}
-              src={import.meta.env.PROD
-              ? 'https://cdn.commento.io/js/commento.js'
-              : 'http://localhost:8080/js/commento.js'}
-              />
-        )}
+              src={
+                import.meta.env.PROD
+                  ? 'https://cdn.commento.io/js/commento.js'
+                  : 'http://localhost:8080/js/commento.js'
+              }
+            />
+          )
+        }
       </footer>
     </main>
     <style lang="scss">

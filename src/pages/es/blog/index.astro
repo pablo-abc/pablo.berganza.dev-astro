@@ -3,36 +3,35 @@ import Base from 'layouts:Base.astro';
 import Blogs from 'components:Blog/Blogs.astro';
 import fs from 'node:fs';
 
-const posts = await Astro
-      .glob('../../../posts/es/*.md').then(posts => 
-        posts.filter((post) => {
-          if (import.meta.env.PROD) {
-            return post.frontmatter.published;
-          }
-          return true;
-        })
-        .map((post) => {
-          const base = new URL('.', 'file://' + post.file).pathname;
-          let slug = post
-            .file
-            .replace(base, '')
-            .replace(/\.md$/, '');
-          const source = fs.readFileSync(post.file, 'utf-8');
-          if (!post.frontmatter.published) slug = `__draft__${slug}`;
-          const url = `/es/blog/${slug}`;
-          return {
-            ...post,
-            url,
-            source,
-          }
-        })
-        .sort((a, b) => {
-          return (
-            new Date(b.frontmatter.created).getTime() -
-            new Date(a.frontmatter.created).getTime()
-          )
-        }));
+const posts = await Astro.glob('../../../posts/es/*.md').then((posts) =>
+  posts
+    .filter((post) => {
+      if (import.meta.env.PROD) {
+        return post.frontmatter.published;
+      }
+      return true;
+    })
+    .map((post) => {
+      const base = new URL('.', 'file://' + post.file).pathname;
+      let slug = post.file.replace(base, '').replace(/\.md$/, '');
+      const source = fs.readFileSync(post.file, 'utf-8');
+      if (!post.frontmatter.published) slug = `__draft__${slug}`;
+      const url = `/es/blog/${slug}`;
+      return {
+        ...post,
+        url,
+        source,
+      };
+    })
+    .sort((a, b) => {
+      return (
+        new Date(b.frontmatter.created).getTime() -
+        new Date(a.frontmatter.created).getTime()
+      );
+    }),
+);
 ---
+
 <Base title="Blog" lang="es" section="blog">
   <Blogs lang="es" posts={posts} showRss />
 </Base>

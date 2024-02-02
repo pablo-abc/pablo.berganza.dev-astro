@@ -7,9 +7,9 @@ image:
   width: 800
   height: 600
 tags:
-    - clojure
-    - webdev
-    - tecnología
+  - clojure
+  - webdev
+  - tecnología
 lang: es
 ---
 

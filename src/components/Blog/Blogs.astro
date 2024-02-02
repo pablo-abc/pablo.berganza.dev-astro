@@ -42,7 +42,7 @@ const available =
       posts.map((post) => {
         const duration = getTtr(post.source);
         const localeDate = new Date(
-          post.frontmatter.created
+          post.frontmatter.created,
         ).toLocaleDateString(lang ?? 'en', {
           year: 'numeric',
           month: 'long',

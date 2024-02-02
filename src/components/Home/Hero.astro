@@ -16,9 +16,7 @@ const { lang } = Astro.props;
       Pablo Berganza
     </h1>
     <ul>
-      {i18n.description[lang].map(desc => (
-        <li set:html={desc} />
-      ))}
+      {i18n.description[lang].map((desc) => <li set:html={desc} />)}
     </ul>
     <p set:html={i18n.blog[lang]} />
   </section>
@@ -26,121 +24,119 @@ const { lang } = Astro.props;
 </div>
 
 <style lang="scss">
- @use "sass:math";
+  @use 'sass:math';
 
- $ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
+  $ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
 
- .hero {
-   position: relative;
-   width: 100%;
-   min-height: 100vh;
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
-   overflow-x: hidden;
+  .hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-x: hidden;
 
-   :global(svg) {
-     color: var(--color-memage);
-   }
+    :global(svg) {
+      color: var(--color-memage);
+    }
 
-   :global(svg.memage-mobile) {
-     width: auto;
-     position: absolute;
-     top: -4rem;
-     height: 6rem;
-     margin-left: 1rem;
-     @media only screen and (min-width: 956px) {
-       display: none;
-     }
-   }
+    :global(svg.memage-mobile) {
+      width: auto;
+      position: absolute;
+      top: -4rem;
+      height: 6rem;
+      margin-left: 1rem;
+      @media only screen and (min-width: 956px) {
+        display: none;
+      }
+    }
 
-   :global(svg.memage) {
-     display: none;
-     @media only screen and (min-width: 956px) {
-       display: inline;
-       max-height: 100vh;
-       max-width: 50%;
-       width: auto;
-       padding: max(10vh, 3rem) 5vw;
-       height: 100vh;
-     }
-   }
+    :global(svg.memage) {
+      display: none;
+      @media only screen and (min-width: 956px) {
+        display: inline;
+        max-height: 100vh;
+        max-width: 50%;
+        width: auto;
+        padding: max(10vh, 3rem) 5vw;
+        height: 100vh;
+      }
+    }
 
-   .info {
-     flex: 1;
-     margin: 0 10vw;
-     padding-top: 35vh;
-     min-height: 100vh;
-     line-height: 3rem;
+    .info {
+      flex: 1;
+      margin: 0 10vw;
+      padding-top: 35vh;
+      min-height: 100vh;
+      line-height: 3rem;
 
-     h1 {
-       font-size: var(--h1);
-       color: var(--color-heading);
-       font-weight: 700;
+      h1 {
+        font-size: var(--h1);
+        color: var(--color-heading);
+        font-weight: 700;
 
-       span {
-         position: relative;
-         font-size: 1.5rem;
-         line-height: 2rem;
-         color: var(--base-font-color);
-         font-weight: 400;
-         display: block;
-       }
+        span {
+          position: relative;
+          font-size: 1.5rem;
+          line-height: 2rem;
+          color: var(--base-font-color);
+          font-weight: 400;
+          display: block;
+        }
 
-       @media only screen and (min-width: 483px) {
-         line-height: 4rem;
+        @media only screen and (min-width: 483px) {
+          line-height: 4rem;
 
-         span {
-           line-height: 2.5rem;
-           font-size: 2rem;
-         }
-       }
-     }
+          span {
+            line-height: 2.5rem;
+            font-size: 2rem;
+          }
+        }
+      }
+    }
 
-   }
+    ul {
+      margin-top: 0.75rem;
+      color: var(--base-font-color);
+      font-size: 1.125rem;
+      line-height: 1.5rem;
+    }
 
-   ul {
-     margin-top: 0.75rem;
-     color: var(--base-font-color);
-     font-size: 1.125rem;
-     line-height: 1.5rem;
-   }
+    p {
+      font-size: 1.125rem;
+      padding-top: 1rem;
+    }
 
-   p {
-     font-size: 1.125rem;
-     padding-top: 1rem;
-   }
+    li {
+      opacity: 0;
+    }
 
-   li {
-     opacity: 0;
-   }
+    @for $i from 1 through 3 {
+      li:nth-child(#{$i}) {
+        animation-delay: math.div($i - 1s, 3);
+        animation-duration: 1s;
+        animation-timing-function: $ease-out-cubic;
+        animation-name: slidein;
+        animation-fill-mode: forwards;
+      }
+    }
 
-   @for $i from 1 through 3 {
-     li:nth-child(#{$i}) {
-       animation-delay: math.div($i - 1s, 3);
-       animation-duration: 1s;
-       animation-timing-function: $ease-out-cubic;
-       animation-name: slidein;
-       animation-fill-mode: forwards;
-     }
-   }
+    li::before {
+      content: '✓';
+      content: '✓' / '';
+    }
+  }
 
-   li::before {
-     content: "✓";
-     content: "✓" / "";
-   }
+  @keyframes slidein {
+    from {
+      opacity: 0;
+      transform: translateX(-2rem);
+    }
 
- }
-
- @keyframes slidein {
-   from {
-     opacity: 0;
-     transform: translateX(-2rem);
-   }
-
-   to {
-     opacity: 1;
-     transform: translateX(0);
-   }
- }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 </style>

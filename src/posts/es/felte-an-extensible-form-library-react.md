@@ -1,5 +1,5 @@
 ---
-title: "Felte: Manejo de formularios en React"
+title: 'Felte: Manejo de formularios en React'
 description: Una forma flexible de manejar tus formularios en React
 created: '2022-02-14'
 published: true
@@ -9,8 +9,8 @@ image:
   width: 800
   height: 444
 crosspost:
-  devto: "https://dev.to/pabloabc/felte-an-extensible-form-library-for-react-3bje"
-  hashnode: "https://hn.berganza.dev/felte-an-extensible-form-library-for-react"
+  devto: 'https://dev.to/pabloabc/felte-an-extensible-form-library-for-react-3bje'
+  hashnode: 'https://hn.berganza.dev/felte-an-extensible-form-library-for-react'
 tags:
   - javascript
   - react
@@ -25,19 +25,21 @@ En esta publicación escribiré sobre [Felte](https://felte.dev), una librería 
 Esta es una de tres publicaciones relacionadas con Felte. Esta está orientada a la integración de Felte con [React](https://reactjs.org). Las otras están orientadas a la integración con [Svelte](https://svelte.dev) y con [Solid](https://solidjs.com).
 
 ## Características
+
 Como mencioné anteriormente, Felte busca hacer que las bases de la reactivada de formularios tan fácil de manejar como sea posible, a su vez permitiendo complejidad extra a través de configuración y extensibilidad. Sus principales características son:
 
-* Una sola función para hacer tu formulario reactivo.
-* Usa elementos nativos de HTML5 para crear tu formulario. Solo necesitando el atributo `name`.
-* Re-renders mínimos. Ninguno si tu componente no necesita los valores de tu formulario dentro de este.
-* Provee stores y otras utilidades para manejar casos de uso más complejos.
-* No asume nada sobre tu estrategia de validación. Puedes usar tu librería de validación preferida o escribe tu propia estrategia.
-* Maneja mutaciones del DOM en tiempo de ejecución.
-* Soluciones oficiales para manejar reporte de errores en validación.
-* Validación con [yup](https://felte.dev/docs/react/validators#using-yup), [zod](https://felte.dev/docs/react/validators#using-zod), [superstruct](https://felte.dev/docs/react/validators#using-superstruct) y [vest](https://felte.dev/docs/react/validators#using-vest).
-* Puedes [extender su funcionalidad](https://felte.dev/docs/react/extending-felte) fácilmente.
+- Una sola función para hacer tu formulario reactivo.
+- Usa elementos nativos de HTML5 para crear tu formulario. Solo necesitando el atributo `name`.
+- Re-renders mínimos. Ninguno si tu componente no necesita los valores de tu formulario dentro de este.
+- Provee stores y otras utilidades para manejar casos de uso más complejos.
+- No asume nada sobre tu estrategia de validación. Puedes usar tu librería de validación preferida o escribe tu propia estrategia.
+- Maneja mutaciones del DOM en tiempo de ejecución.
+- Soluciones oficiales para manejar reporte de errores en validación.
+- Validación con [yup](https://felte.dev/docs/react/validators#using-yup), [zod](https://felte.dev/docs/react/validators#using-zod), [superstruct](https://felte.dev/docs/react/validators#using-superstruct) y [vest](https://felte.dev/docs/react/validators#using-vest).
+- Puedes [extender su funcionalidad](https://felte.dev/docs/react/extending-felte) fácilmente.
 
 ## ¿Cómo se ve?
+
 En su forma más sencilla, Felte solo requiere que se importe una sola función:
 
 ```jsx
@@ -70,13 +72,16 @@ En el ejemplo anterior configuramos el formulario llamando a `useForm` con nuest
 ```
 
 ## ¿Dónde puedo ver los valores de mis inputs?
+
 Mientras escribe, Felte llevará un registro de tus `input` en un observable que contiene los datos de tu formulario en la misma forma en que los recibirías en tu función `onSubmit`. Este observable es manipulado por Felte y su valor puede ser obtenido llamando la función `data` retornada por `useForm`; no hay necesidad de que manejes observables en tu código. Nos referiremos a estas funciones como `accessors` de ahora en adelante. Cuando este accessor es llamado sin ningún argumento (`data()`), retornará todos los valores de tu formulario en un objeto. Esto también hará que tu componente se "subscriba" a todos los cambios de tu formulario, haciendo que tu componente haga re-render en cada cambio. Estos `accessors` pueden recibir un argumento, ya sea una funcíon para seleccionar un valor, o una string refiriendose a la ubicación del valor en el objeto. Usando un argumento puedes limitar a que tu componente se subscriba solo a las propiedades que necesita.
 
 Por ejemplo, esto imprimiría el email de tu usuario en la consola a medida que escriban:
 
 ```javascript
 // Dentro de un componente
-const { form, data } = useForm({ /* ... */ });
+const { form, data } = useForm({
+  /* ... */
+});
 
 // Utilizando una función
 console.log(data(($data) => $data.email));
@@ -86,6 +91,7 @@ console.log(data('email'));
 ```
 
 ## Tal vez necesite algo de validación
+
 Claro, otro requisite común en formularios es validación. Si queremos que nuestra aplicación se sienta rápida, querremos algo de validación del lado del cliente. La configuración de `useForm` acepta una función en su propiedad `validate` (que puede ser asíncrona). Esta función recibirá el valor más reciente de `data` a medida que cambie y espera que devuelvas un objeto con la misma estructura conteniendo tus mensajes de validación si tu formulario no es válido, o nada si tu formulario es válido. Felte llevará un registro de todos estos mensajes de validación en un accessor devuelto por `useForm` llamado `errors`:
 
 ```javascript
@@ -104,10 +110,12 @@ console.log(errors(($errors) => $errors.email));
 Requisitos más complejos pueden necesitar librerías de terceros para validación. Felte provee integraciones de primera parte con algunas librerías de validación populares gracias a su extensibilidad. Estas integraciones se ofrecen como librerías separadas. Escribiré más sobre esto en la siguiente sección relacionada con extensibilidad, pero puedes leer más de esto en la [documentación oficial](https://felte.dev/docs/react/validators) (inglés).
 
 ## Manejando escenarios complejos a través de extensibilidad
-Felte no asume conocer la solución perfecta para manejar todos los escenarios relacionados con el manejo de formularios. Es por esto que Felte ofrece un API para extender su funcionalidad a medida que tus requerimientos crezcan. Tal vez tienes una librería de validación favorita, como la muy popular librería [yup](https://github.com/jquense/yup), o [Vest](https://vestjs.dev/)  (del cual se habló en el último [Svelte Summit](https://www.youtube.com/watch?v=X2PuiawaGV4)). Modificar el funcionamiento de Felte para manejar estos escenarios es posible a través de la opción `extend` de `useForm`. Más sobre esto se puede leer en la [documentación oficial](https://felte.dev/docs/react/extending-felte) (inglés). Para mantener esta publicación sencilla, solo escribiré sobre las librerías existentes que mantenemos para manejar casos de uso comunes:
+
+Felte no asume conocer la solución perfecta para manejar todos los escenarios relacionados con el manejo de formularios. Es por esto que Felte ofrece un API para extender su funcionalidad a medida que tus requerimientos crezcan. Tal vez tienes una librería de validación favorita, como la muy popular librería [yup](https://github.com/jquense/yup), o [Vest](https://vestjs.dev/) (del cual se habló en el último [Svelte Summit](https://www.youtube.com/watch?v=X2PuiawaGV4)). Modificar el funcionamiento de Felte para manejar estos escenarios es posible a través de la opción `extend` de `useForm`. Más sobre esto se puede leer en la [documentación oficial](https://felte.dev/docs/react/extending-felte) (inglés). Para mantener esta publicación sencilla, solo escribiré sobre las librerías existentes que mantenemos para manejar casos de uso comunes:
 
 ### Validators: Integraciones con librerías de validación populares
-Actualmente mantenemos cuatro paquetes para integrar Felte con algunas librerías de validación: `yup`, `zod`, `superstruct`  y recientemente: `vest`.  Usaremos yup como un ejemplo, pero puedes leer más sobre el resto [aquí](https://felte.dev/docs/react/validators) (inglés).
+
+Actualmente mantenemos cuatro paquetes para integrar Felte con algunas librerías de validación: `yup`, `zod`, `superstruct` y recientemente: `vest`. Usaremos yup como un ejemplo, pero puedes leer más sobre el resto [aquí](https://felte.dev/docs/react/validators) (inglés).
 
 Nuestro paquete para usar `yup` se encuentra en npm bajo el nombre `@felte/validator-yup`. Necesitarás instalarlo junto a `yup`:
 
@@ -139,21 +147,22 @@ const { form } = useForm({
 ```
 
 ### Reporters: Mostrando mensajes de validación
+
 Mostrar tus mensajes de validación puede ser hecho directamente accediendo al store `errors` devuelto por `useForm`. Estos mensajes no estarán disponibles en el store hasta que se haya interactuado con el campo al que se refiera.
 
 ```jsx
 import { useForm } from '@felte/react';
 
 function Form() {
-  const { form, errors } = useForm({ /* ... */ });
+  const { form, errors } = useForm({
+    /* ... */
+  });
 
   return (
     <form ref={form}>
       <label htmlFor="email">Email:</label>
       <input name="email" type="email" id="email" />
-      {!!errors('email') && (
-        <span>{errors('email')}</span>
-      )}
+      {!!errors('email') && <span>{errors('email')}</span>}
       <button>Submit</button>
     </form>
   );
@@ -164,10 +173,10 @@ function Form() {
 
 Pero tal vez no te guste la sintaxis anterior para manejar los mensajes de validación. Actualmente Felte también tiene cuatro librerías que ofrecen diferentes alternativas para mostrar tus mensajes de validación:
 
-* Utilizando un componente de React, la opción más flexible, que permite además acceder a tus mensajes de validación sin necesidad de pasar `errors` a tus componentes hijos.
-* Modificando el DOM directamente añadiendo o removiendo elementos.
-* Utilizando Tippy.js para mostrar tus mensajes en un tooltip.
-* Utilizando el “constraint validation API” del navegador, que puede ser menos amigable a usuarios en dispositivos móviles.
+- Utilizando un componente de React, la opción más flexible, que permite además acceder a tus mensajes de validación sin necesidad de pasar `errors` a tus componentes hijos.
+- Modificando el DOM directamente añadiendo o removiendo elementos.
+- Utilizando Tippy.js para mostrar tus mensajes en un tooltip.
+- Utilizando el “constraint validation API” del navegador, que puede ser menos amigable a usuarios en dispositivos móviles.
 
 Para mantener todo breve, solo escribiré sobre la primera librería mencionada. Pero puedes leer más sobre el resto [en la documentación](https://felte.dev/docs/react/reporters) (inglés).
 
@@ -181,7 +190,7 @@ npm i -S @felte/reporter-react
 yarn add @felte/reporter-react
 ```
 
-Luego necesitarás importar la función  `reporter` para pasarla a la propiedad `extend`, y el componente `ValidationMessage` que usarás para obtener tus mensajes de validación:
+Luego necesitarás importar la función `reporter` para pasarla a la propiedad `extend`, y el componente `ValidationMessage` que usarás para obtener tus mensajes de validación:
 
 ```jsx
 import { reporter, ValidationMessage } from '@felte/reporter-react';
@@ -214,9 +223,11 @@ function Form() {
 ```
 
 ## Siguientes pasos
+
 Puedes leer más sobre Felte en su [sitio oficial](https://felte.dev) (inglés), incluye un par de ejemplos de su uso. Además puedes ver un ejemplo más complejo de su uso, utilizando Tippy.js y Yup, en [CodeSandbox](https://codesandbox.io/s/felte-demo-solidjs-w92uj?file=/src/main.tsx).
 
 ## Palabras finales
-Espero que esto haya servido como una buena introducción a Felte, y que haya sido lo suficientemente interesante como para que quieras probarlo. Felte ya está en un estado estable y es usado por algunas personas. También estoy abierto a recibir ayuda o sugerencias. Siéntete libre de abrir un issue o un pull request en  [GitHub](https://github.com/pablo-abc/felte).
+
+Espero que esto haya servido como una buena introducción a Felte, y que haya sido lo suficientemente interesante como para que quieras probarlo. Felte ya está en un estado estable y es usado por algunas personas. También estoy abierto a recibir ayuda o sugerencias. Siéntete libre de abrir un issue o un pull request en [GitHub](https://github.com/pablo-abc/felte).
 
 La documentación de Felte actualmente solo se encuentra en inglés, algo de ayuda [traduciendo la documentación](https://github.com/pablo-abc/felte/tree/main/packages/site/markdown/docs) sería muy apreciado.

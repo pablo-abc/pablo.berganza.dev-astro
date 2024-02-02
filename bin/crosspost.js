@@ -30,16 +30,16 @@ program
       if (published.title === article.title) {
         if (!update) {
           console.error(
-            kleur.red('\nThe article has been published already\n')
+            kleur.red('\nThe article has been published already\n'),
           );
           console.error(
-            `\t${kleur.bold().gray('ID:')} ${kleur.yellow(published.id)}`
+            `\t${kleur.bold().gray('ID:')} ${kleur.yellow(published.id)}`,
           );
           console.error(
-            `\t${kleur.bold().gray('Title:')} ${kleur.yellow(published.title)}`
+            `\t${kleur.bold().gray('Title:')} ${kleur.yellow(published.title)}`,
           );
           console.error(
-            `\t${kleur.bold().gray('Slug:')} ${kleur.yellow(published.slug)}`
+            `\t${kleur.bold().gray('Slug:')} ${kleur.yellow(published.slug)}`,
           );
           process.exit(1);
         } else {
@@ -47,7 +47,7 @@ program
           try {
             await adapters[platform].updateArticle(id, article);
             console.log(
-              kleur.green('Updated article since it already existed')
+              kleur.green('Updated article since it already existed'),
             );
             process.exit(0);
           } catch (err) {

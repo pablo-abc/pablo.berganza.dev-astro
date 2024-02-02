@@ -2,45 +2,77 @@
 import MetaHead from '../components/MetaHead.astro';
 import 'style:roboto.css';
 import 'style:overpass.css';
-import 'style:reset.css'
-import 'style:global.css'
+import 'style:reset.css';
+import 'style:global.css';
 
 const { title, lang, section = '' } = Astro.props;
-const imgSrc = `assets/metaimage.png`
-const description = lang === 'en' ? 'Software developer and occasional open sourcerer.' : 'Desarrollador de software y contribuyente open source.';
+const imgSrc = `assets/metaimage.png`;
+const description =
+  lang === 'en'
+    ? 'Software developer and occasional open sourcerer.'
+    : 'Desarrollador de software y contribuyente open source.';
 const host = Astro.site;
 ---
+
 <html lang={lang ?? 'en'}>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="yandex-verification" content="10b089925a425f5c" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title} | Pablo Berganza</title>
-    <meta name="google-site-verification" content="qLRaK63f6ThV_3cOQSYwuekIT7yMlgC-Y7aMHqwj83U" />
+    <meta
+      name="google-site-verification"
+      content="qLRaK63f6ThV_3cOQSYwuekIT7yMlgC-Y7aMHqwj83U"
+    />
     <link
       rel="alternate"
       hreflang={lang === 'en' ? 'es' : 'en'}
       href={`${host}${lang === 'en' ? 'es/' : ''}${section}`}
-    >
-    <link href="/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
-    <link href="/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
-    <link href="/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
-    <link href="/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
-    <link href="/apple-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
-    <link href="/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
-    <link href="/apple-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
-    <link href="/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
-    <link href="/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180">
-    <link href="/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png">
-    <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
-    <link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
-    <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
-    <link rel="icon" type="image/png" href="/favicon.ico">
-    <link href="/manifest.json" rel="manifest">
+    />
+    <link href="/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57" />
+    <link href="/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60" />
+    <link href="/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72" />
+    <link href="/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
+    <link
+      href="/apple-icon-114x114.png"
+      rel="apple-touch-icon"
+      sizes="114x114"
+    />
+    <link
+      href="/apple-icon-120x120.png"
+      rel="apple-touch-icon"
+      sizes="120x120"
+    />
+    <link
+      href="/apple-icon-144x144.png"
+      rel="apple-touch-icon"
+      sizes="144x144"
+    />
+    <link
+      href="/apple-icon-152x152.png"
+      rel="apple-touch-icon"
+      sizes="152x152"
+    />
+    <link
+      href="/apple-icon-180x180.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    <link
+      href="/android-icon-192x192.png"
+      rel="icon"
+      sizes="192x192"
+      type="image/png"
+    />
+    <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
+    <link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png" />
+    <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
+    <link rel="icon" type="image/png" href="/favicon.ico" />
+    <link href="/manifest.json" rel="manifest" />
     <link href="proven.lol/dadb71" />
-    <meta content="#E34495" name="msapplication-TileColor">
-    <meta content="ms-icon-144x144.png" name="msapplication-TileImage">
-    <meta content="#E34495" name="theme-color">
+    <meta content="#E34495" name="msapplication-TileColor" />
+    <meta content="ms-icon-144x144.png" name="msapplication-TileImage" />
+    <meta content="#E34495" name="theme-color" />
     <script is:inline src="/scripts/focus-visible.js"></script>
     <MetaHead
       title="Pablo Berganza"
@@ -49,7 +81,7 @@ const host = Astro.site;
       host={host}
       img={imgSrc}
     />
-    <meta name="color-scheme" content="light dark">
+    <meta name="color-scheme" content="light dark" />
   </head>
   <body>
     <main>

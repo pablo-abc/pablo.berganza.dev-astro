@@ -24,22 +24,24 @@ for (const header of astroHeaders) {
     <span>{lang === 'en' ? 'Table of contents' : 'Índice'}</span>
   </summary>
   <ol id="toc">
-    {headers.map((header) => {
-      return (
-        <li>
-          <a href={`#${header.slug}`}>{header.text}</a>
-          {header.subheaders.length !== 0 && (
-            <ul>
-              {header.subheaders.map((sh) => (
-                <li>
-                  <a href={`#${sh.slug}`}>{sh.text}</a>
-                </li>
-              ))}
-            </ul>
-          )}
-        </li>
-      );
-    })}
+    {
+      headers.map((header) => {
+        return (
+          <li>
+            <a href={`#${header.slug}`}>{header.text}</a>
+            {header.subheaders.length !== 0 && (
+              <ul>
+                {header.subheaders.map((sh) => (
+                  <li>
+                    <a href={`#${sh.slug}`}>{sh.text}</a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        );
+      })
+    }
   </ol>
 </details>
 

@@ -1,5 +1,5 @@
 ---
-title: "Creating a Chai like assertion library using proxies"
+title: 'Creating a Chai like assertion library using proxies'
 description: Showcasing how I made a fun side-project to be used with uvu
 published: true
 created: '2022-02-19'
@@ -8,8 +8,8 @@ image:
   width: 1136
   height: 852
 crosspost:
-  devto: "https://dev.to/pabloabc/creating-a-chai-like-assertion-library-using-proxies-1ol7"
-  hashnode: "https://hn.berganza.dev/creating-a-chai-like-assertion-library-using-proxies"
+  devto: 'https://dev.to/pabloabc/creating-a-chai-like-assertion-library-using-proxies-1ol7'
+  hashnode: 'https://hn.berganza.dev/creating-a-chai-like-assertion-library-using-proxies'
 tags:
   - javascript
   - testing
@@ -24,6 +24,7 @@ While this is fine and I could have perfectly moved all my tests to use said ass
 This setup works really good! But there’s some minor details: The assertion errors thrown by Chai are slightly different than those expected by uvu., so sometimes I’d get messages or extra details that are not so relevant to the test itself. Another issue is that I’d receive diffs comparing `undefined` to `undefined` when an assertion failed. As a proper developer with too much free time, I went ahead and decided to experiment with [writing my own assertion library](https://xkcd.com/927/) built on top of uvu’s assertions that I called [uvu-expect](https://github.com/pablo-abc/uvu-expect). Here’s more or less how I did it.
 
 ## The “expect” function
+
 The main thing our assertion library needs is an `expect` function that should receive the value you’re planning to validate.
 
 ```javascript
@@ -60,7 +61,7 @@ export function expect(value) {
         // Any property access returns the proxy once again.
         return proxy;
       },
-    }
+    },
   );
   return proxy;
 }
@@ -87,7 +88,7 @@ export function expect(value) {
           },
         });
       },
-    }
+    },
   );
   return proxy;
 }
@@ -98,6 +99,7 @@ expect().this.does.nothing().but.also.does.not.crash();
 With this we already got the base for our syntax. We now need to be able to add some _meaning_ to certain properties. For example, we might want to make `expect(…).to.be.null` to check whether a value is null or not.
 
 ## Adding meaning to our properties
+
 We could perfectly check the `name` of the property being accessed and use that to run validations. For example, if we wanted to add a validation for checking if a value is `null`:
 
 ```javascript
@@ -119,7 +121,7 @@ export function expect(value) {
         }
         return proxy;
       },
-    }
+    },
   );
   return proxy;
 }
@@ -135,6 +137,7 @@ try {
 This can make our `expect` function hard to maintain, and adding more properties would not be so trivial. In order to make this more maintainable (and extensible) we’re going to handle this a bit differently.
 
 ## Defining properties
+
 Instead of proxying an empty object, we will proxy an object that contains the properties we want to have meaning.
 
 ```javascript
@@ -196,11 +199,11 @@ export function expect(value) {
   const proxy = new Proxy(properties, {
     get(target, outerProp) {
       const property = target[outerProp];
-		// We execute the `onAccess` handler when one is found
+      // We execute the `onAccess` handler when one is found
       property?.onAccess?.(value);
       return new Proxy(
         (...args) => {
-			// We execute the `onCall` handler when one is found
+          // We execute the `onCall` handler when one is found
           property?.onCall?.(value, ...args);
           return proxy;
         },
@@ -208,7 +211,7 @@ export function expect(value) {
           get(_, innerProp) {
             return proxy[innerProp];
           },
-        }
+        },
       );
     },
   });
@@ -224,6 +227,7 @@ We suddenly have a really basic assertion library! And it can be easily extended
 There’s one thing we’re still not able to do with our current implementation: negate assertions. We need a way to modify the behaviour of future assertions.
 
 ## Negating assertions
+
 In order to be able to achieve this, we need a way to communicate to our properties that the current assertions is being negated. For this we’re going to change a bit how we define our properties. Instead of expecting the `actual` value being validated as first argument, we’re going to receive a `context` object that will contain our `actual` value and a new `negated` property that will be a boolean indicating if the assertion is being negated. Our new properties for `equal` and `null` will then look like this:
 
 ```javascript
@@ -290,7 +294,7 @@ export function expect(value) {
           get(_, innerProp) {
             return proxy[innerProp];
           },
-        }
+        },
       );
     },
   });
@@ -303,14 +307,16 @@ expect('a').to.not.equal('b');
 This technique can be used to communicate more details about our assertions to future assertions.
 
 ## Do not throw normal Errors
+
 To make examples simpler, we throw normal errors (`throw new Error(…)`). Since this is to be used with a test runner, it’d be better to throw something like Node’s built-in [`AssertionError`](https://nodejs.org/api/assert.html#class-assertassertionerror) or, in the case of uvu, its own `Assertion` error. These would give way more information when assertions fail. And it can be picked by Node or test runners to show prettier messages and diffs!
 
 ## Conclusion
+
 This is a simplified explanation of how I made [uvu-expect](https://github.com/pablo-abc/uvu-expect). `uvu-expect` has way more features and validations such as:
 
-* `.resolves` and `.rejects` to assert on promises
-* Possibility to create plugins for it using an `extend` function. This is how I also created a plugin for it called [uvu-expect-dom](https://github.com/pablo-abc/uvu-expect-dom) which offers similar validations to `@testing-library/jest-dom`.
-* Assertions on mock functions (compatible with [sinonjs](https://sinonjs.org) and [tinyspy](https://github.com/Aslemammad/tinyspy)).
+- `.resolves` and `.rejects` to assert on promises
+- Possibility to create plugins for it using an `extend` function. This is how I also created a plugin for it called [uvu-expect-dom](https://github.com/pablo-abc/uvu-expect-dom) which offers similar validations to `@testing-library/jest-dom`.
+- Assertions on mock functions (compatible with [sinonjs](https://sinonjs.org) and [tinyspy](https://github.com/Aslemammad/tinyspy)).
 
 I aimed for it to have at least the features I used of Jest’s `expect`. You can read more about its features on its README! I documented everything about it there. Even how to create your own plugins for it.
 
