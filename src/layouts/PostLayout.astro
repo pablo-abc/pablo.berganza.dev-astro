@@ -22,6 +22,7 @@ const lang = post.lang || 'en';
 const imgSrc = `assets/blog-pics/${post.frontmatter.created}.${
   post.frontmatter.imgext ?? 'jpg'
 }`;
+const fediId = post.frontmatter.fediId;
 const section = `blog/${post.slug}`;
 const localeDate = new Date(post.frontmatter.created).toLocaleDateString(
   lang ?? 'en',
@@ -115,6 +116,9 @@ const jsonLd = `
     <meta content="#E34495" name="msapplication-TileColor" />
     <meta content="ms-icon-144x144.png" name="msapplication-TileImage" />
     <meta content="#E34495" name="theme-color" />
+    <script>
+      import '@webcomponents/scoped-custom-element-registry';
+    </script>
     <script
       type="module"
       src="https://unpkg.com/yt-vid@0.0.5/dist/yt-vid/yt-vid.esm.js"
@@ -220,17 +224,38 @@ const jsonLd = `
       <script>
         import { load } from './copy-button.js';
         import 'share-on-fedi';
+        import '@pberganza/fedi-comments';
         load();
       </script>
       <footer>
         <ShareButtons client:visible host={host} blog={post} lang={lang} />
-        <Commento
-          client:only
-          lang={lang}
-          src={import.meta.env.PROD
-            ? 'https://cdn.commento.io/js/commento.js'
-            : 'http://localhost:8080/js/commento.js'}
-        />
+        {fediId && lang === 'es' ? (
+              <>
+              <fedi-comments postId={fediId} instance="sivar.cafe">
+              <span slot="instructions">
+              Agrega tu comentario respondiendo con tu cuenta en el Fediverso al siguiente post:
+              </span>
+              <span slot="view-post-text">
+              Ver post
+              </span>
+              <span slot="view-on-text">
+              Ver en
+              </span>
+              </fedi-comments>
+             </>
+            ) : fediId ? (
+              <>
+                <fedi-comments postId={fediId} instance="sivar.cafe"></fedi-comment>
+              </>
+            ) : (
+            <Commento
+              client:only
+              lang={lang}
+              src={import.meta.env.PROD
+              ? 'https://cdn.commento.io/js/commento.js'
+              : 'http://localhost:8080/js/commento.js'}
+              />
+        )}
       </footer>
     </main>
     <style lang="scss">

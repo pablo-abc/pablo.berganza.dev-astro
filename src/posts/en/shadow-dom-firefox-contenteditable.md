@@ -4,6 +4,7 @@ description: Making focus work correctly on contenteditable elements when using 
 created: '2022-03-16'
 published: true
 imgext: png
+fediId: "111852326506277818"
 image:
   width: 1534
   height: 812
