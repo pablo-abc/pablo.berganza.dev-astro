@@ -15,7 +15,7 @@ tags:
   - xmpp
 ---
 
-Últimamente he sentido un poco de felicidad al ver como, por lo menos parte del mundo, está tomando interestatal en las tecnologías federadas. Y ver como la cantidad de personas uniéndose a éstos servicios sigue creciendo. El Fediverso, principalmente por Mastodon, tiene 10 millones de usuarios y 1 millón de usuarios activos cada mes, según [FediDB](https://fedidb.org), al momento de escribir este artículo.
+Últimamente he sentido un poco de felicidad al ver como, por lo menos parte del mundo, está tomando interés en las tecnologías federadas. Y al ver como la cantidad de personas uniéndose a éstos servicios sigue creciendo. El Fediverso, principalmente por Mastodon, tiene 10 millones de usuarios y 1 millón de usuarios activos cada mes, según [FediDB](https://fedidb.org), al momento de escribir este artículo.
 
 Mi cuenta en la instancia que estoy manteniendo, [@pablo@sivar.cafe](https://sivar.cafe/@pablo), se está convirtiendo rápidamente en mi plataforma principal para microblogging. Y he conocido personas increíbles gracias a ello!
 
