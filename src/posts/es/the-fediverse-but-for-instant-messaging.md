@@ -52,11 +52,11 @@ Mientras leía sobre Matrix, encontré personas hablando acerca de XMPP como una
 
 Pero claro. XMPP fue, probablemente, _el_ protocolo original de mensajería instantánea federada. Y, según entiendo, todavía usado por los jugadores más grandes (aun que de una forma privada). Aunque definitivamente la comunidad es mucho más pequeña, y hay mucho menos Hype, que en Matrix; la comunidad que existe es muy apasionada y hay un esfuerzo continuo para hacer que el protocolo XMPP sea más y más accesible.
 
-Esta [presentación fantástica por DenshiVideo en YouTube \(inglés\)](https://www.youtube.com/watch?v=GurbaZzwYvU)me convenció a investigar un poco más.
+Esta [presentación fantástica por DenshiVideo en YouTube \(inglés\)](https://www.youtube.com/watch?v=GurbaZzwYvU) me convenció a investigar un poco más.
 
 Según mis observaciones, hay dos principales servidores para XMPP:
-- [ejabberd](https://www.ejabberd.im/): Un servidor escrito en Erlang, lo que lo hace increíblemente escaladle.
-- [Prosody](https://prosody.im/):  Un servidor escritoire en Lua, buscando ser fácil de instalar y simplicidad.
+- [ejabberd](https://www.ejabberd.im/): Un servidor escrito en Erlang, lo que lo hace increíblemente escalable.
+- [Prosody](https://prosody.im/):  Un servidor escritoire en Lua, buscando simplicidad y ser fácil de instalar.
 
 Para mi uso propio, ejabberd se sentía un poco abrumador. Siendo un usuario de [NeoVim](https://neovim.io) estoy _mucho_ mas familiarizado con Lua. Así que empecé a leer como instalar un servidor de Prosody. Esta lectura hizo que encontrara a [Snikket](https://snikket.org)
 
