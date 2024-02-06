@@ -21,13 +21,13 @@ Mi cuenta en la instancia que estoy manteniendo, [@pablo@sivar.cafe](https://siv
 
 Pero microblogging no es el único uso para el que existen plataformas federadas. E-mail siento el servicio más grande para comunicación uno-a-uno y uno-a-muchos.
 
-Para comunicación más instantáneas, algunas alternativas a Mastodon, como  [Misskey](https://misskey-hub.net/en/)  y sus forks, implementaron funciones para mensajería instantánea. Te permitía hablar con gente dentro o fuera de tu servidor. Pero en este caso siempre sentí que la funcionalidad agregaba la complejidad y peso para quienes mantienen el proyecto, ya sea alojando una instancia, o manteniendo el código del proyecto en si. Versiones más recientes de Misskey removieron la funcionalidad de chat, aunque no estoy seguro del motivo. Y forks más recientes de Misskey tampoco ofrecen esta funcionalidad, incluyendo el fork más activamente mantenido por ahora:  [Sharkey](https://joinsharkey.org).
+Para comunicación más instantánea, algunas alternativas a Mastodon, como  [Misskey](https://misskey-hub.net/en/)  y sus forks, implementaron funciones para mensajería instantánea. Te permitía hablar con gente dentro o fuera de tu servidor. Pero en este caso siempre sentí que la funcionalidad agregaba complejidad y peso para quienes mantienen el proyecto, ya sea alojando una instancia, o manteniendo el código del proyecto en si. Versiones más recientes de Misskey removieron la funcionalidad de chat, aunque no estoy seguro del motivo. Y forks más recientes de Misskey tampoco ofrecen esta funcionalidad, incluyendo el fork más activamente mantenido por ahora:  [Sharkey](https://joinsharkey.org).
 
 Entonces, ¿hay alguna otra alternative para mensajería instantánea que puedas alojar tu mismo y sea federada?
 
 ## Matrix
 
-[Matrix](https://matrix.org/)  es un protocolo abierto que describe una forma para tener comunicación segura e instantánea de forma descentralizada. La instancia principal siendo matrix.org, la cual también tiene la mayor cantidad de usuarios.
+[Matrix](https://matrix.org/) es un protocolo abierto que describe una forma para tener comunicación segura e instantánea de forma descentralizada. La instancia principal siendo matrix.org, la cual también tiene la mayor cantidad de usuarios.
 
 Matrix provee a sus usuarios con:
 - Cifrado de extremo a extremo (E2EE) en chats 1-a-1 y grupos.
