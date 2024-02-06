@@ -1,7 +1,7 @@
 ---
-title: 'Obtiene tu propia plataforma de chat segura y federada'
+title: 'El Fediverso, pero para mensajería instantánea'
 description: 'Matrix, XMPP y Snikket'
-published: false
+published: true
 created: '2024-02-06'
 imgext: jpg
 fediId: ''

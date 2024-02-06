@@ -1,7 +1,7 @@
 ---
-title: 'Host your own private and federated encrypted chat platform'
+title: 'The Fediverse, but for instant messaging'
 description: 'Matrix, XMPP and Snikket'
-published: false
+published: true
 created: '2024-02-06'
 imgext: jpg
 fediId: ''
@@ -69,7 +69,7 @@ Started by one of the Prosody developers, [Snikket](https://snikket.org) is an a
 - Dedicated apps for iOS and Android built to support the features Snikket specifically supports.
 - Tweaks that just make it way easier to use as an end-user.
 
-Besides some minor things (e.g. port numbers), Snikket doesn’t give you any access to the configuration of Prosody. This is, in my opinion, a good thing. Not overwhelming the host with configuration options and giving sane defaults is a perfect way to get people to host their own instances. The less you have to _think_ about it the better. Hosting basically implies just:
+Besides some minor things (e.g. port numbers), Snikket doesn’t give you any access to the configuration of Prosody. This is, in my opinion, a good thing. Not overwhelming the host with configuration options and giving sane defaults is a perfect way to get people to host their own, smaller, instances. The less you have to _think_ about it the better. Hosting basically implies just:
 - Getting a domain name
 - Point it toward your VPS
 - Create a configuration file with just your admin email and domain.
