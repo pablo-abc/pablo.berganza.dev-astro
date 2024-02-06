@@ -95,10 +95,15 @@
       font-size: 2em;
   }
 
-  share-on-fedi::part(trigger) {
+  share-on-fedi :global(svg) {
     color: var(--color-link);
-    font-size: 2em;
+    font-size: 2.5rem;
     margin-left: 8px;
+  }
+
+  share-on-fedi:not(:defined) {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   share-on-fedi::part(input) {
