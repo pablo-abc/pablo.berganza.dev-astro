@@ -4,7 +4,7 @@ description: 'Matrix, XMPP and Snikket'
 published: true
 created: '2024-02-06'
 imgext: jpg
-fediId: ''
+fediId: '111887033766953959'
 image:
   width: 3024
   height: 1701
