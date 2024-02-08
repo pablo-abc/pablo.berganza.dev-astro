@@ -28,9 +28,34 @@
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 1rem;
-    border-radius: 5rem;
+    border-radius: 3rem;
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  h1 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    padding-top: 0.5rem;
+  }
+
+  p {
+    margin: 0.5rem 0;
+    font-size: 0.8rem;
+  }
+
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
+    .secret-message {
+      border-radius: 5rem;
+    }
   }
 
   .secret-message img {
