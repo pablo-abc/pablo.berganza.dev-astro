@@ -243,16 +243,18 @@ const jsonLd = `
             <>
               <fedi-comments postId={fediId} instance="sivar.cafe" />
             </>
-          ) : fediId !== '' && (
-            <Commento
-              client:only
-              lang={lang}
-              src={
-                import.meta.env.PROD
-                  ? 'https://cdn.commento.io/js/commento.js'
-                  : 'http://localhost:8080/js/commento.js'
-              }
-            />
+          ) : (
+            fediId !== '' && (
+              <Commento
+                client:only
+                lang={lang}
+                src={
+                  import.meta.env.PROD
+                    ? 'https://cdn.commento.io/js/commento.js'
+                    : 'http://localhost:8080/js/commento.js'
+                }
+              />
+            )
           )
         }
       </footer>
