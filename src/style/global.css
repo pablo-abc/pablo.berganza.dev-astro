@@ -71,8 +71,8 @@
 
 body {
   background: var(--background-color);
-  font-family: 'Overpass', 'Helvetica Neue', Verdana, Helvetica, Arial,
-    sans-serif;
+  font-family:
+    'Overpass', 'Helvetica Neue', Verdana, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--base-font-color-on-alt);
@@ -170,8 +170,8 @@ summary:focus:not(:focus-visible),
 
 walisto-container {
   --walisto-width: 45rem;
-  --walisto-font-family: 'PT Mono', Consolas, Monaco, 'Andale Mono',
-    'Ubuntu Mono', monospace;
+  --walisto-font-family:
+    'PT Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
 walisto-container::part(item) {
@@ -194,8 +194,8 @@ walisto-modal {
   --walisto-modal-button-bg-active: hsl(329, 40%, 47%);
   --walisto-modal-outline-fv: 3px solid var(--color-subheading);
 
-  --walisto-modal-font-family: 'PT Mono', Consolas, Monaco, 'Andale Mono',
-    'Ubuntu Mono', monospace;
+  --walisto-modal-font-family:
+    'PT Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
 @media (prefers-color-scheme: light) {
