@@ -28,16 +28,16 @@
     "postcss": "^8.4.6",
     "postcss-load-config": "^3.1.3",
     "postcss-preset-env": "^7.3.3",
-    "prettier": "^3.2.4",
-    "prettier-plugin-astro": "^0.13.0",
-    "prettier-plugin-svelte": "^3.1.2",
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-svelte": "^3.5.1",
     "reading-time": "^1.3.0",
     "sass": "^1.98.0",
     "svelte": "^5.46.1",
     "vite": "^7.3.0"
   },
   "volta": {
-    "node": "18.17.0"
+    "node": "24.14.0"
   },
   "dependencies": {
     "@pberganza/fedi-comments": "^0.1.4",
