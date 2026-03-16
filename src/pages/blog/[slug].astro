@@ -4,23 +4,23 @@ import fs from 'node:fs';
 
 export async function getStaticPaths() {
   const base = new URL('../../posts/en/', import.meta.url).pathname;
-  const posts = await Astro.glob('../../posts/en/*.md').then((posts) =>
-    posts.map((post) => {
-      let slug = post.file
-        .replace(base, '')
-        .replace('.md', '')
-        .split('/')
-        .pop();
-      const source = fs.readFileSync(post.file, 'utf-8');
-      if (!post.frontmatter.published) slug = `__draft__${slug}`;
-      return {
-        ...post,
-        lang: 'en',
-        slug,
-        source,
-      };
-    }),
-  );
+  const posts = Object.values(import.meta.glob('../../posts/en/*.md', { eager: true }))
+  .map((post: any) => {
+    let slug = post.file
+      .replace(base, '')
+      .replace('.md', '')
+      .split('/')
+      .pop();
+    const source = fs.readFileSync(post.file, 'utf-8');
+    if (!post.frontmatter.published) slug = `__draft__${slug}`;
+    return {
+      ...post,
+      lang: 'en',
+      slug,
+      source,
+    };
+  });
+  
 
   const slugs = posts.map((post) => post.slug);
 

@@ -4,7 +4,7 @@ import Blogs from 'components:Blog/Blogs.astro';
 import fs from 'node:fs';
 
 export async function getStaticPaths() {
-  const posts = await Astro.glob('../../../posts/en/*.md');
+const posts = Object.values(import.meta.glob('../../../posts/en/*.md', { eager: true })) as any[];
 
   const possibleTags = new Set();
   for (const post of posts) {

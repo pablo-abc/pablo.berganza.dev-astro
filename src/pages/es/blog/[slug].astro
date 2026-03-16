@@ -4,8 +4,8 @@ import fs from 'node:fs';
 
 export async function getStaticPaths() {
   const base = new URL('../../../posts/es/', import.meta.url).pathname;
-  const posts = await Astro.glob('../../../posts/es/*.md').then((posts) =>
-    posts.map((post) => {
+  const posts = Object.values(import.meta.glob('../../../posts/es/*.md', { eager: true }))
+    .map((post: any) => {
       let slug = post.file
         .replace(base, '')
         .replace('.md', '')
@@ -19,8 +19,7 @@ export async function getStaticPaths() {
         slug,
         source,
       };
-    }),
-  );
+    });
   const slugs = posts.map((post) => post.slug);
 
   return slugs.map((slug) => {
