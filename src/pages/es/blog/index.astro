@@ -3,7 +3,9 @@ import Base from 'layouts:Base.astro';
 import Blogs from 'components:Blog/Blogs.astro';
 import fs from 'node:fs';
 
-const posts = Object.values(import.meta.glob('../../../posts/es/*.md', { eager: true }))
+const posts = Object.values(
+  import.meta.glob('../../../posts/es/*.md', { eager: true }),
+)
   .filter((post: any) => {
     if (import.meta.env.PROD) {
       return post.frontmatter.published;

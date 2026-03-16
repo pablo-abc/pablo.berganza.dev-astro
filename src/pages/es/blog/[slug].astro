@@ -4,22 +4,19 @@ import fs from 'node:fs';
 
 export async function getStaticPaths() {
   const base = new URL('../../../posts/es/', import.meta.url).pathname;
-  const posts = Object.values(import.meta.glob('../../../posts/es/*.md', { eager: true }))
-    .map((post: any) => {
-      let slug = post.file
-        .replace(base, '')
-        .replace('.md', '')
-        .split('/')
-        .pop();
-      const source = fs.readFileSync(post.file, 'utf-8');
-      if (!post.frontmatter.published) slug = `__draft__${slug}`;
-      return {
-        ...post,
-        lang: 'es',
-        slug,
-        source,
-      };
-    });
+  const posts = Object.values(
+    import.meta.glob('../../../posts/es/*.md', { eager: true }),
+  ).map((post: any) => {
+    let slug = post.file.replace(base, '').replace('.md', '').split('/').pop();
+    const source = fs.readFileSync(post.file, 'utf-8');
+    if (!post.frontmatter.published) slug = `__draft__${slug}`;
+    return {
+      ...post,
+      lang: 'es',
+      slug,
+      source,
+    };
+  });
   const slugs = posts.map((post) => post.slug);
 
   return slugs.map((slug) => {

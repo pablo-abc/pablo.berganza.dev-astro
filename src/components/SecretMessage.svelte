@@ -1,19 +1,26 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
-  import { fade } from 'svelte/transition'
+  import { onMount } from 'svelte';
+  import { fade } from 'svelte/transition';
 
-  let mounted = false
+  let mounted = false;
 
   onMount(() => {
-    mounted = true
-  })
+    mounted = true;
+  });
 </script>
+
 {#if mounted}
-<div transition:fade={{ delay: 2000 }} class="secret-message">
-  <img transition:fade={{ delay: 2500 }} src="/assets/codeine-min.png" alt="" />
-  <h1>Will you be my valentine?</h1>
-  <p transition:fade={{ delay: 3000 }}>(Invitation may be accepted by means of hugs or kisses)</p>
-</div>
+  <div transition:fade={{ delay: 2000 }} class="secret-message">
+    <img
+      transition:fade={{ delay: 2500 }}
+      src="/assets/codeine-min.png"
+      alt=""
+    />
+    <h1>Will you be my valentine?</h1>
+    <p transition:fade={{ delay: 3000 }}>
+      (Invitation may be accepted by means of hugs or kisses)
+    </p>
+  </div>
 {/if}
 
 <style>

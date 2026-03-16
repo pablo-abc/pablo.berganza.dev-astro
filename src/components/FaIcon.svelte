@@ -1,13 +1,3 @@
-<svg
-  aria-hidden="true"
-  title="{title}"
-  class="{classes}"
-  role="img"
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="{viewBox}"
->
-  <path fill="currentColor" d="{path}" />
-</svg>
 <script>
   export let icon;
   export let title = '';
@@ -18,6 +8,17 @@
   classes = 'fa-svelte ' + ($$props.class ? $$props.class : '');
   path = icon.icon[4];
 </script>
+
+<svg
+  aria-hidden="true"
+  {title}
+  class={classes}
+  role="img"
+  xmlns="http://www.w3.org/2000/svg"
+  {viewBox}
+>
+  <path fill="currentColor" d={path} />
+</svg>
 
 <style>
   .fa-svelte {
